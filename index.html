@@ -20,6 +20,7 @@
     <div class="container">
       <h1>The right message, to right people, at the right time.</h1>
       <form
+        action="https://playground.mrf.io/simulate"
         method="get"
         id="form"
       >
@@ -338,7 +339,7 @@
       const input = document.querySelector(".form__input");
       const button = document.querySelectorAll(".form__button");
       const requestHostname = document.getElementById("requestHostname");
-      requestHostname.value = window.location.origin;
+      requestHostname.value = window.location.hostname;
 
       const stateHandle = (e) => {
         if (e.target.value.length === 0) {
