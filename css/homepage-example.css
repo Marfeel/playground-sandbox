@@ -1,0 +1,158 @@
+body {
+    font-family: -apple-system, system-ui;
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0;
+    text-align: start;
+    -webkit-font-smoothing: antialiased;
+}
+
+.mrf-header__wrapper {
+    display: flex;
+    flex-direction: column;
+    background: #282346;
+}
+
+.mrf-header__main {
+    display: grid;
+    height: 50px;
+}
+
+.mrf-header__main img {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.mrf-menu {
+    margin: 10px;
+}
+
+.mrf-logo {
+    place-self: center;
+}
+
+.mrf-header__navigation {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.mrf-section {
+    color: #fff;
+    text-transform: uppercase;
+    padding: 0 10px 2px;
+    font-size: .8em;
+    font-weight: 300;
+}
+
+.mrf-section.active {
+    border-bottom: 2px solid;
+    font-weight: 500;
+}
+
+.mrf-balcon {
+    background-color: #EFEFEF;
+}
+
+.mrf-balcon__header {
+    color: #223F6D;
+    border-bottom: 2px solid;
+    margin: 0 15px;
+    text-align: center;
+}
+
+.mrf-balcon .mrf-article__subtitle {
+    color: #223F6D;
+}
+
+.mrf-balcon.sports .mrf-article__subtitle,
+.sports .mrf-balcon__header {
+    color: #5d982d;
+}
+
+.mrf-balcon.opinion .mrf-article__subtitle,
+.opinion .mrf-balcon__header {
+    color: #000;
+}
+
+.mrf-title--withSeparator {
+    font-size: 1.1em;
+    padding: 15px 0 5px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.mrf-article {
+    position: relative;
+}
+
+.mrf-article__pill {
+    padding: 15px;
+}
+
+.mrf-article__thumb {
+    display: flex;
+    padding: 15px;
+}
+
+.border-top {
+    box-shadow: inset 0px 1px 0px #E4E4E4;
+}
+
+.mrf-article__image {
+    box-sizing: border-box;
+    position: relative;
+    flex: none;
+}
+
+.mrf-image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    flex: 1;
+}
+
+.mrf-articleText {
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+    gap: 5px 0;
+}
+
+.mrf-article__title {
+    font-size: 1em;
+    margin: 0;
+    grid-column: 1;
+}
+
+.mrf-article__subtitle {
+    color: #737373;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.mrf-article__share {
+    grid-row: 1 / right;
+    grid-column: 2;
+    margin: 0px -10px 0 0;
+}
+
+.mrf-article__pill .mrf-article__image {
+    height: 200px;
+    width: 100%;
+}
+
+.mrf-article__thumb .mrf-article__image {
+    height: 99px;
+    width: 150px;
+}
+
+.mrf-article__thumb .mrf-articleText {
+    margin-left: 10px;
+}

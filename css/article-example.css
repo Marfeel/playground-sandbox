@@ -1,0 +1,60 @@
+:root {
+    --main-font: -apple-system, system-ui;
+    --headings-font: Georgia, Cambria, "Times New Roman", Times, serif;
+    --main-color: #1d355d;
+    --text-color: rgba(41, 41, 41, 1);
+    --container-desktop: 980px;
+    --container-mobile: 85vw;
+    --font-weight-bold: 600;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--main-font);
+    margin: 0 auto;
+    color: var(--text-color);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+article {
+    margin: 15px;
+}
+
+img {
+    width: 100vw;
+    height: 60vw;
+}
+
+.metas {
+    font-family: var(--headings-font);
+    font-size: 13px;
+    margin: 10px 0 15px;
+    color: var(--main-color);
+}
+
+blockquote {
+    margin: 20px 0;
+    padding: 0 20px;
+    border-left: 1px solid;
+    font-style: italic;
+    line-height: 28px;
+    font-size: 23px;
+    font-family: var(--headings-font);
+}
+
+h1 {
+    font-family: var(--headings-font);
+    font-size: 28px;
+    line-height: 32px;
+    margin: 0;
+}
+
+p {
+    font-size: 18px;
+    line-height: 28px;
+}
