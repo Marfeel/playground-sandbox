@@ -1,0 +1,29 @@
+{
+	"cards": {
+		"telegram": {
+			"content": {
+				"type": "AMPDocument",
+				"url": "${AMP_DOCUMENT_URL}"
+			},
+			"snapPoints": {
+				"active": 0.55,
+				"initial": 0.55,
+				"minimised": 1
+			},
+			"features": {
+				"mode": "contextual",
+				"isDraggable": true
+			},
+			"triggers": {
+				"myScrollTrigger": {
+					"on": "scroll",
+					"spec": {
+						"type": "absolute",
+						"pixel": 300,
+						"percentage": 0.1
+					}
+				}
+			}
+		}
+	}
+}

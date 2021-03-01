@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html ⚡ lang="en" xmlns:th="https://thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<script async src="https://cdn.ampproject.org/v0.js"></script>
+	<title>Top articles</title>
+	<link rel="canonical" th:href="${canonicalUrl}">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+	<style amp-boilerplate>
+		body {
+			-webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			animation: -amp-start 8s steps(1, end) 0s 1 normal both
+		}
+
+		@-webkit-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-moz-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-ms-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-o-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+	</style><noscript>
+		<style amp-boilerplate>
+			body {
+				-webkit-animation: none;
+				-moz-animation: none;
+				-ms-animation: none;
+				animation: none
+			}
+		</style>
+	</noscript>
+	<style amp-custom>
+		body {
+			font-family: -apple-system, system-ui;
+			font-size: 16px;
+			line-height: 1.4;
+			margin: 0;
+			text-align: start;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		.mrf-header__wrapper {
+			background: #282346;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 10px 15px 15px;
+			box-sizing: border-box;
+		}
+
+		.mrf-header__main {
+			display: flex;
+			flex-direction: column;
+			color: #FFF;
+		}
+
+		.mrf-header__title {
+			font-size: 1em;
+			font-weight: 700;
+			margin: 0 0 3px;
+		}
+
+		.mrf-header__subtitle {
+			text-transform: uppercase;
+			font-size: .7em;
+			font-weight: 500;
+			opacity: .7;
+		}
+
+		.mrf-ranking__item--wrapper {
+			padding: 10px 15px;
+			display: grid;
+			grid-template-columns: 55px minmax(0, 1fr);
+			place-items: center flex-start;
+			gap: 10px;
+			box-sizing: border-box;
+		}
+
+		.mrf-ranking__number {
+			font-weight: bold;
+			font-size: 40px;
+			color: #D3D3D3;
+		}
+
+		.mrf-article__title {
+			font-size: 1em;
+			margin: 0;
+			color: #333333;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="mrf-header__wrapper">
+		<div class="mrf-header__main">
+			<h1 class="mrf-header__title">Top articles</h1>
+			<span class="mrf-header__subtitle">Daily news</span>
+		</div>
+		<img height="34" width="34" th:src="@{|${resourcesUrl}/assets/experiences/dailynews-icon.png|}">
+	</header>
+	<div>
+		<article class="mrf-article mrf-ranking__item">
+			<a href="#" class="mrf-ranking__item--wrapper">
+				<div class="mrf-ranking__number">
+					01
+				</div>
+				<h2 class="mrf-article__title">
+					The unseen of spending three years at Pixelgrade
+				</h2>
+			</a>
+		</article>
+		<article class="mrf-article mrf-ranking__item">
+			<a href="#" class="mrf-ranking__item--wrapper">
+				<div class="mrf-ranking__number">
+					02
+				</div>
+				<h2 class="mrf-article__title">
+					Start a blog to reach your creative peak
+				</h2>
+			</a>
+		</article>
+		<article class="mrf-article mrf-ranking__item">
+			<a href="#" class="mrf-ranking__item--wrapper">
+				<div class="mrf-ranking__number">
+					03
+				</div>
+				<h2 class="mrf-article__title">
+					Where to grow your business as a photographer: site or social...
+				</h2>
+			</a>
+		</article>
+		<article class="mrf-article mrf-ranking__item">
+			<a href="#" class="mrf-ranking__item--wrapper">
+				<div class="mrf-ranking__number">
+					04
+				</div>
+				<h2 class="mrf-article__title">
+					How to build a loyal community online and offline
+				</h2>
+			</a>
+		</article>
+		<article class="mrf-article mrf-ranking__item">
+			<a href="#" class="mrf-ranking__item--wrapper">
+				<div class="mrf-ranking__number">
+					05
+				</div>
+				<h2 class="mrf-article__title">
+					How to optimize images in WordPress for faster loading...
+				</h2>
+			</a>
+		</article>
+		<article class="mrf-article mrf-ranking__item">
+			<a href="#" class="mrf-ranking__item--wrapper">
+				<div class="mrf-ranking__number">
+					06
+				</div>
+				<h2 class="mrf-article__title">
+					How a visual artist redefines success in graphic design
+				</h2>
+			</a>
+		</article>
+		<article class="mrf-article mrf-ranking__item">
+			<a href="#" class="mrf-ranking__item--wrapper">
+				<div class="mrf-ranking__number">
+					07
+				</div>
+				<h2 class="mrf-article__title">
+					How to choose the right colors when creating a website?
+				</h2>
+			</a>
+		</article>
+		<article class="mrf-article mrf-ranking__item">
+			<a href="#" class="mrf-ranking__item--wrapper">
+				<div class="mrf-ranking__number">
+					08
+				</div>
+				<h2 class="mrf-article__title">
+					Caring is the new marketing
+				</h2>
+			</a>
+		</article>
+		<article class="mrf-article mrf-ranking__item">
+			<a href="#" class="mrf-ranking__item--wrapper">
+				<div class="mrf-ranking__number">
+					09
+				</div>
+				<h2 class="mrf-article__title">
+					Travelling as a way of self-discovery and progress
+				</h2>
+			</a>
+		</article>
+	</div>
+</body>
+
+</html>

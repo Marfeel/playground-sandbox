@@ -1,0 +1,334 @@
+<!doctype html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<script async src="https://cdn.ampproject.org/v0.js"></script>
+	<title>Hero image</title>
+	<!--/*@thymesVar id="canonicalUrl" type="string"*/-->
+	<link rel="canonical" th:href="${canonicalUrl}">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+	<style amp-boilerplate>
+		body {
+			-webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			animation: -amp-start 8s steps(1, end) 0s 1 normal both
+		}
+
+		@-webkit-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-moz-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-ms-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-o-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+	</style>
+	<noscript>
+		<style amp-boilerplate>
+			body {
+				-webkit-animation: none;
+				-moz-animation: none;
+				-ms-animation: none;
+				animation: none
+			}
+		</style>
+	</noscript>
+	<style amp-custom>
+		body {
+			font-family: -apple-system, system-ui;
+			font-size: 16px;
+			line-height: 1.4;
+			margin: 0;
+			text-align: start;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		.mrf-detailsContent {
+			padding: 0 15px;
+			color: #333333;
+		}
+
+		.mrf-mainContent {
+			font-size: 18px;
+			line-height: 1.4;
+		}
+
+		header {
+			margin-bottom: 20px;
+		}
+
+		.mrf-title {
+			font-size: 25px;
+			font-weight: 700;
+			line-height: normal;
+		}
+
+		.mrf-meta {
+			color: #737373;
+			font-size: 13px;
+		}
+
+		.mrf-author {
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		.mrf-summary {
+			font-weight: 500;
+		}
+
+		p {
+			color: #333333;
+			margin-bottom: 26px;
+		}
+
+		blockquote {
+			margin: 26px 0;
+			padding: 15px;
+			border-top: 1px solid;
+			border-bottom: 1px solid;
+			font-style: italic;
+			font-weight: 400;
+		}
+
+		.mrf-sectionPreview {
+			overflow: hidden;
+			margin-bottom: 15px;
+		}
+
+		.mrf-title--withSeparator {
+			font-size: 1rem;
+			position: relative;
+			display: inline-block;
+			padding-right: 10px;
+			margin: 1rem 0 .5rem;
+		}
+
+		.mrf-title--withSeparator::after {
+			left: 100%;
+			content: "";
+			display: block;
+			height: 2px;
+			position: absolute;
+			top: 50%;
+			width: 100vw;
+			pointer-events: none;
+			background: #000;
+		}
+
+		.mrf-article {
+			position: relative;
+			height: 170px;
+			margin-bottom: 2px;
+		}
+
+		.mrf-article__image {
+			box-sizing: border-box;
+			position: relative;
+			height: inherit;
+		}
+
+		.mrf-article__image--gradient {
+			background: linear-gradient(180deg, rgba(0, 0, 0, 4e-05) 15.37%, rgba(0, 0, 0, 0.4) 100%);
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		.mrf-image {
+			object-fit: cover;
+			height: 100%;
+			width: 100%;
+		}
+
+		.mrf-articleText {
+			position: absolute;
+			bottom: 0;
+			padding: 15px;
+		}
+
+		.mrf-article__title {
+			color: #FFF;
+			font-weight: 700;
+			text-shadow: 1px 0px 3px rgba(0, 0, 0, 0.3), 0px 1px 3px rgba(0, 0, 0, 0.3), 0px -1px 3px rgba(0, 0, 0, 0.3), -1px 0px 3px rgba(0, 0, 0, 0.3);
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		.mrf-mainContent img {
+			object-fit: cover;
+			width: 100vw;
+			margin: 0 -15px;
+			box-sizing: border-box;
+
+		}
+	</style>
+</head>
+
+<body>
+	<div class="mrf-detailsContent">
+		<header>
+			<h1 class="mrf-title">How to build a loyal community online and offline</h1>
+			<div class="mrf-meta">
+				<span class="mrf-author">Bertrand Russell</span>
+				<time class="mrf-date">12/11/2020</time>
+			</div>
+
+		</header>
+		<div class="mrf-mainContent">
+			<div class="mrf-summary">
+				Each player must accept the cards life deals him or her; but once they are in hand, he or she alone must
+				decide how to play the cards in order to win the game
+			</div>
+			<p>
+				We know that all belief taught by the Church is a dogma which we must embrace. It is a pity that there
+				are
+				dogmas received by the Latin Church, and rejected by the Greek. But if unanimity is wanting, charity
+				replaces it. It is, above all, between hearts that union is required. I think that we can relate a dream
+				to
+				the purpose, which has already found favor in the estimation of many peaceably disposed persons.
+			</p>
+			<p>
+				The English, who pique themselves upon renewing several ancient customs, drink to the honor of the
+				ladies,
+				which they call toasting, and it is a great subject of dispute among them whether a lady is toastworthy
+				or
+				not—whether she is worthy to be toasted.
+			</p>
+			<blockquote>
+				Each player must accept the cards life deals him or her; but once they are in hand, he or she alone must
+				decide how to play the cards in order to win the game
+			</blockquote>
+			<img loading="lazy" height="250"
+				src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?h=250&q=85&auto=format" />
+			<p>
+				We know that all belief taught by the Church is a dogma which we must embrace. It is a pity that there
+				are
+				dogmas received by the Latin Church, and rejected by the Greek. But if unanimity is wanting, charity
+				replaces it. It is, above all, between hearts that union is required. I think that we can relate a dream
+				to
+				the purpose, which has already found favor in the estimation of many peaceably disposed persons.
+			</p>
+			<p>
+				The English, who pique themselves upon renewing several ancient customs, drink to the honor of the
+				ladies,
+				which they call toasting, and it is a great subject of dispute among them whether a lady is toastworthy
+				or
+				not—whether she is worthy to be toasted.
+			</p>
+			<p>
+				We know that all belief taught by the Church is a dogma which we must embrace. It is a pity that there
+				are
+				dogmas received by the Latin Church, and rejected by the Greek. But if unanimity is wanting, charity
+				replaces it. It is, above all, between hearts that union is required. I think that we can relate a dream
+				to
+				the purpose, which has already found favor in the estimation of many peaceably disposed persons.
+			</p>
+			<img loading="lazy" height="250"
+				src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?auto=format&h=250&q=85" />
+			<p>
+				The English, who pique themselves upon renewing several ancient customs, drink to the honor of the
+				ladies,
+				which they call toasting, and it is a great subject of dispute among them whether a lady is toastworthy
+				or
+				not—whether she is worthy to be toasted.
+			</p>
+			<p>
+				We know that all belief taught by the Church is a dogma which we must embrace. It is a pity that there
+				are
+				dogmas received by the Latin Church, and rejected by the Greek. But if unanimity is wanting, charity
+				replaces it. It is, above all, between hearts that union is required. I think that we can relate a dream
+				to
+				the purpose, which has already found favor in the estimation of many peaceably disposed persons.
+			</p>
+			<p>
+				The English, who pique themselves upon renewing several ancient customs, drink to the honor of the
+				ladies,
+				which they call toasting, and it is a great subject of dispute among them whether a lady is toastworthy
+				or
+				not—whether she is worthy to be toasted.
+			</p>
+			<div class="mrf-sectionPreview">
+				<div class="mrf-sectionPreview__header">
+					<h2 class="mrf-title--withSeparator">Next articles</h2>
+				</div>
+				<article class="mrf-article mrf-article__photo">
+					<div class="mrf-article__image">
+						<img width="100%" height="100%" class="mrf-image"
+							src="https://images.unsplash.com/photo-1612536556661-94438ce9e8bc?auto=format&q=75&w=720" />
+						<div class="mrf-article__image--gradient"></div>
+					</div>
+					<a href="#">
+						<div class="mrf-articleText">
+							<span class="mrf-article__title">
+								Don't talk unless you can improve the silence
+							</span>
+						</div>
+					</a>
+				</article>
+				<article class="mrf-article mrf-article__photo">
+					<div class="mrf-article__image">
+						<img width="100%" height="100%" class="mrf-image"
+							src="https://images.unsplash.com/photo-1611523549389-3720090a929c?auto=format&q=75&w=720" />
+						<div class="mrf-article__image--gradient"></div>
+					</div>
+					<a href="#">
+						<div class="mrf-articleText">
+							<span class="mrf-article__title">
+								Don't talk unless you can improve the silence
+							</span>
+						</div>
+					</a>
+				</article>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

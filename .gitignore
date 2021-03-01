@@ -1,0 +1,37 @@
+target
+bin
+.idea/libraries
+.vscode/launch.test.json
+
+######################
+# OS generated files #
+######################
+.DS_Store*
+Thumbs.db
+
+######################
+#  IDEA CONFIG FILES #
+######################
+.idea/*
+!.idea/runConfigurations/**.xml
+**.iml
+!.mrfideaconfig/**.iml
+
+#######################
+# VSCODE CONFIG FILES #
+#######################
+.vscode/
+**/.settings
+**/.classpath
+**/.factorypath
+**/.project
+
+######################
+# Eclipse Annotation #
+######################
+**/.factorypath
+
+######################
+JRebel files
+######################
+rebel.xml

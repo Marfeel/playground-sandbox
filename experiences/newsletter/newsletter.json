@@ -1,0 +1,32 @@
+{
+	"cards": {
+		"newsletter": {
+			"content": {
+				"type": "AMPDocument",
+				"url": "${AMP_DOCUMENT_URL}"
+			},
+			"snapPoints": {
+				"active": 0.62,
+				"initial": 0.62,
+				"minimised": 1
+			},
+			"features": {
+				"mode": "contextual",
+				"isDraggable": true,
+				"header": {
+					"dragHandlerBg": "#223F6D"
+				}
+			},
+			"triggers": {
+				"myScrollTrigger": {
+					"on": "scroll",
+					"spec": {
+						"type": "absolute",
+						"pixel": 300,
+						"percentage": 0.1
+					}
+				}
+			}
+		}
+	}
+}

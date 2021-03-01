@@ -1,0 +1,1059 @@
+<!doctype html>
+<html ⚡ lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<script async src="https://cdn.ampproject.org/v0.js"></script>
+	<title>Homepage</title>
+	<link rel="canonical" href="${canonicalUrl}">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+	<style amp-boilerplate>
+		body {
+			-webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			animation: -amp-start 8s steps(1, end) 0s 1 normal both
+		}
+
+		@-webkit-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-moz-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-ms-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-o-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+	</style>
+	<noscript>
+		<style amp-boilerplate>
+			body {
+				-webkit-animation: none;
+				-moz-animation: none;
+				-ms-animation: none;
+				animation: none
+			}
+		</style>
+	</noscript>
+	<style amp-custom>
+		body {
+			font-family: -apple-system, system-ui;
+			font-size: 16px;
+			line-height: 1.4;
+			margin: 0;
+			text-align: start;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		.mrf-header__wrapper {
+			display: flex;
+			flex-direction: column;
+			background: #282346;
+		}
+
+		.mrf-header__main {
+			display: grid;
+			height: 50px;
+		}
+
+		.mrf-header__main img {
+			grid-area: 1 / 1 / 2 / 2;
+		}
+
+		.mrf-menu {
+			margin: 10px;
+		}
+
+		.mrf-logo {
+			place-self: center;
+		}
+
+		.mrf-header__navigation {
+			display: flex;
+			flex-wrap: nowrap;
+			overflow-x: auto;
+		}
+
+		.mrf-section {
+			color: #fff;
+			text-transform: uppercase;
+			padding: 0 10px 2px;
+			font-size: .8em;
+			font-weight: 300;
+		}
+
+		.mrf-section.active {
+			border-bottom: 2px solid;
+			font-weight: 500;
+		}
+
+		.mrf-balcon {
+			background-color: #EFEFEF;
+		}
+
+		.mrf-balcon__header {
+			color: #223F6D;
+			border-bottom: 2px solid;
+			margin: 0 15px;
+			text-align: center;
+		}
+
+		.mrf-balcon .mrf-article__subtitle {
+			color: #223F6D;
+		}
+
+		.mrf-balcon.sports .mrf-article__subtitle,
+		.sports .mrf-balcon__header {
+			color: #5d982d;
+		}
+
+		.mrf-balcon.opinion .mrf-article__subtitle,
+		.opinion .mrf-balcon__header {
+			color: #000;
+		}
+
+		.mrf-title--withSeparator {
+			font-size: 1.1em;
+			padding: 15px 0 5px;
+			margin: 0;
+			text-transform: uppercase;
+		}
+
+		.mrf-article {
+			position: relative;
+		}
+
+		.mrf-article__pill {
+			padding: 15px;
+		}
+
+		.mrf-article__thumb {
+			display: flex;
+			padding: 15px;
+		}
+
+		.border-top {
+			box-shadow: inset 0px 1px 0px #E4E4E4;
+		}
+
+		.mrf-article__image {
+			box-sizing: border-box;
+			position: relative;
+			flex: none;
+		}
+
+		.mrf-image {
+			object-fit: cover;
+			height: 100%;
+			width: 100%;
+		}
+
+		a {
+			text-decoration: none;
+			color: #000;
+			flex: 1;
+		}
+
+		.mrf-articleText {
+			margin-top: 5px;
+			display: grid;
+			grid-template-columns: 1fr auto;
+			grid-template-rows: auto 1fr;
+			gap: 5px 0;
+		}
+
+		.mrf-article__title {
+			font-size: 1em;
+			margin: 0;
+			grid-column: 1;
+		}
+
+		.mrf-article__subtitle {
+			color: #737373;
+			text-transform: uppercase;
+			font-size: 11px;
+			font-weight: bold;
+		}
+
+		.mrf-article__share {
+			grid-row: 1 / right;
+			grid-column: 2;
+			margin: 0px -10px 0 0;
+		}
+
+		.mrf-article__pill .mrf-article__image {
+			height: 200px;
+			width: 100%;
+		}
+
+		.mrf-article__thumb .mrf-article__image {
+			height: 99px;
+			width: 150px;
+		}
+
+		.mrf-article__thumb .mrf-articleText {
+			margin-left: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="mrf-header__wrapper">
+		<div class="mrf-header__main">
+			<img class="mrf-menu" src="${resourcesUrl}/assets/experiences/burger.svg">
+			<img class="mrf-logo" height="40" th:src="@{|${resourcesUrl}/assets/experiences/dailynews.png|}">
+		</div>
+		<div class="mrf-header__navigation">
+			<span class="mrf-section active">Home</span>
+			<span class="mrf-section">Politics</span>
+			<span class="mrf-section">Society</span>
+			<span class="mrf-section">Sports</span>
+			<span class="mrf-section">Media</span>
+			<span class="mrf-section">Library</span>
+		</div>
+	</header>
+	<div>
+		<article class="mrf-article mrf-article__thumb border-top">
+			<div class="mrf-article__image">
+				<img width="100%" height="100%" class="mrf-image"
+					src="https://images.unsplash.com/photo-1613542601723-260766e904fc?auto=format&q=75&h=99&w=150" />
+			</div>
+			<a href="#">
+				<div class="mrf-articleText">
+					<span class="mrf-article__subtitle">Nature</span>
+					<h2 class="mrf-article__title">
+						How to optimize images in WordPress for faster loading
+					</h2>
+					<span class="mrf-article__share">
+						<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g filter="url(#filter0_d)">
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+									fill="#B3B3B3" />
+							</g>
+							<defs>
+								<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+									filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix" />
+									<feColorMatrix in="SourceAlpha"
+										values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+									<feOffset />
+									<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+									<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+									<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+								</filter>
+							</defs>
+						</svg>
+					</span>
+				</div>
+			</a>
+		</article>
+		<article class="mrf-article mrf-article__thumb border-top">
+			<div class="mrf-article__image">
+				<img width="100%" height="100%" class="mrf-image"
+					src="https://images.unsplash.com/photo-1604696734281-950395e57c7a?h=99&w=150&q=75&auto=format" />
+			</div>
+			<a href="#">
+				<div class="mrf-articleText">
+					<span class="mrf-article__subtitle">Politics</span>
+					<h2 class="mrf-article__title">
+						Lessons and insights from 8 years
+					</h2>
+					<span class="mrf-article__share">
+						<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g filter="url(#filter0_d)">
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+									fill="#B3B3B3" />
+							</g>
+							<defs>
+								<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+									filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix" />
+									<feColorMatrix in="SourceAlpha"
+										values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+									<feOffset />
+									<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+									<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+									<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+								</filter>
+							</defs>
+						</svg>
+					</span>
+				</div>
+			</a>
+		</article>
+		<article class="mrf-article mrf-article__thumb border-top">
+			<div class="mrf-article__image">
+				<img class="mrf-image"
+					src="https://images.unsplash.com/photo-1559745734-8afe2fd3e113?h=99&w=150&q=75&auto=format" />
+			</div>
+			<a href="#">
+				<div class="mrf-articleText">
+					<span class="mrf-article__subtitle">Society</span>
+					<h2 class="mrf-article__title">
+						To understand the limitation of things, desire them
+					</h2>
+					<span class="mrf-article__share">
+						<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g filter="url(#filter0_d)">
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+									fill="#B3B3B3" />
+							</g>
+							<defs>
+								<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+									filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix" />
+									<feColorMatrix in="SourceAlpha"
+										values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+									<feOffset />
+									<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+									<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+									<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+								</filter>
+							</defs>
+						</svg>
+					</span>
+				</div>
+			</a>
+		</article>
+		<div class="mrf-balcon">
+			<div class="mrf-balcon__header">
+				<h2 class="mrf-title--withSeparator">Latest news</h2>
+			</div>
+			<article class="mrf-article mrf-article__thumb">
+				<div class="mrf-article__image">
+					<img width="100%" height="100%" class="mrf-image"
+						src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&w=150&h=99&q=75" />
+				</div>
+				<a href="#">
+					<div class="mrf-articleText">
+						<span class="mrf-article__subtitle">Books</span>
+						<h2 class="mrf-article__title">
+							How to optimize images in WordPress for faster loading
+						</h2>
+						<span class="mrf-article__share">
+							<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+									<path fill-rule="evenodd" clip-rule="evenodd"
+										d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+										fill="#B3B3B3" />
+								</g>
+								<defs>
+									<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+										filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+										<feFlood flood-opacity="0" result="BackgroundImageFix" />
+										<feColorMatrix in="SourceAlpha"
+											values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+										<feOffset />
+										<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+										<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+										<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+									</filter>
+								</defs>
+							</svg>
+						</span>
+					</div>
+				</a>
+			</article>
+			<article class="mrf-article mrf-article__thumb border-top">
+				<div class="mrf-article__image">
+					<img width="100%" height="100%" class="mrf-image"
+						src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&w=150&h=99&q=75" />
+				</div>
+				<a href="#">
+					<div class="mrf-articleText">
+						<span class="mrf-article__subtitle">Finance</span>
+						<h2 class="mrf-article__title">
+							To understand the limitation of things, desire them
+						</h2>
+						<span class="mrf-article__share">
+							<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+									<path fill-rule="evenodd" clip-rule="evenodd"
+										d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+										fill="#B3B3B3" />
+								</g>
+								<defs>
+									<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+										filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+										<feFlood flood-opacity="0" result="BackgroundImageFix" />
+										<feColorMatrix in="SourceAlpha"
+											values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+										<feOffset />
+										<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+										<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+										<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+									</filter>
+								</defs>
+							</svg>
+						</span>
+					</div>
+				</a>
+			</article>
+			<article class="mrf-article mrf-article__thumb border-top">
+				<div class="mrf-article__image">
+					<img width="100%" height="100%" class="mrf-image"
+						src="https://images.unsplash.com/photo-1522065893269-6fd20f6d7438?auto=format&w=150&h=99&q=75" />
+				</div>
+				<a href="#">
+					<div class="mrf-articleText">
+						<span class="mrf-article__subtitle">Diy</span>
+						<h2 class="mrf-article__title">
+							To understand the limitation of things, desire them
+						</h2>
+						<span class="mrf-article__share">
+							<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+									<path fill-rule="evenodd" clip-rule="evenodd"
+										d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+										fill="#B3B3B3" />
+								</g>
+								<defs>
+									<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+										filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+										<feFlood flood-opacity="0" result="BackgroundImageFix" />
+										<feColorMatrix in="SourceAlpha"
+											values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+										<feOffset />
+										<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+										<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+										<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+									</filter>
+								</defs>
+							</svg>
+						</span>
+					</div>
+				</a>
+			</article>
+			<article class="mrf-article mrf-article__thumb border-top">
+				<div class="mrf-article__image">
+					<img width="100%" height="100%" class="mrf-image"
+						src="https://images.unsplash.com/photo-1547941126-3d5322b218b0?auto=format&w=150&h=99&q=75" />
+				</div>
+				<a href="#">
+					<div class="mrf-articleText">
+						<span class="mrf-article__subtitle">Sports</span>
+						<h2 class="mrf-article__title">
+							To understand the limitation of things, desire them
+						</h2>
+						<span class="mrf-article__share">
+							<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+									<path fill-rule="evenodd" clip-rule="evenodd"
+										d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+										fill="#B3B3B3" />
+								</g>
+								<defs>
+									<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+										filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+										<feFlood flood-opacity="0" result="BackgroundImageFix" />
+										<feColorMatrix in="SourceAlpha"
+											values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+										<feOffset />
+										<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+										<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+										<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+									</filter>
+								</defs>
+							</svg>
+						</span>
+					</div>
+				</a>
+			</article>
+		</div>
+		<article class="mrf-article mrf-article__pill">
+			<div class="mrf-article__image">
+				<img width="100%" height="100%" class="mrf-image"
+					src="https://images.unsplash.com/photo-1612907138310-8554c3d9402a?auto=format&q=75&w=720" />
+			</div>
+			<a href="#">
+				<div class="mrf-articleText">
+					<span class="mrf-article__subtitle">History</span>
+					<h2 class="mrf-article__title">
+						To understand the limitation of things, desire them
+					</h2>
+					<span class="mrf-article__share">
+						<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g filter="url(#filter0_d)">
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+									fill="#B3B3B3" />
+							</g>
+							<defs>
+								<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+									filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix" />
+									<feColorMatrix in="SourceAlpha"
+										values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+									<feOffset />
+									<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+									<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+									<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+								</filter>
+							</defs>
+						</svg>
+					</span>
+				</div>
+			</a>
+		</article>
+		<article class="mrf-article mrf-article__thumb border-top">
+			<div class="mrf-article__image">
+				<img width="100%" height="100%" class="mrf-image"
+					src="https://images.unsplash.com/photo-1546776310-eef45dd6d63c?h=99&w=150&q=75&auto=format" />
+			</div>
+			<a href="#">
+				<div class="mrf-articleText">
+					<span class="mrf-article__subtitle">Robotics</span>
+					<h2 class="mrf-article__title">
+						To understand the limitation of things, desire them
+					</h2>
+					<span class="mrf-article__share">
+						<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g filter="url(#filter0_d)">
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+									fill="#B3B3B3" />
+							</g>
+							<defs>
+								<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+									filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix" />
+									<feColorMatrix in="SourceAlpha"
+										values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+									<feOffset />
+									<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+									<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+									<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+								</filter>
+							</defs>
+						</svg>
+					</span>
+				</div>
+			</a>
+		</article>
+		<article class="mrf-article mrf-article__thumb border-top">
+			<div class="mrf-article__image">
+				<img class="mrf-image"
+					src="https://images.unsplash.com/photo-1613054269150-c9937a7af303?h=99&w=150&auto=format&q=75" />
+			</div>
+			<a href="#">
+				<div class="mrf-articleText">
+					<span class="mrf-article__subtitle">Trucks</span>
+					<h2 class="mrf-article__title">
+						To understand the limitation of things, desire them
+					</h2>
+					<span class="mrf-article__share">
+						<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g filter="url(#filter0_d)">
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+									fill="#B3B3B3" />
+							</g>
+							<defs>
+								<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+									filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix" />
+									<feColorMatrix in="SourceAlpha"
+										values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+									<feOffset />
+									<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+									<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+									<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+								</filter>
+							</defs>
+						</svg>
+					</span>
+				</div>
+			</a>
+		</article>
+		<article class="mrf-article mrf-article__thumb border-top">
+			<div class="mrf-article__image">
+				<img class="mrf-image"
+					src="https://images.unsplash.com/photo-1613347761513-0f37baebfd20?h=99&w=150&auto=format&q=75" />
+			</div>
+			<a href="#">
+				<div class="mrf-articleText">
+					<span class="mrf-article__subtitle">Computers</span>
+					<h2 class="mrf-article__title">
+						To understand the limitation of things, desire them
+					</h2>
+					<span class="mrf-article__share">
+						<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g filter="url(#filter0_d)">
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+									fill="#B3B3B3" />
+							</g>
+							<defs>
+								<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+									filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix" />
+									<feColorMatrix in="SourceAlpha"
+										values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+									<feOffset />
+									<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+									<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+									<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+								</filter>
+							</defs>
+						</svg>
+					</span>
+				</div>
+			</a>
+		</article>
+		<article class="mrf-article mrf-article__thumb border-top">
+			<div class="mrf-article__image">
+				<img class="mrf-image"
+					src="https://images.unsplash.com/photo-1612872686215-cc148408d566?h=99&w=150&auto=format&q=75&w=720" />
+			</div>
+			<a href="#">
+				<div class="mrf-articleText">
+					<span class="mrf-article__subtitle">Industry</span>
+					<h2 class="mrf-article__title">
+						To understand the limitation of things, desire them
+					</h2>
+					<span class="mrf-article__share">
+						<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g filter="url(#filter0_d)">
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+									fill="#B3B3B3" />
+							</g>
+							<defs>
+								<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+									filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix" />
+									<feColorMatrix in="SourceAlpha"
+										values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+									<feOffset />
+									<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+									<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+									<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+								</filter>
+							</defs>
+						</svg>
+					</span>
+				</div>
+			</a>
+		</article>
+		<div class="mrf-balcon sports">
+			<div class="mrf-balcon__header">
+				<h2 class="mrf-title--withSeparator">Sports</h2>
+			</div>
+			<article class="mrf-article mrf-article__thumb">
+				<div class="mrf-article__image">
+					<img width="100%" height="100%" class="mrf-image"
+						src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&w=150&h=99&q=75" />
+				</div>
+				<a href="#">
+					<div class="mrf-articleText">
+						<span class="mrf-article__subtitle">Football</span>
+						<h2 class="mrf-article__title">
+							How Austin Peay is navigating pandemic football for a second time
+						</h2>
+						<span class="mrf-article__share">
+							<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+									<path fill-rule="evenodd" clip-rule="evenodd"
+										d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+										fill="#B3B3B3" />
+								</g>
+								<defs>
+									<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+										filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+										<feFlood flood-opacity="0" result="BackgroundImageFix" />
+										<feColorMatrix in="SourceAlpha"
+											values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+										<feOffset />
+										<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+										<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+										<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+									</filter>
+								</defs>
+							</svg>
+						</span>
+					</div>
+				</a>
+			</article>
+			<article class="mrf-article mrf-article__thumb border-top">
+				<div class="mrf-article__image">
+					<img width="100%" height="100%" class="mrf-image"
+						src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&w=150&h=99&q=75" />
+				</div>
+				<a href="#">
+					<div class="mrf-articleText">
+						<span class="mrf-article__subtitle">Basketball</span>
+						<h2 class="mrf-article__title">
+							Ranking the Most Overrated College Basketball Teams Since 2000
+						</h2>
+						<span class="mrf-article__share">
+							<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+									<path fill-rule="evenodd" clip-rule="evenodd"
+										d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+										fill="#B3B3B3" />
+								</g>
+								<defs>
+									<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+										filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+										<feFlood flood-opacity="0" result="BackgroundImageFix" />
+										<feColorMatrix in="SourceAlpha"
+											values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+										<feOffset />
+										<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+										<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+										<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+									</filter>
+								</defs>
+							</svg>
+						</span>
+					</div>
+				</a>
+			</article>
+			<article class="mrf-article mrf-article__thumb border-top">
+				<div class="mrf-article__image">
+					<img width="100%" height="100%" class="mrf-image"
+						src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&w=150&h=99&q=75" />
+				</div>
+				<a href="#">
+					<div class="mrf-articleText">
+						<span class="mrf-article__subtitle">Tennis</span>
+						<h2 class="mrf-article__title">
+							Amazing Australian Open Moment Stuns Tennis World
+						</h2>
+						<span class="mrf-article__share">
+							<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+									<path fill-rule="evenodd" clip-rule="evenodd"
+										d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+										fill="#B3B3B3" />
+								</g>
+								<defs>
+									<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+										filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+										<feFlood flood-opacity="0" result="BackgroundImageFix" />
+										<feColorMatrix in="SourceAlpha"
+											values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+										<feOffset />
+										<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+										<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+										<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+									</filter>
+								</defs>
+							</svg>
+						</span>
+					</div>
+				</a>
+			</article>
+			<article class="mrf-article mrf-article__thumb border-top">
+				<div class="mrf-article__image">
+					<img width="100%" height="100%" class="mrf-image"
+						src="https://images.unsplash.com/photo-1529478562208-d4c746edcb79?auto=format&w=150&h=99&q=75" />
+				</div>
+				<a href="#">
+					<div class="mrf-articleText">
+						<span class="mrf-article__subtitle">Rugby</span>
+						<h2 class="mrf-article__title">
+							Super Rugby AU: Would a Wallabies fly-half please stand up?
+						</h2>
+						<span class="mrf-article__share">
+							<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+									<path fill-rule="evenodd" clip-rule="evenodd"
+										d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+										fill="#B3B3B3" />
+								</g>
+								<defs>
+									<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+										filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+										<feFlood flood-opacity="0" result="BackgroundImageFix" />
+										<feColorMatrix in="SourceAlpha"
+											values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+										<feOffset />
+										<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+										<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+										<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+									</filter>
+								</defs>
+							</svg>
+						</span>
+					</div>
+				</a>
+			</article>
+		</div>
+		<div class="mrf-balcon opinion">
+			<div class="mrf-balcon__header">
+				<h2 class="mrf-title--withSeparator">Opinion</h2>
+			</div>
+			<article class="mrf-article mrf-article__thumb">
+				<a href="#">
+					<div class="mrf-articleText">
+						<h2 class="mrf-article__title">
+							Democrats should demand own reform
+						</h2>
+						<span class="mrf-article__share">
+							<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+									<path fill-rule="evenodd" clip-rule="evenodd"
+										d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+										fill="#B3B3B3" />
+								</g>
+								<defs>
+									<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+										filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+										<feFlood flood-opacity="0" result="BackgroundImageFix" />
+										<feColorMatrix in="SourceAlpha"
+											values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+										<feOffset />
+										<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+										<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+										<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+									</filter>
+								</defs>
+							</svg>
+						</span>
+					</div>
+				</a>
+			</article>
+			<article class="mrf-article mrf-article__thumb border-top">
+				<a href="#">
+					<div class="mrf-articleText">
+						<h2 class="mrf-article__title">
+							Mob mentality won't end with impeachment
+						</h2>
+						<span class="mrf-article__share">
+							<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+									<path fill-rule="evenodd" clip-rule="evenodd"
+										d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+										fill="#B3B3B3" />
+								</g>
+								<defs>
+									<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+										filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+										<feFlood flood-opacity="0" result="BackgroundImageFix" />
+										<feColorMatrix in="SourceAlpha"
+											values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+										<feOffset />
+										<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+										<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+										<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+									</filter>
+								</defs>
+							</svg>
+						</span>
+					</div>
+				</a>
+			</article>
+			<article class="mrf-article mrf-article__thumb border-top">
+				<a href="#">
+					<div class="mrf-articleText">
+						<h2 class="mrf-article__title">
+							Managers' moves border on fraud
+						</h2>
+						<span class="mrf-article__share">
+							<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+									<path fill-rule="evenodd" clip-rule="evenodd"
+										d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+										fill="#B3B3B3" />
+								</g>
+								<defs>
+									<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+										filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+										<feFlood flood-opacity="0" result="BackgroundImageFix" />
+										<feColorMatrix in="SourceAlpha"
+											values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+										<feOffset />
+										<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+										<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+										<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+									</filter>
+								</defs>
+							</svg>
+						</span>
+					</div>
+				</a>
+			</article>
+			<article class="mrf-article mrf-article__thumb border-top">
+				<a href="#">
+					<div class="mrf-articleText">
+						<h2 class="mrf-article__title">
+							Remembering Justice Charles Levin, a judicial maverick
+						</h2>
+						<span class="mrf-article__share">
+							<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<g filter="url(#filter0_d)">
+									<path fill-rule="evenodd" clip-rule="evenodd"
+										d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+										fill="#B3B3B3" />
+								</g>
+								<defs>
+									<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+										filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+										<feFlood flood-opacity="0" result="BackgroundImageFix" />
+										<feColorMatrix in="SourceAlpha"
+											values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+										<feOffset />
+										<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+										<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+										<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+									</filter>
+								</defs>
+							</svg>
+						</span>
+					</div>
+				</a>
+			</article>
+		</div>
+		<article class="mrf-article mrf-article__thumb border-top">
+			<div class="mrf-article__image">
+				<img width="100%" height="100%" class="mrf-image"
+					src="https://images.unsplash.com/photo-1613542601723-260766e904fc?auto=format&q=75&h=99&w=150" />
+			</div>
+			<a href="#">
+				<div class="mrf-articleText">
+					<span class="mrf-article__subtitle">Nature</span>
+					<h2 class="mrf-article__title">
+						How to optimize images in WordPress for faster loading
+					</h2>
+					<span class="mrf-article__share">
+						<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g filter="url(#filter0_d)">
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+									fill="#B3B3B3" />
+							</g>
+							<defs>
+								<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+									filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix" />
+									<feColorMatrix in="SourceAlpha"
+										values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+									<feOffset />
+									<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+									<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+									<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+								</filter>
+							</defs>
+						</svg>
+					</span>
+				</div>
+			</a>
+		</article>
+		<article class="mrf-article mrf-article__thumb border-top">
+			<div class="mrf-article__image">
+				<img width="100%" height="100%" class="mrf-image"
+					src="https://images.unsplash.com/photo-1604696734281-950395e57c7a?h=99&w=150&q=75&auto=format" />
+			</div>
+			<a href="#">
+				<div class="mrf-articleText">
+					<span class="mrf-article__subtitle">Politics</span>
+					<h2 class="mrf-article__title">
+						Lessons and insights from 8 years
+					</h2>
+					<span class="mrf-article__share">
+						<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g filter="url(#filter0_d)">
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+									fill="#B3B3B3" />
+							</g>
+							<defs>
+								<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+									filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix" />
+									<feColorMatrix in="SourceAlpha"
+										values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+									<feOffset />
+									<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+									<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+									<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+								</filter>
+							</defs>
+						</svg>
+					</span>
+				</div>
+			</a>
+		</article>
+		<article class="mrf-article mrf-article__thumb border-top">
+			<div class="mrf-article__image">
+				<img class="mrf-image"
+					src="https://images.unsplash.com/photo-1559745734-8afe2fd3e113?h=99&w=150&q=75&auto=format" />
+			</div>
+			<a href="#">
+				<div class="mrf-articleText">
+					<span class="mrf-article__subtitle">Society</span>
+					<h2 class="mrf-article__title">
+						To understand the limitation of things, desire them
+					</h2>
+					<span class="mrf-article__share">
+						<svg width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g filter="url(#filter0_d)">
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M12.002 8.501a2 2 0 10-.002-4 2 2 0 00.002 4zm0 6a2 2 0 10-.001-4 2 2 0 000 4zm2 4a2 2 0 11-4 0 2 2 0 014 0z"
+									fill="#B3B3B3" />
+							</g>
+							<defs>
+								<filter id="filter0_d" x="10.001" y="4.5" width="4.001" height="16.001"
+									filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix" />
+									<feColorMatrix in="SourceAlpha"
+										values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+									<feOffset />
+									<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.101478 0" />
+									<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+									<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+								</filter>
+							</defs>
+						</svg>
+					</span>
+				</div>
+			</a>
+		</article>
+	</div>
+</body>
+
+</html>

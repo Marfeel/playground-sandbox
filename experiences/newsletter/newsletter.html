@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html ⚡ lang="en" xmlns:th="https://thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<script async src="https://cdn.ampproject.org/v0.js"></script>
+	<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+	<title>Newsletter</title>
+	<link rel="canonical" th:href="${canonicalUrl}">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1">
+	<style amp-boilerplate>
+		body {
+			-webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			animation: -amp-start 8s steps(1, end) 0s 1 normal both
+		}
+
+		@-webkit-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-moz-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-ms-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-o-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+	</style><noscript>
+		<style amp-boilerplate>
+			body {
+				-webkit-animation: none;
+				-moz-animation: none;
+				-ms-animation: none;
+				animation: none
+			}
+		</style>
+	</noscript>
+	<style amp-custom>
+		body {
+			font-family: -apple-system, system-ui;
+			font-size: 16px;
+			line-height: 1.4;
+			margin: 0;
+			text-align: start;
+			-webkit-font-smoothing: antialiased;
+			background: #223F6D;
+			min-height: 100vh;
+		}
+
+		.mrf-header__wrapper {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.mrf-header__main {
+			display: grid;
+			place-items: center;
+			height: 50px;
+		}
+
+		.mrf-newsletter {
+			padding: 0 20px 20px;
+			box-sizing: border-box;
+			text-align: center;
+			color: #FFF;
+		}
+
+		.mrf-newsletter__text {
+			font-size: 18px;
+			font-weight: 300;
+			margin: 0 0 20px;
+		}
+
+		input {
+			width: 100%;
+			height: 45px;
+			border: 0;
+			border-radius: 3px;
+			box-sizing: border-box;
+			font-family: -apple-system, system-ui;
+		}
+
+		.mrf-newsletter__input {
+			padding-left: 15px;
+			font-size: 16px;
+		}
+
+		.mrf-newsletter__submit {
+			background: #FFB518;
+			margin-top: 20px;
+			color: #FFF;
+			font-size: 1em;
+			font-weight: 500;
+			appearance: none;
+			-webkit-appearance: none;
+		}
+
+		.mrf-newsletter__greetings {
+			text-align: center;
+			color: #FFF;
+		}
+
+		.mrf-newsletter__greetings h2 {
+			margin-bottom: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<amp-state id="showGreets">
+		<script type="application/json">
+			true
+		</script>
+	</amp-state>
+	<header class="mrf-header__wrapper">
+		<div class="mrf-header__main">
+			<img class="mrf-logo" height="40" th:src="@{|${resourcesUrl}/assets/experiences/dailynews.png|}">
+		</div>
+	</header>
+	<form class="mrf-newsletter" onsubmit="return false;" action="" [hidden]="!showGreets">
+		<h2 class="mrf-newsletter__text"><b>Subscribe</b> to our newsletter and receive the latest news</h2>
+		<input type="email" class="mrf-newsletter__input" placeholder="Email address" />
+		<input type="submit" class="mrf-newsletter__submit" value="Subscribe Now"
+			on="tap:AMP.setState({showGreets: !showGreets})" />
+	</form>
+	<div class="mrf-newsletter__greetings" hidden [hidden]="showGreets">
+		<h2>Thank you!</h2>
+		<span>You will receive our latest news.</span>
+	</div>
+
+</body>
+
+</html>

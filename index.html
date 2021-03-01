@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flowcards simulator</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="icon" href="./assets/favicon.png" />
+  </head>
+
+  <body>
+    <header>
+      <img src="./assets/logo.svg" style="max-width: 100%; height: auto;" />
+    </header>
+    <div class="container">
+      <h1>The right message, to right people, at the right time.</h1>
+      <form
+        method="get"
+        id="form"
+      >
+        <div class="form">
+          <input  
+            id="siteUrl"
+            name="siteUrl"
+            type="url"
+            value=""
+            class="form__input"
+            placeholder="Enter your website URL"
+          />
+          <input type="hidden" id="requestHostname" name="requestHostname" />
+          <div class="card-type" title="Page technology">
+            <input
+              id="cardTypeWeb"
+              name="cardType"
+              type="radio"
+              class="form__radio"
+              value="web"
+              checked
+            />
+            <label for="cardTypeWeb">Web</label>
+            <input
+              id="cardTypeAmp"
+              name="cardType"
+              type="radio"
+              class="form__radio"
+              value="amp"
+            />
+            <label for="cardTypeAmp">AMP</label>
+          </div>
+          <button class="form__button" type="submit" disabled>
+            Get your simulation
+          </button>
+          <div class="mobile-cta">
+            <button class="form__button" type="submit" disabled>
+              Get your simulation
+            </button>
+          </div>
+        </div>
+        <div class="grid-cards">
+          <label>
+            <input
+              id="experienceUrl"
+              name="experienceUrl"
+              type="radio"
+              value="/experiences/homepage.json"
+              checked
+            />
+            <div class="card selected">
+              <picture>
+                <source
+                  media="(max-width: 425px)"
+                  srcset="./assets/cards/card-homepage-425w.png"
+                />
+                <img
+                  class="card__image"
+                  src="./assets/cards/card-homepage.png"
+                />
+              </picture>
+              <div class="card__content">
+                <h3 class="card__title">Homepage</h3>
+                <p class="card__text">
+                  Show the homepage of your site to any reader landing on an
+                  article.
+                </p>
+              </div>
+            </div>
+          </label>
+          <label>
+            <input
+              id="experienceUrl"
+              name="experienceUrl"
+              type="radio"
+              value="/experiences/high_value_article.json"
+            />
+            <div class="card">
+              <picture>
+                <source
+                  media="(max-width: 425px)"
+                  srcset="./assets/cards/card-hero-425w.png"
+                />
+                <img class="card__image" src="./assets/cards/card-hero.png" />
+              </picture>
+              <div class="card__content">
+                <h3 class="card__title">High value article</h3>
+                <p class="card__text">
+                  Show a single article with high RFV of your site to any reader
+                  landing on a page.
+                </p>
+              </div>
+            </div>
+          </label>
+          <label>
+            <input
+              id="experienceUrl"
+              name="experienceUrl"
+              type="radio"
+              value="/experiences/top_articles.json"
+            />
+            <div class="card">
+              <picture>
+                <source
+                  media="(max-width: 425px)"
+                  srcset="./assets/cards/card-top-articles-425w.png"
+                />
+                <img
+                  class="card__image"
+                  src="./assets/cards/card-top-articles.png"
+                />
+              </picture>
+              <div class="card__content">
+                <h3 class="card__title">Top articles</h3>
+                <p class="card__text">
+                  Show top articles contextualizing and loading them increasing
+                  discoverability.
+                </p>
+              </div>
+            </div>
+          </label>
+          <label>
+            <input
+              id="experienceUrl"
+              name="experienceUrl"
+              type="radio"
+              value="/experiences/taboola.json"
+            />
+            <div class="card">
+              <picture>
+                <source
+                  media="(max-width: 425px)"
+                  srcset="./assets/cards/card-taboola-425w.png"
+                />
+                <img
+                  class="card__image"
+                  src="./assets/cards/card-taboola.png"
+                />
+              </picture>
+              <div class="card__content">
+                <h3 class="card__title">Taboola</h3>
+                <p class="card__text">
+                  Load native ads in a Flowcards for increase visibility and
+                  maximize your revenue.
+                </p>
+              </div>
+            </div>
+          </label>
+          <label>
+            <input
+              id="experienceUrl"
+              name="experienceUrl"
+              type="radio"
+              value="/experiences/multicard.json"
+            />
+            <div class="card">
+              <picture>
+                <source
+                  media="(max-width: 425px)"
+                  srcset="./assets/cards/card-multicard-425w.png"
+                />
+                <img
+                  class="card__image"
+                  src="./assets/cards/card-multicard.png"
+                />
+              </picture>
+              <div class="card__content">
+                <h3 class="card__title">Multicard</h3>
+                <p class="card__text">
+                  Recirculate readers to your homepage, and monetize to taboola
+                  at the end.
+                </p>
+              </div>
+            </div>
+          </label>
+          <label>
+            <input
+              id="experienceUrl"
+              name="experienceUrl"
+              type="radio"
+              value="/experiences/newsletter.json"
+            />
+            <div class="card">
+              <picture>
+                <source
+                  media="(max-width: 425px)"
+                  srcset="./assets/cards/card-newsletter-425w.png"
+                />
+                <img
+                  class="card__image"
+                  src="./assets/cards/card-newsletter.png"
+                />
+              </picture>
+              <div class="card__content">
+                <h3 class="card__title">Newsletter</h3>
+                <p class="card__text">
+                  Increase the subscribers rate by showing an scroll bounded
+                  card.
+                </p>
+              </div>
+            </div>
+          </label>
+          <label>
+            <input
+              id="experienceUrl"
+              name="experienceUrl"
+              type="radio"
+              value="/experiences/paywall.json"
+            />
+            <div class="card">
+              <picture>
+                <source
+                  media="(max-width: 425px)"
+                  srcset="./assets/cards/card-paywall-425w.png"
+                />
+                <img
+                  class="card__image"
+                  src="./assets/cards/card-paywall.png"
+                />
+              </picture>
+              <div class="card__content">
+                <h3 class="card__title">Paywall</h3>
+                <p class="card__text">
+                  Flowcards™ allow you to create a contextualized and holistic
+                  experience to sign up users.
+                </p>
+              </div>
+            </div>
+          </label>
+          <label>
+            <input
+              id="experienceUrl"
+              name="experienceUrl"
+              type="radio"
+              value="/experiences/facebook.json"
+            />
+            <div class="card">
+              <picture>
+                <source
+                  media="(max-width: 425px)"
+                  srcset="./assets/cards/card-facebook-425w.png"
+                />
+                <img
+                  class="card__image"
+                  src="./assets/cards/card-facebook.png"
+                />
+              </picture>
+              <div class="card__content">
+                <h3 class="card__title">Facebook fan-page</h3>
+                <p class="card__text">
+                  Show the Facebook fan-page to engage your audience and get new
+                  followers.
+                </p>
+              </div>
+            </div>
+          </label>
+          <label>
+            <input
+              id="experienceUrl"
+              name="experienceUrl"
+              type="radio"
+              value="/experiences/telegram.json"
+            />
+            <div class="card">
+              <picture>
+                <source
+                  media="(max-width: 425px)"
+                  srcset="./assets/cards/card-telegram-425w.png"
+                />
+                <img
+                  class="card__image"
+                  src="./assets/cards/card-telegram.png"
+                />
+              </picture>
+              <div class="card__content">
+                <h3 class="card__title">Telegram</h3>
+                <p class="card__text">
+                  Social strategy is key to diversify revenues. Get new
+                  followers and embrace your community.
+                </p>
+              </div>
+            </div>
+          </label>
+          <label>
+            <input
+              id="experienceUrl"
+              name="experienceUrl"
+              type="radio"
+              value="/experiences/push_notifications.json"
+            />
+            <div class="card">
+              <picture>
+                <source
+                  media="(max-width: 425px)"
+                  srcset="./assets/cards/card-notifications-425w.png"
+                />
+                <img
+                  class="card__image"
+                  src="./assets/cards/card-notifications.png"
+                />
+              </picture>
+              <div class="card__content">
+                <h3 class="card__title">Push Notifications</h3>
+                <p class="card__text">
+                  Notifications with a scroll-bounded transition. Integrate an
+                  holistic experience for the users.
+                </p>
+              </div>
+            </div>
+          </label>
+        </div>
+      </form>
+    </div>
+    <script>
+      const myForm = document.getElementById("form");
+      const input = document.querySelector(".form__input");
+      const button = document.querySelectorAll(".form__button");
+      const requestHostname = document.getElementById("requestHostname");
+      requestHostname.value = window.location.origin;
+
+      const stateHandle = (e) => {
+        if (e.target.value.length === 0) {
+          button.forEach((btn) => {
+            btn.disabled = true;
+            btn.style.cursor = "not-allowed";
+          });
+        } else if (e.target.value.length > 0) {
+          button.forEach((btn) => {
+            btn.disabled = false;
+            btn.style.cursor = "pointer";
+          });
+        }
+      };
+
+      const onSubmit = (e) => {
+        const experienceUrl = document.querySelector("input[name=experienceUrl]:checked").value;
+        document.querySelector("input[name=experienceUrl]:checked").value = window.location.origin + experienceUrl;
+      };
+
+      input.addEventListener("input", stateHandle);
+      window.addEventListener("pageshow", () => {
+        myForm.reset();
+      });
+
+      myForm.addEventListener("submit", onSubmit);
+    </script>
+  </body>
+</html>

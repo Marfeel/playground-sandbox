@@ -1,0 +1,231 @@
+<!doctype html>
+<html ⚡ lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<script async src="https://cdn.ampproject.org/v0.js"></script>
+	<title>Taboola</title>
+	<!--/*@thymesVar id="canonicalUrl" type="string"*/-->
+	<link rel="canonical" th:href="${canonicalUrl}">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+	<style amp-boilerplate>
+		body {
+			-webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			animation: -amp-start 8s steps(1, end) 0s 1 normal both
+		}
+
+		@-webkit-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-moz-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-ms-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-o-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+	</style>
+	<noscript>
+		<style amp-boilerplate>
+			body {
+				-webkit-animation: none;
+				-moz-animation: none;
+				-ms-animation: none;
+				animation: none
+			}
+		</style>
+	</noscript>
+	<style amp-custom>
+		body {
+			font-family: -apple-system, system-ui;
+			font-size: 16px;
+			line-height: 1.4;
+			margin: 0;
+			text-align: start;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		.mrf-header__main {
+			display: flex;
+			justify-content: space-between;
+			height: 50px;
+			padding: 10px 15px 0;
+			box-sizing: border-box;
+		}
+
+		.mrf-taboola-title {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.mrf-taboola-title b {
+			font-size: 18px;
+		}
+
+		.mrf-taboola-title span {
+			font-size: .7em;
+			color: #737373;
+			text-transform: uppercase;
+		}
+
+		.mrf-article {
+			position: relative;
+		}
+
+		.mrf-article__pill {
+			padding: 15px;
+		}
+
+		.mrf-article__image {
+			box-sizing: border-box;
+			position: relative;
+			flex: none;
+		}
+
+		.mrf-image {
+			object-fit: cover;
+			height: 100%;
+			width: 100%;
+		}
+
+		a {
+			text-decoration: none;
+			color: #000;
+		}
+
+		.mrf-articleText {
+			margin-top: 5px;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.mrf-article__title {
+			font-size: 1em;
+			margin: 0;
+			grid-column: 1;
+		}
+
+		.mrf-article__subtitle {
+			color: #737373;
+			font-size: 10px;
+			display: block;
+			margin-top: 5px;
+		}
+
+		.mrf-article__pill .mrf-article__image {
+			height: 200px;
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+
+	<header class="mrf-header__wrapper">
+		<div class="mrf-header__main">
+			<div class="mrf-taboola-title">
+				<b>You may like</b>
+				<span>Taboola Feed</span>
+			</div>
+			<img class="mrf-taboola-logo" height="23" th:src="@{|${resourcesUrl}/assets/experiences/taboola.png|}">
+		</div>
+	</header>
+	<div>
+		<article class="mrf-article mrf-article__pill border-top">
+			<div class="mrf-article__image">
+				<img width="100%" height="100%" class="mrf-image" src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&q=75&w=720" />
+			</div>
+			<a href="#">
+				<div class="mrf-articleText">
+					<h2 class="mrf-article__title">
+						Discover The Most Afforable Luxury Travel In The World
+					</h2>
+					<span class="mrf-article__subtitle"><b>Secret Escape</b> | Sponsored</span>
+				</div>
+			</a>
+		</article>
+		<article class="mrf-article mrf-article__pill border-top">
+			<div class="mrf-article__image">
+				<img width="100%" height="100%" class="mrf-image"
+					src="https://images.unsplash.com/photo-1554774853-aae0a22c8aa4?auto=format&q=75&w=720" />
+			</div>
+			<a href="#">
+				<div class="mrf-articleText">
+					<h2 class="mrf-article__title">
+						Increase productivity in 5 steps. It's that easy
+					</h2>
+					<span class="mrf-article__subtitle"><b>Salesforce</b> | Sponsored</span>
+				</div>
+			</a>
+		</article>
+		<article class="mrf-article mrf-article__pill border-top">
+			<div class="mrf-article__image">
+				<img width="100%" height="100%" class="mrf-image" src="https://images.unsplash.com/photo-1536155035201-27fd9f19adeb?auto=format&q=75&w=720" />
+			</div>
+			<a href="#">
+				<div class="mrf-articleText">
+					<h2 class="mrf-article__title">
+						Nissan NAVARA. Ready for everything. Try it.
+					</h2>
+					<span class="mrf-article__subtitle"><b>Nissan</b> | Sponsored</span>
+				</div>
+			</a>
+		</article>
+		<article class="mrf-article mrf-article__pill border-top">
+			<div class="mrf-article__image">
+				<img width="100%" height="100%" class="mrf-image" src="https://images.unsplash.com/photo-1576086085526-0de1930a57c7?auto=format&q=75&w=720" />
+			</div>
+			<a href="#">
+				<div class="mrf-articleText">
+					<h2 class="mrf-article__title">
+						5 things you need to know about taking an Ancestry DNA test
+					</h2>
+					<span class="mrf-article__subtitle"><b>Health</b> | Sponsored</span>
+				</div>
+			</a>
+		</article>
+	</div>
+</body>
+
+</html>

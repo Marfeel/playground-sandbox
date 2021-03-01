@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html ⚡ lang="en" xmlns:th="https://thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<script async src="https://cdn.ampproject.org/v0.js"></script>
+	<title>Paywall</title>
+	<link rel="canonical" th:href="${canonicalUrl}">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+	<style amp-boilerplate>
+		body {
+			-webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			animation: -amp-start 8s steps(1, end) 0s 1 normal both
+		}
+
+		@-webkit-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-moz-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-ms-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-o-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+	</style><noscript>
+		<style amp-boilerplate>
+			body {
+				-webkit-animation: none;
+				-moz-animation: none;
+				-ms-animation: none;
+				animation: none
+			}
+		</style>
+	</noscript>
+	<style amp-custom>
+		body {
+			font-family: -apple-system, system-ui;
+			font-size: 16px;
+			line-height: 1.4;
+			margin: 0;
+			text-align: start;
+			-webkit-font-smoothing: antialiased;
+			background: #223F6D;
+			min-height: 100vh;
+		}
+
+		.mrf-header__wrapper {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.mrf-header__main {
+			display: grid;
+			place-items: center;
+			height: 50px;
+		}
+
+		.mrf-paywall {
+			padding: 0 20px 20px;
+			box-sizing: border-box;
+			text-align: center;
+			color: #FFF;
+		}
+
+		.mrf-paywall__text {
+			font-size: 1em;
+			font-weight: 300;
+			margin: 0 0 20px;
+		}
+
+		input {
+			width: 100%;
+			height: 45px;
+			border: 0;
+			border-radius: 3px;
+			box-sizing: border-box;
+			font-family: -apple-system, system-ui;
+		}
+
+		.mrf-paywall__submit {
+			background: #FFB518;
+			margin-bottom: 10px;
+			color: #FFF;
+			font-size: 1em;
+			font-weight: 500;
+			appearance: none;
+			-webkit-appearance: none;
+		}
+
+		.mrf-paywall span {
+			font-size: .8em;
+		}
+
+		.mrf-paywall__signin {
+			font-weight: 500;
+			text-decoration: underline;
+			color: #fff;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="mrf-header__wrapper">
+		<div class="mrf-header__main">
+			<img class="mrf-logo" height="40" th:src="@{|${resourcesUrl}/assets/experiences/dailynews.png|}">
+		</div>
+	</header>
+	<form class="mrf-paywall">
+		<h2 class="mrf-paywall__text">Enjoy unlimited access for less than <b>$1</b> per week.</h2>
+		<input type="submit" class="mrf-paywall__submit" value="Subscribe Now" />
+		<span>Already a subscriber? <a class="mrf-paywall__signin">Sign in</a></span>
+	</form>
+</body>
+
+</html>

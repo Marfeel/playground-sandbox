@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html ⚡ lang="en" xmlns:th="https://thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<script async src="https://cdn.ampproject.org/v0.js"></script>
+	<title>Facebook</title>
+	<link rel="canonical" th:href="${canonicalUrl}">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+	<style amp-boilerplate>
+		body {
+			-webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			animation: -amp-start 8s steps(1, end) 0s 1 normal both
+		}
+
+		@-webkit-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-moz-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-ms-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-o-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+	</style><noscript>
+		<style amp-boilerplate>
+			body {
+				-webkit-animation: none;
+				-moz-animation: none;
+				-ms-animation: none;
+				animation: none
+			}
+		</style>
+	</noscript>
+	<style amp-custom>
+		body {
+			font-family: -apple-system, system-ui;
+			font-size: 16px;
+			line-height: 1.4;
+			margin: 0;
+			text-align: start;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		.content {
+			padding: 15px;
+		}
+
+		header {
+			position: relative;
+			height: 150px;
+			margin: -15px -15px 15px;
+		}
+
+		.header-img {
+			object-fit: cover;
+			object-position: top;
+			height: 100%;
+			width: 100%;
+		}
+
+		.head {
+			display: flex;
+			align-items: center;
+		}
+
+		.logo {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 70px;
+			height: 70px;
+			border-radius: 50%;
+			margin-right: 10px;
+		}
+
+		.titles {
+			display: flex;
+			flex-direction: column;
+			font-size: 1.25em;
+			color: #333;
+		}
+
+		.subtitle {
+			font-size: 0.7em;
+			color: #737373;
+			font-weight: 300;
+			margin-top: 5px;
+		}
+
+		.like-btn {
+			margin-left: auto;
+			display: flex;
+			align-items: center;
+		}
+
+		iframe {
+			max-height: 59px;
+		}
+
+		a {
+			border-radius: 4px;
+			font-size: 1em;
+			font-family: system-ui;
+			text-decoration: none;
+		}
+
+		a:focus {
+			outline: none;
+		}
+
+		.facebook {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: #1A78F1;
+			border: 0;
+			color: #FFF;
+			height: 46px;
+			box-sizing: border-box;
+			margin: 15px 0;
+		}
+
+		.facebook img {
+			margin-left: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="content">
+		<header>
+			<picture>
+				<source th:src="@{|${resourcesUrl}/assets/experiences/facebook-header.webp|}" type="image/webp" />
+				<source th:src="@{|${resourcesUrl}/assets/experiences/facebook-header.png|}" type="image/png" />
+				<img class="header-img" lazy="loading" th:src="@{|${resourcesUrl}/assets/experiences/facebook-header.png|}" />
+			</picture>
+		</header>
+		<div class="heading">
+			<div class="head">
+				<span class="logo">
+					<img height="70" width="70" th:src="@{|${resourcesUrl}/assets/experiences/dailynews-icon.png|}">
+				</span>
+				<div class="titles">
+					<b>Daily News</b>
+					<span class="subtitle">Website</span>
+				</div>
+				<div class="like-btn">
+					<iframe
+						src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fkyaooocom&width=69&layout=box_count&action=like&size=large&share=false&height=65&appId&locale=en_US"
+						width="69" height="59" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+						allowTransparency="true" allow="encrypted-media" resizable></iframe>
+				</div>
+			</div>
+			<div class="buttons">
+				<a href="https://www.facebook.com/kyaooocom/" class="facebook">Visit us in <img
+						th:src="@{|${resourcesUrl}/assets/experiences/facebook.png|}" height="20px" width="20px" /></a>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

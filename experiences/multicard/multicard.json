@@ -1,0 +1,65 @@
+{
+	"cards": {
+		"homepage": {
+			"content": {
+				"type": "AMPDocument",
+				"url": "${AMP_DOCUMENT_URL}homepage"
+			},
+			"snapPoints": {
+				"initial": 0.7,
+				"minimised": 0.85,
+				"active": 80
+			},
+			"features": {
+				"header": {
+					"dragHandlerBg": "#282346"
+				},
+				"mode": "modal",
+				"isDraggable": true,
+				"button": {
+					"action": "setSnapPoint:initial"
+				}
+			},
+			"triggers": {
+				"myScrollTrigger": {
+					"on": "scroll",
+					"spec": {
+						"type": "absolute",
+						"pixel": 300,
+						"percentage": 0.1
+					}
+				}
+			}
+		},
+		"nextArticle": {
+			"content": {
+				"type": "AMPDocument",
+				"url": "${AMP_DOCUMENT_URL}taboola"
+			},
+			"snapPoints": {
+				"initial": 0.7,
+				"minimised": 1,
+				"active": 80
+			},
+			"features": {
+				"mode": "modal",
+				"isDraggable": true,
+				"useNaturalScroll": true,
+				"button": {
+					"action": "setSnapPoint:initial"
+				},
+				"removable": true
+			},
+			"triggers": {
+				"myScrollTrigger": {
+					"on": "scroll",
+					"spec": {
+						"type": "absolute",
+						"pixel": 3000,
+						"percentage": 0.8
+					}
+				}
+			}
+		}
+	}
+}
