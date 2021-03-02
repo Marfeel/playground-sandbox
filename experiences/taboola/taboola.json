@@ -18,6 +18,9 @@
 					"action": "setSnapPoint:initial"
 				},
 				"useNaturalScroll": true
+				"header": {
+					"dragHandlerBg": "#FFFFFF"
+				}
 			},
 			"triggers": {
 				"myScrollTrigger": {
