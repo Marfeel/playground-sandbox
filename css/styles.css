@@ -63,6 +63,10 @@ h1 {
   width: 700px;
 }
 
+h1 span {
+  display: block;
+}
+
 form {
   width: 100%;
 }
@@ -70,7 +74,7 @@ form {
 .form {
   display: grid;
   gap: 10px;
-  grid-template-columns: 7fr 3fr;
+  grid-template-columns: 6fr 2fr;
   /* grid-template-columns: 6fr 2fr 3fr;*/
   padding: 20px;
   width: 100%;
@@ -272,6 +276,10 @@ form {
     font-size: 1.625rem;
     margin: 0 0 2rem;
     width: 100%;
+  }
+
+  h1 span {
+    display: inline;
   }
 
   .form {

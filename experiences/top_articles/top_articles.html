@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html ⚡ lang="en" xmlns:th="https://thymeleaf.org">
+<html ⚡ lang="en">
 
 <head>
 	<meta charset="utf-8">
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
 	<title>Top articles</title>
-	<link rel="canonical" th:href="${canonicalUrl}">
+	<link rel="canonical" href="${canonicalUrl}">
 	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 	<style amp-boilerplate>
 		body {
@@ -145,7 +145,7 @@
 			<h1 class="mrf-header__title">Top articles</h1>
 			<span class="mrf-header__subtitle">Daily news</span>
 		</div>
-		<img height="34" width="34" th:src="@{|${resourcesUrl}/assets/experiences/dailynews-icon.png|}">
+		<img height="34" width="34" src="../../assets/experiences/dailynews-icon.png">
 	</header>
 	<div>
 		<article class="mrf-article mrf-ranking__item">

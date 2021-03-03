@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html ⚡ lang="en" xmlns:th="https://thymeleaf.org">
+<html ⚡ lang="en">
 
 <head>
 	<meta charset="utf-8">
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
 	<title>Push notifications</title>
-	<link rel="canonical" th:href="${canonicalUrl}">
+	<link rel="canonical" href="${canonicalUrl}">
 	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 	<style amp-boilerplate>
 		body {
@@ -144,7 +144,7 @@
 		<span class="title">Stay on top with our notifications</span>
 		<span class="subtext">Turn on push notifications to get the latest updates</span>
 	</div>
-	<img th:src="@{|${resourcesUrl}/assets/experiences/push.svg|}" />
+	<img src="../../assets/experiences/push.svg" />
 	<div class="buttons">
 		<button class="confirm">Ok</button>
 		<button class="cancel">Not now</button>

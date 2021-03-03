@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html ⚡ lang="en" xmlns:th="https://thymeleaf.org">
+<html ⚡ lang="en">
 
 <head>
 	<meta charset="utf-8">
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
 	<title>Facebook</title>
-	<link rel="canonical" th:href="${canonicalUrl}">
+	<link rel="canonical" href="${canonicalUrl}">
 	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 	<style amp-boilerplate>
 		body {
@@ -173,15 +173,15 @@
 	<div class="content">
 		<header>
 			<picture>
-				<source th:src="@{|${resourcesUrl}/assets/experiences/facebook-header.webp|}" type="image/webp" />
-				<source th:src="@{|${resourcesUrl}/assets/experiences/facebook-header.png|}" type="image/png" />
-				<img class="header-img" lazy="loading" th:src="@{|${resourcesUrl}/assets/experiences/facebook-header.png|}" />
+				<source src="../../assets/experiences/facebook-header.webp" type="image/webp" />
+				<source src="../../assets/experiences/facebook-header.png" type="image/png" />
+				<img class="header-img" lazy="loading" src="../../assets/experiences/facebook-header.png" />
 			</picture>
 		</header>
 		<div class="heading">
 			<div class="head">
 				<span class="logo">
-					<img height="70" width="70" th:src="@{|${resourcesUrl}/assets/experiences/dailynews-icon.png|}">
+					<img height="70" width="70" src="../../assets/experiences/dailynews-icon.png">
 				</span>
 				<div class="titles">
 					<b>Daily News</b>
@@ -196,7 +196,7 @@
 			</div>
 			<div class="buttons">
 				<a href="https://www.facebook.com/kyaooocom/" class="facebook">Visit us in <img
-						th:src="@{|${resourcesUrl}/assets/experiences/facebook.png|}" height="20px" width="20px" /></a>
+						src="../../assets/experiences/facebook.png" height="20px" width="20px" /></a>
 			</div>
 		</div>
 	</div>
