@@ -19,13 +19,9 @@
     </header>
     <div class="container">
       <h1>The right message, to right people, at the right time.</h1>
-      <form
-        action="https://playground.mrf.io/simulate"
-        method="get"
-        id="form"
-      >
+      <form action="http://localhost:8080/simulate" method="get" id="form">
         <div class="form">
-          <input  
+          <input
             id="siteUrl"
             name="siteUrl"
             type="url"
@@ -53,11 +49,11 @@
             />
             <label for="cardTypeAmp">AMP</label>
           </div>
-          <button class="form__button" type="submit" disabled>
+          <button class="form__button" type="submit">
             Get your simulation
           </button>
           <div class="mobile-cta">
-            <button class="form__button" type="submit" disabled>
+            <button class="form__button" type="submit">
               Get your simulation
             </button>
           </div>
@@ -68,7 +64,7 @@
               id="experienceUrl"
               name="experienceUrl"
               type="radio"
-              value="/experiences/homepage.json"
+              value="/experiences/homepage/homepage.json"
               checked
             />
             <div class="card selected">
@@ -356,13 +352,18 @@
       };
 
       const onSubmit = (e) => {
-        const experienceUrl = document.querySelector("input[name=experienceUrl]:checked").value;
-        document.querySelector("input[name=experienceUrl]:checked").value = window.location.origin + experienceUrl;
+        const experienceUrl = document.querySelector(
+          "input[name=experienceUrl]:checked"
+        ).value;
+        document.querySelector("input[name=experienceUrl]:checked").value =
+          window.location.origin + experienceUrl;
       };
 
       input.addEventListener("input", stateHandle);
       window.addEventListener("pageshow", () => {
         myForm.reset();
+        input.value =
+          window.location.origin + "/templates/article-example.html";
       });
 
       myForm.addEventListener("submit", onSubmit);
