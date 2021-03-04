@@ -3,7 +3,7 @@
 		"pushNotifications": {
 			"content": {
 				"type": "AMPDocument",
-        "url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/push_notifications/push_notifications.html"
+				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/push_notifications/push_notifications.html"
 			},
 			"snapPoints": {
 				"active": 0.65
