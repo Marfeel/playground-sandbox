@@ -3,7 +3,7 @@
 		"facebook": {
 			"content": {
 				"type": "AMPDocument",
-				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/facebook/facebook.html"
+        "url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/facebook/facebook.html"
 			},
 			"snapPoints": {
 				"active": 0.52
