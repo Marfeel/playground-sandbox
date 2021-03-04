@@ -3,7 +3,7 @@
 		"newsletter": {
 			"content": {
 				"type": "AMPDocument",
-				"url": "${AMP_DOCUMENT_URL}"
+				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/paywall/paywall.html"
 			},
 			"snapPoints": {
 				"active": 0.68
