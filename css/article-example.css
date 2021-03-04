@@ -21,13 +21,13 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-article {
-    margin: 15px;
-}
-
 img {
     width: 100vw;
     height: 60vw;
+}
+
+.article {
+    margin: 15px;
 }
 
 .metas {
