@@ -3,7 +3,7 @@
 		"topArticles": {
 			"content": {
 				"type": "AMPDocument",
-				"url": "${AMP_DOCUMENT_URL}"
+				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/top_articles/top_articles.html"
 			},
 			"snapPoints": {
 				"initial": 0.7,
