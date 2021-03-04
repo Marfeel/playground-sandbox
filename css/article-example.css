@@ -13,7 +13,7 @@ html {
     padding: 0;
 }
 
-body {
+.fc-body {
     font-family: var(--main-font);
     margin: 0 auto;
     color: var(--text-color);
@@ -21,13 +21,9 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-img {
+.fc-img {
     width: 100vw;
     height: 60vw;
-}
-
-.article {
-    margin: 15px;
 }
 
 .metas {
@@ -37,24 +33,34 @@ img {
     color: var(--main-color);
 }
 
-blockquote {
+.fc-article {
+    margin: 15px;
+}
+
+.fc-article blockquote {
     margin: 20px 0;
     padding: 0 20px;
     border-left: 1px solid;
-    font-style: italic;
-    line-height: 28px;
-    font-size: 23px;
-    font-family: var(--headings-font);
+    font: italic 600 23px/28px var(--headings-font);
+    color: var(--main-color);
 }
 
-h1 {
-    font-family: var(--headings-font);
-    font-size: 28px;
-    line-height: 32px;
+.fc-article h1 {
+    font: 28px/32px var(--headings-font);
     margin: 0;
 }
 
-p {
+.fc-article h3 {
+    color: var(--main-color);
+    font-size: 24px;
+}
+
+.fc-article p {
     font-size: 18px;
     line-height: 28px;
+}
+
+
+.fc-article img {
+    width: 100%;
 }
