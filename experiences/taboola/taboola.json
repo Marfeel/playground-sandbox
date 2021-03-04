@@ -3,11 +3,12 @@
 		"taboola": {
 			"content": {
 				"type": "AMPDocument",
-				"url": "${AMP_DOCUMENT_URL}"
+        "url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/taboola/taboola.html"
 			},
 			"snapPoints": {
 				"initial": 0.7,
 				"minimised": 0.85,
+				"promoted": 176,
 				"active": 80
 			},
 			"features": {

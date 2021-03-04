@@ -3,15 +3,14 @@
 		"newsletter": {
 			"content": {
 				"type": "AMPDocument",
-				"url": "${AMP_DOCUMENT_URL}"
+        "url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/newsletter/newsletter.html"
 			},
 			"snapPoints": {
-				"active": 0.62,
-				"initial": 0.62,
-				"minimised": 1
+				"active": 0.62
 			},
 			"features": {
 				"mode": "contextual",
+				"removable": true,
 				"isDraggable": true,
 				"header": {
 					"dragHandlerBg": "#223F6D"

@@ -3,15 +3,17 @@
 		"pushNotifications": {
 			"content": {
 				"type": "AMPDocument",
-				"url": "${AMP_DOCUMENT_URL}"
+        "url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/push_notifications/push_notifications.html"
 			},
 			"snapPoints": {
-				"active": 0.65,
-				"initial": 0.65,
-				"minimised": 1
+				"active": 0.65
 			},
 			"features": {
 				"mode": "contextual",
+				"removable": true,
+				"header": {
+					"dragHandlerBg": "#FFFFFF"
+				},
 				"isDraggable": true
 			},
 			"triggers": {

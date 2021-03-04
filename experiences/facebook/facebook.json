@@ -3,15 +3,17 @@
 		"facebook": {
 			"content": {
 				"type": "AMPDocument",
-				"url": "${AMP_DOCUMENT_URL}"
+        "url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/facebook/facebook.html"
 			},
 			"snapPoints": {
-				"active": 0.52,
-				"initial": 0.52,
-				"minimised": 1
+				"active": 0.52
 			},
 			"features": {
 				"mode": "contextual",
+				"removable": true,
+				"header": {
+					"dragHandlerBg": "#282346"
+				},
 				"isDraggable": true
 			},
 			"triggers": {

@@ -3,7 +3,7 @@
 		"homepage": {
 			"content": {
 				"type": "AMPDocument",
-				"url": "${AMP_DOCUMENT_URL}homepage"
+        "url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/homepage/homepage.html"
 			},
 			"snapPoints": {
 				"initial": 0.7,
@@ -15,10 +15,7 @@
 					"dragHandlerBg": "#282346"
 				},
 				"mode": "modal",
-				"isDraggable": true,
-				"button": {
-					"action": "setSnapPoint:initial"
-				}
+				"isDraggable": true
 			},
 			"triggers": {
 				"myScrollTrigger": {
@@ -34,7 +31,7 @@
 		"nextArticle": {
 			"content": {
 				"type": "AMPDocument",
-				"url": "${AMP_DOCUMENT_URL}taboola"
+        "url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/taboola/taboola.html"
 			},
 			"snapPoints": {
 				"initial": 0.7,
@@ -45,8 +42,8 @@
 				"mode": "modal",
 				"isDraggable": true,
 				"useNaturalScroll": true,
-				"button": {
-					"action": "setSnapPoint:initial"
+				"header": {
+					"dragHandlerBg": "#FFFFFF"
 				},
 				"removable": true
 			},
@@ -55,7 +52,7 @@
 					"on": "scroll",
 					"spec": {
 						"type": "absolute",
-						"pixel": 3000,
+						"pixel": 2500,
 						"percentage": 0.8
 					}
 				}

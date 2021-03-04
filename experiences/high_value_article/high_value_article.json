@@ -3,7 +3,7 @@
 		"heroImage": {
 			"content": {
 				"type": "AMPDocument",
-				"url": "${AMP_DOCUMENT_URL}"
+        "url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/high_value_article/high_value_article.html"
 			},
 			"snapPoints": {
 				"initial": 0.7,
@@ -18,8 +18,11 @@
 					"action": "setSnapPoint:initial"
 				},
 				"useNaturalScroll": true,
+				"header": {
+					"dragHandlerBg": "#FFFFFF"
+				},
 				"heroElement": {
-					"src": "https://images.unsplash.com/photo-1612197527762-8cfb55b618d1?w=720&auto=format"
+					"src": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=720&auto=format"
 				}
 			},
 			"triggers": {
