@@ -132,7 +132,7 @@ form {
   background-color: var(--secondary-color);
   color: #fff;
   font-weight: var(--font-weight-bold);
-  cursor: not-allowed;
+  cursor: pointer;
 }
 
 .form__button:disabled {
