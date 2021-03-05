@@ -254,6 +254,7 @@ form {
 
 .card .card__btn-placeholder {
   display: none;
+  pointer-events: none;
 }
 
 .card:hover .card__btn-placeholder {
@@ -359,6 +360,11 @@ form {
 
   picture {
     margin: 0 auto;
+  }
+
+  .card:hover .card__btn-placeholder {
+    display: none;
+    pointer-events: none;
   }
 
   .card__image {
