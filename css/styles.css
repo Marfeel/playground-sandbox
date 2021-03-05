@@ -254,7 +254,6 @@ form {
 
 .card .card__btn-placeholder {
   display: none;
-  pointer-events: none;
 }
 
 .card:hover .card__btn-placeholder {
