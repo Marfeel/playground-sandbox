@@ -6,7 +6,7 @@
 				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/high_value_article/high_value_article.html"
 			},
 			"snapPoints": {
-				"initial": 0.7,
+				"initial": 0.75,
 				"minimised": 0.85,
 				"promoted": 176,
 				"active": 210
