@@ -258,7 +258,6 @@ form {
 
 .card:hover .card__btn-placeholder {
   display: block;
-  opacity: 1;
   position: absolute;
   width: 100%;
   background: linear-gradient(180deg, #FFFFFF 11.34%, rgba(255, 255, 255, 0) 57.29%);
@@ -363,7 +362,6 @@ form {
 
   .card:hover .card__btn-placeholder {
     display: none;
-    pointer-events: none;
   }
 
   .card__image {
