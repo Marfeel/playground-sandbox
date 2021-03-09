@@ -419,8 +419,7 @@
       input.addEventListener("input", stateHandle);
       window.addEventListener("pageshow", () => {
         myForm.reset();
-        input.value =
-          window.location.origin + "/templates/article-example.html";
+        input.value = `${window.location.origin}/templates/article-example.html`;
       });
 
       myForm.addEventListener("submit", onSubmit);
