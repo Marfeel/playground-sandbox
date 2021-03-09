@@ -5,8 +5,9 @@ tags: docs
 
 # Flowcards Playground
 The [Flowcards Playground](https://playground.marfeel.com) helps users simulate a Flowcard on top of any specified url. The system has two main goals:
-    - Create a touch & play environment that works on real devices to experience the smoothness of the Flowcards user experience:  pull up and down gestures, infinite scroll, hero elements, multi card system, etc.
-    - Create a frictionless experimentation development environment aimed at low-code users, growth hackers and developers that want to create and test flows on the fly through the JSON and JS APIs.
+
+- Create a touch & play environment that works on real devices to experience the smoothness of the Flowcards user experience:  pull up and down gestures, infinite scroll, hero elements, multi card system, etc.
+- Create a frictionless experimentation development environment aimed at low-code users, growth hackers and developers that want to create and test flows on the fly through the JSON and JS APIs.
 
 # Sample simulations
 ![How to run a simulation](./assets/run-simulation.png)
