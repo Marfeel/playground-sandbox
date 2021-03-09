@@ -38,3 +38,5 @@ All the configuration files of the sample flows are hosted on the [Flowcards-Pla
 
 ## Codesandbox
 For easy experimentation [the Flowcards-Playground Github repository](https://github.com/Marfeel/flowcards-playground) is [connected to CodeSandbox](https://codesandbox.io/s/flowcards-playground-g3geg), which allows users to do live code changes and see the results immediately without setting up a local environment. 
+
+[![Flowcards Playground demo](./assets/demo-sreenshot.png)](https://www.loom.com/share/3a85e435fe8146729502e3aa57cdba44)
