@@ -33,8 +33,7 @@ Here are some example urls
     - [Homepage loading in TyC](https://playground.mrf.io/simulate?siteUrl=https%3A%2F%2Fwww.tycsports.com%2Friver-plate%2Friver-plate-leonardo-ponzio-15-titulos-el-segundo-mas-ganador-de-la-historia-id325297.html&requestHostname=playground.marfeel.com&cardType=web&experienceUrl=https://flowcards.mrf.io/json/web?site_id=146%26canonical_url=https://www.tycsports.com)
 
 ## Open Source
-All the configuration files of the sample flows are hosted on the [Flowcards-Playground open Github repository](https://github.com/Marfeel/playground-sandbox) to work as a reference and show the art-of-the-possible of Flowcards. 
+All the configuration files of the sample flows are hosted on the [Flowcards-Playground open Github repository](https://github.com/Marfeel/flowcards-playground) to work as a reference and show the art-of-the-possible of Flowcards. 
 
 ## Codesandbox
-For easy experimentation [the Flowcards-Playground Github repository](https://github.com/Marfeel/playground-sandbox) is [connected to CodeSandbox](https://codesandbox.io/s/github/Marfeel/playground-sandbox/tree/master), which allows users to do live code changes and see the results immediately without setting up a local environment. 
-
+For easy experimentation [the Flowcards-Playground Github repository](https://github.com/Marfeel/flowcards-playground) is [connected to CodeSandbox](https://codesandbox.io/s/flowcards-playground-g3geg), which allows users to do live code changes and see the results immediately without setting up a local environment. 
