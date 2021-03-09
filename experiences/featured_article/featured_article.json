@@ -3,7 +3,7 @@
 		"heroImage": {
 			"content": {
 				"type": "AMPDocument",
-				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/feature_article/feature_article.html"
+				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/featured_article/featured_article.html"
 			},
 			"snapPoints": {
 				"initial": 0.7,
