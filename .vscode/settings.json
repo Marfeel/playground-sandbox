@@ -1,0 +1,10 @@
+{
+    "json.schemas": [
+      {
+        "fileMatch": [
+          "/experiences/*.json"
+        ],
+        "url": "https://flowcards.mrf.io/statics/schema/index.json"
+      }
+    ]
+  }
