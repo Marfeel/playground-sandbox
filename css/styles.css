@@ -211,6 +211,7 @@ form {
 .card {
   display: flex;
   flex-direction: column;
+  width: 100%;
   align-items: center;
   position: relative;
   transition: box-shadow .2s ease-out;
@@ -231,6 +232,7 @@ form {
 .card__content {
   padding: 12px 15px 5px;
   height: 100%;
+  width: 100%;
   border-radius: 0 0 6px 6px;
   background-color: #fff;
   color: var(--main-color);
