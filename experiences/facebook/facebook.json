@@ -12,7 +12,7 @@
 				"mode": "contextual",
 				"removable": true,
 				"header": {
-					"dragHandlerBg": "#282346"
+					"dragHandlerBg": "#ffffff"
 				},
 				"isDraggable": true
 			},
