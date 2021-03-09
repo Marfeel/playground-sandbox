@@ -114,7 +114,7 @@ form {
 
 .card-type label {
   font-weight: var(--font-weight-bold);
-  color: #fff;
+  color: rgba(255, 255, 255, .6);
   padding: 10px 20px;
   font-size: 14px;
   text-align: center;
