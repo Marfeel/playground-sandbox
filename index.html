@@ -31,7 +31,6 @@
           <input
             id="siteUrl"
             name="siteUrl"
-            type="url"
             value=""
             class="form__input"
             placeholder="Enter your website URL"
@@ -415,9 +414,12 @@
         const experienceUrl = document.querySelector(
           "input[name=experienceUrl]:checked"
         ).value;
-        
+        const siteUrl = document.querySelector("input[name=siteUrl]").value;
+
         document.querySelector("input[name=experienceUrl]:checked").value =
           window.location.origin + experienceUrl;
+
+        document.querySelector("input[name=siteUrl]").value = `https://${siteUrl}`;
       };
 
       input.addEventListener("input", stateHandle);
