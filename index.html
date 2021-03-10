@@ -420,14 +420,7 @@
       }
 
       const onSubmit = (e) => {
-        const experienceUrl = document.querySelector(
-          "input[name=experienceUrl]:checked"
-        ).value;
         const siteUrl = document.querySelector("input[name=siteUrl]").value;
-
-        document.querySelector("input[name=experienceUrl]:checked").value =
-          window.location.origin + experienceUrl;
-
         document.querySelector("input[name=siteUrl]").value = addProtocol(siteUrl);
       };
 
