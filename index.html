@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="private, max-age=0, no-cache, no-store" /> 
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>Marfeel Flowcards - Playground</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -412,11 +415,9 @@
         const experienceUrl = document.querySelector(
           "input[name=experienceUrl]:checked"
         ).value;
-        console.log("experienceUrl", experienceUrl);
-        console.log("window.location.origin + experienceUrl",  window.location.origin + experienceUrl);
+        
         document.querySelector("input[name=experienceUrl]:checked").value =
           window.location.origin + experienceUrl;
-        console.log("submitted", document.querySelector("input[name=experienceUrl]:checked").value);
       };
 
       input.addEventListener("input", stateHandle);
