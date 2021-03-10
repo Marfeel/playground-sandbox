@@ -395,6 +395,7 @@
       const button = document.querySelectorAll(".form__button");
       const requestHostname = document.getElementById("requestHostname");
       requestHostname.value = window.location.hostname;
+      input.value = `${window.location.origin}/templates/article-example.html`;
 
       const stateHandle = (e) => {
         if (e.target.value.length === 0) {
@@ -431,11 +432,6 @@
       };
 
       input.addEventListener("input", stateHandle);
-      window.addEventListener("pageshow", () => {
-        myForm.reset();
-        input.value = `${window.location.origin}/templates/article-example.html`;
-      });
-
       myForm.addEventListener("submit", onSubmit);
     </script>
   </body>
