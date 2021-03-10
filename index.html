@@ -412,8 +412,11 @@
         const experienceUrl = document.querySelector(
           "input[name=experienceUrl]:checked"
         ).value;
+        console.log("experienceUrl", experienceUrl);
+        console.log("window.location.origin + experienceUrl",  window.location.origin + experienceUrl);
         document.querySelector("input[name=experienceUrl]:checked").value =
           window.location.origin + experienceUrl;
+        console.log("submitted", document.querySelector("input[name=experienceUrl]:checked").value);
       };
 
       input.addEventListener("input", stateHandle);
