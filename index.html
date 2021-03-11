@@ -395,7 +395,14 @@
       const button = document.querySelectorAll(".form__button");
       const requestHostname = document.getElementById("requestHostname");
       requestHostname.value = window.location.hostname;
-      input.value = `${window.location.origin}/templates/article-example.html`;
+
+      const fillInput = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const siteUrlParam = urlParams.get('siteUrl');
+        input.value = siteUrlParam 
+          ? addProtocol(siteUrlParam)
+          : `${window.location.origin}/templates/article-example.html`
+      };
 
       const stateHandle = (e) => {
         if (e.target.value.length === 0) {
@@ -426,6 +433,7 @@
 
       input.addEventListener("input", stateHandle);
       myForm.addEventListener("submit", onSubmit);
+      fillInput();
     </script>
   </body>
 </html>
