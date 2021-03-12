@@ -316,11 +316,39 @@ footer {
   padding: 0 15px;
 }
 
-.github-logo {
-  height: 17px;
-  padding-right: 6px;
-  filter: invert(0.29) sepia(0) saturate(1) hue-rotate(0deg) brightness(1);
-  vertical-align: bottom;
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out
+}
+
+.github-corner svg {
+  fill: #333;
+  color: #fff;
+}
+
+.github-corner:hover svg {
+  fill: #000;
+}
+
+@keyframes octocat-wave {
+  0%, 100% {
+    transform: rotate(0deg)
+  }
+  20%, 60% {
+    transform: rotate(-25deg)
+  }
+  40%, 80% {
+    transform: rotate(10deg)
+  }
+}
+
+@media (max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none
+  }
+
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+  }
 }
 
 footer a {
@@ -359,6 +387,11 @@ footer a:hover {
     font-size: 1.5525rem;
     margin: 0 0 2rem;
     width: 100%;
+  }
+
+  .github-corner svg {
+    width: 60px;
+    height: 60px;
   }
 
   .form {
