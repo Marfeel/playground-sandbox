@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="private, max-age=0, no-cache, no-store" /> 
+    <meta http-equiv="Cache-Control" content="private, max-age=0, no-cache, no-store" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <title>Marfeel Flowcards - Playground</title>
@@ -389,6 +389,22 @@
         </div>
       </form>
     </div>
+    <footer>
+      <div class="footer-brand">
+        <img class="footer-brand__img" src="https://www.marfeel.com/public/images/landing/header/logo-marfeel.svg">
+        <ul class="footer-brand__links">
+          <li><a href="https://www.marfeel.com/docs/flowcards/flowcards-playground.html">Documentation</a></li>
+          <li><a href="https://github.com/Marfeel/flowcards-playground"
+            aria-label="Fork Marfeel/flowcards-playground on GitHub">
+            <img class="github-logo" src="./assets/github.svg" alt="">GitHub
+              </a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__copy">
+        © 2021 Marfeel, Inc. – All rights reserved.
+      </div>
+    </footer>
     <script>
       const myForm = document.getElementById("form");
       const input = document.querySelector(".form__input");
@@ -399,7 +415,7 @@
       const fillInput = () => {
         const urlParams = new URLSearchParams(window.location.search);
         const siteUrlParam = urlParams.get('siteUrl');
-        input.value = siteUrlParam 
+        input.value = siteUrlParam
           ? addProtocol(siteUrlParam)
           : `${window.location.origin}/templates/article-example.html`
       };

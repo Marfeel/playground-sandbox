@@ -31,7 +31,8 @@ body {
   min-height: 100vh;
 }
 
-header {
+header,
+footer {
   max-width: var(--container-desktop);
   padding: 20px 5%;
   margin: 0 auto;
@@ -285,6 +286,52 @@ form {
   background-color: #000;
 }
 
+footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  color: rgba(29, 53, 93, .6);
+  font-size: 14px;
+  box-shadow: 0 -1px 0 rgb(29 53 93 / 10%);
+}
+
+.footer-brand,
+.footer__copy {
+  display: flex;
+  align-items: center;
+}
+
+.footer-brand__img {
+  height: 30px;
+}
+
+.footer-brand__links {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 20px;
+}
+
+.footer-brand__links li {
+  display: inline-block;
+  padding: 0 15px;
+}
+
+.github-logo {
+  height: 20px;
+  padding-right: 6px;
+  fill: #666;
+  vertical-align: bottom;
+}
+
+footer a {
+  text-decoration: none;
+  color: rgba(29, 53, 93, .6);
+}
+
+footer a:hover {
+  color: rgba(29, 53, 93, .9);
+}
+
 @media only screen and (max-width: 768px) {
   header {
     padding: 40px 5%;
@@ -374,5 +421,25 @@ form {
 
   .card__text {
     font-size: 14px;
+  }
+
+  footer {
+    margin: -60px 0 75px;
+    padding-bottom: 80px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .footer-brand {
+    flex-direction: column;
+  }
+
+  .footer-brand__links {
+    padding-left: 0;
+    margin: 15px 0;
+  }
+
+  .footer__copy {
+    justify-content: center;
   }
 }
