@@ -41,7 +41,7 @@
 			"features": {
 				"mode": "modal",
 				"isDraggable": true,
-				"useNaturalScroll": true,
+				"infiniteScroll": true,
 				"header": {
 					"dragHandlerBg": "#FFFFFF"
 				},
