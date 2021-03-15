@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
-	<title>Top articles</title>
+	<title>Comments</title>
 	<link rel="canonical" href="${canonicalUrl}">
 	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 	<style amp-boilerplate>
@@ -82,10 +82,20 @@
 			margin: 0;
 			text-align: start;
 			-webkit-font-smoothing: antialiased;
+			background: #FFF;
 		}
 
 		a {
 			text-decoration: none;
+		}
+
+		.mrf-input {
+			margin: 15px;
+			width: 100%;
+			box-sizing: border-box;
+			font-size: 15px;
+			padding: 10px 15px;
+			width: calc(100% - 30px);
 		}
 
 		.mrf-header__wrapper {
@@ -116,25 +126,56 @@
 			opacity: .7;
 		}
 
-		.mrf-ranking__item--wrapper {
+		.mrf-comments-item__wrapper {
 			padding: 10px 15px;
 			display: grid;
-			grid-template-columns: 55px minmax(0, 1fr);
-			place-items: center flex-start;
+			grid-template-columns: 40px minmax(0, 1fr) 40px;
 			gap: 10px;
 			box-sizing: border-box;
 		}
 
-		.mrf-ranking__number {
-			font-weight: bold;
-			font-size: 40px;
-			color: #D3D3D3;
+		.mrf-comments__author {
+			font-style: normal;
+			font-weight: 700;
+			font-size: 13px;
+			color: #5C5B5B;
+			display: inline;
 		}
 
-		.mrf-article__title {
-			font-size: 1em;
+		.mrf-comments__date {
+			color: #A6A6A6;
+			font-size: 13px;
+			font-weight: 500;
+		}
+
+		.mrf-comments__title {
 			margin: 0;
-			color: #333333;
+			font-size: 14px;
+			font-weight: normal;
+			color: #434343;
+		}
+
+		.mrf-comments__reply {
+			color: #1A78F1;
+			font-weight: 500;
+			font-size: 14px;
+		}
+
+		.mrf-comments__likes {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-size: 12px;
+			color: #A6A6A6;
+		}
+
+		.mrf-comments__image {
+			font-size: 40px;
+		}
+
+		.mrf-comments__image img {
+			border-radius: 50%;
 		}
 	</style>
 </head>
@@ -142,100 +183,227 @@
 <body>
 	<header class="mrf-header__wrapper">
 		<div class="mrf-header__main">
-			<h1 class="mrf-header__title">Comments</h1>
+			<h1 class="mrf-header__title">Comments (9)</h1>
 			<span class="mrf-header__subtitle">Marfeel news</span>
 		</div>
 		<img height="34" width="34" src="https://${CURRENT_HOSTNAME}/assets/experiences/dailynews-icon.png">
 	</header>
 	<div>
-		<article class="mrf-article mrf-ranking__item">
-			<a href="#" class="mrf-ranking__item--wrapper">
-				<div class="mrf-ranking__number">
-					01
+		<input type="text" class="mrf-input" placeholder="Type your comment" />
+		<article class="mrf-article mrf-comments-item">
+			<a href="#" class="mrf-comments-item__wrapper">
+				<div class="mrf-comments__image">
+					<img
+						src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&crop=faces&w=40&h=40&q=80&fit=crop">
 				</div>
-				<h2 class="mrf-article__title">
-					The unseen of spending three years at Pixelgrade
-				</h2>
+				<div class="mrf-comments__content">
+					<address class="mrf-comments__author">
+						Jonathan Paul
+					</address>
+					<time class="mrf-comments__date">
+						• Apr 20, 2020
+					</time>
+					<h2 class="mrf-comments__title">
+						Ole drives the bus down champions league parade and turns the customary corner into europa high.
+					</h2>
+					<span href="#" class="mrf-comments__reply">Reply</span>
+				</div>
+				<div class="mrf-comments__likes">
+					<img src="https://${CURRENT_HOSTNAME}/assets/experiences/like.svg" />
+					9
+				</div>
 			</a>
 		</article>
-		<article class="mrf-article mrf-ranking__item">
-			<a href="#" class="mrf-ranking__item--wrapper">
-				<div class="mrf-ranking__number">
-					02
+		<article class="mrf-article mrf-comments-item">
+			<a href="#" class="mrf-comments-item__wrapper">
+				<div class="mrf-comments__image">
+					<img
+						src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&crop=faces&w=40&h=40&q=80&fit=crop">
 				</div>
-				<h2 class="mrf-article__title">
-					Start a blog to reach your creative peak
-				</h2>
+				<div class="mrf-comments__content">
+					<address class="mrf-comments__author">
+						Jenny Wilson
+					</address>
+					<time class="mrf-comments__date">
+						• Apr 20, 2020
+					</time>
+					<h2 class="mrf-comments__title">
+						Simply not good enough. New 10 year contracts for the manager, goalkeeper and captain please.
+					</h2>
+					<span href="#" class="mrf-comments__reply">Reply</span>
+				</div>
+				<div class="mrf-comments__likes">
+					<img src="https://${CURRENT_HOSTNAME}/assets/experiences/like.svg" />
+					12
+				</div>
 			</a>
 		</article>
-		<article class="mrf-article mrf-ranking__item">
-			<a href="#" class="mrf-ranking__item--wrapper">
-				<div class="mrf-ranking__number">
-					03
+		<article class="mrf-article mrf-comments-item">
+			<a href="#" class="mrf-comments-item__wrapper">
+				<div class="mrf-comments__image">
+					<img
+						src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&crop=faces&w=40&h=40&q=80&fit=crop">
 				</div>
-				<h2 class="mrf-article__title">
-					Where to grow your business as a photographer: site or social...
-				</h2>
+				<div class="mrf-comments__content">
+					<address class="mrf-comments__author">
+						Floyd Miles
+					</address>
+					<time class="mrf-comments__date">
+						• Apr 20, 2020
+					</time>
+					<h2 class="mrf-comments__title">
+						If there's anything better than watching United go out of Europe every season it's knowing that we'll be able to.
+					</h2>
+					<span href="#" class="mrf-comments__reply">Reply</span>
+				</div>
+				<div class="mrf-comments__likes">
+					<img src="https://${CURRENT_HOSTNAME}/assets/experiences/like.svg" />
+					23
+				</div>
 			</a>
 		</article>
-		<article class="mrf-article mrf-ranking__item">
-			<a href="#" class="mrf-ranking__item--wrapper">
-				<div class="mrf-ranking__number">
-					04
+		<article class="mrf-article mrf-comments-item">
+			<a href="#" class="mrf-comments-item__wrapper">
+				<div class="mrf-comments__image">
+					<img
+						src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&crop=faces&w=40&h=40&q=80&fit=crop">
 				</div>
-				<h2 class="mrf-article__title">
-					How to build a loyal community online and offline
-				</h2>
+				<div class="mrf-comments__content">
+					<address class="mrf-comments__author">
+						Arlene McCoy
+					</address>
+					<time class="mrf-comments__date">
+						• Apr 20, 2020
+					</time>
+					<h2 class="mrf-comments__title">
+						Hahahahahaha…what a great Christmas present. Thursday night football…how can anyone support?
+					</h2>
+					<span href="#" class="mrf-comments__reply">Reply</span>
+				</div>
+				<div class="mrf-comments__likes">
+					<img src="https://${CURRENT_HOSTNAME}/assets/experiences/like.svg" />
+					2
+				</div>
 			</a>
 		</article>
-		<article class="mrf-article mrf-ranking__item">
-			<a href="#" class="mrf-ranking__item--wrapper">
-				<div class="mrf-ranking__number">
-					05
+		<article class="mrf-article mrf-comments-item">
+			<a href="#" class="mrf-comments-item__wrapper">
+				<div class="mrf-comments__image">
+					<img
+						src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&crop=faces&w=40&h=40&q=80&fit=crop">
 				</div>
-				<h2 class="mrf-article__title">
-					How to optimize images in WordPress for faster loading...
-				</h2>
+				<div class="mrf-comments__content">
+					<address class="mrf-comments__author">
+						Theresa Webb
+					</address>
+					<time class="mrf-comments__date">
+						• Apr 20, 2020
+					</time>
+					<h2 class="mrf-comments__title">
+						Now with Man Utd out, the Champions League can get down to serious business and the ‘real’ games can.
+					</h2>
+					<span href="#" class="mrf-comments__reply">Reply</span>
+				</div>
+				<div class="mrf-comments__likes">
+					<img src="https://${CURRENT_HOSTNAME}/assets/experiences/like.svg" />
+					0
+				</div>
 			</a>
 		</article>
-		<article class="mrf-article mrf-ranking__item">
-			<a href="#" class="mrf-ranking__item--wrapper">
-				<div class="mrf-ranking__number">
-					06
+		<article class="mrf-article mrf-comments-item">
+			<a href="#" class="mrf-comments-item__wrapper">
+				<div class="mrf-comments__image">
+					<img
+						src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&crop=faces&w=40&h=40&q=80&fit=crop">
 				</div>
-				<h2 class="mrf-article__title">
-					How a visual artist redefines success in graphic design
-				</h2>
+				<div class="mrf-comments__content">
+					<address class="mrf-comments__author">
+						Brooklyn Simmons
+					</address>
+					<time class="mrf-comments__date">
+						• Apr 20, 2020
+					</time>
+					<h2 class="mrf-comments__title">
+						United only have three problems: the players are rubbish at football, the manager is rubbish
+					</h2>
+					<span href="#" class="mrf-comments__reply">Reply</span>
+				</div>
+				<div class="mrf-comments__likes">
+					<img src="https://${CURRENT_HOSTNAME}/assets/experiences/like.svg" />
+					7
+				</div>
 			</a>
 		</article>
-		<article class="mrf-article mrf-ranking__item">
-			<a href="#" class="mrf-ranking__item--wrapper">
-				<div class="mrf-ranking__number">
-					07
+		<article class="mrf-article mrf-comments-item">
+			<a href="#" class="mrf-comments-item__wrapper">
+				<div class="mrf-comments__image">
+					<img
+						src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&crop=faces&w=40&h=40&q=80&fit=crop">
 				</div>
-				<h2 class="mrf-article__title">
-					How to choose the right colors when creating a website?
-				</h2>
+				<div class="mrf-comments__content">
+					<address class="mrf-comments__author">
+						Jonathan Paul
+					</address>
+					<time class="mrf-comments__date">
+						• Apr 19, 2020
+					</time>
+					<h2 class="mrf-comments__title">
+						Sometimes I wonder if I really can. But then I think to myself, maybe I can't. But if I could, that would be good. Maybe it's all a lie?
+					</h2>
+					<span href="#" class="mrf-comments__reply">Reply</span>
+				</div>
+				<div class="mrf-comments__likes">
+					<img src="https://${CURRENT_HOSTNAME}/assets/experiences/like.svg" />
+					57
+				</div>
 			</a>
 		</article>
-		<article class="mrf-article mrf-ranking__item">
-			<a href="#" class="mrf-ranking__item--wrapper">
-				<div class="mrf-ranking__number">
-					08
+		<article class="mrf-article mrf-comments-item">
+			<a href="#" class="mrf-comments-item__wrapper">
+				<div class="mrf-comments__image">
+					<img
+						src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&crop=faces&w=40&h=40&q=80&fit=crop">
 				</div>
-				<h2 class="mrf-article__title">
-					Caring is the new marketing
-				</h2>
+				<div class="mrf-comments__content">
+					<address class="mrf-comments__author">
+						Floyd Miles
+					</address>
+					<time class="mrf-comments__date">
+						• Apr 19, 2020
+					</time>
+					<h2 class="mrf-comments__title">
+						If you really wanted to do that, then why wouldn't you do that? Instead you do this. It makes no sense.
+					</h2>
+					<span href="#" class="mrf-comments__reply">Reply</span>
+				</div>
+				<div class="mrf-comments__likes">
+					<img src="https://${CURRENT_HOSTNAME}/assets/experiences/like.svg" />
+					9
+				</div>
 			</a>
 		</article>
-		<article class="mrf-article mrf-ranking__item">
-			<a href="#" class="mrf-ranking__item--wrapper">
-				<div class="mrf-ranking__number">
-					09
+		<article class="mrf-article mrf-comments-item">
+			<a href="#" class="mrf-comments-item__wrapper">
+				<div class="mrf-comments__image">
+					<img
+						src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&crop=faces&w=40&h=40&q=80&fit=crop">
 				</div>
-				<h2 class="mrf-article__title">
-					Travelling as a way of self-discovery and progress
-				</h2>
+				<div class="mrf-comments__content">
+					<address class="mrf-comments__author">
+						Jonathan Paul
+					</address>
+					<time class="mrf-comments__date">
+						• Apr 17, 2020
+					</time>
+					<h2 class="mrf-comments__title">
+						Life is full of temporary situations, ultimately ending in a permanent solution.
+					</h2>
+					<span href="#" class="mrf-comments__reply">Reply</span>
+				</div>
+				<div class="mrf-comments__likes">
+					<img src="https://${CURRENT_HOSTNAME}/assets/experiences/like.svg" />
+					9
+				</div>
 			</a>
 		</article>
 	</div>
