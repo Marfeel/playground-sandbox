@@ -429,6 +429,33 @@
               </div>
             </div>
           </label>
+          <label id="customExperience">
+            <input
+              id="experienceUrl"
+              name="experienceUrl"
+              type="radio"
+              value=""
+            />
+            <div class="card">
+              <picture>
+                <source
+                  media="(max-width: 425px)"
+                  srcset="./assets/cards/card-custom-425w.png"
+                />
+                <img
+                  class="card__image"
+                  src="./assets/cards/card-custom.png"
+                />
+              </picture>
+              <div class="card__content">
+                <h3 class="card__title">Load your experience</h3>
+                <p class="card__text">
+                  Enter URL and press "Simulate"
+                </p>
+                <input type="text" class="card__input-text" name="customExperience" id="customExperienceURL" placeholder="Enter your json URL" />
+              </div>
+            </div>
+          </label>
         </div>
       </form>
     </div>

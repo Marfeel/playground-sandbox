@@ -41,8 +41,6 @@ footer {
 button,
 input {
   font-family: var(--main-font);
-  font-size: 1rem;
-  height: 50px;
   box-sizing: border-box;
   border-radius: var(--border-5);
 }
@@ -85,6 +83,12 @@ form {
   border-radius: var(--border-5);
 }
 
+.form__input,
+.form__button {
+  font-size: 1rem;
+  height: 50px;
+}
+
 .form__input {
   box-shadow: 0 1px 1px rgba(29, 53, 93, 0.1);
   padding-left: 45px;
@@ -95,6 +99,26 @@ form {
 .form__input:focus {
   outline: none;
   border-color: var(--secondary-color);
+}
+
+.form__button {
+  border: 0;
+  background-color: var(--secondary-color);
+  color: #fff;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+}
+
+.form__button:hover {
+  background-color: #eb800f;
+}
+
+.form__button:disabled {
+  background-color: #bbbbbb;
+}
+
+.mobile-cta {
+  display: none;
 }
 
 .card-type {
@@ -128,22 +152,6 @@ form {
   color: var(--main-color);
 }
 
-.form__button {
-  border: 0;
-  background-color: var(--secondary-color);
-  color: #fff;
-  font-weight: var(--font-weight-bold);
-  cursor: pointer;
-}
-
-.form__button:disabled {
-  background-color: #bbbbbb;
-}
-
-.mobile-cta {
-  display: none;
-}
-
 .grid-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -165,8 +173,9 @@ form {
   box-shadow: var(--selected-card-effect);
 }
 
-.grid-cards input[type="radio"]:checked + .card::after {
+.grid-cards input[type="radio"] + .card::after {
   content: url(../assets/check.svg);
+  opacity: 0;
   width: 40px;
   height: 40px;
   display: flex;
@@ -180,6 +189,11 @@ form {
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%);
   top: -1px;
   right: -1px;
+  transition: opacity .2s ease-out;
+}
+
+.grid-cards input[type="radio"]:checked + .card::after {
+  opacity: 1;
 }
 
 .grid-cards input[type="radio"]:disabled + .card {
@@ -254,10 +268,6 @@ form {
 }
 
 .card .card__btn-placeholder {
-  display: none;
-}
-
-.card:hover .card__btn-placeholder {
   display: block;
   position: absolute;
   width: 100%;
@@ -265,6 +275,12 @@ form {
   height: 95px;
   text-align: center;
   padding: 20px 0;
+  opacity: 0;
+  transition: opacity .3s ease-out;
+}
+
+.card:hover .card__btn-placeholder {
+  opacity: 1;
 }
 
 .card__btn-sandbox {
@@ -284,6 +300,14 @@ form {
 
 .card__btn-sandbox:hover {
   background-color: #000;
+}
+
+.card__input-text {
+  height: 30px;
+  border: 1px solid #aaa;
+  margin: 10px 0 5px;
+  width: 100%;
+  padding-left: 5px;
 }
 
 footer {
