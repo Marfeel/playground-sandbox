@@ -316,6 +316,13 @@ footer {
   padding: 0 15px;
 }
 
+.github-logo {
+  height: 20px;
+  padding-right: 6px;
+  fill: #666;
+  vertical-align: bottom;
+}
+
 .github-corner:hover .octo-arm {
   animation: octocat-wave 560ms ease-in-out
 }
@@ -323,6 +330,7 @@ footer {
 .github-corner svg {
   fill: #333;
   color: #fff;
+  z-index: 2;
 }
 
 .github-corner:hover svg {
