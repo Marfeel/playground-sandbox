@@ -104,12 +104,18 @@
 	<div id="flowcards-slot" style="height: 30px; background-color: yellow;"></div>
 	
 	<script type="text/javascript">
+		window['__newsroom_js'] = {
+			data: {
+				push: array => array[1]()
+			}
+		};
+		
 		function initFlowcards() {
 			window.marfeel = window.marfeel || {};
 			window.marfeel.flowcards = window.marfeel.flowcards || { que: [] };
 
 			window.marfeel.flowcards.que.push(() => {
-				window.marfeel.flowcards.init({ siteId: 120, timeout: 500 });
+				window.marfeel.flowcards.init({ siteId: 120, timeout: 1000 });
 			});
 		}
 

@@ -98,12 +98,8 @@ form {
 }
 
 .form--blocked input#siteUrl,
-.form--blocked .form__radio:checked + label{
-  background-color: lightgrey;
-  color: gray;
-}
-.form--blocked .card-type{
-  background-color: gray;
+.form--blocked .card-type {
+  opacity: 30%;
 }
 
 .card-type {
