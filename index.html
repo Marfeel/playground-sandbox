@@ -429,6 +429,21 @@
               </div>
             </div>
           </label>
+          <label>
+            <input id="experienceUrl" name="experienceUrl" type="radio" value="croupier" class="branded-content-card" />
+            <div class="card">
+              <picture>
+                <source media="(max-width: 425px)" srcset="./assets/cards/card-homepage-425.png" />
+                <img class="card__image" src="./assets/cards/card-homepage-425w.png" />
+              </picture>
+              <div class="card__content">
+                <h3 class="card__title">Branded Content</h3>
+                <p class="card__text">
+                  Flowcard served from DFP.
+                </p>
+              </div>
+            </div>
+          </label>
         </div>
       </form>
     </div>
@@ -452,6 +467,12 @@
     </footer>
     <script>
       const myForm = document.getElementById("form");
+      const cards = form.querySelectorAll("input#experienceUrl");
+      const buttonsToDisable = [
+        myForm.querySelector('#siteUrl'),
+        myForm.querySelector('#technologyWeb'),
+        myForm.querySelector('#technologyAmp')
+      ];
       const input = document.querySelector(".form__input");
       const button = document.querySelectorAll(".form__button");
       const requestHostname = document.getElementById("requestHostname");
@@ -491,6 +512,27 @@
         const siteUrl = document.querySelector("input[name=siteUrl]").value;
         document.querySelector("input[name=siteUrl]").value = addProtocol(siteUrl);
       };
+
+      const toggleFormStatus = (e) => {
+        const isBrandedContentChecked = e.srcElement.classList.contains('branded-content-card');
+
+        if(isBrandedContentChecked){
+          const siteUrlInput = buttonsToDisable[0];
+
+          myForm.classList.add('form--blocked');
+          siteUrlInput.value = 'http://127.0.0.1:5500/templates/branded-content-example.html'
+        } else {
+          myForm.classList.remove('form--blocked');
+        }
+
+        for (let i = 0; i < buttonsToDisable.length; i++) {
+          buttonsToDisable[i].disabled = isBrandedContentChecked;
+        }
+      };
+
+      for (let i = 0; i < cards.length; i++) {
+        cards[i].addEventListener("change", toggleFormStatus);;
+      }
 
       input.addEventListener("input", stateHandle);
       myForm.addEventListener("submit", onSubmit);
