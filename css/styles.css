@@ -97,6 +97,15 @@ form {
   border-color: var(--secondary-color);
 }
 
+.form--blocked input#siteUrl,
+.form--blocked .form__radio:checked + label{
+  background-color: lightgrey;
+  color: gray;
+}
+.form--blocked .card-type{
+  background-color: gray;
+}
+
 .card-type {
   display: flex;
   margin: auto;
