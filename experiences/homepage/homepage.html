@@ -85,46 +85,25 @@
 			-webkit-font-smoothing: antialiased;
 		}
 
-		.mrf-header__wrapper {
-			display: flex;
-			flex-direction: column;
+		.mrf-headerLite__wrapper {
 			background: #282346;
-		}
-
-		.mrf-header__main {
-			display: grid;
-			height: 50px;
-		}
-
-		.mrf-header__main img {
-			grid-area: 1 / 1 / 2 / 2;
-		}
-
-		.mrf-menu {
-			margin: 10px;
-		}
-
-		.mrf-logo {
-			place-self: center;
-		}
-
-		.mrf-header__navigation {
 			display: flex;
-			flex-wrap: nowrap;
-			overflow-x: auto;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0 15px;
+			height: 50px;
+			box-sizing: border-box;
 		}
 
-		.mrf-section {
-			color: #fff;
-			text-transform: uppercase;
-			padding: 0 10px 2px;
-			font-size: .8em;
-			font-weight: 300;
-		}
-
-		.mrf-section.active {
-			border-bottom: 2px solid;
-			font-weight: 500;
+		.mrf-headerLite__title {
+			color: white;
+			text-align: left;
+			font-weight: 700;
+			font-size: 18px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			flex: 0 70%;
 		}
 
 		.mrf-balcon {
@@ -238,18 +217,10 @@
 </head>
 
 <body>
-	<header class="mrf-header__wrapper">
-		<div class="mrf-header__main">
-			<img class="mrf-menu" src="https://${CURRENT_HOSTNAME}/assets/experiences/burger.svg">
-			<img class="mrf-logo" height="40" src="https://${CURRENT_HOSTNAME}/assets/experiences/dailynews.png">
-		</div>
-		<div class="mrf-header__navigation">
-			<span class="mrf-section active">Home</span>
-			<span class="mrf-section">Politics</span>
-			<span class="mrf-section">Society</span>
-			<span class="mrf-section">Sports</span>
-			<span class="mrf-section">Media</span>
-			<span class="mrf-section">Library</span>
+	<header>
+		<div class="mrf-headerLite__wrapper">
+			<span class="mrf-headerLite__title">More in Home</span>
+			<img height="28" width="28" src="https://${CURRENT_HOSTNAME}/assets/experiences/dailynews-icon.png">
 		</div>
 	</header>
 	<div>
