@@ -26,6 +26,10 @@ html {
     height: 60vw;
 }
 
+.fc-img.branded {
+    height: 40vw;
+}
+
 .metas {
     font-family: var(--headings-font);
     font-size: 13px;
@@ -48,6 +52,10 @@ html {
 .fc-article h1 {
     font: 28px/32px var(--headings-font);
     margin: 0;
+}
+.fc-article h1.branded {
+    font-family: system-ui;
+    font-weight: 700;
 }
 
 .fc-article h3 {
