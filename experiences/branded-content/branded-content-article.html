@@ -9,6 +9,9 @@
 	<title>Branded Content example</title>
 
 	<script async="async" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+	<script type="text/javascript">
+		window.__newsroom_js={accountId:0},window.__newsroom_js.data=window.__newsroom_js.data||[],function(){var e=document.createElement("script");e.async=!0,e.type="text/javascript",e.src="https://events.newsroom.bi/js/tracker.js?cb="+Math.round(Date.now()/1e5);var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
+	</script>
 </head>
 
 <body class="fc-body">
@@ -134,15 +137,6 @@
 	<div id="flowcards-slot"></div>
 	
 	<script type="text/javascript">
-		window['__newsroom_js'] = {
-			data: {
-				push: data => {
-					const callback = data[1];
-					(typeof callback === 'function') && callback();
-				}
-			}
-		};
-
 		function initFlowcards() {
 			window.marfeel = window.marfeel || {};
 			window.marfeel.flowcards = window.marfeel.flowcards || { que: [] };
