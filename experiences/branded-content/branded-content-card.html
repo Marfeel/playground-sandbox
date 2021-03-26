@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../../css/article-example.css">
+	<link rel="canonical" href="https://playground.marfeel/experiences/branded-content/branded-content-article.html">
 	<link rel="icon" href="../../assets/favicon.png" />
 	<title>Article example</title>
 	<style amp-boilerplate>
@@ -77,9 +77,72 @@
 		</style>
 	</noscript>
 	<style amp-custom>
-		.fc-img {
-			width: unset;
+		:root {
+			--main-font: -apple-system, system-ui;
+			--headings-font: Georgia, Cambria, "Times New Roman", Times, serif;
+			--main-color: #1d355d;
+			--text-color: rgba(41, 41, 41, 1);
+			--container-desktop: 980px;
+			--container-mobile: 85vw;
+			--font-weight-bold: 600;
 		}
+
+		html {
+			margin: 0;
+			padding: 0;
+		}
+
+		.fc-body {
+			font-family: var(--main-font);
+			margin: 0 auto;
+			color: var(--text-color);
+			text-rendering: optimizeLegibility;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		.fc-img.branded {
+			height: 40vw;
+		}
+
+		.metas {
+			font-family: var(--headings-font);
+			font-size: 13px;
+			margin: 10px 0 15px;
+			color: var(--main-color);
+		}
+
+		.fc-article {
+			margin: 15px;
+		}
+
+		.fc-article blockquote {
+			margin: 20px 0;
+			padding: 0 20px;
+			border-left: 1px solid;
+			font: italic 600 23px/28px var(--headings-font);
+			color: var(--main-color);
+		}
+
+		.fc-article h1 {
+			font: 28px/32px var(--headings-font);
+			margin: 0;
+		}
+
+		.fc-article h1.branded {
+			font-family: system-ui;
+			font-weight: 700;
+		}
+
+		.fc-article h3 {
+			color: var(--main-color);
+			font-size: 24px;
+		}
+
+		.fc-article p {
+			font-size: 18px;
+			line-height: 28px;
+		}
+
 		.fc-article img {
 			width: 100%;
 		}
