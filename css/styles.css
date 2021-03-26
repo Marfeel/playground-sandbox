@@ -97,8 +97,8 @@ form {
   border-color: var(--secondary-color);
 }
 
-input#siteUrl:disabled,
-.card-type.disabled {
+input#siteUrl:read-only,
+.card-type.read-only {
   opacity: 0.3;
 }
 

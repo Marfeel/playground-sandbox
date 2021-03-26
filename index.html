@@ -277,6 +277,22 @@
 						</div>
 					</div>
 				</label>
+				<label>
+					<input name="experienceUrl" type="radio" value="croupier"
+						data-siteUrl="https://playground.marfeel.com/experiences/branded-content/branded-content-article.html" />
+					<div class="card">
+						<picture>
+							<source media="(max-width: 425px)" srcset="./assets/cards/card-branded-dfp-425w.png" />
+							<img class="card__image" src="./assets/cards/card-branded-dfp.png" />
+						</picture>
+						<div class="card__content">
+							<h3 class="card__title">Branded Content</h3>
+							<p class="card__text">
+								Define a branded content article from AdManager and load it in a Flowcard.
+							</p>
+						</div>
+					</div>
+				</label>
 			</div>
 		</form>
 	</div>
@@ -355,17 +371,17 @@
 
 			if (!!e.target.dataset.siteurl) {
 				textInput.value = e.target.dataset.siteurl;
-				cardTypeWrapper.classList.add('disabled');
+				cardTypeWrapper.classList.add('read-only');
 				isLastSiteUrlFixed = true;
 			} else {
-				cardTypeWrapper.classList.remove('disabled');
+				cardTypeWrapper.classList.remove('read-only');
 				textInput.value = customSiteUrl;
 				isLastSiteUrlFixed = false;
 			}
 
-			textInput.disabled = !!e.target.dataset.siteurl;
-			webInput.disabled = !!e.target.dataset.siteurl;
-			ampInput.disabled = !!e.target.dataset.siteurl;
+			textInput.readOnly = !!e.target.dataset.siteurl;
+			webInput.readOnly = !!e.target.dataset.siteurl;
+			ampInput.readOnly = !!e.target.dataset.siteurl;
 		};
 
 		cards.forEach(card => {
