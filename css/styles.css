@@ -97,8 +97,8 @@ form {
   border-color: var(--secondary-color);
 }
 
-.form--blocked input#siteUrl,
-.form--blocked .card-type {
+input#siteUrl:disabled,
+.card-type.disabled {
   opacity: 30%;
 }
 
