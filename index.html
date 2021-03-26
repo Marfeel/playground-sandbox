@@ -318,7 +318,7 @@
 	</footer>
 	<script>
 		let isLastSiteUrlFixed = false;
-		let customInputUrl = '';
+		let customSiteUrl = '';
 		const myForm = document.getElementById("form");
 		const cards = myForm.querySelectorAll("input[name='experienceUrl']");
 		const input = document.querySelector(".form__input");
@@ -367,7 +367,7 @@
 			const webInput = myForm.querySelector('#technologyWeb');
 			const ampInput = myForm.querySelector('#technologyAmp');
 
-			customInputUrl = isLastSiteUrlFixed ? customInputUrl : textInput.value
+			customSiteUrl = isLastSiteUrlFixed ? customSiteUrl : textInput.value
 
 			if (!!e.target.dataset.siteurl) {
 				textInput.value = e.target.dataset.siteurl;
@@ -375,7 +375,7 @@
 				isLastSiteUrlFixed = true;
 			} else {
 				cardTypeWrapper.classList.remove('disabled');
-				textInput.value = customInputUrl;
+				textInput.value = customSiteUrl;
 				isLastSiteUrlFixed = false;
 			}
 
