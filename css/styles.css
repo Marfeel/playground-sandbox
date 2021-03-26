@@ -99,7 +99,7 @@ form {
 
 input#siteUrl:disabled,
 .card-type.disabled {
-  opacity: 30%;
+  opacity: 0.3;
 }
 
 .card-type {
