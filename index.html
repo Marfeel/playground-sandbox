@@ -380,8 +380,8 @@
 			}
 
 			textInput.readOnly = !!e.target.dataset.siteurl;
-			webInput.readOnly = !!e.target.dataset.siteurl;
-			ampInput.readOnly = !!e.target.dataset.siteurl;
+			webInput.disabled = !!e.target.dataset.siteurl;
+			ampInput.disabled = !!e.target.dataset.siteurl;
 		};
 
 		cards.forEach(card => {
