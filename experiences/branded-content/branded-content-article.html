@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../../css/article-example.css">
 	<link rel="icon" href="../../assets/favicon.png" />
-	<link rel="amphtml" href="https://playground.marfeel.com/templates/article-example-amp.html">
 	<title>Branded Content example</title>
 
 	<script async="async" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
@@ -137,7 +136,10 @@
 	<script type="text/javascript">
 		window['__newsroom_js'] = {
 			data: {
-				push: array => array[1]()
+				push: data => {
+					const callback = data[1];
+					(typeof callback === 'function') && callback();
+				}
 			}
 		};
 
