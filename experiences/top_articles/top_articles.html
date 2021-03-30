@@ -88,32 +88,25 @@
 			text-decoration: none;
 		}
 
-		.mrf-header__wrapper {
+		.mrf-headerLite__wrapper {
 			background: #282346;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			padding: 10px 15px 15px;
+			padding: 0 15px 8px;
+			height: 40px;
 			box-sizing: border-box;
 		}
 
-		.mrf-header__main {
-			display: flex;
-			flex-direction: column;
-			color: #FFF;
-		}
-
-		.mrf-header__title {
-			font-size: 1em;
+		.mrf-headerLite__title {
+			color: white;
+			text-align: left;
 			font-weight: 700;
-			margin: 0 0 3px;
-		}
-
-		.mrf-header__subtitle {
-			text-transform: uppercase;
-			font-size: .7em;
-			font-weight: 500;
-			opacity: .7;
+			font-size: 18px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			flex: 0 70%;
 		}
 
 		.mrf-ranking__item--wrapper {
@@ -140,12 +133,11 @@
 </head>
 
 <body>
-	<header class="mrf-header__wrapper">
-		<div class="mrf-header__main">
-			<h1 class="mrf-header__title">Top articles</h1>
-			<span class="mrf-header__subtitle">Daily news</span>
+	<header>
+		<div class="mrf-headerLite__wrapper">
+			<span class="mrf-headerLite__title">Top articles</span>
+			<img height="28" width="28" src="https://${CURRENT_HOSTNAME}/assets/experiences/dailynews-icon.png">
 		</div>
-		<img height="34" width="34" src="https://${CURRENT_HOSTNAME}/assets/experiences/dailynews-icon.png">
 	</header>
 	<div>
 		<article class="mrf-article mrf-ranking__item">

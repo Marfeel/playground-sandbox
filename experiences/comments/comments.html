@@ -98,32 +98,25 @@
 			width: calc(100% - 30px);
 		}
 
-		.mrf-header__wrapper {
+		.mrf-headerLite__wrapper {
 			background: #282346;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			padding: 10px 15px 15px;
+			padding: 0 15px 8px;
+			height: 40px;
 			box-sizing: border-box;
 		}
 
-		.mrf-header__main {
-			display: flex;
-			flex-direction: column;
-			color: #FFF;
-		}
-
-		.mrf-header__title {
-			font-size: 1em;
+		.mrf-headerLite__title {
+			color: white;
+			text-align: left;
 			font-weight: 700;
-			margin: 0 0 3px;
-		}
-
-		.mrf-header__subtitle {
-			text-transform: uppercase;
-			font-size: .7em;
-			font-weight: 500;
-			opacity: .7;
+			font-size: 18px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			flex: 0 70%;
 		}
 
 		.mrf-comments-item__wrapper {
@@ -181,20 +174,18 @@
 </head>
 
 <body>
-	<header class="mrf-header__wrapper">
-		<div class="mrf-header__main">
-			<h1 class="mrf-header__title">Comments (9)</h1>
-			<span class="mrf-header__subtitle">Marfeel news</span>
+	<header>
+		<div class="mrf-headerLite__wrapper">
+			<span class="mrf-headerLite__title">Comments (87)</span>
+			<img height="28" width="28" src="https://${CURRENT_HOSTNAME}/assets/experiences/dailynews-icon.png">
 		</div>
-		<img height="34" width="34" src="https://${CURRENT_HOSTNAME}/assets/experiences/dailynews-icon.png">
 	</header>
 	<div>
 		<input type="text" class="mrf-input" placeholder="Type your comment" />
 		<article class="mrf-article mrf-comments-item">
 			<a href="#" class="mrf-comments-item__wrapper">
 				<div class="mrf-comments__image">
-					<img
-						src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&crop=faces&w=40&h=40&q=80&fit=crop">
+					<img src="https://${CURRENT_HOSTNAME}/assets/images/avatars/5.jpeg" />
 				</div>
 				<div class="mrf-comments__content">
 					<address class="mrf-comments__author">
@@ -217,8 +208,7 @@
 		<article class="mrf-article mrf-comments-item">
 			<a href="#" class="mrf-comments-item__wrapper">
 				<div class="mrf-comments__image">
-					<img
-						src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&crop=faces&w=40&h=40&q=80&fit=crop">
+					<img src="https://${CURRENT_HOSTNAME}/assets/images/avatars/6.jpeg" />
 				</div>
 				<div class="mrf-comments__content">
 					<address class="mrf-comments__author">
@@ -241,8 +231,7 @@
 		<article class="mrf-article mrf-comments-item">
 			<a href="#" class="mrf-comments-item__wrapper">
 				<div class="mrf-comments__image">
-					<img
-						src="https://${CURRENT_HOSTNAME}/assets/images/avatars/2.jpeg">
+					<img src="https://${CURRENT_HOSTNAME}/assets/images/avatars/2.jpeg" />
 				</div>
 				<div class="mrf-comments__content">
 					<address class="mrf-comments__author">
@@ -265,8 +254,7 @@
 		<article class="mrf-article mrf-comments-item">
 			<a href="#" class="mrf-comments-item__wrapper">
 				<div class="mrf-comments__image">
-					<img
-						src="https://${CURRENT_HOSTNAME}/assets/images/avatars/3.jpeg">
+					<img src="https://${CURRENT_HOSTNAME}/assets/images/avatars/3.jpeg" />
 				</div>
 				<div class="mrf-comments__content">
 					<address class="mrf-comments__author">
@@ -289,8 +277,7 @@
 		<article class="mrf-article mrf-comments-item">
 			<a href="#" class="mrf-comments-item__wrapper">
 				<div class="mrf-comments__image">
-					<img
-						src="https://${CURRENT_HOSTNAME}/assets/images/avatars/5.jpeg">
+					<img src="https://${CURRENT_HOSTNAME}/assets/images/avatars/5.jpeg" />
 				</div>
 				<div class="mrf-comments__content">
 					<address class="mrf-comments__author">
@@ -313,8 +300,7 @@
 		<article class="mrf-article mrf-comments-item">
 			<a href="#" class="mrf-comments-item__wrapper">
 				<div class="mrf-comments__image">
-					<img
-						src="https://${CURRENT_HOSTNAME}/assets/images/avatars/6.jpeg">
+					<img src="https://${CURRENT_HOSTNAME}/assets/images/avatars/6.jpeg" />
 				</div>
 				<div class="mrf-comments__content">
 					<address class="mrf-comments__author">
@@ -337,8 +323,7 @@
 		<article class="mrf-article mrf-comments-item">
 			<a href="#" class="mrf-comments-item__wrapper">
 				<div class="mrf-comments__image">
-					<img
-						src="https://${CURRENT_HOSTNAME}/assets/images/avatars/1.jpeg">
+					<img src="https://${CURRENT_HOSTNAME}/assets/images/avatars/1.jpeg" />
 				</div>
 				<div class="mrf-comments__content">
 					<address class="mrf-comments__author">
@@ -361,8 +346,7 @@
 		<article class="mrf-article mrf-comments-item">
 			<a href="#" class="mrf-comments-item__wrapper">
 				<div class="mrf-comments__image">
-					<img
-						src="https://${CURRENT_HOSTNAME}/assets/images/avatars/4.jpeg">
+					<img src="https://${CURRENT_HOSTNAME}/assets/images/avatars/4.jpeg" />
 				</div>
 				<div class="mrf-comments__content">
 					<address class="mrf-comments__author">
@@ -385,8 +369,7 @@
 		<article class="mrf-article mrf-comments-item">
 			<a href="#" class="mrf-comments-item__wrapper">
 				<div class="mrf-comments__image">
-					<img
-						src="https://${CURRENT_HOSTNAME}/assets/images/avatars/1.jpeg">
+					<img src="https://${CURRENT_HOSTNAME}/assets/images/avatars/1.jpeg" />
 				</div>
 				<div class="mrf-comments__content">
 					<address class="mrf-comments__author">
