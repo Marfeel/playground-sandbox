@@ -5,6 +5,7 @@ on:
       - master
       - next
       - beta
+      - test
       - "*.x" # maintenance releases
 
 jobs:
@@ -15,7 +16,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - run: npm ci
-      - run: npx semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_NEXUS_AUTH }}
+      - name: 🚀 Publish
+        uses: Marfeel/github-actions/common/actions/publish@master
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
+          nexus-token: ${{ secrets.NPM_NEXUS_AUTH }}
+          build-number: ${{ github.run_id }}
