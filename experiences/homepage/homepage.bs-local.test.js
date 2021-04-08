@@ -11,7 +11,7 @@ describe("homepage experience", function () {
 	requestHostname = 'playground.marfeel.com',
 	technology = 'web',
 	experienceUrl = '/experiences/homepage/homepage.json',
-	flowcardsHostname = 'http://bs-local.com:4567';
+	flowcardsHostname = 'https://bs-local.com';
 
 	it("setup", async function () {
 		config = {
