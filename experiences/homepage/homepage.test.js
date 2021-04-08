@@ -84,15 +84,15 @@ describe("homepage experience", function () {
 		expect(isAtInitialSnapPoint).equal(true);
 	});
 
-	it("minimise card and should be at minimised snap point", async ()=>{
- 		await dragCardBy(browser, config.cards.homepage.cardSelector, 150)
+	// it("minimise card and should be at minimised snap point", async ()=>{
+ 	// 	await dragCardBy(browser, config.cards.homepage.cardSelector, 150)
 
-		const isAtMinimisedSnapPoint = await isAtPercentageSnapPoint(browser, 
-			config.cards.homepage.cardSelector, 
-			config.cards.homepage.snapPoints.minimised)
+	// 	const isAtMinimisedSnapPoint = await isAtPercentageSnapPoint(browser, 
+	// 		config.cards.homepage.cardSelector, 
+	// 		config.cards.homepage.snapPoints.minimised)
 
-		expect(isAtMinimisedSnapPoint).equal(true);
-	});
+	// 	expect(isAtMinimisedSnapPoint).equal(true);
+	// });
 
 	it("activate card by click", async ()=>{
 		await touchCard(browser, config.cards.homepage.cardSelector)
