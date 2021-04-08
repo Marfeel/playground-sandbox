@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		<title>Marfeel Flowcards</title>
+		<style>
+			/* Kyaooo colors */
+			:root {
+				--mc: #1F5E95;
+				--sc: #87cdea;
+			}
+			* {
+				box-sizing: border-box;
+				-webkit-font-smoothing: antialiased;
+			}
+
+			body {
+				margin: 0;
+			}
+
+			#sizingWrapper {
+				width: 100%;
+				display: block;
+				background-color: rgb(255, 255, 255);
+				border-radius: 15px 15px 0px 0px;
+				transform: none;
+				padding: 15px;
+				margin-top: -18px;
+			}
+
+			#mrf-header {
+				height: 76px;
+				width: 100%;
+				background: white;
+				z-index: 100;
+				background-image: url(statics/header.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center center;
+			}
+
+			.media {
+				height: 230px;
+				background-image: url(statics/article-image-3.jpg);
+				background-size: 100%;
+				background-position: top center;
+				background-repeat: no-repeat;
+			}
+
+			.common-text {
+				tab-size: 4;
+				font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif, serif;
+				-webkit-text-fill-color: rgb(35, 35, 35);
+				font-size: 18px;
+				letter-spacing: 0px;
+				line-height: 1.25;
+			}
+			a {
+				color: red;
+			}
+
+			.mrf-article {
+				padding-top: 15px;
+				border-top: 1px solid #e4e4e4;
+			}
+			.mrf-article--pill {
+				position: relative;
+			}
+			.mrf-article--pill {
+				box-sizing: border-box;
+			}
+			.mrf-article--pill {
+				margin-bottom: 15px;
+			}
+			.mrf-page {
+				box-sizing: border-box;
+			}
+			.mrf-Icon--xs {
+				height: 1rem;
+				width: 1rem;
+			}
+			.mrf-Icon {
+				display: inline-block;
+				height: 1.5rem;
+				width: 1.5rem;
+				vertical-align: middle;
+			}
+			.mrf-video .mrf-article-image .mrf-playButton {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 0;
+				height: 0;
+				pointer-events: none;
+			}
+
+			.mrf-article__title{
+				margin-left: 4%;
+				margin-right: 4%;
+				font-size: 1.35rem;
+				line-height: 115%;
+				word-break: break-word;
+				padding-right: 15px;
+				margin-bottom: 5px;
+				padding-bottom: 0;
+				letter-spacing: 0;
+			}
+
+			.mrf-article--pill .mrf-article__image {
+					height: 200px;
+					width: 92%;
+					margin-inline-start: 4%;
+					margin-bottom: 12px;
+			}
+			.mrf-article--pill .mrf-article__image {
+					background-repeat: no-repeat;
+			}
+			.mrf-video .mrf-article-image {
+					position: relative;
+			}
+			.mrf-article-image {
+					position: relative;
+			}
+			.mrf-article__image {
+					background-size: cover;
+					background-position: center 15%;
+			}
+
+			.mrf-article__share {
+				margin-top: -3px;
+				float: right;
+				width: 8%;
+			}
+
+			.mrf-article:before, .mrf-article:after {
+				content: " ";
+				display: table;
+			}
+
+			.mrf-article__share:after {
+				display: block;
+				float: right;
+				width: 45px;
+				height: 60px;
+				margin-top: -40px;
+				content: "";
+			}
+			.mrf-article-image-element {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+				object-position: center 15%;
+				background-image: url(statics/article-image-1.jpg);
+			}
+
+			.mrf-button {
+				-webkit-appearance: none;
+				background: none;
+				border: 0;
+				box-sizing: content-box;
+				color: inherit;
+				font-family: inherit;
+				font-size: 100%;
+				padding: 0;
+				text-align: inherit;
+				text-decoration: none;
+				text-transform: inherit;
+			}
+
+
+			 /* Sticky AD */
+			.mrf-sticky-wrapper {
+				z-index: 2147483647;
+				background-color: white;
+				position: sticky;
+				bottom: 0;
+			}
+
+			.mrf-madLoaded ~ .mrf-stickyCloseButtonLoaded {
+				display: block;
+			}
+
+			.mrf-adv {
+				place-items: center;
+				position: relative;
+				justify-content: center;
+			}
+
+			.mrf-adv>div {
+				width: 100%;
+			}
+
+			.mrf-sticky-wrapper {
+				display: flex;
+				justify-content: flex-end;
+				flex-direction: column;
+			}
+
+			.mrf-sticky-wrapper .stickyPage {
+				width: 100%;
+				visibility: visible;
+				-webkit-transform: translateZ(0px);
+				-webkit-transition: transform .4s ease-out 0s;
+				transition: transform .4s ease-out 0s;
+			}
+			.mrf-sticky-wrapper .stickyPage .stickyAdsFooter.mrf-madLoaded,
+			.mrf-sticky-wrapper .stickyPage .mrf-adv-sticky.mrf-madLoaded {
+				pointer-events: auto;
+				padding-top: 3px;
+				padding-bottom: 0;
+				border-top: 1px solid #ccc;
+				background-color: white;
+				line-height: 100%;
+			}
+
+			.mrf-sticky-wrapper .stickyPage .stickyAdsFooter.mrf-madLoaded::before {
+				content: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="mrf-header" class="mrf-header mrf-collapsableHeader"></header>
+		<div class="media"></div>
+
+		<section id="sizingWrapper">
+			<div>
+				<span
+					style="
+						font-family: 'system-ui', '-apple-system',
+							'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen',
+							'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+							'Helvetica Neue', 'sans-serif', 'System Default', serif;
+						-webkit-text-fill-color: var(
+								--token-710882bd-9491-4cf6-bdf9-261847fdf8c6,
+								rgb(0, 255, 255)
+							);
+						font-size: 15px;
+						line-height: 1.2;
+						font-weight: 600;
+					"
+					>TECNOLOGÍA Y TENDENCIAS</span>
+			</div>
+			<div>
+				<span
+					style="
+						font-family: 'Roboto Condensed', sans-serif;
+						-webkit-text-fill-color: hsl(0, 0%, 0%);
+						font-size: 26px;
+						line-height: 1.15;
+						font-weight: 700;
+						font-style: normal;
+					"
+					>Las ciberamenazas escalan entre las inquietudes de los CEO
+						españoles</span>
+			</div>
+			<div>
+				<span
+					style="
+						font-family: 'system-ui', '-apple-system',
+							'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen',
+							'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+							'Helvetica Neue', 'sans-serif', 'System Default', serif;
+						-webkit-text-fill-color: hsl(0, 0%, 78%);
+						font-size: 14px;
+						line-height: 1.2;
+						font-weight: 500;
+					"
+					>Por Jean Francoise</span>
+			</div>
+			<div style="
+				width: 100%;
+				margin: 3px 0;
+			">
+				<svg
+					width="100%"
+					height="100%"
+					xmlns="http://www.w3.org/2000/svg"
+					style="width: 100%;  height: 3px;">
+					<path d="M 0 0 L 300 0 L 300 3 L 0 3 Z" fill="rgb(0, 255, 255)" name="Rectangle" />
+				</svg>
+			</div>
+			<div>
+				<span
+					style="
+						font-family: 'system-ui', '-apple-system',
+							'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen',
+							'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+							'Helvetica Neue', 'sans-serif', serif;
+						-webkit-text-fill-color: #555555;
+						font-size: 18px;
+						line-height: 1.2;
+					"
+					>La encuesta anual que elabora la firma de consultoría <a id="testLink" href="https://www.pwc.com/" target="_self">PWC >>> TEST TAP <<< </a>
+						señala que el 61% de los consejeros españoles ve en el
+						cibercrimen una amenaza para su empresa</span>
+			</div>
+			<div style="
+				width: 100%;
+				margin: 3px 0;
+			">
+				<svg
+					width="100%"
+					height="100%"
+					xmlns="http://www.w3.org/2000/svg"
+					style="width: 100%;  height: 3px;">
+					<path d="M 0 0 L 300 0 L 300 3 L 0 3 Z" fill="rgb(0, 255, 255)" name="Rectangle" />
+				</svg>
+			</div>
+			<div>
+				<span
+					style="
+						font-family: system-ui, -apple-system,
+							BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+							Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
+							'Helvetica Neue', sans-serif, serif;
+						-webkit-text-fill-color: rgb(0, 0, 0);
+						font-size: 18px;
+						line-height: 1.25;
+					"
+					><span
+						>La compañía norteamericana realiza desde hace
+						más de 20 años un análisis con las inquietudes
+						de los empresarios de 42 territorios distintos y
+						permite establecer una comparativa seleccionando
+						algún país en concreto.</span
+					></span
+				>
+			</div>
+			<div>
+				<br>
+				<span
+					style="
+						font-family: system-ui, -apple-system,
+							BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+							Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
+							'Helvetica Neue', sans-serif, serif;
+						-webkit-text-fill-color: rgb(0, 0, 0);
+						font-size: 18px;
+						line-height: 1.25;
+					"
+					> En este sentido, las ciberamenazas han escalado
+						posiciones en el ránking de las preocupaciones
+						para los consejeros delegados de España. Los
+						delitos cibernéticos ya son su segunda
+						inquietud, por delante incluso de la
+						incertidumbre política y la velocidad con la que
+						se producen los cambios tecnológicos que cada
+						vez más empresas implementan.</span>
+			</div>
+			<div
+				style="
+					height: 263px;
+					background-image: url(statics/ad-1.png);
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center center;
+			"></div>
+			<div>
+				<br>
+				<span class="common-text">
+						En este sentido, las ciberamenazas han escalado
+						posiciones en el ránking de las preocupaciones
+						para los consejeros delegados de España. Los
+						delitos cibernéticos ya son su segunda
+						inquietud, por delante incluso de la
+						incertidumbre política y la velocidad con la que
+						se producen los cambios tecnológicos que cada
+						vez más empresas implementan.
+				</span>
+			</div>
+			<div>
+				<br>
+				<span class="common-text">
+						A nivel global, los ciberdelitos no alcanzan ni
+						comparte el primer puesto la sobrerregulación,
+						con un 36% de los encuestados situándo a este
+						indicador por delante de otros como los
+						conflictos comerciales (35% de los directivos) o
+						la incertidumbre sobre el crecimiento económico
+						mundial (34%).
+					</span>
+			</div>
+
+			<article class="mrf-article mrf-article--pill mrf-offsetTop mrf-page mrf-author mrf-video mrf-m mrf-image ">
+				<div class="img  mrf-article-image mrf-article__image ">
+					<img class="mrf-article-image-element" >
+					<span class="mrf-playButton">
+						<svg id="mrf-Icon--video"  class="mrf-Icon mrf-Icon--xs"viewBox="0 0 24 24">
+							<path d="M7 18V6l12 6"></path>
+						</svg>
+					</span>
+				</div>
+				<span class="mrf-article__share" data-shortcut="share:mosaic">
+					<svg id="mrf-Icon--options-v" class="mrf-Icon mrf-Icon--m" viewBox="0 0 24 24">
+						<path d="M12 8c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm0 6c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm0 6c1.104 0 2-.895 2-2s-.896-2-2-2-2 .895-2 2 .896 2 2 2z"></path>
+					</svg>
+				</span>
+				<a class="mrf-buttonOpacityLight mrf-button mrf-buttonArticle mrf-hidden-link " href="https://www.diariomotor.com/noticia/comparativa-4x4-jeep-wrangler-rubicon-ford-ranger-raptor-toyota-land-cruiser/">
+					<h2 class="mrf-article__title">
+						Comparativa 4x4: Jeep Wrangler Rubicon vs Ford Ranger Raptor vs Toyota Land Cruiser
+					</h2>
+				</a>
+			</article>
+
+			<div>
+				<span
+					style="
+						font-family: 'Roboto Condensed', sans-serif;
+						-webkit-text-fill-color: hsl(0, 0%, 0%);
+						font-size: 22px;
+						line-height: 1.2;
+						font-weight: 700;
+						font-style: normal;
+					"
+					>
+						El temor al cambio climático pasa del 3% al 20% en un año
+					</span>
+			</div>
+			<div>
+				<br>
+				<span class="common-text">
+						En este sentido, las ciberamenazas han escalado
+						posiciones en el ránking de las preocupaciones
+						para los consejeros delegados de España. Los
+						delitos cibernéticos ya son su segunda
+						inquietud, por delante incluso de la
+						incertidumbre política y la velocidad con la que
+						se producen los cambios tecnológicos que cada
+						vez más empresas implementan.
+					</span>
+			</div>
+			<div>
+				<br>
+				<span class="common-text">
+						A nivel global, los ciberdelitos no alcanzan ni
+						comparte el primer puesto la sobrerregulación,
+						con un 36% de los encuestados situándo a este
+						indicador por delante de otros como los
+						conflictos comerciales (35% de los directivos) o
+						la incertidumbre sobre el crecimiento económico
+						mundial (34%).
+					</span>
+			</div>
+			<div
+			style="
+				height: 138px;
+				background-image: url(statics/quote.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center center;
+				image-rendering: pixelated;
+			"></div>
+			<div
+			style="
+				height: 230px;
+				background-image: url(statics/article-image-2.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center center;
+				image-rendering: auto;
+			"></div>
+			<div>
+				<span class="common-text">
+						En este sentido, las ciberamenazas han escalado
+						posiciones en el ránking de las preocupaciones
+						para los consejeros delegados de España. Los
+						delitos cibernéticos ya son su segunda
+						inquietud, por delante incluso de la
+						incertidumbre política y la velocidad con la que
+						se producen los cambios tecnológicos que cada
+						vez más empresas implementan.
+					</span>
+			</div>
+			<div>
+				<br>
+				<span class="common-text">
+						A nivel global, los ciberdelitos no alcanzan ni
+						comparte el primer puesto la sobrerregulación,
+						con un 36% de los encuestados situándo a este
+						indicador por delante de otros como los
+						conflictos comerciales (35% de los directivos) o
+						la incertidumbre sobre el crecimiento económico
+						mundial (34%).
+					</span>
+			</div>
+			<div>
+				<br>
+				<span class="common-text">
+						De esta manera, en consejo de los expertos
+						consultados, hay que empezar por material para
+						los estiramientos: en este caso colchonetas o
+						esterillas. Se debe empezar por una sesión de
+						carrera suave, para ello es clave la cinta de
+						correr. O la incertidumbre sobre el crecimiento
+						económico mundial (34%) con la que se producen
+						los cambios tecnológicos.
+					</span>
+			</div>
+			<div>
+				<br>
+				<span class="common-text">
+						De esta manera, en consejo de los expertos
+						consultados, hay que empezar por material para
+						los estiramientos: en este caso colchonetas o
+						esterillas. Se debe empezar por una sesión de
+						carrera suave, para ello es clave la cinta de
+						correr. O la incertidumbre sobre el crecimiento
+						económico mundial (34%) con la que se producen
+						los cambios tecnológicos.
+					</span>
+			</div>
+			<div class="mrf-lazyDetails--extras">
+				<div>
+					<span
+						style="
+							font-family: 'Roboto Condensed', sans-serif;
+							-webkit-text-fill-color: hsl(0, 0%, 0%);
+							font-size: 22px;
+							line-height: 1.2;
+							font-weight: 700;
+							font-style: normal;
+						"
+						>
+							Fake comments / Taboola
+						</span>
+				</div>
+				<br>
+				<span class="mrf-commentsContainer common-text">
+						De esta manera, en consejo de los expertos
+						consultados, hay que empezar por material para
+						los estiramientos: en este caso colchonetas o
+						esterillas. Se debe empezar por una sesión de
+						carrera suave, para ello es clave la cinta de
+						correr. O la incertidumbre sobre el crecimiento
+						económico mundial (34%) con la que se producen
+						los cambios tecnológicos.
+					</span>
+			</div>
+			<div>
+				<br>
+				<span class="common-text">
+						De esta manera, en consejo de los expertos
+						consultados, hay que empezar por material para
+						los estiramientos: en este caso colchonetas o
+						esterillas. Se debe empezar por una sesión de
+						carrera suave, para ello es clave la cinta de
+						correr. O la incertidumbre sobre el crecimiento
+						económico mundial (34%) con la que se producen
+						los cambios tecnológicos.
+					</span>
+			</div>
+			<div>
+				<br>
+				<span class="common-text">
+						De esta manera, en consejo de los expertos
+						consultados, hay que empezar por material para
+						los estiramientos: en este caso colchonetas o
+						esterillas. Se debe empezar por una sesión de
+						carrera suave, para ello es clave la cinta de
+						correr. O la incertidumbre sobre el crecimiento
+						económico mundial (34%) con la que se producen
+						los cambios tecnológicos.
+					</span>
+			</div>
+			<div
+			style="
+				height: 230px;
+				background-image: url(statics/article-image-2.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center center;
+				image-rendering: auto;
+			"></div>
+			<div>
+				<br>
+				<span class="common-text">
+						De esta manera, en consejo de los expertos
+						consultados, hay que empezar por material para
+						los estiramientos: en este caso colchonetas o
+						esterillas. Se debe empezar por una sesión de
+						carrera suave, para ello es clave la cinta de
+						correr. O la incertidumbre sobre el crecimiento
+						económico mundial (34%) con la que se producen
+						los cambios tecnológicos.
+					</span>
+			</div>
+			<div>
+				<br>
+				<span class="common-text">
+						De esta manera, en consejo de los expertos
+						consultados, hay que empezar por material para
+						los estiramientos: en este caso colchonetas o
+						esterillas. Se debe empezar por una sesión de
+						carrera suave, para ello es clave la cinta de
+						correr. O la incertidumbre sobre el crecimiento
+						económico mundial (34%) con la que se producen
+						los cambios tecnológicos.
+					</span>
+			</div>
+			<div
+			style="
+				height: 138px;
+				background-image: url(statics/quote.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center center;
+				image-rendering: pixelated;
+			"></div>
+			<div>
+				<br>
+				<span class="common-text">
+						De esta manera, en consejo de los expertos
+						consultados, hay que empezar por material para
+						los estiramientos: en este caso colchonetas o
+						esterillas. Se debe empezar por una sesión de
+						carrera suave, para ello es clave la cinta de
+						correr. O la incertidumbre sobre el crecimiento
+						económico mundial (34%) con la que se producen
+						los cambios tecnológicos.
+					</span>
+			</div>
+			<div>
+				<br>
+				<span class="common-text">
+						De esta manera, en consejo de los expertos
+						consultados, hay que empezar por material para
+						los estiramientos: en este caso colchonetas o
+						esterillas. Se debe empezar por una sesión de
+						carrera suave, para ello es clave la cinta de
+						correr. O la incertidumbre sobre el crecimiento
+						económico mundial (34%) con la que se producen
+						los cambios tecnológicos.
+					</span>
+			</div>
+			<div
+			style="
+				height: 230px;
+				background-image: url(statics/article-image-2.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center center;
+				image-rendering: auto;
+			"></div>
+		</section>
+		<div id="fake-footer">
+			<div>
+				<span
+					style="
+						font-family: 'Roboto Condensed', sans-serif;
+						-webkit-text-fill-color: hsl(0, 0%, 0%);
+						font-size: 22px;
+						line-height: 1.2;
+						font-weight: 700;
+						font-style: normal;
+					"
+				>
+					Fake footer
+				</span>
+			</div>
+			<br>
+			<span class="mrf-commentsContainer common-text">
+				De esta manera, en consejo de los expertos
+				consultados, hay que empezar por material para
+				los estiramientos: en este caso colchonetas o
+				esterillas. Se debe empezar por una sesión de
+				carrera suave, para ello es clave la cinta de
+				correr. O la incertidumbre sobre el crecimiento
+				económico mundial (34%) con la que se producen
+				los cambios tecnológicos.
+			</span>
+			<div
+			style="
+				height: 230px;
+				background-image: url(statics/article-image-2.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center center;
+				image-rendering: auto;
+			"></div>
+		</div>
+		<div class="mrf-sticky-wrapper">
+			<div class="stickyPage mrf-page">
+				<div class="mrf-adv mrf-adv-sticky mad mrf-madLoaded">
+					<div
+						style="
+							height: 80px;
+							background-image: url(statics/stickyAd.png);
+							background-size: cover;
+							background-repeat: no-repeat;
+							background-position: center center;
+							image-rendering: auto;
+						"></div>
+				</div>
+			</div>
+		</div>
+		<marfeel-flowcards initialization="idle"></marfeel-flowcards>
+		<script>
+			window.onbeforeunload = function() {
+				window.scrollTo(0, 0);
+			};
+			window.marfeel = {};
+		</script>
+	</body>
+</html>
