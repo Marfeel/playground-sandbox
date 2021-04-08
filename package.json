@@ -29,16 +29,14 @@
     "url": "https://github.com/Marfeel/flowcards-playground/issues"
   },
   "homepage": "https://github.com/Marfeel/flowcards-playground#readme",
-  "devDependencies": {
+  "dependencies": {
     "@wdio/local-runner": "^7.3.1",
     "@wdio/mocha-framework": "^7.3.1",
     "@wdio/static-server-service": "^7.3.1",
     "@wdio/sync": "^7.3.1",
     "appium": "^1.20.2",
     "appium-doctor": "^1.16.0",
-    "chai": "^4.3.4"
-  },
-  "dependencies": {
+    "chai": "^4.3.4",
     "@wdio/cli": "^7.3.1",
     "browserstack-local": "^1.4.8",
     "dotenv": "^8.2.0"
