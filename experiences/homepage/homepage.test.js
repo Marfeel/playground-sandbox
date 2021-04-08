@@ -10,8 +10,7 @@ describe("homepage experience", function () {
 	siteUrl = 'https://playground.marfeel.com/templates/article-example.html',
 	requestHostname = 'playground.marfeel.com',
 	technology = 'web',
-	experienceUrl = '/experiences/homepage/homepage.json',
-	flowcardsHostname = 'https://localhost';
+	experienceUrl = '/experiences/homepage/homepage.json';
 
 	it("setup", async function () {
 		config = {
@@ -52,7 +51,7 @@ describe("homepage experience", function () {
 			}
 		}
 		fixture = {
-			url: `https://playground.mrf.io/simulate?siteUrl=${siteUrl}&requestHostname=${requestHostname}&technology=${technology}&experienceUrl=${experienceUrl}&flowcardsHostname=${flowcardsHostname}`,
+			url: `https://playground.mrf.io/simulate?siteUrl=${siteUrl}&requestHostname=${requestHostname}&technology=${technology}&experienceUrl=${experienceUrl}`,
 			articleTitle: 'Article example',
 		}
 
