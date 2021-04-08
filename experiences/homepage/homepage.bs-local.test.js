@@ -1,8 +1,8 @@
-const { bootstrapExperience } = require("../utils/bootstrap");
-const { scrollTo } = require("../utils/scroll");
-const { dragCardTo, dragCardBy, touchCard } = require("../utils/touch");
-const { getBrowserInnerSizes } = require("../utils/browser");
-const { isAtPercentageSnapPoint, isAtAbsoluteSnapPoint } = require("../utils/snapPoints");
+const { bootstrapExperience } = require("../../tests/utils/bootstrap");
+const { scrollTo } = require("../../tests/utils/scroll");
+const { dragCardTo, dragCardBy, touchCard } = require("../../tests/utils/touch");
+const { getBrowserInnerSizes } = require("../../tests/utils/browser");
+const { isAtPercentageSnapPoint, isAtAbsoluteSnapPoint } = require("../../tests/utils/snapPoints");
 const { expect } = require('chai');
 
 describe("homepage experience", function () {
