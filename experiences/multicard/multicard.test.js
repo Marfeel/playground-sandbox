@@ -1,6 +1,6 @@
-const { bootstrapExperience } = require("../utils/bootstrap");
-const { scrollTo } = require("../utils/scroll");
-const { dragCardTo } = require("../utils/touch");
+const { bootstrapExperience } = require("../../tests/utils/bootstrap");
+const { scrollTo } = require("../../tests/utils/scroll");
+const { dragCardTo } = require("../../tests/utils/touch");
 const { expect } = require('chai');
 
 describe("multiple cards", function () {

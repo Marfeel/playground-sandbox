@@ -1,8 +1,8 @@
-const { bootstrapExperience } = require("../utils/bootstrap");
-const { scrollTo } = require("../utils/scroll");
-const { dragCardTo } = require("../utils/touch");
+const { bootstrapExperience } = require("../../tests/utils/bootstrap");
+const { scrollTo } = require("../../tests/utils/scroll");
+const { dragCardTo } = require("../../tests/utils/touch");
 const { expect } = require('chai');
-const config = require('../../fixtures/config-multiple-cards.json');
+const config = require('../../tests/fixtures/config-multiple-cards.json');
 
 
 describe("multiple cards", function () {
