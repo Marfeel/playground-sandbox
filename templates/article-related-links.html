@@ -143,6 +143,8 @@
 			window.marfeel.flowcards = window.marfeel.flowcards || { que: [] };
 
 			window.marfeel.flowcards.que.push(() => {
+				window.marfeel.flowcards.setTargeting("template", "contextual_v2");
+          			window.marfeel.flowcards.setTargeting("url","https%3A%2F%2Fplayground.marfeel.com%2Fexperiences%2Ffeatured_article%2Ffeatured_article.html");
 				window.marfeel.flowcards.init({ siteId: 0, timeout: 1000 });
 			});
 		}
