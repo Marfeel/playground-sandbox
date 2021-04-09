@@ -1,0 +1,40 @@
+{
+	"cards": {
+		"heroImage": {
+			"content": {
+				"type": "AMPDocument",
+				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/featured_article_amp/featured_article_amp.html"
+			},
+			"snapPoints": {
+				"initial": 0.75,
+				"minimised": 0.82,
+				"promoted": 176,
+				"active": 210
+			},
+			"features": {
+				"mode": "modal",
+				"isDraggable": true,
+				"button": {
+					"action": "setSnapPoint:initial"
+				},
+				"infiniteScroll": true,
+				"header": {
+					"dragHandlerBg": "#FFFFFF"
+				},
+				"heroElement": {
+					"src": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=720&auto=format"
+				}
+			},
+			"triggers": {
+				"myScrollTrigger": {
+					"on": "scroll",
+					"spec": {
+						"type": "absolute",
+						"pixel": 300,
+						"percentage": 0.1
+					}
+				}
+			}
+		}
+	}
+}
