@@ -1,4 +1,4 @@
-export const getUrlFixture = ({
+module.exports.getUrlFixture = ({
 	siteUrl,
 	requestHostname,
 	technology,
@@ -10,5 +10,6 @@ export const getUrlFixture = ({
 		url += '&flowcardsHostname=https://bs-local.com';
 	}
 
+	console.log('wololo ', url)
 	return url;
 }
