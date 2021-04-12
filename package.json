@@ -15,7 +15,6 @@
     "single": "wdio conf/single.conf.js",
     "single:local": "wdio conf/single.local.conf.js",
     "single:local:dev": "wdio conf/single.local.server.conf.js",
-    "parallel": "wdio conf/parallel.conf.js",
     "appium:tab": "ttab -q -G -t 'Appium Server' npm run appium",
     "appium": "appium"
   },
