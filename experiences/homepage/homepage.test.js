@@ -61,7 +61,7 @@ describe('homepage experience', function() {
 		expect(isAtInitialSnapPoint).equal(true);
 	});
 
-	// fix minimise
+	//TODO To fix this failing test
 	// it("minimise card and should be at minimised snap point", async ()=>{
 	// 	await dragCardBy(browser, config.cards.homepage.cardSelector, 200)
 
