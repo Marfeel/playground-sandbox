@@ -16,26 +16,16 @@ exports.config = {
 
   capabilities: [
     {
-      device: 'Google Pixel 5',
-      browserName: 'Android',
-      os_version: '11.0',
-      real_mobile: 'true',
-      'browserstack.local': true,
-      'browserstack.console': "info",
-      'browserstack.networkLogs':true,
-      'browserstack.acceptInsecureCerts': 'true'
-    },
-  //   {
-  //   platformName: 'iOS',
-  //   automationName: 'XCUITest',
-  //   deviceName: 'iPhone 12 Pro Max',
-  //   platformVersion: '14',
-  //   browserName: 'Safari',
-  //   'browserstack.local': true,
-  //   'browserstack.console': "info",
-  //   'browserstack.networkLogs':true,
-  //   'browserstack.acceptInsecureCerts': true
-  // }
+    platformName: 'iOS',
+    automationName: 'XCUITest',
+    deviceName: 'iPhone 12 Pro Max',
+    platformVersion: '14',
+    browserName: 'Safari',
+    'browserstack.local': true,
+    'browserstack.console': "info",
+    'browserstack.networkLogs':true,
+    'browserstack.acceptInsecureCerts': true
+  }
 ],
 
   logLevel: 'warn',
@@ -57,14 +47,6 @@ exports.config = {
     ui: 'bdd',
     timeout: 60000
   },
-  // services: [
-  //   ['static-server', {
-  //       folders: [
-  //           { mount: '/', path: './dist' },
-  //           { mount: '/', path: './fixtures' }
-  //       ]
-  //   }]
-  // ],
 
   // Code to start browserstack local before start of test
   onPrepare: function (config, capabilities) {
