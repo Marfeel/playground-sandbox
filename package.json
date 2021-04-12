@@ -11,11 +11,11 @@
     "url": "git+https://github.com/Marfeel/flowcards-playground.git"
   },
   "scripts": {
-    "local": "./node_modules/.bin/wdio conf/local.conf.js",
-    "single": "./node_modules/.bin/wdio conf/single.conf.js",
-    "single:local": "./node_modules/.bin/wdio conf/single.local.conf.js",
-    "single:local:dev": "./node_modules/.bin/wdio conf/single.local.server.conf.js",
-    "parallel": "./node_modules/.bin/wdio conf/parallel.conf.js",
+    "local": "wdio conf/local.conf.js",
+    "single": "wdio conf/single.conf.js",
+    "single:local": "wdio conf/single.local.conf.js",
+    "single:local:dev": "wdio conf/single.local.server.conf.js",
+    "parallel": "wdio conf/parallel.conf.js",
     "appium:tab": "ttab -q -G -t 'Appium Server' npm run appium",
     "appium": "appium"
   },
