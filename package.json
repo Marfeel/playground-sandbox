@@ -3,7 +3,6 @@
   "version": "0.0.0-development",
   "description": "Flowcards Experiences",
   "files": [
-    "conf/**/*",
     "experiences/**/*.test.js",
     "tests/**/*"
   ],
