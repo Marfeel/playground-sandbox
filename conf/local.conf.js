@@ -36,6 +36,7 @@ exports.config = {
   waitforTimeout: 10000,
   connectionRetryTimeout: 90000,
   connectionRetryCount: 3,
+  path: isProduction? null : "/wd/hub",
   host: isProduction? 'hub.browserstack.com' : 'localhost',
   port: isProduction ? null : 4723,
 
