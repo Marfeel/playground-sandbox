@@ -10,6 +10,5 @@ module.exports.getUrlFixture = ({
 		url += '&flowcardsHostname=https://bs-local.com';
 	}
 
-	console.log('wololo ', url)
 	return url;
 }
