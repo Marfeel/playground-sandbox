@@ -1,6 +1,6 @@
 
 const dragCardTo = async (browser, cardSelector, yPos)=>{
-    await browser.execute(async (cardSelector, yPos) => {
+    await browser.executeAsync(async (cardSelector, yPos, done) => {
         const createTouch = (target, clientY, clientX = 200) => {
             return new Touch({
                 identifier: 123,

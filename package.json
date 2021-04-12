@@ -3,15 +3,10 @@
   "version": "0.1.0",
   "description": "Flowcards Experiences",
   "files": [
-<<<<<<< HEAD
     "experiences/**/*.test.js",
     "experiences/**/*.json",
-    "e2e/**/*"
-=======
-    "conf/**/*",
-    "experiences/**/*.test.js",
+    "e2e/**/*",
     "tests/**/*"
->>>>>>> 41155d4 (build(deps): add missing dependencies for end to end tests)
   ],
   "repository": {
     "type": "git",
