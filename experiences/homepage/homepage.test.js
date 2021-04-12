@@ -1,16 +1,19 @@
 const { bootstrapExperience } = require("../../tests/utils/bootstrap");
 const { scrollTo } = require("../../tests/utils/scroll");
-const { dragCardTo, dragCardBy, touchCard } = require("../../tests/utils/touch");
-const { getBrowserInnerSizes } = require("../../tests/utils/browser");
+const { touchCard } = require("../../tests/utils/touch");
 const { isAtPercentageSnapPoint, isAtAbsoluteSnapPoint } = require("../../tests/utils/snapPoints");
 const { expect } = require('chai');
+const { getUrlFixture } = require('../../tests/utils/fixtureUrl');
 
 describe("homepage experience", function () {
-	let cardSelectors, config, fixture,
-	siteUrl = 'https://playground.marfeel.com/templates/article-example.html',
-	requestHostname = 'playground.marfeel.com',
-	technology = 'web',
-	experienceUrl = '/experiences/homepage/homepage.json';
+	let config;
+	let fixture;
+	const fixtureUrl = getUrlFixture({
+		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
+		requestHostname: 'playground.marfeel.com',
+		technology: 'web',
+		experienceUrl: '/experiences/homepage/homepage.json',
+	})
 
 	it("setup", async function () {
 		config = {
@@ -51,18 +54,18 @@ describe("homepage experience", function () {
 			}
 		}
 		fixture = {
-			url: `https://playground.mrf.io/simulate?siteUrl=${siteUrl}&requestHostname=${requestHostname}&technology=${technology}&experienceUrl=${experienceUrl}`,
+			url: fixtureUrl,
 			articleTitle: 'Article example',
 		}
 
-		cardSelectors = await bootstrapExperience(browser, config, fixture);
+		await bootstrapExperience(browser, config, fixture);
 	});
-	
+
 	it("card should render on scroll", async function () {
 		await scrollTo(browser, 400)
-		
+
 		const firstCard = await browser.$(config.cards.homepage.cardSelector);
-		
+
 		const firstCardExists = await firstCard.waitForExist({ timeout: 5000 });
 
 		expect(firstCardExists).equal(true);
@@ -77,18 +80,19 @@ describe("homepage experience", function () {
 
 		expect(firstCardIsInViewport).equal(true);
 
-		const isAtInitialSnapPoint = await isAtPercentageSnapPoint(browser, 
-			config.cards.homepage.cardSelector, 
+		const isAtInitialSnapPoint = await isAtPercentageSnapPoint(browser,
+			config.cards.homepage.cardSelector,
 			config.cards.homepage.snapPoints.initial)
 
 		expect(isAtInitialSnapPoint).equal(true);
 	});
 
+	//TODO To fix this failing test
 	// it("minimise card and should be at minimised snap point", async ()=>{
  	// 	await dragCardBy(browser, config.cards.homepage.cardSelector, 150)
 
-	// 	const isAtMinimisedSnapPoint = await isAtPercentageSnapPoint(browser, 
-	// 		config.cards.homepage.cardSelector, 
+	// 	const isAtMinimisedSnapPoint = await isAtPercentageSnapPoint(browser,
+	// 		config.cards.homepage.cardSelector,
 	// 		config.cards.homepage.snapPoints.minimised)
 
 	// 	expect(isAtMinimisedSnapPoint).equal(true);
@@ -99,14 +103,14 @@ describe("homepage experience", function () {
 
 		let isAtActiveSnapPoint;
 		await browser.waitUntil(async ()=>{
-			isAtActiveSnapPoint = await isAtAbsoluteSnapPoint(browser, 
-				config.cards.homepage.cardSelector, 
+			isAtActiveSnapPoint = await isAtAbsoluteSnapPoint(browser,
+				config.cards.homepage.cardSelector,
 				config.cards.homepage.snapPoints.active)
 
 				return isAtActiveSnapPoint;
 		}, {
 			timeout:5000
-		}); 
+		});
 
 	   expect(isAtActiveSnapPoint).equal(true);
    });
