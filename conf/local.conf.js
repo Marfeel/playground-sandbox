@@ -10,7 +10,7 @@ exports.config = {
 
   updateJob: false,
   specs: [
-    './tests/specs/homepage.bs-local.test.js'
+    './experiences/**/*.test.js'
   ],
   exclude: [],
 
