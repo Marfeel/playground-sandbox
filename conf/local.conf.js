@@ -1,7 +1,7 @@
 exports.config = {
   updateJob: false,
   specs: [
-    '../experiences/homepage/homepage.test.js'
+    './experiences/homepage/homepage.test.js',
   ],
   exclude: [],
 
