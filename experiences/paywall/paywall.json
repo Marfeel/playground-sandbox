@@ -10,10 +10,7 @@
 			},
 			"features": {
 				"mode": "modal",
-				"isDraggable": false,
-				"header": {
-					"dragHandlerBg": "#223F6D"
-				}
+				"isDraggable": false
 			},
 			"triggers": {
 				"myScrollTrigger": {

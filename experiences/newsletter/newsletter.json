@@ -11,10 +11,7 @@
 			"features": {
 				"mode": "contextual",
 				"removable": true,
-				"isDraggable": true,
-				"header": {
-					"dragHandlerBg": "#223F6D"
-				}
+				"isDraggable": true
 			},
 			"triggers": {
 				"myScrollTrigger": {

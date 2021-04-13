@@ -11,9 +11,6 @@
 			"features": {
 				"mode": "contextual",
 				"removable": true,
-				"header": {
-					"dragHandlerBg": "#FFFFFF"
-				},
 				"isDraggable": true
 			},
 			"triggers": {

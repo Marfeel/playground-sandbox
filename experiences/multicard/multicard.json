@@ -11,9 +11,6 @@
 				"active": 80
 			},
 			"features": {
-				"header": {
-					"dragHandlerBg": "#282346"
-				},
 				"mode": "modal",
 				"isDraggable": true
 			},
@@ -42,9 +39,6 @@
 				"mode": "modal",
 				"isDraggable": true,
 				"infiniteScroll": true,
-				"header": {
-					"dragHandlerBg": "#FFFFFF"
-				},
 				"removable": true
 			},
 			"triggers": {

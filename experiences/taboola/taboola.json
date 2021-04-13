@@ -17,10 +17,7 @@
 				"button": {
 					"action": "setSnapPoint:initial"
 				},
-				"infiniteScroll": true,
-				"header": {
-					"dragHandlerBg": "#FFFFFF"
-				}
+				"infiniteScroll": true
 			},
 			"triggers": {
 				"myScrollTrigger": {
