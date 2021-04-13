@@ -11,7 +11,9 @@
     "url": "git+https://github.com/Marfeel/flowcards-playground.git"
   },
   "scripts": {
-    "test": "npm run appium:tab && wdio conf/local.conf.js",
+    "test:local": "npm run appium:tab && END_TO_END_MODE=local wdio conf/conf.js",
+    "test:remote-local": "END_TO_END_MODE=browserstack-local wdio conf/conf.js",
+    "test:remote": "END_TO_END_MODE=browserstack-remote wdio conf/local.conf.js",
     "appium:tab": "ttab -q -G -t 'Appium Server' npm run appium",
     "appium": "appium"
   },
