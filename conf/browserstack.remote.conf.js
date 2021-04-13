@@ -10,23 +10,17 @@ exports.config = {
 
   updateJob: false,
   specs: [
-    './experiences/**/*.test.js'
+    './experiences/homepage/homepage.test.js',
   ],
   exclude: [],
 
-  capabilities: [
-    {
-    platformName: "iOS",
-		automationName: "XCUITest",
-		deviceName: "iPhone 8 Plus",
-		platformVersion: "14.4",
-		browserName: "Safari",
-    'browserstack.local': true,
-    'browserstack.console': "info",
-    'browserstack.networkLogs':true,
-    'browserstack.acceptInsecureCerts': true
-  }
-],
+  capabilities: [{
+    platformName: 'iOS',
+    automationName: 'XCUITest',
+    deviceName: 'iPhone 12 Pro Max',
+    platformVersion: '14',
+    browserName: 'Safari',
+  }],
 
   logLevel: 'warn',
   coloredLogs: true,
