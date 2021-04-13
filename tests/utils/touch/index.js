@@ -1,3 +1,4 @@
+const { closeCard } = require('./closeCard');
 
 const dragCardTo = async (browser, cardSelector, yPos)=>{
     await browser.executeAsync(async (cardSelector, yPos, done) => {
@@ -96,4 +97,5 @@ module.exports = {
     dragCardTo,
     dragCardBy,
     touchCard,
+    closeCard
 }
