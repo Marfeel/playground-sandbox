@@ -1,17 +1,19 @@
-const { config: browserStackRemoteConf } = require('./browserstack.remote.conf')
-const { config: browserStackLocalConf } = require('./browserstack.local.conf')
-const { config: localConf } = require('./local.conf')
+const { config: defaultBrowserStackConf } = require('./browserstack.conf')
+const { config: defaultBrowserStackLocalConf } = require('./browserstack.local.conf')
+const { config: defaultLocalConf } = require('./local.conf')
 
-exports.getConf = () => {
+exports.getConf = ({
+	customConf
+}) => {
 	const endToEndMode = process.env.END_TO_END_MODE;
 	console.log(endToEndMode)
 	switch (endToEndMode) {
-		case 'browserstack-remote':
-			return browserStackRemoteConf;
+		case 'browserstack':
+			return customConf || defaultBrowserStackConf;
 		case 'browserstack-local':
-			return browserStackLocalConf;
+			return customConf || defaultBrowserStackLocalConf;
 		case 'local':
-			return localConf;
+			return customConf || defaultLocalConf;
 		default:
 			throw new Error(`End to End mode ${endToEndMode} does not exist`)
 	}
