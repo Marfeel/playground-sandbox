@@ -1,33 +1,29 @@
-require('dotenv').config();
 var browserstack = require('browserstack-local');
 
+require('dotenv').config();
 const user = process.env.BROWSERSTACK_USERNAME || '';
 const key = process.env.BROWSERSTACK_ACCESS_KEY || '';
-
 exports.config = {
-	user,
+    user,
   key,
-
   updateJob: false,
   specs: [
-    './experiences/**/*.test.js'
+    './experiences/homepage/homepage.bs-local.test.js'
   ],
   exclude: [],
-
   capabilities: [
     {
-    platformName: "iOS",
-		automationName: "XCUITest",
-		deviceName: "iPhone 8 Plus",
-		platformVersion: "14.4",
-		browserName: "Safari",
+    platformName: 'iOS',
+    automationName: 'XCUITest',
+    deviceName: 'iPhone 12 Pro Max',
+    platformVersion: '14',
+    browserName: 'Safari',
     'browserstack.local': true,
     'browserstack.console': "info",
     'browserstack.networkLogs':true,
     'browserstack.acceptInsecureCerts': true
   }
 ],
-
   logLevel: 'warn',
   coloredLogs: true,
   screenshotPath: './errorShots/',
@@ -35,9 +31,7 @@ exports.config = {
   waitforTimeout: 10000,
   connectionRetryTimeout: 90000,
   connectionRetryCount: 3,
-  path: "/wd/hub",
   host: 'hub.browserstack.com',
-
   before: function () {
     var chai = require('chai');
     global.expect = chai.expect;
@@ -56,13 +50,11 @@ exports.config = {
       exports.bs_local = new browserstack.Local();
       exports.bs_local.start({ 'key': exports.config.key }, function (error) {
         if (error) return reject(error);
-
         console.log('Connected. Now testing...');
         resolve();
       });
     });
   },
-
   // Code to mark the status of test on BrowserStack based on the assertion status
   afterTest: function (test, context, { error, result, duration, passed, retries }) {
     if(passed) {
@@ -71,7 +63,6 @@ exports.config = {
       browser.executeScript('browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "At least 1 assertion failed"}}');
     }
   },
-
   // Code to stop browserstack local after end of test
   onComplete: function (capabilties, specs) {
     return new Promise(function(resolve, reject){
