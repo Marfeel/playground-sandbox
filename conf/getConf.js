@@ -2,9 +2,7 @@ const { config: defaultBrowserStackConf } = require('./browserstack.conf')
 const { config: defaultBrowserStackLocalConf } = require('./browserstack.local.conf')
 const { config: defaultLocalConf } = require('./local.conf')
 
-exports.getConf = ({
-	customConf
-}) => {
+exports.getConf = (customConf) => {
 	const endToEndMode = process.env.END_TO_END_MODE;
 	console.log(endToEndMode)
 	switch (endToEndMode) {

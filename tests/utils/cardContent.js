@@ -1,25 +1,25 @@
 
+const playgroundUrlPlaceholders = '${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}'
 
+const getCardAMPContent = async (browser, cardSelector) => {
+    const contentInfo = await browser.executeAsync(async (cardSelector, done) => {
+        let amp = document.querySelector(`${cardSelector} article`).firstElementChild.shadowRoot.AMP
+        let info = {url: amp.url, title: amp.title};
+        done(info)
+    }, cardSelector); 
 
-const hasRightContentLoaded = async (browser, cardSelector)=>{
-    const currentPercentage = await browser.executeAsync(async (cardSelector, done) => {
-        const percentage = (document.querySelector(`${cardSelector} article`).firstElementChild.shadowRoot.DOCUMENT_NODE)
-        done(percentage)
-    }, cardSelector);
-
-    const difference = currentPercentage - expectedSnapPointPercentage
-    console.log(`
-        Expected Snappoint: ${expectedSnapPointPercentage} 
-        Current Snappoint: ${currentPercentage} 
-        Difference: ${difference}
-    `)
-    if (difference >= 0.05 || difference <= -0.05){
-        return false
-    }
-
-    return true
+    return contentInfo
 }
 
+const hasRightContentLoaded = async (browser, cardSelector, contentConfig) => {
+    const expectedUrl = contentConfig.url.includes(playgroundUrlPlaceholders) ? 
+    contentConfig.url.replace(playgroundUrlPlaceholders, '') :
+    contentConfig.url;
+    
+    const contentInfo = await getCardAMPContent(browser, cardSelector);
+    
+    return contentInfo.url.includes(expectedUrl);
+}
 
 module.exports = {
     hasRightContentLoaded
