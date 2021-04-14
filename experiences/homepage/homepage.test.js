@@ -1,10 +1,10 @@
-const { bootstrapExperience } = require("../../tests/utils/bootstrap");
-const { scrollTo } = require("../../tests/utils/scroll");
-const { touchCard } = require("../../tests/utils/touch");
-const { isAtSnapPoint } = require("../../tests/utils/snapPoints");
-const { isCardContentLoaded } = require("../../tests/utils/cardContent");
+const { bootstrapExperience } = require("../../e2e/utils/bootstrap");
+const { scrollTo } = require("../../e2e/utils/scroll");
+const { touchCard } = require("../../e2e/utils/touch");
+const { isAtSnapPoint } = require("../../e2e/utils/snapPoints");
+const { isCardContentLoaded } = require("../../e2e/utils/cardContent");
 const { expect } = require('chai');
-const { getUrlFixture } = require('../../tests/utils/fixtureUrl');
+const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./homepage.json');
 
 describe("homepage experience", function () {
