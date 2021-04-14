@@ -32,7 +32,7 @@ const checkPercentageSnapPoint = async (browser, cardSelector, expectedSnapPoint
         Current Snappoint: ${currentPercentage} 
         Difference: ${difference}
     `)
-    if (difference >= 0.05 || difference <= -0.05){
+    if (difference >= 0.08 || difference <= -0.08){
         return false
     }
 

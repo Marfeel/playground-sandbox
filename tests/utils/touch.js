@@ -28,16 +28,16 @@ const dragCardTo = async (browser, cardSelector, yPos)=>{
             await el.dispatchEvent(touchEndEvent);
         };
 
-        const dragTo = async (el, targetY) => {
+        let dragTo = async (el, targetY) => {
             const { y } = await el.getBoundingClientRect();
             await drag(el, y + 15, targetY);
         };
 
-        const dragCardTo = async (dragTarget, y) => {
+        let dragCardTo = async (dragTarget, y) => {
             await dragTo(dragTarget, y);
         };
 
-        const dragHandler = document.querySelector(`${cardSelector} [data-testid=cardDragTarget]`);
+        let dragHandler = document.querySelector(`${cardSelector} [data-testid=cardDragTarget]`);
         
         await dragCardTo(dragHandler, yPos);
 

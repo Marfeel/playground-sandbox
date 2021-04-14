@@ -8,7 +8,7 @@ exports.config = {
   capabilities: [{
     platformName: "iOS",
 		automationName: "XCUITest",
-		deviceName: "iPhone 8 Plus",
+		deviceName: "iPhone 11",
 		platformVersion: "14.4",
 		browserName: "Safari"
   }],
@@ -33,7 +33,8 @@ exports.config = {
   framework: 'mocha',
   mochaOpts: {
     ui: 'bdd',
-    timeout: 60000
+    timeout: 60000,
+    bail: true
   },
 
   afterTest: function (test, context, { error, result, duration, passed, retries }) {

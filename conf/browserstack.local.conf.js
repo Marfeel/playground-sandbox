@@ -4,18 +4,18 @@ require('dotenv').config();
 const user = process.env.BROWSERSTACK_USERNAME || '';
 const key = process.env.BROWSERSTACK_ACCESS_KEY || '';
 exports.config = {
-    user,
+  user,
   key,
   updateJob: false,
   specs: [
-    './experiences/homepage/homepage.bs-local.test.js'
+    './experiences/homepage/homepage.test.js'
   ],
   exclude: [],
   capabilities: [
     {
     platformName: 'iOS',
     automationName: 'XCUITest',
-    deviceName: 'iPhone 12 Pro Max',
+    deviceName: 'iPhone 11',
     platformVersion: '14',
     browserName: 'Safari',
     'browserstack.local': true,
@@ -40,7 +40,8 @@ exports.config = {
   framework: 'mocha',
   mochaOpts: {
     ui: 'bdd',
-    timeout: 60000
+    timeout: 60000,
+    bail: true
   },
 
   // Code to start browserstack local before start of test
