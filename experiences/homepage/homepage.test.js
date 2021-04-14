@@ -2,7 +2,7 @@ const { bootstrapExperience } = require("../../tests/utils/bootstrap");
 const { scrollTo } = require("../../tests/utils/scroll");
 const { touchCard } = require("../../tests/utils/touch");
 const { isAtSnapPoint } = require("../../tests/utils/snapPoints");
-const { hasRightContentLoaded } = require("../../tests/utils/cardContent");
+const { isCardContentLoaded } = require("../../tests/utils/cardContent");
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../tests/utils/fixtureUrl');
 const experience = require('./homepage.json');
@@ -37,7 +37,7 @@ describe("homepage experience", function () {
 	});
 
 	it("card should have right content", async function () {
-		const rightContentLoaded = await hasRightContentLoaded(browser, 
+		const rightContentLoaded = await isCardContentLoaded(browser, 
 			config.cards.homepage.cardSelector,
 			config.cards.homepage.content);
 

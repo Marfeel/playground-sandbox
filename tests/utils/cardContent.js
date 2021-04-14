@@ -11,7 +11,7 @@ const getCardAMPContent = async (browser, cardSelector) => {
     return contentInfo
 }
 
-const hasRightContentLoaded = async (browser, cardSelector, contentConfig) => {
+const isCardContentLoaded = async (browser, cardSelector, contentConfig) => {
     const expectedUrl = contentConfig.url.includes(playgroundUrlPlaceholders) ? 
     contentConfig.url.replace(playgroundUrlPlaceholders, '') :
     contentConfig.url;
@@ -22,5 +22,5 @@ const hasRightContentLoaded = async (browser, cardSelector, contentConfig) => {
 }
 
 module.exports = {
-    hasRightContentLoaded
+    isCardContentLoaded
 }
