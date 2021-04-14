@@ -1,0 +1,15 @@
+{
+	"extends": [
+		"@marfeel/js",
+		"@marfeel/node"
+	],
+	"env": {
+		"commonjs": true,
+		"node": true
+	},
+	"globals": {
+        "browser": "readonly",
+		"describe":true,
+		"it": true
+    }
+}

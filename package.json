@@ -16,7 +16,8 @@
     "test:browserstack": "E2E_MODE=browserstack wdio e2e/conf/browserstack.conf.js",
     "test:browserstack-local": "E2E_MODE=browserstack-local wdio e2e/conf/browserstack.conf.js",
     "appium:tab": "ttab -q -G -t 'Appium Server' npm run appium",
-    "appium": "appium"
+    "appium": "appium",
+    "lint": "eslint . "
   },
   "publishConfig": {
     "registry": "https://repositories.mrf.io/nexus/repository/npm-internal/"
@@ -38,5 +39,10 @@
     "@wdio/cli": "^7.3.1",
     "browserstack-local": "^1.4.8",
     "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "@marfeel/eslint-config-js": "^1.0.1-snapshot.15",
+    "@marfeel/eslint-config-node": "^1.0.1-snapshot.15",
+    "eslint": "^6.8.0"
   }
 }

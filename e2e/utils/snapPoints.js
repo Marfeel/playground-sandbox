@@ -1,68 +1,77 @@
+/* eslint-disable no-console */
 
 
-async function verifyAbsoluteSnapPoint(browser, cardSelector, expectedAbsoluteYposition){
-    const currentAbsolutePositionYPosition = await browser.executeAsync(async (cardSelector, done) => {
-        const y = document.querySelector(cardSelector).getBoundingClientRect().y
-        done(y)
-    }, cardSelector);
+async function verifyAbsoluteSnapPoint(browser, cardSelector, expectedAbsoluteYposition) {
+	const currentAbsolutePositionYPosition = await browser.executeAsync(async(cardSelector, done) => {
+		const y = document.querySelector(cardSelector).getBoundingClientRect().y
+;
 
-    const difference = currentAbsolutePositionYPosition - expectedAbsoluteYposition
-    console.log(`
+		done(y);
+	}, cardSelector);
+
+	const difference = currentAbsolutePositionYPosition - expectedAbsoluteYposition
+;
+
+	console.log(`
         Expected Snappoint: ${expectedAbsoluteYposition} 
         Current Snappoint: ${currentAbsolutePositionYPosition} 
         Difference: ${difference}
-    `)
+    `);
 
-    if (difference >= 5 || difference <= -5){
-        return false
-    }
+	if (difference >= 5 || difference <= -5) {
+		return false;
+	}
 
-    return true
+	return true;
 }
 
-const verifyPercentageSnapPoint = async (browser, cardSelector, expectedSnapPointPercentage)=>{
-    const currentPercentage = await browser.executeAsync(async (cardSelector, done) => {
-        const percentage = (document.querySelector(cardSelector).getBoundingClientRect().y)/window.innerHeight
-        done(percentage)
-    }, cardSelector);
+const verifyPercentageSnapPoint = async(browser, cardSelector, expectedSnapPointPercentage)=>{
+	const currentPercentage = await browser.executeAsync(async(cardSelectorBrowser, done) => {
+		const percentage = (document.querySelector(cardSelectorBrowser).getBoundingClientRect().y)/window.innerHeight
+;
 
-    const difference = currentPercentage - expectedSnapPointPercentage
-    console.log(`
+		done(percentage);
+	}, cardSelector);
+
+	const difference = currentPercentage - expectedSnapPointPercentage
+;
+
+	console.log(`
         Expected Snappoint: ${expectedSnapPointPercentage} 
         Current Snappoint: ${currentPercentage} 
         Difference: ${difference}
-    `)
-    if (difference >= 0.08 || difference <= -0.08){
-        return false
-    }
+    `);
+	if (difference >= 0.08 || difference <= -0.08) {
+		return false;
+	}
 
-    return true
-}
+	return true;
+};
 
-const isAtSnapPoint = async (browser, cardSelector, snapPointValue)=>{
-    let verify;
+const isAtSnapPoint = async(browser, cardSelector, snapPointValue)=>{
+	let verify;
 
-    if (snapPointValue <= 1){
-        verify = verifyPercentageSnapPoint;
-    } else {
-        verify = verifyAbsoluteSnapPoint;
-    }
+	if (snapPointValue <= 1) {
+		verify = verifyPercentageSnapPoint;
+	} else {
+		verify = verifyAbsoluteSnapPoint;
+	}
 
-    let isAtSnapPoint = false;
+	let atSnapPoint = false;
 
-    await browser.waitUntil(async ()=>{
-        isAtSnapPoint = await verify(browser, cardSelector, snapPointValue)
+	await browser.waitUntil(async()=>{
+		atSnapPoint = await verify(browser, cardSelector, snapPointValue);
 
-        return isAtSnapPoint;
-    }, {
-        timeout: 5000,
-        interval: 500,
-        timeoutMsg: `Card is not at expected snapPoint: ${snapPointValue}`
-    });
+		return atSnapPoint;
+	}, {
+		timeout: 5000,
+		interval: 500,
+		timeoutMsg: `Card is not at expected snapPoint: ${snapPointValue}`
+	});
 
-    return isAtSnapPoint;
-}
+	return atSnapPoint;
+};
 
 module.exports = {
-    isAtSnapPoint
-}
+	isAtSnapPoint
+};
