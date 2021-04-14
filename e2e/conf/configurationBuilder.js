@@ -9,7 +9,9 @@ const bsCapabilitiesProps = {
 };
 
 const bsLocalCapabilitiesProps = {
-	'browserstack.local': true
+	'browserstack.local': true,
+	'acceptSslCerts': 'true',
+	'acceptSsl': 'true'
 };
 
 const buildConfiguration = (E2E_MODE, capabilities, specs) => {
