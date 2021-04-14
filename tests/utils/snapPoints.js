@@ -1,6 +1,6 @@
 
 
-const isAtAbsoluteSnapPoint = async (browser, cardSelector, expectedAbsoluteYposition)=>{
+async function verifyAbsoluteSnapPoint(browser, cardSelector, expectedAbsoluteYposition){
     const currentAbsolutePositionYPosition = await browser.executeAsync(async (cardSelector, done) => {
         const y = document.querySelector(cardSelector).getBoundingClientRect().y
         done(y)
@@ -20,7 +20,7 @@ const isAtAbsoluteSnapPoint = async (browser, cardSelector, expectedAbsoluteYpos
     return true
 }
 
-const isAtPercentageSnapPoint = async (browser, cardSelector, expectedSnapPointPercentage)=>{
+const verifyPercentageSnapPoint = async (browser, cardSelector, expectedSnapPointPercentage)=>{
     const currentPercentage = await browser.executeAsync(async (cardSelector, done) => {
         const percentage = (document.querySelector(cardSelector).getBoundingClientRect().y)/window.innerHeight
         done(percentage)
@@ -32,14 +32,37 @@ const isAtPercentageSnapPoint = async (browser, cardSelector, expectedSnapPointP
         Current Snappoint: ${currentPercentage} 
         Difference: ${difference}
     `)
-    if (difference >= 0.05 || difference <= -0.05){
+    if (difference >= 0.08 || difference <= -0.08){
         return false
     }
 
     return true
 }
 
+const isAtSnapPoint = async (browser, cardSelector, snapPointValue)=>{
+    let verify;
+
+    if (snapPointValue <= 1){
+        verify = verifyPercentageSnapPoint;
+    } else {
+        verify = verifyAbsoluteSnapPoint;
+    }
+
+    let isAtSnapPoint = false;
+
+    await browser.waitUntil(async ()=>{
+        isAtSnapPoint = await verify(browser, cardSelector, snapPointValue)
+
+        return isAtSnapPoint;
+    }, {
+        timeout: 5000,
+        interval: 500,
+        timeoutMsg: `Card is not at expected snapPoint: ${snapPointValue}`
+    });
+
+    return isAtSnapPoint;
+}
+
 module.exports = {
-    isAtPercentageSnapPoint,
-    isAtAbsoluteSnapPoint
+    isAtSnapPoint
 }

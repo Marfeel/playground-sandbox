@@ -1,5 +1,4 @@
 require('dotenv').config();
-var browserstack = require('browserstack-local');
 
 const user = process.env.BROWSERSTACK_USERNAME || '';
 const key = process.env.BROWSERSTACK_ACCESS_KEY || '';
@@ -17,12 +16,15 @@ exports.config = {
   capabilities: [{
     platformName: 'iOS',
     automationName: 'XCUITest',
-    deviceName: 'iPhone 12 Pro Max',
+    deviceName: 'iPhone 11',
     platformVersion: '14',
     browserName: 'Safari',
+    'browserstack.console': "info",
+    'browserstack.networkLogs':true,
+    'browserstack.acceptInsecureCerts': true
   }],
 
-  logLevel: 'warn',
+  logLevel: 'info',
   coloredLogs: true,
   screenshotPath: './errorShots/',
   baseUrl: '',
@@ -40,21 +42,8 @@ exports.config = {
   framework: 'mocha',
   mochaOpts: {
     ui: 'bdd',
-    timeout: 60000
-  },
-
-  // Code to start browserstack local before start of test
-  onPrepare: function (config, capabilities) {
-    console.log("Connecting local");
-    return new Promise(function (resolve, reject) {
-      exports.bs_local = new browserstack.Local();
-      exports.bs_local.start({ 'key': exports.config.key }, function (error) {
-        if (error) return reject(error);
-
-        console.log('Connected. Now testing...');
-        resolve();
-      });
-    });
+    timeout: 60000,
+    bail: true
   },
 
   // Code to mark the status of test on BrowserStack based on the assertion status
@@ -64,15 +53,5 @@ exports.config = {
     } else {
       browser.executeScript('browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "At least 1 assertion failed"}}');
     }
-  },
-
-  // Code to stop browserstack local after end of test
-  onComplete: function (capabilties, specs) {
-    return new Promise(function(resolve, reject){
-      exports.bs_local.stop(function() {
-        console.log("Binary stopped");
-        resolve();
-      });
-    });
   }
 }

@@ -1,13 +1,14 @@
 const { bootstrapExperience } = require("../../tests/utils/bootstrap");
 const { scrollTo } = require("../../tests/utils/scroll");
 const { touchCard } = require("../../tests/utils/touch");
-const { isAtPercentageSnapPoint, isAtAbsoluteSnapPoint } = require("../../tests/utils/snapPoints");
+const { isAtSnapPoint } = require("../../tests/utils/snapPoints");
+const { isCardContentLoaded } = require("../../tests/utils/cardContent");
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../tests/utils/fixtureUrl');
+const experience = require('./homepage.json');
 
 describe("homepage experience", function () {
-	let config;
-	let fixture;
+	let config, fixture;
 	const fixtureUrl = getUrlFixture({
 		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
 		requestHostname: 'playground.marfeel.com',
@@ -16,43 +17,7 @@ describe("homepage experience", function () {
 	})
 
 	it("setup", async function () {
-		config = {
-			cards: {
-				homepage: {
-					content: {
-						type: "AMPDocument",
-						url: "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/homepage/homepage.html"
-					},
-					snapPoints: {
-						initial: 0.7,
-						minimised: 0.85,
-						promoted: 176,
-						active: 80
-					},
-					features: {
-						mode: "modal",
-						isDraggable: true,
-						button: {
-							action: "setSnapPoint:initial"
-						},
-						infiniteScroll: true,
-						header: {
-							dragHandlerBg: "#282346"
-						}
-					},
-					triggers: {
-						myScrollTrigger: {
-							on: "scroll",
-							spec: {
-								type: "absolute",
-								pixel: 300,
-								percentage: 0.1
-							}
-						}
-					}
-				}
-			}
-		}
+		config = experience;
 		fixture = {
 			url: fixtureUrl,
 			articleTitle: 'Article example',
@@ -71,6 +36,14 @@ describe("homepage experience", function () {
 		expect(firstCardExists).equal(true);
 	});
 
+	it("card should have right content", async function () {
+		const rightContentLoaded = await isCardContentLoaded(browser, 
+			config.cards.homepage.cardSelector,
+			config.cards.homepage.content);
+
+		expect(rightContentLoaded).equal(true)
+	});
+
 	it("card should be displayed in viewport at initial snap point", async ()=>{
 		await scrollTo(browser, 800)
 
@@ -80,18 +53,18 @@ describe("homepage experience", function () {
 
 		expect(firstCardIsInViewport).equal(true);
 
-		const isAtInitialSnapPoint = await isAtPercentageSnapPoint(browser,
+		const isAtInitialSnapPoint = await isAtSnapPoint(browser,
 			config.cards.homepage.cardSelector,
 			config.cards.homepage.snapPoints.initial)
 
 		expect(isAtInitialSnapPoint).equal(true);
 	});
 
-	//TODO To fix this failing test
+	// TODO: fix minimise
 	// it("minimise card and should be at minimised snap point", async ()=>{
- 	// 	await dragCardBy(browser, config.cards.homepage.cardSelector, 150)
+	// 	await dragCardBy(browser, config.cards.homepage.cardSelector, 200)
 
-	// 	const isAtMinimisedSnapPoint = await isAtPercentageSnapPoint(browser,
+	// 	const isAtMinimisedSnapPoint = await isAtSnapPoint(browser,
 	// 		config.cards.homepage.cardSelector,
 	// 		config.cards.homepage.snapPoints.minimised)
 
@@ -101,17 +74,9 @@ describe("homepage experience", function () {
 	it("activate card by click", async ()=>{
 		await touchCard(browser, config.cards.homepage.cardSelector)
 
-		let isAtActiveSnapPoint;
-		await browser.waitUntil(async ()=>{
-			isAtActiveSnapPoint = await isAtAbsoluteSnapPoint(browser,
+		let isAtActiveSnapPoint = await isAtSnapPoint(browser,
 				config.cards.homepage.cardSelector,
 				config.cards.homepage.snapPoints.active)
-
-				return isAtActiveSnapPoint;
-		}, {
-			timeout:5000
-		});
-
 	   expect(isAtActiveSnapPoint).equal(true);
    });
 });

@@ -6,9 +6,11 @@ module.exports.getUrlFixture = ({
 }) => {
 	let url = `https://playground.mrf.io/simulate?siteUrl=${siteUrl}&requestHostname=${requestHostname}&technology=${technology}&experienceUrl=${experienceUrl}`;
 
-	if (process.env.NODE_ENV === 'production') {
+	if (process.env.E2E_MODE === 'browserstack-local') {
 		url += '&flowcardsHostname=https://bs-local.com';
 	}
 
+	console.log('FixtureUrl:', url)
+	
 	return url;
 }
