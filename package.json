@@ -12,9 +12,9 @@
     "url": "git+https://github.com/Marfeel/flowcards-playground.git"
   },
   "scripts": {
-    "test:local": "E2E_MODE=local wdio conf/conf.js",
-    "test:browserstack": "E2E_MODE=browserstack wdio conf/conf.js",
-    "test:browserstack-local": "E2E_MODE=browserstack-local wdio conf/conf.js",
+    "test:local": "E2E_MODE=local wdio conf/local.conf.js",
+    "test:browserstack": "E2E_MODE=browserstack wdio conf/browserstack.conf.js",
+    "test:browserstack-local": "E2E_MODE=browserstack-local wdio conf/browserstack.conf.js",
     "appium:tab": "ttab -q -G -t 'Appium Server' npm run appium",
     "appium": "appium"
   },
