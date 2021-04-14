@@ -27,7 +27,7 @@ describe("homepage experience", function () {
 	});
 
 	it("card should render on scroll", async function () {
-		await scrollTo(browser, 800)
+		await scrollTo(browser, 400)
 
 		const firstCard = await browser.$(config.cards.homepage.cardSelector);
 
