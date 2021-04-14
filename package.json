@@ -4,6 +4,7 @@
   "description": "Flowcards Experiences",
   "files": [
     "experiences/**/*.test.js",
+    "experiences/**/*.json",
     "tests/**/*"
   ],
   "repository": {
