@@ -83,7 +83,7 @@
 			-webkit-font-smoothing: antialiased;
 			background: #282346;
 			min-height: 100vh;
-			padding: 20px;
+			padding: 30px 20px 20px;
 		}
 
 		.mrf-player {
@@ -94,11 +94,13 @@
 
 		.mrf-player__buttons {
 			display: grid;
-			grid-template-columns: auto 1fr auto;
-			align-items: center;
-			justify-content: space-between;
+			grid-template-columns: 30px 1fr 30px;
+			place-items: center;
 			margin-bottom: 20px;
 			color: #FFF;
+		}
+		.mrf-player__buttons span {
+			font-size: 15px;
 		}
 
 		.mrf-player__buttons-play {
@@ -136,7 +138,7 @@
 		.podcast__content .title {
 			font-weight: 700;
 			font-size: 16px;
-			margin: 0;
+			margin: 0 0 3px;
 		}
 
 		.podcast__content .author {

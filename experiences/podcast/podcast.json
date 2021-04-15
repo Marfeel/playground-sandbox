@@ -14,7 +14,7 @@
 			"features": {
 				"mode": "modal",
 				"removable": true,
-				"isDraggable": false
+				"isDraggable": true
 			},
 			"triggers": {
 				"myScrollTrigger": {
