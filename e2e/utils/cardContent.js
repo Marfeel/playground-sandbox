@@ -2,8 +2,8 @@
 const playgroundUrlPlaceholders = '${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}';
 
 const getCardAMPContent = async(browser, cardSelector) => {
-	const contentInfo = await browser.executeAsync(async(cardSelector, done) => {
-		const amp = document.querySelector(`${cardSelector} article`).firstElementChild.shadowRoot.AMP;
+	const contentInfo = await browser.executeAsync(async(cardSelectorBrowser, done) => {
+		const amp = document.querySelector(`${cardSelectorBrowser} article`).firstElementChild.shadowRoot.AMP;
 		const info = { url: amp.url, title: amp.title };
 
 		done(info);

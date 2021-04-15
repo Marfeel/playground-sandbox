@@ -1,16 +1,13 @@
 /* eslint-disable no-console */
 
-
 async function verifyAbsoluteSnapPoint(browser, cardSelector, expectedAbsoluteYposition) {
-	const currentAbsolutePositionYPosition = await browser.executeAsync(async(cardSelector, done) => {
-		const y = document.querySelector(cardSelector).getBoundingClientRect().y
-;
+	const currentAbsolutePositionYPosition = await browser.executeAsync(async(cardSelectorBrowser, done) => {
+		const y = document.querySelector(cardSelectorBrowser).getBoundingClientRect().y;
 
 		done(y);
 	}, cardSelector);
 
-	const difference = currentAbsolutePositionYPosition - expectedAbsoluteYposition
-;
+	const difference = currentAbsolutePositionYPosition - expectedAbsoluteYposition;
 
 	console.log(`
         Expected Snappoint: ${expectedAbsoluteYposition} 
@@ -27,14 +24,12 @@ async function verifyAbsoluteSnapPoint(browser, cardSelector, expectedAbsoluteYp
 
 const verifyPercentageSnapPoint = async(browser, cardSelector, expectedSnapPointPercentage)=>{
 	const currentPercentage = await browser.executeAsync(async(cardSelectorBrowser, done) => {
-		const percentage = (document.querySelector(cardSelectorBrowser).getBoundingClientRect().y)/window.innerHeight
-;
+		const percentage = (document.querySelector(cardSelectorBrowser).getBoundingClientRect().y)/window.innerHeight;
 
 		done(percentage);
 	}, cardSelector);
 
-	const difference = currentPercentage - expectedSnapPointPercentage
-;
+	const difference = currentPercentage - expectedSnapPointPercentage;
 
 	console.log(`
         Expected Snappoint: ${expectedSnapPointPercentage} 

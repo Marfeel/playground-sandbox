@@ -7,7 +7,7 @@ const bootstrapExperience = async(browser, config, fixture) => {
 	);
 
 	await browser.waitUntil(
-		() => async() => { //TODO depends on selected article
+		() => async() => { //depends on selected article
 			return await browser.getTitle() === fixture.articleTitle;
 		},
 		{ timeout: 10000, interval: 1000 }
