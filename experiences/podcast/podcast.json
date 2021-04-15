@@ -1,0 +1,31 @@
+{
+	"cards": {
+		"newsletter": {
+			"content": {
+				"type": "AMPDocument",
+				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/podcast/podcast.html"
+			},
+			"snapPoints": {
+				"initial": 0.7,
+				"minimised": 0.85,
+				"promoted": 176,
+				"active": 80
+			},
+			"features": {
+				"mode": "modal",
+				"removable": true,
+				"isDraggable": false
+			},
+			"triggers": {
+				"myScrollTrigger": {
+					"on": "scroll",
+					"spec": {
+						"type": "absolute",
+						"pixel": 300,
+						"percentage": 0.1
+					}
+				}
+			}
+		}
+	}
+}
