@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html ⚡ lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<script async src="https://cdn.ampproject.org/v0.js"></script>
+	<title>Push notifications</title>
+	<link rel="canonical" href="${canonicalUrl}">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+	<style amp-boilerplate>
+		body {
+			-webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			animation: -amp-start 8s steps(1, end) 0s 1 normal both
+		}
+
+		@-webkit-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-moz-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-ms-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-o-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+	</style><noscript>
+		<style amp-boilerplate>
+			body {
+				-webkit-animation: none;
+				-moz-animation: none;
+				-ms-animation: none;
+				animation: none
+			}
+		</style>
+	</noscript>
+	<style amp-custom>
+		body {
+			font-family: -apple-system, system-ui;
+			font-size: 16px;
+			line-height: 1.4;
+			margin: 0;
+			-webkit-font-smoothing: antialiased;
+			background: #282346;
+			min-height: 100vh;
+			padding: 20px;
+		}
+
+		.mrf-player {
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 10px;
+		}
+
+		.mrf-player__buttons {
+			display: grid;
+			grid-template-columns: auto 1fr auto;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 20px;
+			color: #FFF;
+		}
+
+		.mrf-player__buttons-play {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: row;
+		}
+
+		.mrf-icon-play {
+			margin: 0 30px;
+		}
+
+		.podcast {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			color: hsl(0, 0%, 100%);
+		}
+
+		.podcast__content {
+			display: flex;
+			flex-direction: column;
+			flex: 1;
+		}
+
+		.podcast img+.podcast__content {
+			margin-left: 10px;
+		}
+
+		.podcast-img {
+			margin-bottom: 15px;
+		}
+
+		.podcast__content .title {
+			font-weight: 700;
+			font-size: 16px;
+			margin: 0;
+		}
+
+		.podcast__content .author {
+			color: hsl(0, 0%, 70%);
+			font-weight: 500;
+			font-size: 14px;
+		}
+
+		.podcast__content .date {
+			color: hsl(0, 0%, 70%);
+			font-weight: 500;
+			font-size: 11px;
+		}
+
+		.podcast .excerpt {
+			font-size: 14px;
+		}
+
+		.podcast .extra {
+			margin-top: 10px;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		.podcast .time {
+			color: hsl(0, 0%, 70%);
+			font-weight: 500;
+			font-size: 13px;
+			margin-left: 10px;
+		}
+
+		.mrf-title--withSeparator {
+			font-size: 16px;
+			font-weight: 700;
+			border-bottom: 0.5px solid #DBDBDB;
+			padding-bottom: 5px;
+			color: hsl(0, 0%, 100%);
+		}
+
+		.button-play {
+			background: #fff;
+			color: #223F6D;
+			font-size: 12px;
+			border-radius: 30px;
+			height: 25px;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			border: 0;
+		}
+
+		.button-play img {
+			margin-right: 5px;
+		}
+	</style>
+</head>
+<!-- https://${CURRENT_HOSTNAME} -->
+
+<body>
+	<div class="mrf-player">
+		<div class="mrf-player__buttons">
+			<span>1x</span>
+			<div class="mrf-player__buttons-play">
+				<img src="../../assets/experiences/podcast/backward.svg" />
+				<img class="mrf-icon-play" src="../../assets/experiences/podcast/play.svg" />
+				<img src="../../assets/experiences/podcast/forward.svg" />
+			</div>
+			<img src="../../assets/experiences/podcast/share.svg" />
+		</div>
+		<div class="mrf-player__progressBar">
+			<img src="../../assets/experiences/podcast/bar.svg" style="width:100%" />
+		</div>
+	</div>
+	<div class="podcast">
+		<img width="96" height="90" class="podcast-img" src="../../assets/experiences/podcast/img.png" />
+		<div class="podcast__content">
+			<h5 class="title">The smallest measurement of gravity ever recorded</h5>
+			<span class="author">by Keano Robert · 33 min</span>
+		</div>
+		<div class="excerpt">Physicists examine the gravitational pull between two tiny masses, and how fossil
+			lampreys could shake-up the field of vertebrate evolution.</div>
+	</div>
+	<h3 class="mrf-title--withSeparator">Previous podcasts</h3>
+	<div class="podcast">
+		<div class="podcast__content">
+			<date class="date">FEB 28, 2021</date>
+			<h5 class="title">The quark of the matter: what’s really inside a proton?</h5>
+		</div>
+		<div class="excerpt">The surprising structure of protons, and a method for growing small intestines for
+			transplantation.</div>
+		<div class="extra">
+			<button class="button-play"><img src="../../assets/experiences/podcast/play-mini.svg" /> PLAY</button>
+			<span class="time">26 min</span>
+		</div>
+	</div>
+	<h3 class="mrf-title--withSeparator"></h3>
+	<div class="podcast">
+		<div class="podcast__content">
+			<date class="date">FEB 28, 2021</date>
+			<h5 class="title">Audio long-read: Push, pull and squeeze – the hidden forces that shape life</h5>
+		</div>
+		<div class="excerpt">Erna Solberg on fisheries, fossil fuels and the future of the oceans. Erna Solberg on
+			fisheries, fossil fuels.</div>
+		<div class="extra">
+			<button class="button-play"><img src="../../assets/experiences/podcast/play-mini.svg" /> PLAY</button>
+			<span class="time">45 min</span>
+		</div>
+	</div>
+	<h3 class="mrf-title--withSeparator"></h3>
+	<div class="podcast">
+		<div class="podcast__content">
+			<date class="date">FEB 14, 2021</date>
+			<h5 class="title">Norway’s prime minister reveals plans to protect the world's oceans</h5>
+		</div>
+		<div class="excerpt">The surprising structure of protons, and a method for growing small intestines for
+			transplantation.</div>
+		<div class="extra">
+			<button class="button-play"><img src="../../assets/experiences/podcast/play-mini.svg" /> PLAY</button>
+			<span class="time">32 min</span>
+		</div>
+	</div>
+</body>
+
+</html>
