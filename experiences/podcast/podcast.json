@@ -6,8 +6,8 @@
 				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/podcast/podcast.html"
 			},
 			"snapPoints": {
-				"initial": 0.7,
-				"minimised": 0.85,
+				"initial": 0.73,
+				"minimised": 0.82,
 				"promoted": 176,
 				"active": 80
 			},
