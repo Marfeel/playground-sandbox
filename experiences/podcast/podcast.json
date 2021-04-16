@@ -7,12 +7,15 @@
 			},
 			"snapPoints": {
 				"initial": 0.73,
-				"minimised": 0.81,
+				"minimised": 0.82,
 				"promoted": 176,
 				"active": 80
 			},
 			"features": {
 				"mode": "modal",
+				"button": {
+					"action": "setSnapPoint:initial"
+				},
 				"isDraggable": true
 			},
 			"triggers": {
