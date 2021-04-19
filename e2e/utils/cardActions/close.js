@@ -1,12 +1,15 @@
 const closeCard = async (browser, cardSelector) => {
-	const contentInfo = await browser.executeAsync(async (cardSelector, done) => {
-        const closeButton = document.querySelector(`${cardSelector} [data-testid="sticky-close-icon"]`)
-        done(closeButton)
-    }, cardSelector);
+  const contentInfo = await browser.executeAsync(async (cardSelector, done) => {
+    const closeButton = document.querySelector(
+      `${cardSelector} [data-testid="sticky-close-icon"]`
+    );
+    closeButton.click();
+    done();
+  }, cardSelector);
 
-    return contentInfo
-}
+  return contentInfo;
+};
 
 module.exports = {
-    closeCard
-}
+  closeCard,
+};
