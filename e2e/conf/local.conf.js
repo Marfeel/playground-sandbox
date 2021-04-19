@@ -1,13 +1,13 @@
-const { buildConfiguration } = require("./configurationBuilder");
+const { buildConfiguration } = require('./configurationBuilder');
 
 const capabilities = [
-  {
-    platformName: "iOS",
-    automationName: "XCUITest",
-    deviceName: "iPhone 8 Plus",
-    platformVersion: "14.4",
-    browserName: "Safari",
-  },
+	{
+		platformName: 'iOS',
+		automationName: 'XCUITest',
+		deviceName: 'iPhone 8 Plus',
+		platformVersion: '14.4',
+		browserName: 'Safari'
+	}
 ];
 
 const specs = [

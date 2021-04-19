@@ -7,15 +7,11 @@ const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./newsletter.json');
 
-describe('newsletter experience', function() {
+const newsletterTest = function() {
 	let config,
 		fixture;
 	const fixtureUrl = getUrlFixture({
-<<<<<<< HEAD
 		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
-=======
-		siteUrl: 'https://playground.marfeel.com/templates/article-skeleton.html',
->>>>>>> 45ed1c5 (style(lint): apply lint fix)
 		requestHostname: 'playground.marfeel.com',
 		technology: 'web',
 		experienceUrl: '/experiences/newsletter/newsletter.json'
@@ -80,4 +76,8 @@ describe('newsletter experience', function() {
 
 		expect(isAtActiveSnapPoint).equal(true);
 	});
-});
+};
+
+describe('newsletter experience', newsletterTest);
+
+exports.default = newsletterTest;
