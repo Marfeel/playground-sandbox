@@ -29,7 +29,7 @@ describe("taboola experience", function () {
   it("card should render on scroll", async function () {
     await scrollTo(browser, 400);
 
-    const firstCard = await browser.$(config.cards.topArticles.cardSelector);
+    const firstCard = await browser.$(config.cards.taboola.cardSelector);
 
     const firstCardExists = await firstCard.waitForExist({ timeout: 5000 });
 
@@ -39,8 +39,8 @@ describe("taboola experience", function () {
   it("card should have right content", async function () {
     const rightContentLoaded = await isCardContentLoaded(
       browser,
-      config.cards.topArticles.cardSelector,
-      config.cards.topArticles.content
+      config.cards.taboola.cardSelector,
+      config.cards.taboola.content
     );
 
     expect(rightContentLoaded).equal(true);
@@ -49,7 +49,7 @@ describe("taboola experience", function () {
   it("card should be displayed in viewport at initial snap point", async () => {
     await scrollTo(browser, 800);
 
-    const firstCard = await browser.$(config.cards.topArticles.cardSelector);
+    const firstCard = await browser.$(config.cards.taboola.cardSelector);
 
     const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
 
@@ -57,8 +57,8 @@ describe("taboola experience", function () {
 
     const isAtInitialSnapPoint = await isAtSnapPoint(
       browser,
-      config.cards.topArticles.cardSelector,
-      config.cards.topArticles.snapPoints.initial
+      config.cards.taboola.cardSelector,
+      config.cards.taboola.snapPoints.initial
     );
 
     expect(isAtInitialSnapPoint).equal(true);
@@ -66,22 +66,22 @@ describe("taboola experience", function () {
 
   // fix minimise
   // it("minimise card and should be at minimised snap point", async ()=>{
-  // 	await dragCardBy(browser, config.cards.topArticles.cardSelector, 200)
+  // 	await dragCardBy(browser, config.cards.taboola.cardSelector, 200)
 
   // 	const isAtMinimisedSnapPoint = await isAtSnapPoint(browser,
-  // 		config.cards.topArticles.cardSelector,
-  // 		config.cards.topArticles.snapPoints.minimised)
+  // 		config.cards.taboola.cardSelector,
+  // 		config.cards.taboola.snapPoints.minimised)
 
   // 	expect(isAtMinimisedSnapPoint).equal(true);
   // });
 
   it("activate card by click", async () => {
-    await touchCard(browser, config.cards.topArticles.cardSelector);
+    await touchCard(browser, config.cards.taboola.cardSelector);
 
     const isAtActiveSnapPoint = await isAtSnapPoint(
       browser,
-      config.cards.topArticles.cardSelector,
-      config.cards.topArticles.snapPoints.active
+      config.cards.taboola.cardSelector,
+      config.cards.taboola.snapPoints.active
     );
 
     expect(isAtActiveSnapPoint).equal(true);
