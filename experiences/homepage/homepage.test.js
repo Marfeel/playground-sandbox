@@ -61,17 +61,6 @@ describe('homepage experience', function() {
 		expect(isAtInitialSnapPoint).equal(true);
 	});
 
-	// fix minimise
-	// it("minimise card and should be at minimised snap point", async ()=>{
-	// 	await dragCardBy(browser, config.cards.homepage.cardSelector, 200)
-
-	// 	const isAtMinimisedSnapPoint = await isAtSnapPoint(browser,
-	// 		config.cards.homepage.cardSelector,
-	// 		config.cards.homepage.snapPoints.minimised)
-
-	// 	expect(isAtMinimisedSnapPoint).equal(true);
-	// });
-
 	it('activate card by click', async()=>{
 		await touchCard(browser, config.cards.homepage.cardSelector);
 
