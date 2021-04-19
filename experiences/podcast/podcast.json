@@ -1,33 +1,33 @@
 {
-	"cards": {
-		"newsletter": {
-			"content": {
-				"type": "AMPDocument",
-				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/podcast/podcast.html"
-			},
-			"snapPoints": {
-				"initial": 0.73,
-				"minimised": 0.82,
-				"promoted": 176,
-				"active": 80
-			},
-			"features": {
-				"mode": "modal",
-				"button": {
-					"action": "setSnapPoint:initial"
-				},
-				"isDraggable": true
-			},
-			"triggers": {
-				"myScrollTrigger": {
-					"on": "scroll",
-					"spec": {
-						"type": "absolute",
-						"pixel": 300,
-						"percentage": 0.1
-					}
-				}
-			}
-		}
-	}
+  "cards": {
+    "podcast": {
+      "content": {
+        "type": "AMPDocument",
+        "url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/podcast/podcast.html"
+      },
+      "features": {
+        "button": {
+          "action": "setSnapPoint:initial"
+        },
+        "isDraggable": true,
+        "mode": "modal"
+      },
+      "snapPoints": {
+        "active": 80,
+        "initial": 0.73,
+        "minimised": 0.82,
+        "promoted": 176
+      },
+      "triggers": {
+        "myScrollTrigger": {
+          "on": "scroll",
+          "spec": {
+            "percentage": 0.1,
+            "pixel": 300,
+            "type": "absolute"
+          }
+        }
+      }
+    }
+  }
 }
