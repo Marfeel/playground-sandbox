@@ -5,15 +5,16 @@ const { isAtSnapPoint } = require("../../e2e/utils/snapPoints");
 const { isCardContentLoaded } = require("../../e2e/utils/cardContent");
 const { expect } = require("chai");
 const { getUrlFixture } = require("../../e2e/utils/fixtureUrl");
-const experience = require("./featured_article.json");
+const experience = require("./featured_article_amp.json");
 
-describe("featured_article experience", function () {
+describe("featured_article_amp experience", function () {
   let config, fixture;
   const fixtureUrl = getUrlFixture({
     siteUrl: "https://playground.marfeel.com/templates/article-skeleton.html",
     requestHostname: "playground.marfeel.com",
     technology: "web",
-    experienceUrl: "/experiences/featured_article/featured_article.json",
+    experienceUrl:
+      "/experiences/featured_article_amp/featured_article_amp.json",
   });
 
   it("setup", async function () {
