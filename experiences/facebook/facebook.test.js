@@ -65,17 +65,6 @@ describe('facebook experience', function() {
 		expect(isAtInitialSnapPoint).equal(true);
 	});
 
-	// fix minimise
-	// it("minimise card and should be at minimised snap point", async ()=>{
-	// 	await dragCardBy(browser, config.cards.facebook.cardSelector, 200)
-
-	// 	const isAtMinimisedSnapPoint = await isAtSnapPoint(browser,
-	// 		config.cards.facebook.cardSelector,
-	// 		config.cards.facebook.snapPoints.minimised)
-
-	// 	expect(isAtMinimisedSnapPoint).equal(true);
-	// });
-
 	it('activate card by click', async() => {
 		await touchCard(browser, config.cards.facebook.cardSelector);
 
