@@ -1,34 +1,34 @@
 {
-	"cards": {
-		"topArticles": {
-			"content": {
-				"type": "AMPDocument",
-				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/comments/comments.html"
-			},
-			"snapPoints": {
-				"initial": 0.7,
-				"minimised": 0.85,
-				"promoted": 176,
-				"active": 80
-			},
-			"features": {
-				"mode": "modal",
-				"isDraggable": true,
-				"button": {
-					"action": "setSnapPoint:initial"
-				},
-				"infiniteScroll": true
-			},
-			"triggers": {
-				"myScrollTrigger": {
-					"on": "scroll",
-					"spec": {
-						"type": "absolute",
-						"pixel": 300,
-						"percentage": 0.1
-					}
-				}
-			}
-		}
-	}
+  "cards": {
+    "comments": {
+      "content": {
+        "type": "AMPDocument",
+        "url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/comments/comments.html"
+      },
+      "features": {
+        "button": {
+          "action": "setSnapPoint:initial"
+        },
+        "infiniteScroll": true,
+        "isDraggable": true,
+        "mode": "modal"
+      },
+      "snapPoints": {
+        "active": 80,
+        "initial": 0.7,
+        "minimised": 0.85,
+        "promoted": 176
+      },
+      "triggers": {
+        "myScrollTrigger": {
+          "on": "scroll",
+          "spec": {
+            "percentage": 0.1,
+            "pixel": 300,
+            "type": "absolute"
+          }
+        }
+      }
+    }
+  }
 }
