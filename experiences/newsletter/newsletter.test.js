@@ -11,7 +11,11 @@ describe('newsletter experience', function() {
 	let config,
 		fixture;
 	const fixtureUrl = getUrlFixture({
+<<<<<<< HEAD
 		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
+=======
+		siteUrl: 'https://playground.marfeel.com/templates/article-skeleton.html',
+>>>>>>> 45ed1c5 (style(lint): apply lint fix)
 		requestHostname: 'playground.marfeel.com',
 		technology: 'web',
 		experienceUrl: '/experiences/newsletter/newsletter.json'
