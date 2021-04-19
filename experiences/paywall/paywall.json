@@ -1,27 +1,27 @@
 {
-	"cards": {
-		"newsletter": {
-			"content": {
-				"type": "AMPDocument",
-				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/paywall/paywall.html"
-			},
-			"snapPoints": {
-				"active": 0.68
-			},
-			"features": {
-				"mode": "modal",
-				"isDraggable": false
-			},
-			"triggers": {
-				"myScrollTrigger": {
-					"on": "scroll",
-					"spec": {
-						"type": "absolute",
-						"pixel": 300,
-						"percentage": 0.1
-					}
-				}
-			}
-		}
-	}
+  "cards": {
+    "paywall": {
+      "content": {
+        "type": "AMPDocument",
+        "url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/paywall/paywall.html"
+      },
+      "features": {
+        "isDraggable": false,
+        "mode": "modal"
+      },
+      "snapPoints": {
+        "active": 0.68
+      },
+      "triggers": {
+        "myScrollTrigger": {
+          "on": "scroll",
+          "spec": {
+            "percentage": 0.1,
+            "pixel": 300,
+            "type": "absolute"
+          }
+        }
+      }
+    }
+  }
 }
