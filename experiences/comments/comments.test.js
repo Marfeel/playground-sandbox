@@ -11,7 +11,7 @@ describe('comments card experience', function() {
 	let config,
 		fixture;
 	const fixtureUrl = getUrlFixture({
-		siteUrl: 'https://playground.marfeel.com/templates/article-skeleton-web.html',
+		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
 		requestHostname: 'playground.marfeel.com',
 		technology: 'web',
 		experienceUrl: '/experiences/comments/comments.json'
