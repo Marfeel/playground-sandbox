@@ -7,7 +7,7 @@ const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./comments.json');
 
-describe('comments card experience', function() {
+const commentsTest = function() {
 	let config,
 		fixture;
 	const fixtureUrl = getUrlFixture({
@@ -70,4 +70,8 @@ describe('comments card experience', function() {
 
 		expect(isAtActiveSnapPoint).equal(true);
 	});
-});
+};
+
+describe('comments card experience', commentsTest);
+
+exports.default = commentsTest;

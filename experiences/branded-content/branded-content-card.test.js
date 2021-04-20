@@ -6,7 +6,7 @@ const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const { expect } = require('chai');
 
-describe('branded content experience', function() {
+const brandedContentTest = function() {
 	let config,
 		fixture;
 	// eslint-disable-next-line max-len
@@ -79,4 +79,8 @@ describe('branded content experience', function() {
 
 		expect(isAtActiveSnapPoint).equal(true);
 	});
-});
+};
+
+describe('branded content experience', brandedContentTest);
+
+exports.default = brandedContentTest;

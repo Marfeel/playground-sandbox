@@ -7,7 +7,7 @@ const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./multicard.json');
 
-describe('homepage experience', function() {
+const multicardTest = function() {
 	let config,
 		fixture;
 	const fixtureUrl = getUrlFixture({
@@ -104,4 +104,8 @@ describe('homepage experience', function() {
 
 		expect(isAtActiveSnapPoint).equal(true);
 	});
-});
+};
+
+describe('multicard experience', multicardTest);
+
+exports.default = multicardTest;

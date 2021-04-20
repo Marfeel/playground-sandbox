@@ -5,16 +5,16 @@ const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
-const experience = require('./homepage.json');
+const experience = require('./telegram.json');
 
-const homepageTest = function() {
+describe('telegram experience', function() {
 	let config,
 		fixture;
 	const fixtureUrl = getUrlFixture({
 		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
 		requestHostname: 'playground.marfeel.com',
 		technology: 'web',
-		experienceUrl: '/experiences/homepage/homepage.json'
+		experienceUrl: '/experiences/telegram/telegram.json'
 	});
 
 	it('setup', async function() {
@@ -30,7 +30,7 @@ const homepageTest = function() {
 	it('card should render on scroll', async function() {
 		await scrollTo(browser, 400);
 
-		const firstCard = await browser.$(config.cards.homepage.cardSelector);
+		const firstCard = await browser.$(config.cards.telegram.cardSelector);
 
 		const firstCardExists = await firstCard.waitForExist({ timeout: 5000 });
 
@@ -38,40 +38,42 @@ const homepageTest = function() {
 	});
 
 	it('card should have right content', async function() {
-		const rightContentLoaded = await isCardContentLoaded(browser,
-			config.cards.homepage.cardSelector,
-			config.cards.homepage.content);
+		const rightContentLoaded = await isCardContentLoaded(
+			browser,
+			config.cards.telegram.cardSelector,
+			config.cards.telegram.content
+		);
 
 		expect(rightContentLoaded).equal(true);
 	});
 
-	it('card should be displayed in viewport at initial snap point', async()=>{
+	it('card should be displayed in viewport at initial snap point', async() => {
 		await scrollTo(browser, 800);
 
-		const firstCard = await browser.$(config.cards.homepage.cardSelector);
+		const firstCard = await browser.$(config.cards.telegram.cardSelector);
 
 		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
 
 		expect(firstCardIsInViewport).equal(true);
 
-		const isAtInitialSnapPoint = await isAtSnapPoint(browser,
-			config.cards.homepage.cardSelector,
-			config.cards.homepage.snapPoints.initial);
+		const isAtInitialSnapPoint = await isAtSnapPoint(
+			browser,
+			config.cards.telegram.cardSelector,
+			config.cards.telegram.snapPoints.initial
+		);
 
 		expect(isAtInitialSnapPoint).equal(true);
 	});
 
-	it('activate card by click', async()=>{
-		await touchCard(browser, config.cards.homepage.cardSelector);
+	it('activate card by click', async() => {
+		await touchCard(browser, config.cards.telegram.cardSelector);
 
-		const isAtActiveSnapPoint = await isAtSnapPoint(browser,
-			config.cards.homepage.cardSelector,
-			config.cards.homepage.snapPoints.active);
+		const isAtActiveSnapPoint = await isAtSnapPoint(
+			browser,
+			config.cards.telegram.cardSelector,
+			config.cards.telegram.snapPoints.active
+		);
 
 		expect(isAtActiveSnapPoint).equal(true);
 	});
-};
-
-describe('homepage experience', homepageTest);
-
-exports.default = homepageTest;
+});

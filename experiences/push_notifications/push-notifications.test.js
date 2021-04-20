@@ -5,16 +5,16 @@ const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
-const experience = require('./top_articles.json');
+const experience = require('./push_notifications.json');
 
-describe('top_articles experience', function() {
+const pushNotificationTest = function() {
 	let config,
 		fixture;
 	const fixtureUrl = getUrlFixture({
 		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
 		requestHostname: 'playground.marfeel.com',
 		technology: 'web',
-		experienceUrl: '/experiences/top_articles/top_articles.json'
+		experienceUrl: '/experiences/push_notifications/push_notifications.json'
 	});
 
 	it('setup', async function() {
@@ -30,7 +30,9 @@ describe('top_articles experience', function() {
 	it('card should render on scroll', async function() {
 		await scrollTo(browser, 400);
 
-		const firstCard = await browser.$(config.cards.topArticles.cardSelector);
+		const firstCard = await browser.$(
+			config.cards.pushNotifications.cardSelector
+		);
 
 		const firstCardExists = await firstCard.waitForExist({ timeout: 5000 });
 
@@ -40,8 +42,8 @@ describe('top_articles experience', function() {
 	it('card should have right content', async function() {
 		const rightContentLoaded = await isCardContentLoaded(
 			browser,
-			config.cards.topArticles.cardSelector,
-			config.cards.topArticles.content
+			config.cards.pushNotifications.cardSelector,
+			config.cards.pushNotifications.content
 		);
 
 		expect(rightContentLoaded).equal(true);
@@ -50,7 +52,9 @@ describe('top_articles experience', function() {
 	it('card should be displayed in viewport at initial snap point', async() => {
 		await scrollTo(browser, 800);
 
-		const firstCard = await browser.$(config.cards.topArticles.cardSelector);
+		const firstCard = await browser.$(
+			config.cards.pushNotifications.cardSelector
+		);
 
 		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
 
@@ -58,33 +62,26 @@ describe('top_articles experience', function() {
 
 		const isAtInitialSnapPoint = await isAtSnapPoint(
 			browser,
-			config.cards.topArticles.cardSelector,
-			config.cards.topArticles.snapPoints.initial
+			config.cards.pushNotifications.cardSelector,
+			config.cards.pushNotifications.snapPoints.initial
 		);
 
 		expect(isAtInitialSnapPoint).equal(true);
 	});
 
-	// fix minimise
-	// it("minimise card and should be at minimised snap point", async ()=>{
-	// 	await dragCardBy(browser, config.cards.topArticles.cardSelector, 200)
-
-	// 	const isAtMinimisedSnapPoint = await isAtSnapPoint(browser,
-	// 		config.cards.topArticles.cardSelector,
-	// 		config.cards.topArticles.snapPoints.minimised)
-
-	// 	expect(isAtMinimisedSnapPoint).equal(true);
-	// });
-
 	it('activate card by click', async() => {
-		await touchCard(browser, config.cards.topArticles.cardSelector);
+		await touchCard(browser, config.cards.pushNotifications.cardSelector);
 
 		const isAtActiveSnapPoint = await isAtSnapPoint(
 			browser,
-			config.cards.topArticles.cardSelector,
-			config.cards.topArticles.snapPoints.active
+			config.cards.pushNotifications.cardSelector,
+			config.cards.pushNotifications.snapPoints.active
 		);
 
 		expect(isAtActiveSnapPoint).equal(true);
 	});
-});
+};
+
+describe('push_notifications experience', pushNotificationTest);
+
+exports.default = pushNotificationTest;
