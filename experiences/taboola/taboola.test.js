@@ -7,7 +7,7 @@ const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./taboola.json');
 
-describe('taboola experience', function() {
+const taboolaTest = function() {
 	let config,
 		fixture;
 	const fixtureUrl = getUrlFixture({
@@ -65,17 +65,6 @@ describe('taboola experience', function() {
 		expect(isAtInitialSnapPoint).equal(true);
 	});
 
-	// fix minimise
-	// it("minimise card and should be at minimised snap point", async ()=>{
-	// 	await dragCardBy(browser, config.cards.taboola.cardSelector, 200)
-
-	// 	const isAtMinimisedSnapPoint = await isAtSnapPoint(browser,
-	// 		config.cards.taboola.cardSelector,
-	// 		config.cards.taboola.snapPoints.minimised)
-
-	// 	expect(isAtMinimisedSnapPoint).equal(true);
-	// });
-
 	it('activate card by click', async() => {
 		await touchCard(browser, config.cards.taboola.cardSelector);
 
@@ -87,4 +76,8 @@ describe('taboola experience', function() {
 
 		expect(isAtActiveSnapPoint).equal(true);
 	});
-});
+};
+
+describe('taboola experience', taboolaTest);
+
+exports.default = taboolaTest;
