@@ -11,7 +11,7 @@ describe('facebook experience', function() {
 	let config,
 		fixture;
 	const fixtureUrl = getUrlFixture({
-		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
+		siteUrl: 'https://playground.marfeel.com/templates/article-skeleton-web.html',
 		requestHostname: 'playground.marfeel.com',
 		technology: 'web',
 		experienceUrl: '/experiences/facebook/facebook.json'
