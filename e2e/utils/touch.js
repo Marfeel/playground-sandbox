@@ -39,7 +39,7 @@ const dragCardTo = async(browser, cardSelector, yPos)=>{
 			await dragTo(dragTarget, y);
 		};
 
-		const dragHandler = document.querySelector('#homepage [data-testid=cardDragTarget]');
+		const dragHandler = document.querySelector(`${cardSelectorBrowser} [data-testid=cardDragTarget]`);
 
 		await dragCardToPosition(dragHandler, yPosBrowser);
 
