@@ -17,8 +17,9 @@ const specs = [
 	// './experiences/featured_article/featured_article.test.js'
 	// './experiences/homepage/homepage.test.js'
 	// './experiences/multicard/multicard.test.js'
+	'./experiences/newsletter/newsletter.test.js'
 	// './experiences/push_notifications/push-notifications.test.js'
-	'./e2e/experiences.test.js'
+	// './e2e/experiences.test.js'
 ];
 
 const config = buildConfiguration(process.env.E2E_MODE, capabilities, specs);
