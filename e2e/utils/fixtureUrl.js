@@ -3,9 +3,13 @@ module.exports.getUrlFixture = ({
 	requestHostname,
 	technology,
 	experienceUrl
-}) => {
+}, overwriteUrl) => {
+	let url = overwriteUrl;
+
+	if (!overwriteUrl) {
 	// eslint-disable-next-line max-len
-	let url = `https://playground.mrf.io/simulate?siteUrl=${siteUrl}&requestHostname=${requestHostname}&technology=${technology}&experienceUrl=${experienceUrl}`;
+		url = `https://playground.mrf.io/simulate?siteUrl=${siteUrl}&requestHostname=${requestHostname}&technology=${technology}&experienceUrl=${experienceUrl}`;
+	}
 
 	if (process.env.E2E_MODE === 'browserstack-local') {
 		url += '&flowcardsHostname=https://bs-local.com';

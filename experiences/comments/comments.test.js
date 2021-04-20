@@ -5,16 +5,16 @@ const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
-const experience = require('./homepage.json');
+const experience = require('./comments.json');
 
-describe('homepage experience', function() {
+describe('comments card experience', function() {
 	let config,
 		fixture;
 	const fixtureUrl = getUrlFixture({
 		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
 		requestHostname: 'playground.marfeel.com',
 		technology: 'web',
-		experienceUrl: '/experiences/homepage/homepage.json'
+		experienceUrl: '/experiences/comments/comments.json'
 	});
 
 	it('setup', async function() {
@@ -30,7 +30,7 @@ describe('homepage experience', function() {
 	it('card should render on scroll', async function() {
 		await scrollTo(browser, 400);
 
-		const firstCard = await browser.$(config.cards.homepage.cardSelector);
+		const firstCard = await browser.$(config.cards.topArticles.cardSelector);
 
 		const firstCardExists = await firstCard.waitForExist({ timeout: 5000 });
 
@@ -39,8 +39,8 @@ describe('homepage experience', function() {
 
 	it('card should have right content', async function() {
 		const rightContentLoaded = await isCardContentLoaded(browser,
-			config.cards.homepage.cardSelector,
-			config.cards.homepage.content);
+			config.cards.topArticles.cardSelector,
+			config.cards.topArticles.content);
 
 		expect(rightContentLoaded).equal(true);
 	});
@@ -48,25 +48,25 @@ describe('homepage experience', function() {
 	it('card should be displayed in viewport at initial snap point', async()=>{
 		await scrollTo(browser, 800);
 
-		const firstCard = await browser.$(config.cards.homepage.cardSelector);
+		const firstCard = await browser.$(config.cards.topArticles.cardSelector);
 
 		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
 
 		expect(firstCardIsInViewport).equal(true);
 
 		const isAtInitialSnapPoint = await isAtSnapPoint(browser,
-			config.cards.homepage.cardSelector,
-			config.cards.homepage.snapPoints.initial);
+			config.cards.topArticles.cardSelector,
+			config.cards.topArticles.snapPoints.initial);
 
 		expect(isAtInitialSnapPoint).equal(true);
 	});
 
 	it('activate card by click', async()=>{
-		await touchCard(browser, config.cards.homepage.cardSelector);
+		await touchCard(browser, config.cards.topArticles.cardSelector);
 
 		const isAtActiveSnapPoint = await isAtSnapPoint(browser,
-			config.cards.homepage.cardSelector,
-			config.cards.homepage.snapPoints.active);
+			config.cards.topArticles.cardSelector,
+			config.cards.topArticles.snapPoints.active);
 
 		expect(isAtActiveSnapPoint).equal(true);
 	});
