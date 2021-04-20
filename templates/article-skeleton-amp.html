@@ -1,13 +1,178 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html ⚡ lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="amphtml" href="https://playground.marfeel.com/templates/article-skeleton.html">
-    <link rel="stylesheet" href="../css/styles-skeleton.css">
+    <link rel="canonical" href="https://playground.marfeel/templates/article-skeleton.html" >
     <link rel="icon" href="../assets/favicon.png" />
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
     <title>Article example</title>
+
+    <style amp-boilerplate>
+        body {
+          -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+          -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+          -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+          animation: -amp-start 8s steps(1, end) 0s 1 normal both
+        }
+
+        @-webkit-keyframes -amp-start {
+          from {
+            visibility: hidden
+          }
+
+          to {
+            visibility: visible
+          }
+        }
+
+        @-moz-keyframes -amp-start {
+          from {
+            visibility: hidden
+          }
+
+          to {
+            visibility: visible
+          }
+        }
+
+        @-ms-keyframes -amp-start {
+          from {
+            visibility: hidden
+          }
+
+          to {
+            visibility: visible
+          }
+        }
+
+        @-o-keyframes -amp-start {
+          from {
+            visibility: hidden
+          }
+
+          to {
+            visibility: visible
+          }
+        }
+
+        @keyframes -amp-start {
+          from {
+            visibility: hidden
+          }
+
+          to {
+            visibility: visible
+          }
+        }
+    </style>
+    <noscript>
+        <style amp-boilerplate>
+          body {
+            -webkit-animation: none;
+            -moz-animation: none;
+            -ms-animation: none;
+            animation: none
+          }
+        </style>
+    </noscript>
+    <style amp-custom>
+        body {
+            --article-padding: 0 15px;
+            --topmedia-height: 225px;
+            --main-color: #d9d9d9;
+            --paragraph-height: 16px;
+            --paragraph-separation: 14px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .w-90 {
+            width: 95%;
+        }
+
+        .w-85 {
+            width: 90%;
+        }
+
+        .w-80 {
+            width: 85%;
+        }
+
+        .w-75 {
+            width: 80%;
+        }
+
+        .mb-xs {
+            margin-bottom: 14px;
+        }
+
+        .mb-m {
+            margin-bottom: 20px;
+        }
+
+        .mb-l {
+            margin-bottom: 25px;
+        }
+
+        .mb-xl {
+            margin-bottom: 46px !important;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color:#FFF;
+        }
+
+        .topmedia {
+            height: var(--topmedia-height);
+            background: var(--main-color);
+            margin-bottom: 25px;
+        }
+
+        .content {
+            margin: var(--article-padding);
+        }
+
+        .h1 {
+            height: 28px;
+            background: var(--main-color);
+        }
+
+        .metas {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--main-color);
+            margin-right: 8px;
+        }
+
+        .author {
+            height: 16px;
+            background: var(--main-color);
+            width: 120px;
+        }
+
+        .paragraph {
+            height: var(--paragraph-height);
+            background: var(--main-color);
+            margin-bottom: var(--paragraph-separation);
+        }
+    </style>
 </head>
 
 <body>
