@@ -7,7 +7,8 @@ const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./facebook.json');
 
-describe('facebook experience', function() {
+
+const facebookTest = function() {
 	let config,
 		fixture;
 	const fixtureUrl = getUrlFixture({
@@ -76,4 +77,8 @@ describe('facebook experience', function() {
 
 		expect(isAtActiveSnapPoint).equal(true);
 	});
-});
+};
+
+describe('facebook experience', facebookTest);
+
+exports.default = facebookTest;

@@ -14,7 +14,8 @@ const specs = [
 	// './experiences/facebook/facebook.test.js'
 	// './experiences/featured_article/featured_article.test.js'
 	// './experiences/homepage/homepage.test.js'
-	'./experiences/multicard/multicard.test.js'
+	// './experiences/multicard/multicard.test.js'
+	'./e2e/experiences.test.js'
 
 ];
 

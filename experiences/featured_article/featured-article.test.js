@@ -8,7 +8,7 @@ const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./featured_article.json');
 
-describe('featured article experience', function() {
+const featuredArticleTest = function() {
 	let config,
 		fixture;
 	const fixtureUrl = getUrlFixture({
@@ -77,4 +77,8 @@ describe('featured article experience', function() {
 
 		expect(isAtActiveSnapPoint).equal(true);
 	});
-});
+};
+
+describe('featured article experience', featuredArticleTest);
+
+exports.default = featuredArticleTest;
