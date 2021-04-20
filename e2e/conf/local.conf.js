@@ -1,12 +1,14 @@
 const { buildConfiguration } = require('./configurationBuilder');
 
-const capabilities = [{
-	platformName: 'iOS',
-	automationName: 'XCUITest',
-	deviceName: 'iPhone 8 Plus',
-	platformVersion: '14.4',
-	browserName: 'Safari'
-}];
+const capabilities = [
+	{
+		platformName: 'iOS',
+		automationName: 'XCUITest',
+		deviceName: 'iPhone 8 Plus',
+		platformVersion: '14.4',
+		browserName: 'Safari'
+	}
+];
 
 const specs = [
 	// './experiences/branded-content/branded-content-card.test.js'
@@ -15,8 +17,9 @@ const specs = [
 	// './experiences/featured_article/featured_article.test.js'
 	// './experiences/homepage/homepage.test.js'
 	// './experiences/multicard/multicard.test.js'
+	'./experiences/newsletter/newsletter.test.js'
 	// './experiences/push_notifications/push-notifications.test.js'
-	'./e2e/experiences.test.js'
+	// './e2e/experiences.test.js'
 ];
 
 const config = buildConfiguration(process.env.E2E_MODE, capabilities, specs);
