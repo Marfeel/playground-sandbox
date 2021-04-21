@@ -3,9 +3,11 @@
 const { baseConfig, localProperties, bsProperties, bsLocalProperties } = require('./defaultConfigurations');
 
 const bsCapabilitiesProps = {
+	'idleTimeout': 300,
 	'browserstack.console': 'info',
 	'browserstack.networkLogs': true,
-	'browserstack.acceptInsecureCerts': true
+	'browserstack.acceptInsecureCerts': true,
+	'browserstack.idleTimeout': '300'
 };
 
 const bsLocalCapabilitiesProps = {

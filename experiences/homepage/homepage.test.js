@@ -5,6 +5,7 @@ const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { closeCard } = require('../../e2e/utils/card-actions/close');
 const { scrollCard } = require('../../e2e/utils/card-actions/scroll');
+const { triggerInfiniteScroll, isAttachedToEndOfPage } = require('../../e2e/utils/infiniteScroll');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./homepage.json');
@@ -83,6 +84,16 @@ const homepageTest = function() {
 			config.cards.homepage.snapPoints.initial);
 
 		expect(isAtInitialSnapPoint).equal(true);
+	});
+
+	it('card attaches to end of page for infinite scroll', async()=>{
+		if (config.cards.homepage.features.infiniteScroll) {
+			await triggerInfiniteScroll(browser);
+
+			const isSticky = await isAttachedToEndOfPage(browser, config.cards.homepage.cardSelector);
+
+			expect(isSticky).equal(true);
+		}
 	});
 };
 

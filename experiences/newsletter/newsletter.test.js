@@ -47,7 +47,7 @@ const newsletterTest = function() {
 		expect(rightContentLoaded).equal(true);
 	});
 
-	it('card should be displayed in viewport at initial snap point', async() => {
+	it('card should be displayed in viewport at active snap point', async() => {
 		await scrollTo(browser, 800);
 
 		const firstCard = await browser.$(config.cards.newsletter.cardSelector);
@@ -56,13 +56,13 @@ const newsletterTest = function() {
 
 		expect(firstCardIsInViewport).equal(true);
 
-		const isAtInitialSnapPoint = await isAtSnapPoint(
+		const isAtActiveSnapPoint = await isAtSnapPoint(
 			browser,
 			config.cards.newsletter.cardSelector,
-			config.cards.newsletter.snapPoints.initial
+			config.cards.newsletter.snapPoints.active
 		);
 
-		expect(isAtInitialSnapPoint).equal(true);
+		expect(isAtActiveSnapPoint).equal(true);
 	});
 };
 

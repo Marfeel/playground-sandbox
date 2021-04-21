@@ -100,6 +100,8 @@ const touchCard = async(browser, cardSelector)=>{
 	}, cardSelector);
 };
 
+
+
 module.exports = {
 	dragCardTo,
 	dragCardBy,
