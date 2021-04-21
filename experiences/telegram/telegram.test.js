@@ -47,7 +47,7 @@ describe('telegram experience', function() {
 		expect(rightContentLoaded).equal(true);
 	});
 
-	it('card should be displayed in viewport at initial snap point', async() => {
+	it('card should be displayed in viewport at active snap point', async() => {
 		await scrollTo(browser, 800);
 
 		const firstCard = await browser.$(config.cards.telegram.cardSelector);
@@ -56,12 +56,12 @@ describe('telegram experience', function() {
 
 		expect(firstCardIsInViewport).equal(true);
 
-		const isAtInitialSnapPoint = await isAtSnapPoint(
+		const isAtActiveSnapPoint = await isAtSnapPoint(
 			browser,
 			config.cards.telegram.cardSelector,
-			config.cards.telegram.snapPoints.initial
+			config.cards.telegram.snapPoints.active
 		);
 
-		expect(isAtInitialSnapPoint).equal(true);
+		expect(isAtActiveSnapPoint).equal(true);
 	});
 });

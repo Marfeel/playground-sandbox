@@ -100,8 +100,47 @@ const touchCard = async(browser, cardSelector)=>{
 	}, cardSelector);
 };
 
+const touchElement = async(browser, elementSelector)=>{
+	await browser.execute(async(elSelector) => {
+		const createTouch = (target, clientY, clientX = 200) => {
+			return new Touch({
+				identifier: 123,
+				target,
+				clientY,
+				clientX,
+				radiusX: 2.5,
+				radiusY: 2.5,
+				rotationAngle: 10,
+				force: 0.5
+			});
+		};
+
+		const touch = async(el, y1) => {
+			const touchStart = createTouch(el, y1);
+			const touchEnd = createTouch(el, y1);
+
+			const touchStartEvent = new TouchEvent('touchstart', { bubbles: true, touches: [touchStart] });
+			const touchEndEvent = new TouchEvent('touchend', { bubbles: true, touches: [touchEnd] });
+
+			await el.dispatchEvent(touchStartEvent);
+			await el.dispatchEvent(touchEndEvent);
+		};
+
+		const touchCardAt = async(el) => {
+			const { y } = await el.getBoundingClientRect();
+
+			await touch(el, y + 15);
+		};
+
+		const dragHandler = document.querySelector(`${elSelector}`);
+
+		await touchCardAt(dragHandler);
+	}, elementSelector);
+};
+
 module.exports = {
 	dragCardTo,
 	dragCardBy,
-	touchCard
+	touchCard,
+	touchElement
 };

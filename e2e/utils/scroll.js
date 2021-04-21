@@ -9,7 +9,7 @@ const getCurrentScrollPosition = async(browser)=>{
 
 const range = (to, from = 0, step = 1) => Array.from(
 	{ length: Math.ceil(to / step) },
-	(_, k) => from + (k * 50)
+	(_, k) => from + (k * step)
 );
 
 const scroll = async(browser, y) => {
@@ -22,9 +22,9 @@ const scroll = async(browser, y) => {
 	}, y);
 };
 
-const scrollTo = async(browser, y)=>{
+const scrollTo = async(browser, y, step=100)=>{
 	const currentScrollPosition = await getCurrentScrollPosition(browser);
-	const scrollArray = range(y, currentScrollPosition, 50);
+	const scrollArray = range(y, currentScrollPosition, step);
 
 	await scrollArray.reduce(
 		async(acc, cur) => await acc.then(() => scroll(browser, cur)),
