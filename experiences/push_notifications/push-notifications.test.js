@@ -68,18 +68,6 @@ const pushNotificationTest = function() {
 
 		expect(isAtInitialSnapPoint).equal(true);
 	});
-
-	it('activate card by click', async() => {
-		await touchCard(browser, config.cards.pushNotifications.cardSelector);
-
-		const isAtActiveSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.pushNotifications.cardSelector,
-			config.cards.pushNotifications.snapPoints.active
-		);
-
-		expect(isAtActiveSnapPoint).equal(true);
-	});
 };
 
 describe('push_notifications experience', pushNotificationTest);

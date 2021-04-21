@@ -64,16 +64,4 @@ describe('telegram experience', function() {
 
 		expect(isAtInitialSnapPoint).equal(true);
 	});
-
-	it('activate card by click', async() => {
-		await touchCard(browser, config.cards.telegram.cardSelector);
-
-		const isAtActiveSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.telegram.cardSelector,
-			config.cards.telegram.snapPoints.active
-		);
-
-		expect(isAtActiveSnapPoint).equal(true);
-	});
 });

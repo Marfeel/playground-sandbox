@@ -3,6 +3,8 @@ const { scrollTo } = require('../../e2e/utils/scroll');
 const { touchCard } = require('../../e2e/utils/touch');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
+const { closeCard } = require('../../e2e/utils/card-actions/close');
+const { scrollCard } = require('../../e2e/utils/card-actions/scroll');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./comments.json');
@@ -69,6 +71,18 @@ const commentsTest = function() {
 			config.cards.topArticles.snapPoints.active);
 
 		expect(isAtActiveSnapPoint).equal(true);
+	});
+
+	it('close card pressing close button', async()=>{
+		await scrollCard(browser, config.cards.topArticles.cardSelector, 400);
+
+		await closeCard(browser);
+
+		const isAtInitialSnapPoint = await isAtSnapPoint(browser,
+			config.cards.topArticles.cardSelector,
+			config.cards.topArticles.snapPoints.initial);
+
+		expect(isAtInitialSnapPoint).equal(true);
 	});
 };
 
