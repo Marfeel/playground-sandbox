@@ -4,6 +4,8 @@ const { touchCard } = require('../../e2e/utils/touch');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { hasHeroImage } = require('../../e2e/utils/heroImage.js');
+const { closeCard } = require('../../e2e/utils/card-actions/close');
+const { scrollCard } = require('../../e2e/utils/card-actions/scroll');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./featured_article.json');
@@ -76,6 +78,18 @@ const featuredArticleTest = function() {
 			config.cards.heroImage.snapPoints.active);
 
 		expect(isAtActiveSnapPoint).equal(true);
+	});
+
+	it('close card pressing close button', async()=>{
+		await scrollCard(browser, config.cards.heroImage.cardSelector, 400);
+
+		await closeCard(browser);
+
+		const isAtInitialSnapPoint = await isAtSnapPoint(browser,
+			config.cards.heroImage.cardSelector,
+			config.cards.heroImage.snapPoints.initial);
+
+		expect(isAtInitialSnapPoint).equal(true);
 	});
 };
 

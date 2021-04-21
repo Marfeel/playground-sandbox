@@ -1,5 +1,4 @@
 
-const brandedContentTest = require('../experiences/branded-content/branded-content-card.test');
 const commentsTest = require('../experiences/comments/comments.test');
 const facebookTest = require('../experiences/facebook/facebook.test');
 const featuredArticleTest = require('../experiences/featured_article/featured-article.test');
@@ -10,7 +9,6 @@ const pushNotificationsTest = require('../experiences/push_notifications/push-no
 const taboolaTest = require('../experiences/taboola/taboola.test');
 const topArticlesTest = require('../experiences/top_articles/top-articles.test');
 
-describe('branded content experience', brandedContentTest);
 describe('comments experience', commentsTest);
 describe('facebook experience', facebookTest);
 describe('featured article experience', featuredArticleTest);

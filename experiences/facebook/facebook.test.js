@@ -1,6 +1,5 @@
 const { bootstrapExperience } = require('../../e2e/utils/bootstrap');
 const { scrollTo } = require('../../e2e/utils/scroll');
-const { touchCard } = require('../../e2e/utils/touch');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { expect } = require('chai');
@@ -48,7 +47,7 @@ const facebookTest = function() {
 		expect(rightContentLoaded).equal(true);
 	});
 
-	it('card should be displayed in viewport at initial snap point', async() => {
+	it('card should be displayed in viewport at active snap point', async() => {
 		await scrollTo(browser, 800);
 
 		const firstCard = await browser.$(config.cards.facebook.cardSelector);
@@ -56,18 +55,6 @@ const facebookTest = function() {
 		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
 
 		expect(firstCardIsInViewport).equal(true);
-
-		const isAtInitialSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.facebook.cardSelector,
-			config.cards.facebook.snapPoints.initial
-		);
-
-		expect(isAtInitialSnapPoint).equal(true);
-	});
-
-	it('activate card by click', async() => {
-		await touchCard(browser, config.cards.facebook.cardSelector);
 
 		const isAtActiveSnapPoint = await isAtSnapPoint(
 			browser,

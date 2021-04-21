@@ -64,18 +64,6 @@ const newsletterTest = function() {
 
 		expect(isAtInitialSnapPoint).equal(true);
 	});
-
-	it('activate card by click', async() => {
-		await touchCard(browser, config.cards.newsletter.cardSelector);
-
-		const isAtActiveSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.newsletter.cardSelector,
-			config.cards.newsletter.snapPoints.active
-		);
-
-		expect(isAtActiveSnapPoint).equal(true);
-	});
 };
 
 describe('newsletter experience', newsletterTest);
