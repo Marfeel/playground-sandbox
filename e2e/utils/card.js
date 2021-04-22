@@ -8,9 +8,11 @@ const isCardExisting = async(browser, cardSelector) => {
 	await browser.waitUntil(async()=>{
 		const card = await browser.$(cardSelector);
 
-		exists = await card.waitForExist({ timeout: 1000 });
-
-		await scrollBy(browser, 20);
+		try {
+			exists = await card.waitForExist({ timeout: 1000 });
+		} catch (e) {
+			await scrollBy(browser, 20);
+		}
 
 		return exists;
 	}, {

@@ -62,7 +62,7 @@ const multicardTest = function() {
 	});
 
 	it('card 2 should render on scroll', async function() {
-		await scrollTo(browser, 2000);
+		await scrollTo(browser, 4000);
 
 		const cardExists = await isCardExisting(browser, config.cards.nextArticle.cardSelector);
 
@@ -78,7 +78,7 @@ const multicardTest = function() {
 	});
 
 	it('card 2 should be displayed in viewport at initial snap point', async()=>{
-		await scrollTo(browser, 2600);
+		await scrollTo(browser, 4200);
 
 		const firstCard = await browser.$(config.cards.nextArticle.cardSelector);
 
