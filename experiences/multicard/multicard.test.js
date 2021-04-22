@@ -3,6 +3,8 @@ const { scrollTo } = require('../../e2e/utils/scroll');
 const { touchCard } = require('../../e2e/utils/touch');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
+const { isCardExisting } = require('../../e2e/utils/card');
+const { removeCard } = require('../../e2e/utils/card-actions/remove');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./multicard.json');
@@ -30,11 +32,9 @@ const multicardTest = function() {
 	it('card 1 should render on scroll', async function() {
 		await scrollTo(browser, 400);
 
-		const firstCard = await browser.$(config.cards.homepage.cardSelector);
+		const cardExists = await isCardExisting(browser, config.cards.homepage.cardSelector);
 
-		const firstCardExists = await firstCard.waitForExist({ timeout: 5000 });
-
-		expect(firstCardExists).equal(true);
+		expect(cardExists).equal(true);
 	});
 
 	it('card 1 should have right content', async function() {
@@ -64,11 +64,9 @@ const multicardTest = function() {
 	it('card 2 should render on scroll', async function() {
 		await scrollTo(browser, 2000);
 
-		const firstCard = await browser.$(config.cards.nextArticle.cardSelector);
+		const cardExists = await isCardExisting(browser, config.cards.nextArticle.cardSelector);
 
-		const firstCardExists = await firstCard.waitForExist({ timeout: 5000 });
-
-		expect(firstCardExists).equal(true);
+		expect(cardExists).equal(true);
 	});
 
 	it('card 2 should have right content', async function() {
@@ -103,6 +101,19 @@ const multicardTest = function() {
 			config.cards.nextArticle.snapPoints.active);
 
 		expect(isAtActiveSnapPoint).equal(true);
+	});
+
+	it('remove card, should not be displayed in viewport', async function() {
+		await removeCard(
+			browser,
+			config.cards.nextArticle.cardSelector
+		);
+
+		const firstCard = await browser.$(config.cards.nextArticle.cardSelector);
+
+		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
+
+		expect(firstCardIsInViewport).equal(false);
 	});
 };
 

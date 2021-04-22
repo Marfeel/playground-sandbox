@@ -22,7 +22,7 @@ const scroll = async(browser, y) => {
 	}, y);
 };
 
-const scrollTo = async(browser, y, step=100)=>{
+const scrollTo = async(browser, y, step=50)=>{
 	const currentScrollPosition = await getCurrentScrollPosition(browser);
 	const scrollArray = range(y, currentScrollPosition, step);
 
@@ -32,6 +32,17 @@ const scrollTo = async(browser, y, step=100)=>{
 	);
 };
 
+const scrollBy = async(browser, y)=>{
+	return await browser.executeAsync(async(yBrowser, done) => {
+		const html = document.querySelector('html');
+
+		html.scrollBy(0, yBrowser);
+		html.dispatchEvent(new CustomEvent('scroll', {}));
+		done();
+	}, y);
+};
+
 module.exports = {
-	scrollTo
+	scrollTo,
+	scrollBy
 };

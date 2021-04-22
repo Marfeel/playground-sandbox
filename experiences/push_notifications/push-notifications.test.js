@@ -1,8 +1,9 @@
 const { bootstrapExperience } = require('../../e2e/utils/bootstrap');
 const { scrollTo } = require('../../e2e/utils/scroll');
-const { touchCard } = require('../../e2e/utils/touch');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
+const { isCardExisting } = require('../../e2e/utils/card');
+const { removeCard } = require('../../e2e/utils/card-actions/remove');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./push_notifications.json');
@@ -30,13 +31,9 @@ const pushNotificationTest = function() {
 	it('card should render on scroll', async function() {
 		await scrollTo(browser, 400);
 
-		const firstCard = await browser.$(
-			config.cards.pushNotifications.cardSelector
-		);
+		const cardExists = await isCardExisting(browser, config.cards.pushNotifications.cardSelector);
 
-		const firstCardExists = await firstCard.waitForExist({ timeout: 5000 });
-
-		expect(firstCardExists).equal(true);
+		expect(cardExists).equal(true);
 	});
 
 	it('card should have right content', async function() {
@@ -67,6 +64,19 @@ const pushNotificationTest = function() {
 		);
 
 		expect(isAtActiveSnapPoint).equal(true);
+	});
+
+	it('remove card, should not be displayed in viewport', async function() {
+		await removeCard(
+			browser,
+			config.cards.pushNotifications.cardSelector
+		);
+
+		const firstCard = await browser.$(config.cards.pushNotifications.cardSelector);
+
+		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
+
+		expect(firstCardIsInViewport).equal(false);
 	});
 };
 

@@ -1,6 +1,7 @@
 const { bootstrapExperience } = require('../../e2e/utils/bootstrap');
 const { scrollTo } = require('../../e2e/utils/scroll');
 const { touchCard } = require('../../e2e/utils/touch');
+const { isCardExisting } = require('../../e2e/utils/card');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { closeCard } = require('../../e2e/utils/card-actions/close');
@@ -33,11 +34,9 @@ const commentsTest = function() {
 	it('card should render on scroll', async function() {
 		await scrollTo(browser, 400);
 
-		const firstCard = await browser.$(config.cards.topArticles.cardSelector);
+		const cardExists = await isCardExisting(browser, config.cards.topArticles.cardSelector);
 
-		const firstCardExists = await firstCard.waitForExist({ timeout: 5000 });
-
-		expect(firstCardExists).equal(true);
+		expect(cardExists).equal(true);
 	});
 
 	it('card should have right content', async function() {

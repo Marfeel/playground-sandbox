@@ -5,6 +5,7 @@ const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { closeCard } = require('../../e2e/utils/card-actions/close');
 const { scrollCard } = require('../../e2e/utils/card-actions/scroll');
+const { isCardExisting } = require('../../e2e/utils/card');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./podcast.json');
@@ -32,11 +33,9 @@ describe('podcast experience', function() {
 	it('card should render on scroll', async function() {
 		await scrollTo(browser, 400);
 
-		const firstCard = await browser.$(config.cards.podcast.cardSelector);
+		const cardExists = await isCardExisting(browser, config.cards.podcast.cardSelector);
 
-		const firstCardExists = await firstCard.waitForExist({ timeout: 5000 });
-
-		expect(firstCardExists).equal(true);
+		expect(cardExists).equal(true);
 	});
 
 	it('card should have right content', async function() {
