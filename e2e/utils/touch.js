@@ -1,23 +1,6 @@
 /* eslint-disable no-console */
 
-const range = function(from, to, step=1) {
-	const ar = [];
-	let localFrom = from;
-
-	ar[0] = localFrom;
-	if (to<localFrom) {
-		while (localFrom-step > to) {
-			ar[ar.length] = localFrom-= step;
-		}
-	} else {
-		while (localFrom+step < to) {
-			ar[ar.length] = localFrom+= step;
-		}
-	}
-	ar[ar.length] = to;
-
-	return ar;
-};
+const { range } = require('mathjs');
 
 const getTargetPosition = async(browser, cardSelector)=>{
 	const startPosition = await browser.executeAsync(async(cardSelectorBrowser, done) => {
@@ -58,7 +41,7 @@ const executeTouch = async(browser, cardSelector, y, type)=>{
 
 const dragCardTo = async(browser, cardSelector, to)=>{
 	const from = await getTargetPosition(browser, cardSelector);
-	const movements = range(from, to, 50);
+	const movements = range(from, to, 50, true)._data;
 
 	await executeTouch(browser, cardSelector, from, 'touchstart');
 	await movements.reduce((prev, value)=>{

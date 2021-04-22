@@ -32,7 +32,7 @@ const commentsTest = function() {
 	});
 
 	it('card should render on scroll', async function() {
-		await scrollTo(browser, 400);
+		await scrollTo(browser, 500);
 
 		const cardExists = await isCardExisting(browser, config.cards.topArticles.cardSelector);
 

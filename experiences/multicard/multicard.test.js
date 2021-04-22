@@ -78,7 +78,7 @@ const multicardTest = function() {
 	});
 
 	it('card 2 should be displayed in viewport at initial snap point', async()=>{
-		await scrollTo(browser, 2200);
+		await scrollTo(browser, 2600);
 
 		const firstCard = await browser.$(config.cards.nextArticle.cardSelector);
 
