@@ -10,7 +10,7 @@ const bootstrapExperience = async(browser, config, fixture) => {
 		() => async() => { //depends on selected article
 			return await browser.getTitle() === fixture.articleTitle;
 		},
-		{ timeout: 10000, interval: 1000, timeoutMsg: `${fixture.articleTitle} didnt load correctly` }
+		{ timeout: 10000, interval: 1000, timeoutMsg: `${fixture.articleTitle} didn't load correctly` }
 	);
 
 	await waitBrowserReady(browser);
