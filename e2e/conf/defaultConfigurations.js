@@ -17,7 +17,7 @@ const baseConfig = {
 	screenshotPath: './errorShots/',
 	baseUrl: '',
 	waitforTimeout: 10000,
-	connectionRetryTimeout: 90000,
+	connectionRetryTimeout: 300000,
 	connectionRetryCount: 3,
 
 	before: function() {

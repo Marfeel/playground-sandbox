@@ -1,10 +1,23 @@
 /* eslint-disable no-console */
 
-const dragCardTo = async(browser, cardSelector, yPos)=>{
-	await browser.executeAsync(async(cardSelectorBrowser, yPosBrowser, done) => {
+const { range } = require('mathjs');
+
+const getTargetPosition = async(browser, cardSelector)=>{
+	const startPosition = await browser.executeAsync(async(cardSelectorBrowser, done) => {
+		const dragHandler = document.querySelector(`${cardSelectorBrowser} [data-testid=cardDragTarget]`);
+		const { y } = dragHandler.getBoundingClientRect();
+
+		done(y);
+	}, cardSelector);
+
+	return startPosition;
+};
+
+const executeTouch = async(browser, cardSelector, y, type)=>{
+	await browser.executeAsync(async(cardSelectorBrowser, yBrowser, typeBrowser, done) => {
 		const createTouch = (target, clientY, clientX = 200) => {
 			return new Touch({
-				identifier: 123,
+				identifier: 1,
 				target,
 				clientY,
 				clientX,
@@ -15,36 +28,30 @@ const dragCardTo = async(browser, cardSelector, yPos)=>{
 			});
 		};
 
-		const drag = async(el, y1, y2) => {
-			const touchStart = createTouch(el, y1);
-			const touchMove = createTouch(el, y2);
-			const touchEnd = createTouch(el, undefined);
-
-			const touchStartEvent = new TouchEvent('touchstart', { bubbles: true, touches: [touchStart] });
-			const touchMoveEvent = new TouchEvent('touchmove', { bubbles: true, touches: [touchMove] });
-			const touchEndEvent = new TouchEvent('touchend', { bubbles: true, touches: [touchEnd] });
-
-			await el.dispatchEvent(touchStartEvent);
-			await el.dispatchEvent(touchMoveEvent);
-			await el.dispatchEvent(touchEndEvent);
-		};
-
-		const dragTo = async(el, targetY) => {
-			const { y } = await el.getBoundingClientRect();
-
-			await drag(el, y + 15, targetY);
-		};
-
-		const dragCardToPosition = async(dragTarget, y) => {
-			await dragTo(dragTarget, y);
-		};
-
 		const dragHandler = document.querySelector(`${cardSelectorBrowser} [data-testid=cardDragTarget]`);
+		const touchStart = createTouch(dragHandler, yBrowser, 200);
+		const touchStartEvent = new TouchEvent(typeBrowser, { bubbles: true, touches: [touchStart] });
 
-		await dragCardToPosition(dragHandler, yPosBrowser);
+		dragHandler.dispatchEvent(touchStartEvent);
 
 		done();
-	}, cardSelector, yPos);
+	}, cardSelector, y, type);
+};
+
+
+const dragCardTo = async(browser, cardSelector, to)=>{
+	const from = await getTargetPosition(browser, cardSelector);
+	const movements = range(from, to, 50, true)._data;
+
+	await executeTouch(browser, cardSelector, from, 'touchstart');
+	await movements.reduce((prev, value)=>{
+		return prev.then(()=>{
+			executeTouch(browser, cardSelector, value, 'touchmove');
+
+			return new Promise(resolve => setTimeout(resolve, 10));
+		});
+	}, Promise.resolve());
+	await executeTouch(browser, cardSelector, to, 'touchend');
 };
 
 const dragCardBy = async(browser, cardSelector, dragByY)=>{
@@ -99,8 +106,6 @@ const touchCard = async(browser, cardSelector)=>{
 		await touchCardAt(dragHandler);
 	}, cardSelector);
 };
-
-
 
 module.exports = {
 	dragCardTo,
