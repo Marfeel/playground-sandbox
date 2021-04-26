@@ -6,6 +6,7 @@ const { isCardExisting } = require('../../e2e/utils/card');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { closeCard } = require('../../e2e/utils/card-actions/close');
 const { scrollCard } = require('../../e2e/utils/card-actions/scroll');
+const { minimizeCard } = require('../../e2e/utils/card-actions/minimize');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const { getFlowcardJson } = require('../../e2e/utils/croupier');
 const { expect } = require('chai');
@@ -84,6 +85,22 @@ const brandedContentTest = function() {
 			config.cards.BrandedContentFlowcard.snapPoints.initial);
 
 		expect(isAtInitialSnapPoint).equal(true);
+	});
+
+	it('minimize card dragging it down when status is "initial"', async() => {
+		if (!config.cards.BrandedContentFlowcard.features.removable) {
+			// Restore initial status after infinite scroll
+			await scrollBy(browser, -1800);
+			await minimizeCard(browser, config.cards.BrandedContentFlowcard.cardSelector);
+
+			const isAtMinimizedSnapPoint = await isAtSnapPoint(
+				browser,
+				config.cards.BrandedContentFlowcard.cardSelector,
+				config.cards.BrandedContentFlowcard.snapPoints.minimised
+			);
+
+			expect(isAtMinimizedSnapPoint).equal(true);
+		}
 	});
 };
 

@@ -7,6 +7,7 @@ const { removeCard } = require('../../e2e/utils/card-actions/remove');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./telegram.json');
+const { minimizeCard } = require('../../e2e/utils/card-actions/minimize');
 
 describe('telegram experience', function() {
 	let config,
@@ -75,5 +76,21 @@ describe('telegram experience', function() {
 		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
 
 		expect(firstCardIsInViewport).equal(false);
+	});
+
+	it('minimize card dragging it down when status is "initial"', async() => {
+		if (!config.cards.telegram.features.removable) {
+			// Restore initial status after infinite scroll
+			await scrollBy(browser, -1800);
+			await minimizeCard(browser, config.cards.telegram.cardSelector);
+
+			const isAtMinimizedSnapPoint = await isAtSnapPoint(
+				browser,
+				config.cards.telegram.cardSelector,
+				config.cards.telegram.snapPoints.minimised
+			);
+
+			expect(isAtMinimizedSnapPoint).equal(true);
+		}
 	});
 });

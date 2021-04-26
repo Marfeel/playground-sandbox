@@ -1,5 +1,5 @@
 const { bootstrapExperience } = require('../../e2e/utils/bootstrap');
-const { scrollTo } = require('../../e2e/utils/scroll');
+const { scrollTo, scrollBy } = require('../../e2e/utils/scroll');
 const { touchCard } = require('../../e2e/utils/touch');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
@@ -8,6 +8,7 @@ const { scrollCard } = require('../../e2e/utils/card-actions/scroll');
 const { isCardExisting } = require('../../e2e/utils/card');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
+const { minimizeCard } = require('../../e2e/utils/card-actions/minimize');
 const experience = require('./podcast.json');
 
 describe('podcast experience', function() {
@@ -88,5 +89,21 @@ describe('podcast experience', function() {
 			config.cards.podcast.snapPoints.initial);
 
 		expect(isAtInitialSnapPoint).equal(true);
+	});
+
+	it('minimize card dragging it down when status is "initial"', async() => {
+		if (!config.cards.podcast.features.removable) {
+			// Restore initial status after infinite scroll
+			await scrollBy(browser, -1800);
+			await minimizeCard(browser, config.cards.podcast.cardSelector);
+
+			const isAtMinimizedSnapPoint = await isAtSnapPoint(
+				browser,
+				config.cards.podcast.cardSelector,
+				config.cards.podcast.snapPoints.minimised
+			);
+
+			expect(isAtMinimizedSnapPoint).equal(true);
+		}
 	});
 });

@@ -6,6 +6,7 @@ const { isCardExisting } = require('../../e2e/utils/card');
 const { removeCard } = require('../../e2e/utils/card-actions/remove');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
+const { minimizeCard } = require('../../e2e/utils/card-actions/minimize');
 const experience = require('./newsletter.json');
 
 const newsletterTest = function() {
@@ -75,6 +76,22 @@ const newsletterTest = function() {
 		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
 
 		expect(firstCardIsInViewport).equal(false);
+	});
+
+	it('minimize card dragging it down when status is "initial"', async() => {
+		if (!config.cards.newsletter.features.removable) {
+			// Restore initial status after infinite scroll
+			await scrollBy(browser, -1800);
+			await minimizeCard(browser, config.cards.newsletter.cardSelector);
+
+			const isAtMinimizedSnapPoint = await isAtSnapPoint(
+				browser,
+				config.cards.newsletter.cardSelector,
+				config.cards.newsletter.snapPoints.minimised
+			);
+
+			expect(isAtMinimizedSnapPoint).equal(true);
+		}
 	});
 };
 

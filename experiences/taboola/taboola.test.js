@@ -1,5 +1,5 @@
 const { bootstrapExperience } = require('../../e2e/utils/bootstrap');
-const { scrollTo } = require('../../e2e/utils/scroll');
+const { scrollTo, scrollBy } = require('../../e2e/utils/scroll');
 const { touchCard } = require('../../e2e/utils/touch');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
@@ -10,6 +10,7 @@ const { isCardExisting } = require('../../e2e/utils/card');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./taboola.json');
+const { minimizeCard } = require('../../e2e/utils/card-actions/minimize');
 
 const taboolaTest = function() {
 	let config,
@@ -98,6 +99,22 @@ const taboolaTest = function() {
 			const isSticky = await isAttachedToEndOfPage(browser, config.cards.taboola.cardSelector);
 
 			expect(isSticky).equal(true);
+		}
+	});
+
+	it('minimize card dragging it down when status is "initial"', async() => {
+		if (!config.cards.taboola.features.removable) {
+			// Restore initial status after infinite scroll
+			await scrollBy(browser, -1800);
+			await minimizeCard(browser, config.cards.taboola.cardSelector);
+
+			const isAtMinimizedSnapPoint = await isAtSnapPoint(
+				browser,
+				config.cards.taboola.cardSelector,
+				config.cards.taboola.snapPoints.minimised
+			);
+
+			expect(isAtMinimizedSnapPoint).equal(true);
 		}
 	});
 };
