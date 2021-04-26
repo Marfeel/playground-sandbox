@@ -1,4 +1,4 @@
-module.exports.getUrlFixture = ({
+const getUrlFixture = ({
 	siteUrl,
 	requestHostname,
 	technology,
@@ -19,4 +19,9 @@ module.exports.getUrlFixture = ({
 	console.log('FixtureUrl:', url);
 
 	return url;
+};
+
+
+module.exports = {
+	getUrlFixture
 };

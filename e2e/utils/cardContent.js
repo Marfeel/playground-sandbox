@@ -1,3 +1,4 @@
+const { falseDependencies } = require('mathjs');
 
 const playgroundUrlPlaceholders = '${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}';
 
@@ -13,13 +14,32 @@ const getCardAMPContent = async(browser, cardSelector) => {
 };
 
 const isCardContentLoaded = async(browser, cardSelector, contentConfig) => {
+	let loaded = false;
+
 	const expectedUrl = contentConfig.url.includes(playgroundUrlPlaceholders) ?
 		contentConfig.url.replace(playgroundUrlPlaceholders, '') :
 		contentConfig.url;
 
-	const contentInfo = await getCardAMPContent(browser, cardSelector);
+	await browser.waitUntil(async()=>{
+		let contentInfo = '';
 
-	return contentInfo.url.includes(expectedUrl);
+		try {
+			contentInfo = await getCardAMPContent(browser, cardSelector);
+		} catch (e) {
+			return false;
+		}
+
+		loaded = contentInfo.url.includes(expectedUrl);
+
+		return loaded;
+	}, {
+		timeout: 10000,
+		interval: 500,
+		timeoutMsg: 'Content of the card didn\'t load'
+	});
+
+
+	return loaded;
 };
 
 module.exports = {
