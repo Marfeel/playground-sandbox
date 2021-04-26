@@ -1,8 +1,6 @@
 const { scrollBy } = require('./scroll');
 
 const isCardExisting = async(browser, cardSelector) => {
-
-
 	let exists = false;
 
 	await browser.waitUntil(async()=>{

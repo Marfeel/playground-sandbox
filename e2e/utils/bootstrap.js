@@ -32,7 +32,17 @@ const bootstrapExperience = async(browser, config, fixture) => {
 
 	await scrollTo(browser, 0);
 
-	await browser.pause(1000);
+	const marfeelFlowcardsElement = await browser.$('marfeel-flowcards');
+
+	await browser.waitUntil(async()=>{
+		const isExisting = await marfeelFlowcardsElement.isExisting();
+
+		return isExisting;
+	}, {
+		timeout: 10000,
+		interval: 1000,
+		timeoutMsg: 'MarfeelFlowcards element didn\'t render'
+	});
 
 	await waitBrowserReady(browser);
 
