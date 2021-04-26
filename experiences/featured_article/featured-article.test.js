@@ -5,6 +5,7 @@ const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { hasHeroImage } = require('../../e2e/utils/heroImage.js');
 const { closeCard } = require('../../e2e/utils/card-actions/close');
+const { minimizeCard } = require('../../e2e/utils/card-actions/minimize');
 const { scrollCard } = require('../../e2e/utils/card-actions/scroll');
 const { triggerInfiniteScroll, isAttachedToEndOfPage } = require('../../e2e/utils/infiniteScroll');
 const { isCardExisting } = require('../../e2e/utils/card');
@@ -99,6 +100,22 @@ const featuredArticleTest = function() {
 			const isSticky = await isAttachedToEndOfPage(browser, config.cards.heroImage.cardSelector);
 
 			expect(isSticky).equal(true);
+		}
+	});
+
+	it('minimize card dragging it down when status is "initial"', async() => {
+		if (!config.cards.heroImage.features.removable) {
+			// Restore initial status after infinite scroll
+			await scrollBy(browser, -1800);
+			await minimizeCard(browser, config.cards.heroImage.cardSelector);
+
+			const isAtMinimizedSnapPoint = await isAtSnapPoint(
+				browser,
+				config.cards.heroImage.cardSelector,
+				config.cards.heroImage.snapPoints.minimised
+			);
+
+			expect(isAtMinimizedSnapPoint).equal(true);
 		}
 	});
 };
