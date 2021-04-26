@@ -3,7 +3,7 @@ const { scrollTo } = require('../../e2e/utils/scroll');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { removeCard } = require('../../e2e/utils/card-actions/remove');
-const { isCardExisting, isCardNotInViewport } = require('../../e2e/utils/card');
+const { isCardExisting, isCardInViewport, isCardNotInViewport } = require('../../e2e/utils/card');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./facebook.json');
@@ -50,11 +50,9 @@ const facebookTest = function() {
 	it('card should be displayed in viewport at active snap point', async() => {
 		await scrollTo(browser, 800);
 
-		const firstCard = await browser.$(config.cards.facebook.cardSelector);
+		const cardInViewport = await isCardInViewport(browser, config.cards.facebook.cardSelector);
 
-		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
-
-		expect(firstCardIsInViewport).equal(true);
+		expect(cardInViewport).equal(true);
 
 		const isAtActiveSnapPoint = await isAtSnapPoint(
 			browser,

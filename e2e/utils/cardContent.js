@@ -1,4 +1,3 @@
-const { falseDependencies } = require('mathjs');
 
 const playgroundUrlPlaceholders = '${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}';
 
