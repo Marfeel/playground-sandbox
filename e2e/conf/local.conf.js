@@ -18,7 +18,9 @@ const specs = [
 	// './experiences/homepage/homepage.test.js'
 	// './experiences/multicard/multicard.test.js'
 	// './experiences/newsletter/newsletter.test.js'
+	// './experiences/podcast/podcast.test.js'
 	// './experiences/push_notifications/push-notifications.test.js'
+	// './experiences/taboola/taboola.test.js'
 	// './experiences/top_articles/top-articles.test.js'
 	'./e2e/experiences.test.js'
 ];
