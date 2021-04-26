@@ -22,6 +22,31 @@ const isCardExisting = async(browser, cardSelector) => {
 	return exists;
 };
 
+const waitUntilViewport = async(browser, cardSelector, expected) => {
+	return await browser.waitUntil(async()=>{
+		const card = await browser.$(cardSelector);
+
+		const isInViewport = await card.isDisplayedInViewport();
+
+		return expected === isInViewport;
+	}, {
+		timeout: 10000,
+		interval: 1000,
+		timeoutMsg: expected ? 'Card was not in viewport' : 'Card is in viewport'
+	});
+};
+
+
+const isCardInViewport = async(browser, cardSelector) => {
+	return await waitUntilViewport(browser, cardSelector, true);
+};
+
+const isCardNotInViewport = async(browser, cardSelector) => {
+	return await waitUntilViewport(browser, cardSelector, false);
+};
+
 module.exports = {
-	isCardExisting
+	isCardExisting,
+	isCardInViewport,
+	isCardNotInViewport
 };

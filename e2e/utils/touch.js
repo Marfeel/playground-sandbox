@@ -48,7 +48,7 @@ const dragCardTo = async(browser, cardSelector, to)=>{
 		return prev.then(()=>{
 			executeTouch(browser, cardSelector, value, 'touchmove');
 
-			return new Promise(resolve => setTimeout(resolve, 10));
+			return new Promise(resolve => setTimeout(resolve, 50));
 		});
 	}, Promise.resolve());
 	await executeTouch(browser, cardSelector, to, 'touchend');

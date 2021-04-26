@@ -3,7 +3,7 @@ const { scrollTo } = require('../../e2e/utils/scroll');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { removeCard } = require('../../e2e/utils/card-actions/remove');
-const { isCardExisting } = require('../../e2e/utils/card');
+const { isCardExisting, isCardNotInViewport } = require('../../e2e/utils/card');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./facebook.json');
@@ -71,11 +71,9 @@ const facebookTest = function() {
 			config.cards.facebook.cardSelector
 		);
 
-		const firstCard = await browser.$(config.cards.facebook.cardSelector);
+		const cardNotInViewport = await isCardNotInViewport(browser, config.cards.facebook.cardSelector);
 
-		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
-
-		expect(firstCardIsInViewport).equal(false);
+		expect(cardNotInViewport).equal(true);
 	});
 };
 
