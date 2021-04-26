@@ -4,7 +4,7 @@ const { touchCard } = require('../../e2e/utils/touch');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { scrollCard } = require('../../e2e/utils/card-actions/scroll');
-const { removeCard: minimizeCard } = require('../../e2e/utils/card-actions/remove');
+const { minimizeCard } = require('../../e2e/utils/card-actions/minimize');
 const { closeCard } = require('../../e2e/utils/card-actions/close');
 const {
 	triggerInfiniteScroll,
