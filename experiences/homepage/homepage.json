@@ -20,11 +20,19 @@
 				"infiniteScroll": true
 			},
 			"triggers": {
-				"myScrollTrigger": {
+				"myIntersectionTrigger": {
 					"on": "intersection",
 					"action": "setSnapPoint:promoted",
 					"spec": {
 						"selector": ".trigger-start"
+					}
+				},
+				"myScrollTrigger": {
+					"on": "scroll",
+					"spec": {
+						"type": "absolute",
+						"pixel": 300,
+						"percentage": 0.1
 					}
 				}
 			}
