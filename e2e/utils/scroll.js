@@ -39,7 +39,17 @@ const scrollBy = async(browser, y)=>{
 	}, y);
 };
 
+const scrollToElement = async(browser, selector)=>{
+	return await browser.executeAsync(async(selectorBrowser, done) => {
+		const element = document.querySelector(selectorBrowser);
+
+		element.scrollIntoView();
+		done();
+	}, selector);
+};
+
 module.exports = {
 	scrollTo,
-	scrollBy
+	scrollBy,
+	scrollToElement
 };

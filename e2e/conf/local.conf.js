@@ -15,7 +15,7 @@ const specs = [
 	// './experiences/comments/comments.test.js'
 	// './experiences/facebook/facebook.test.js'
 	// './experiences/featured_article/featured-article.test.js'
-	// './experiences/homepage/homepage.test.js'
+	//'./experiences/homepage/homepage.test.js'
 	// './experiences/multicard/multicard.test.js'
 	// './experiences/newsletter/newsletter.test.js'
 	// './experiences/podcast/podcast.test.js'

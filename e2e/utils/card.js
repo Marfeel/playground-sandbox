@@ -15,7 +15,7 @@ const isCardExisting = async(browser, cardSelector) => {
 		return exists;
 	}, {
 		timeout: 10000,
-		interval: 1000,
+		interval: 500,
 		timeoutMsg: 'Card didn\'t exist'
 	});
 
