@@ -21,11 +21,10 @@
 			},
 			"triggers": {
 				"myScrollTrigger": {
-					"on": "scroll",
+					"on": "intersection",
+					"action": "setSnapPoint:promoted",
 					"spec": {
-						"type": "absolute",
-						"pixel": 300,
-						"percentage": 0.1
+						"selector": ".trigger-start"
 					}
 				}
 			}
