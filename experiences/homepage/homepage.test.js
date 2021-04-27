@@ -47,6 +47,66 @@ const homepageTest = function() {
 		expect(cardExists).equal(true);
 	});
 
+	it('when scrolling a few pixels down, the card pops up the same amount of pixels', async() => {
+		const cardExists = await isCardExisting(
+			browser,
+			config.cards.homepage.cardSelector
+		);
+
+		expect(cardExists).equal(true);
+
+		//Make the card appear a little bit
+		await scrollBy(browser, 100);
+
+		// Test scroll bounce
+		let isAtExpectedSnapPoint = await isAtSnapPoint(
+			browser,
+			config.cards.homepage.cardSelector,
+			config.cards.homepage.snapPoints.minimised
+		);
+
+		expect(isAtExpectedSnapPoint).equal(true);
+
+		await scrollBy(browser, 20);
+
+		isAtExpectedSnapPoint = await isAtSnapPoint(
+			browser,
+			config.cards.homepage.cardSelector,
+			config.cards.homepage.snapPoints.minimised - 0.1
+		);
+		expect(isAtExpectedSnapPoint).equal(true);
+
+		await scrollBy(browser, 20);
+
+		isAtExpectedSnapPoint = await isAtSnapPoint(
+			browser,
+			config.cards.homepage.cardSelector,
+			config.cards.homepage.snapPoints.minimised - 0.2
+		);
+		expect(isAtExpectedSnapPoint).equal(true);
+	});
+
+	it('when scrolling a few pixels up, the card hides the same amount of pixels', async() => {
+		// small scroll up bounds
+		await scrollBy(browser, -20);
+		let isAtExpectedSnapPoint = await isAtSnapPoint(
+			browser,
+			config.cards.homepage.cardSelector,
+			config.cards.homepage.snapPoints.minimised - 0.1
+		);
+
+		expect(isAtExpectedSnapPoint).equal(true);
+
+		// small scroll up bounds
+		await scrollBy(browser, -20);
+		isAtExpectedSnapPoint = await isAtSnapPoint(
+			browser,
+			config.cards.homepage.cardSelector,
+			config.cards.homepage.snapPoints.minimised
+		);
+		expect(isAtExpectedSnapPoint).equal(true);
+	});
+
 	it('card should have right content', async function() {
 		const rightContentLoaded = await isCardContentLoaded(
 			browser,
@@ -130,77 +190,6 @@ const homepageTest = function() {
 
 			expect(isAtMinimizedSnapPoint).equal(true);
 		}
-	});
-
-	it('when scrolling a few pixels down, the card pops up the same amount of pixels', async() => {
-		const cardExists = await isCardExisting(
-			browser,
-			config.cards.homepage.cardSelector
-		);
-
-		expect(cardExists).equal(true);
-
-		//Make the card appear a little bit
-		await scrollBy(browser, 100);
-
-		// Test scroll bounce
-		let isAtExpectedSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.homepage.cardSelector,
-			config.cards.homepage.snapPoints.minimised
-		);
-
-		expect(isAtExpectedSnapPoint).equal(true);
-
-		await scrollBy(browser, 20);
-
-		isAtExpectedSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.homepage.cardSelector,
-			config.cards.homepage.snapPoints.minimised - 0.1
-		);
-		expect(isAtExpectedSnapPoint).equal(true);
-
-		await scrollBy(browser, 20);
-
-		isAtExpectedSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.homepage.cardSelector,
-			config.cards.homepage.snapPoints.minimised - 0.2
-		);
-		expect(isAtExpectedSnapPoint).equal(true);
-	});
-
-	it('when scrolling a few pixels up, the card hides the same amount of pixels', async() => {
-		// small scroll up bounds
-		await scrollBy(browser, -20);
-		let isAtExpectedSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.homepage.cardSelector,
-			config.cards.homepage.snapPoints.minimised - 0.1
-		);
-
-		expect(isAtExpectedSnapPoint).equal(true);
-
-		// small scroll up bounds
-		await scrollBy(browser, -20);
-		isAtExpectedSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.homepage.cardSelector,
-			config.cards.homepage.snapPoints.minimised
-		);
-		expect(isAtExpectedSnapPoint).equal(true);
-	});
-
-	it('card should render on scroll', async function() {
-		await scrollTo(browser, 400);
-
-		const cardExists = await isCardExisting(
-			browser,
-			config.cards.homepage.cardSelector
-		);
-
-		expect(cardExists).equal(true);
 	});
 };
 
