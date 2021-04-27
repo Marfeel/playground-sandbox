@@ -94,6 +94,8 @@
             --main-color: #d9d9d9;
             --paragraph-height: 16px;
             --paragraph-separation: 14px;
+            --comment-height: 12px;
+            --comment-separation: 10px;
         }
 
         * {
@@ -120,6 +122,10 @@
 
         .w-75 {
             width: 80%;
+        }
+
+        .w-50 {
+          width: 50%;
         }
 
         .mb-xs {
@@ -182,6 +188,23 @@
             height: var(--paragraph-height);
             background: var(--main-color);
             margin-bottom: var(--paragraph-separation);
+        }
+
+        .comment {
+          display: flex;
+          margin-bottom: 30px;
+        }
+
+        .comment .paragraph {
+          margin-bottom: var(--comment-separation);
+          height: var(--comment-height);
+        }
+
+        .button {
+          background: var(--main-color);
+          border-radius: 4px;
+          height: 28px;
+          width: 80px;
         }
     </style>
 </head>
@@ -359,7 +382,80 @@
         <div class="paragraph w-80"></div>
         <div class="paragraph w-75"></div>
         <div class="paragraph w-90"></div>
-        <div class="paragraph w-100"></div>
+        <div class="paragraph w-100 mb-xl"></div>
+        <div class="trigger-start h1 w-80 mb-l"></div>
+        <div class="comment">
+            <div class="avatar"></div>
+            <div class="w-75">
+                <div class="paragraph w-90"></div>
+                <div class="paragraph w-85"></div>
+                <div class="paragraph w-50"></div>
+                <div class="button"></div>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="avatar"></div>
+            <div class="w-75">
+                <div class="paragraph w-90"></div>
+                <div class="paragraph w-95"></div>
+                <div class="paragraph w-75"></div>
+                <div class="button"></div>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="avatar"></div>
+            <div class="w-75">
+                <div class="paragraph w-90"></div>
+                <div class="paragraph w-100"></div>
+                <div class="paragraph w-50"></div>
+                <div class="button"></div>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="avatar"></div>
+            <div class="w-75">
+                <div class="paragraph w-100"></div>
+                <div class="paragraph w-85"></div>
+                <div class="paragraph w-90"></div>
+                <div class="button"></div>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="avatar"></div>
+            <div class="w-75">
+                <div class="paragraph w-90"></div>
+                <div class="paragraph w-85"></div>
+                <div class="paragraph w-50"></div>
+                <div class="button"></div>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="avatar"></div>
+            <div class="w-75">
+                <div class="paragraph w-90"></div>
+                <div class="paragraph w-95"></div>
+                <div class="paragraph w-75"></div>
+                <div class="button"></div>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="avatar"></div>
+            <div class="w-75">
+                <div class="paragraph w-90"></div>
+                <div class="paragraph w-100"></div>
+                <div class="paragraph w-50"></div>
+                <div class="button"></div>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="avatar"></div>
+            <div class="w-75">
+                <div class="paragraph w-100"></div>
+                <div class="paragraph w-85"></div>
+                <div class="paragraph w-90"></div>
+                <div class="button"></div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

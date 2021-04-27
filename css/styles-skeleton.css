@@ -4,6 +4,8 @@
   --main-color: #d9d9d9;
   --paragraph-height: 16px;
   --paragraph-separation: 14px;
+  --comment-height: 12px;
+  --comment-separation: 10px;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
@@ -42,6 +44,10 @@ html::-webkit-scrollbar {
 
 .w-75 {
   width: 80%;
+}
+
+.w-50 {
+  width: 50%;
 }
 
 .mb-xs {
@@ -97,11 +103,27 @@ body {
 .author {
   height: 16px;
   background: var(--main-color);
-  width: 120px;
 }
 
 .paragraph {
   height: var(--paragraph-height);
   background: var(--main-color);
   margin-bottom: var(--paragraph-separation);
+}
+
+.comment {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.comment .paragraph {
+  margin-bottom: var(--comment-separation);
+  height: var(--comment-height);
+}
+
+.button {
+  background: var(--main-color);
+  border-radius: 4px;
+  height: 28px;
+  width: 80px;
 }
