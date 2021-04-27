@@ -1,5 +1,5 @@
 const { bootstrapExperience } = require('../../e2e/utils/bootstrap');
-const { scrollTo, scrollBy } = require('../../e2e/utils/scroll');
+const { scrollTo, scrollToElement, scrollBy } = require('../../e2e/utils/scroll');
 const { touchCard } = require('../../e2e/utils/touch');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
@@ -36,7 +36,8 @@ const homepageTest = function() {
 	});
 
 	it('card should render on scroll', async function() {
-		await scrollTo(browser, 400);
+		await scrollToElement(browser, config.cards.homepage.triggers.myScrollTrigger.spec.selector);
+		await scrollTo(browser, 200);
 
 		const cardExists = await isCardExisting(
 			browser,
@@ -57,18 +58,20 @@ const homepageTest = function() {
 	});
 
 	it('card should be displayed in viewport at initial snap point', async() => {
-		await scrollTo(browser, 800);
+		const cardExists = await isCardExisting(
+			browser,
+			config.cards.homepage.cardSelector
+		);
 
-		const firstCard = await browser.$(config.cards.homepage.cardSelector);
-
-		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
-
-		expect(firstCardIsInViewport).equal(true);
+		expect(cardExists).equal(true);
 
 		const isAtInitialSnapPoint = await isAtSnapPoint(
 			browser,
 			config.cards.homepage.cardSelector,
-			config.cards.homepage.snapPoints.initial
+			config.cards.homepage.snapPoints.initial,
+			async()=>{
+				await scrollBy(browser, 20);
+			}
 		);
 
 		expect(isAtInitialSnapPoint).equal(true);
