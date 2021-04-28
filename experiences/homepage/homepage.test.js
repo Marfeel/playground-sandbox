@@ -36,8 +36,7 @@ const homepageTest = function() {
 	});
 
 	it('card should render on scroll', async function() {
-		await scrollToElement(browser, config.cards.homepage.triggers.myScrollTrigger.spec.selector);
-		await scrollTo(browser, 200);
+		await scrollTo(browser, 600);
 
 		const cardExists = await isCardExisting(
 			browser,
@@ -58,6 +57,28 @@ const homepageTest = function() {
 	});
 
 	it('card should be displayed in viewport at initial snap point', async() => {
+		const cardExists = await isCardExisting(
+			browser,
+			config.cards.homepage.cardSelector
+		);
+
+		expect(cardExists).equal(true);
+
+		const isAtInitialSnapPoint = await isAtSnapPoint(
+			browser,
+			config.cards.homepage.cardSelector,
+			config.cards.homepage.snapPoints.initial,
+			async()=>{
+				await scrollBy(browser, 20);
+			}
+		);
+
+		expect(isAtInitialSnapPoint).equal(true);
+	});
+
+	it('card should get promoted at certain element', async() => {
+		await scrollToElement(browser, config.cards.homepage.triggers.myScrollTrigger.spec.selector);
+
 		const cardExists = await isCardExisting(
 			browser,
 			config.cards.homepage.cardSelector
