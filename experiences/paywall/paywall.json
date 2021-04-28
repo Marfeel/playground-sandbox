@@ -15,7 +15,7 @@
 			"triggers": {
 				"myScrollTrigger": {
 					"on": "scroll",
-					"action": "setSnapPoint:initial",
+					"action": "setSnapPoint:active",
 					"spec": {
 						"type": "absolute",
 						"pixel": 300,
