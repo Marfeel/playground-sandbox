@@ -23,10 +23,13 @@ const scrollTo = async(browser, y, step=50)=>{
 	const currentScrollPosition = await getCurrentScrollPosition(browser);
 	const scrollArray = range(currentScrollPosition, y, step, true)._data;
 
-	await scrollArray.reduce(
-		async(acc, cur) => await acc.then(() => scroll(browser, cur)),
-		Promise.resolve()
-	);
+	await scrollArray.reduce((prev, value)=>{
+		return prev.then(()=>{
+			scroll(browser, value);
+
+			return new Promise(resolve => setTimeout(resolve, 100));
+		});
+	}, Promise.resolve());
 };
 
 const scrollBy = async(browser, y)=>{

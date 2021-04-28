@@ -69,7 +69,7 @@ const homepageTest = function() {
 			config.cards.homepage.cardSelector,
 			config.cards.homepage.snapPoints.initial,
 			async()=>{
-				await scrollBy(browser, 20);
+				await scrollBy(browser, 50);
 			}
 		);
 
@@ -77,7 +77,7 @@ const homepageTest = function() {
 	});
 
 	it('card should get promoted at certain element', async() => {
-		await scrollToElement(browser, config.cards.homepage.triggers.myScrollTrigger.spec.selector);
+		await scrollToElement(browser, config.cards.homepage.triggers.myIntersectionTrigger.spec.selector);
 
 		const cardExists = await isCardExisting(
 			browser,
@@ -86,16 +86,13 @@ const homepageTest = function() {
 
 		expect(cardExists).equal(true);
 
-		const isAtInitialSnapPoint = await isAtSnapPoint(
+		const isAtPromotedSnapPoint = await isAtSnapPoint(
 			browser,
 			config.cards.homepage.cardSelector,
-			config.cards.homepage.snapPoints.initial,
-			async()=>{
-				await scrollBy(browser, 20);
-			}
+			config.cards.homepage.snapPoints.promoted
 		);
 
-		expect(isAtInitialSnapPoint).equal(true);
+		expect(isAtPromotedSnapPoint).equal(true);
 	});
 
 	it('activate card by click', async() => {
