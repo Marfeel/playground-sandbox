@@ -1,10 +1,37 @@
 const { waitBrowserReady, tapBrowser } = require('./browser');
 const { scrollTo } = require('./scroll');
 
-const bootstrapExperience = async(browser, config, fixture) => {
-	await browser.url(
-		fixture.url
-	);
+const flowcardsResourcesLoaded = async(browser)=>{
+	const relevantResources = async()=>{
+		return await browser.executeAsync(async(done) => {
+			const resources = window.performance.getEntries('resource')
+				.filter(resource=>resource.name.includes('statics/experience'));
+
+			done(resources);
+		});
+	};
+
+
+	await browser.waitUntil(async()=>{
+		const resources = await relevantResources();
+
+		const done = resources.length>0 && !resources.some(resource=>!resource.responseEnd);
+
+		if (!done) {
+			resources.forEach((resource)=>{
+				console.log(`Resource: ${resource.name}, responseEnd: ${resource.responseEnd}`);
+			});
+		}
+
+		return done;
+	}, {
+		timeout: 10000,
+		interval: 1000,
+		timeoutMsg: 'Relevant resources didn\'t load in time'
+	});
+};
+
+const waitUntilPageLoaded = async(browser, fixture)=> {
 	await waitBrowserReady(browser);
 
 	await browser.waitUntil(
@@ -43,8 +70,16 @@ const bootstrapExperience = async(browser, config, fixture) => {
 		interval: 1000,
 		timeoutMsg: 'MarfeelFlowcards element didn\'t render'
 	});
+};
 
-	await waitBrowserReady(browser);
+const bootstrapExperience = async(browser, config, fixture) => {
+	await browser.url(
+		fixture.url
+	);
+
+	await waitUntilPageLoaded(browser, fixture);
+
+	await flowcardsResourcesLoaded(browser);
 
 	const cardSelectors = Object.keys(config.cards).map(id => `#${id}`);
 
