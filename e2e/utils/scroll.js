@@ -20,8 +20,14 @@ const scroll = async(browser, y) => {
 };
 
 const scrollTo = async(browser, y, step=50)=>{
+	let localStep = step;
 	const currentScrollPosition = await getCurrentScrollPosition(browser);
-	const scrollArray = range(currentScrollPosition, y, step, true)._data;
+
+	if (currentScrollPosition>y) {
+		localStep = -step;
+	}
+
+	const scrollArray = range(currentScrollPosition, y, localStep, true)._data;
 
 	await scrollArray.reduce((prev, value)=>{
 		return prev.then(()=>{

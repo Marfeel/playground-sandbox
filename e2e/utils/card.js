@@ -1,15 +1,15 @@
-const { scrollBy } = require('./scroll');
-
-const isCardExisting = async(browser, cardSelector) => {
+const isCardExisting = async(browser, cardSelector, iterationFunction) => {
 	let exists = false;
 
 	await browser.waitUntil(async()=>{
 		const card = await browser.$(cardSelector);
 
 		try {
-			exists = await card.waitForExist({ timeout: 1000 });
+			exists = await card.waitForExist({ timeout: 500 });
 		} catch (e) {
-			await scrollBy(browser, 20);
+			if (!!iterationFunction) {
+				await iterationFunction();
+			}
 		}
 
 		return exists;

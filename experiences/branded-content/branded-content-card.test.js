@@ -23,7 +23,7 @@ const brandedContentTest = function() {
 
 		fixture = {
 			url: fixtureUrl,
-			articleTitle: 'Article example'
+			articleTitle: 'Branded Content example'
 		};
 
 		await bootstrapExperience(browser, config, fixture);

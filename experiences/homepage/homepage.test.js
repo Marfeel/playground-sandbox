@@ -36,11 +36,17 @@ const homepageTest = function() {
 	});
 
 	it('card should render on scroll', async function() {
-		await scrollTo(browser, 600);
+		const pixels = config.cards.homepage.triggers.myScrollTrigger.spec.pixel;
+
+		await scrollTo(browser, pixels);
 
 		const cardExists = await isCardExisting(
 			browser,
-			config.cards.homepage.cardSelector
+			config.cards.homepage.cardSelector,
+			async()=>{
+				await scrollTo(browser, 0);
+				await scrollTo(browser, pixels);
+			}
 		);
 
 		expect(cardExists).equal(true);
@@ -56,7 +62,11 @@ const homepageTest = function() {
 		expect(rightContentLoaded).equal(true);
 	});
 
+
+
 	it('card should be displayed in viewport at initial snap point', async() => {
+		await scrollTo(browser, 600);
+
 		const cardExists = await isCardExisting(
 			browser,
 			config.cards.homepage.cardSelector
@@ -67,10 +77,7 @@ const homepageTest = function() {
 		const isAtInitialSnapPoint = await isAtSnapPoint(
 			browser,
 			config.cards.homepage.cardSelector,
-			config.cards.homepage.snapPoints.initial,
-			async() => {
-				await scrollBy(browser, 50);
-			}
+			config.cards.homepage.snapPoints.initial
 		);
 
 		expect(isAtInitialSnapPoint).equal(true);
