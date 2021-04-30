@@ -97,7 +97,13 @@ const featuredArticleTest = function() {
 		if (config.cards.heroImage.features.infiniteScroll) {
 			await triggerInfiniteScroll(browser);
 
-			const isSticky = await isAttachedToEndOfPage(browser, config.cards.heroImage.cardSelector);
+			const isSticky = await isAttachedToEndOfPage(
+				browser,
+				config.cards.heroImage.cardSelector,
+				async() => {
+					await scrollBy(browser, 50);
+				}
+			);
 
 			expect(isSticky).equal(true);
 		}

@@ -96,7 +96,13 @@ const taboolaTest = function() {
 		if (config.cards.taboola.features.infiniteScroll) {
 			await triggerInfiniteScroll(browser);
 
-			const isSticky = await isAttachedToEndOfPage(browser, config.cards.taboola.cardSelector);
+			const isSticky = await isAttachedToEndOfPage(
+				browser,
+				config.cards.taboola.cardSelector,
+				async() => {
+					await scrollBy(browser, 50);
+				}
+			);
 
 			expect(isSticky).equal(true);
 		}

@@ -35,13 +35,17 @@ const getCardPositionerStyles = async(browser, cardSelector)=>{
 	return cardPositionerStyle;
 };
 
-const isAttachedToEndOfPage = async(browser, cardSelector) => {
+const isAttachedToEndOfPage = async(browser, cardSelector, iterationClosure) => {
 	let cardPositionerStyle,
 		isSticky = false;
 
 	await browser.waitUntil(async()=>{
 		cardPositionerStyle = await getCardPositionerStyles(browser, cardSelector);
 		isSticky = cardPositionerStyle.includes('position: sticky');
+
+		if (!!iterationClosure) {
+			await iterationClosure();
+		}
 
 		return isSticky;
 	}, {

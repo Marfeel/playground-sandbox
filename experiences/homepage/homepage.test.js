@@ -68,7 +68,7 @@ const homepageTest = function() {
 			browser,
 			config.cards.homepage.cardSelector,
 			config.cards.homepage.snapPoints.initial,
-			async()=>{
+			async() => {
 				await scrollBy(browser, 50);
 			}
 		);
@@ -127,7 +127,10 @@ const homepageTest = function() {
 
 			const isSticky = await isAttachedToEndOfPage(
 				browser,
-				config.cards.homepage.cardSelector
+				config.cards.homepage.cardSelector,
+				async() => {
+					await scrollBy(browser, 50);
+				}
 			);
 
 			expect(isSticky).equal(true);
