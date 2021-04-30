@@ -52,6 +52,8 @@ const homepageTest = function() {
 		expect(cardExists).equal(true);
 	});
 
+
+
 	it('card should be displayed in viewport at initial snap point', async() => {
 		await scrollTo(browser, 600);
 
