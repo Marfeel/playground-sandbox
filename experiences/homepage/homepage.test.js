@@ -53,37 +53,45 @@ const homepageTest = function() {
 	});
 
 	it('scroll bounded', async function() {
+		//TODO implement utility to get current SnapPoint
+
+		let currentSnapPoint = 623;
+		const smallScrollPixels = 20;
+
 		let isAtInitialSnapPoint = await isAtSnapPoint(
 			browser,
 			config.cards.homepage.cardSelector,
-			623
+			currentSnapPoint
 		);
 
 		expect(isAtInitialSnapPoint).equal(true);
 
+		// First 60px transitioner doesn't made the card appear
 		await scrollBy(browser, 60);
 		isAtInitialSnapPoint = await isAtSnapPoint(
 			browser,
 			config.cards.homepage.cardSelector,
-			623
+			currentSnapPoint
+		);
+
+		expect(isAtInitialSnapPoint).equal(true);
+
+		await scrollBy(browser, smallScrollPixels);
+		currentSnapPoint -= smallScrollPixels;
+		isAtInitialSnapPoint = await isAtSnapPoint(
+			browser,
+			config.cards.homepage.cardSelector,
+			currentSnapPoint
 		);
 
 		expect(isAtInitialSnapPoint).equal(true);
 
 		await scrollBy(browser, 20);
+		currentSnapPoint -= smallScrollPixels;
 		isAtInitialSnapPoint = await isAtSnapPoint(
 			browser,
 			config.cards.homepage.cardSelector,
-			600
-		);
-
-		expect(isAtInitialSnapPoint).equal(true);
-
-		await scrollBy(browser, 20);
-		isAtInitialSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.homepage.cardSelector,
-			580
+			currentSnapPoint
 		);
 
 		expect(isAtInitialSnapPoint).equal(true);
