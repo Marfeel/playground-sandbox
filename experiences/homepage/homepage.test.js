@@ -52,7 +52,42 @@ const homepageTest = function() {
 		expect(cardExists).equal(true);
 	});
 
+	it('scroll bounded', async function() {
+		let isAtInitialSnapPoint = await isAtSnapPoint(
+			browser,
+			config.cards.homepage.cardSelector,
+			623
+		);
 
+		expect(isAtInitialSnapPoint).equal(true);
+
+		await scrollBy(browser, 60);
+		isAtInitialSnapPoint = await isAtSnapPoint(
+			browser,
+			config.cards.homepage.cardSelector,
+			623
+		);
+
+		expect(isAtInitialSnapPoint).equal(true);
+
+		await scrollBy(browser, 20);
+		isAtInitialSnapPoint = await isAtSnapPoint(
+			browser,
+			config.cards.homepage.cardSelector,
+			600
+		);
+
+		expect(isAtInitialSnapPoint).equal(true);
+
+		await scrollBy(browser, 20);
+		isAtInitialSnapPoint = await isAtSnapPoint(
+			browser,
+			config.cards.homepage.cardSelector,
+			580
+		);
+
+		expect(isAtInitialSnapPoint).equal(true);
+	});
 
 	it('card should be displayed in viewport at initial snap point', async() => {
 		await scrollTo(browser, 600);
