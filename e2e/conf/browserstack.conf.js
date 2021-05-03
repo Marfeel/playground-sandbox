@@ -24,7 +24,8 @@ const specs = [
 	// './experiences/multicard/multicard.test.js'
 	// './experiences/push_notifications/push-notifications.test.js'
 	// './experiences/top_articles/top-articles.test.js'
-	'./e2e/experiences.test.js'
+	// './e2e/experiences.test.js'
+	'./e2e/relevant-experiences.test.js'
 ];
 
 const config = buildConfiguration(process.env.E2E_MODE, capabilities, specs);

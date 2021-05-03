@@ -108,22 +108,6 @@ const featuredArticleTest = function() {
 			expect(isSticky).equal(true);
 		}
 	});
-
-	it('minimize card dragging it down when status is "initial"', async() => {
-		if (!config.cards.heroImage.features.removable) {
-			// Restore initial status after infinite scroll
-			await scrollBy(browser, -1800);
-			await minimizeCard(browser, config.cards.heroImage.cardSelector);
-
-			const isAtMinimizedSnapPoint = await isAtSnapPoint(
-				browser,
-				config.cards.heroImage.cardSelector,
-				config.cards.heroImage.snapPoints.minimised
-			);
-
-			expect(isAtMinimizedSnapPoint).equal(true);
-		}
-	});
 };
 
 describe('featured article experience', featuredArticleTest);
