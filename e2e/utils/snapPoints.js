@@ -57,7 +57,7 @@ const isAtSnapPoint = async(browser, cardSelector, snapPointValue, iterationClos
 	await browser.waitUntil(async()=>{
 		atSnapPoint = await verify(browser, cardSelector, snapPointValue);
 
-		if (!!iterationClosure) {
+		if (!!iterationClosure && !atSnapPoint) {
 			await iterationClosure();
 		}
 

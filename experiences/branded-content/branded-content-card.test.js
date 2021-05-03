@@ -82,7 +82,10 @@ const brandedContentTest = function() {
 
 		const isAtInitialSnapPoint = await isAtSnapPoint(browser,
 			config.cards.BrandedContentFlowcard.cardSelector,
-			config.cards.BrandedContentFlowcard.snapPoints.initial);
+			config.cards.BrandedContentFlowcard.snapPoints.initial,
+			async()=>{
+				await closeCard(browser);
+			});
 
 		expect(isAtInitialSnapPoint).equal(true);
 	});
