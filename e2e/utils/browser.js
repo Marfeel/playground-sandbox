@@ -1,5 +1,7 @@
 
-const waitBrowserReady = async(browser)=>{
+const { scrollTo } = require('./scroll');
+
+const waitUntilBrowserReady = async(browser)=>{
 	await browser.waitUntil(
 		async function() {
 			const state = await browser.execute(function() {
@@ -33,8 +35,19 @@ const tapBrowser = async(browser)=>{
 	});
 };
 
+const initialUserInteraction = async(browser)=>{
+	tapBrowser(browser);
+
+	await scrollTo(browser, 0, 1000);
+
+	await scrollTo(browser, 5, 1);
+
+	await scrollTo(browser, 0, 1);
+};
+
 module.exports = {
-	waitBrowserReady,
+	waitUntilBrowserReady,
 	tapBrowser,
-	getBrowserInnerSizes
+	getBrowserInnerSizes,
+	initialUserInteraction
 };
