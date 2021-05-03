@@ -54,9 +54,13 @@ const homepageTest = function() {
 
 	it('scroll bounded', async function() {
 		//TODO implement utility to get current SnapPoint
-
 		let currentSnapPoint = 623;
+		// First 60px transitioner doesn't made the card appear
+		const pixelsWithoutAnimation = 60;
 		const smallScrollPixels = 20;
+		// Transform to pixels
+		// TODO to calculate relative factor
+		const scrollBoundFactor = 2.1;
 
 		let isAtInitialSnapPoint = await isAtSnapPoint(
 			browser,
@@ -66,8 +70,7 @@ const homepageTest = function() {
 
 		expect(isAtInitialSnapPoint).equal(true);
 
-		// First 60px transitioner doesn't made the card appear
-		await scrollBy(browser, 60);
+		await scrollBy(browser, pixelsWithoutAnimation);
 		isAtInitialSnapPoint = await isAtSnapPoint(
 			browser,
 			config.cards.homepage.cardSelector,
@@ -77,7 +80,7 @@ const homepageTest = function() {
 		expect(isAtInitialSnapPoint).equal(true);
 
 		await scrollBy(browser, smallScrollPixels);
-		currentSnapPoint -= smallScrollPixels;
+		currentSnapPoint -= 20 + scrollBoundFactor;
 		isAtInitialSnapPoint = await isAtSnapPoint(
 			browser,
 			config.cards.homepage.cardSelector,
@@ -87,7 +90,7 @@ const homepageTest = function() {
 		expect(isAtInitialSnapPoint).equal(true);
 
 		await scrollBy(browser, 20);
-		currentSnapPoint -= smallScrollPixels;
+		currentSnapPoint -= 20 + (scrollBoundFactor*2);
 		isAtInitialSnapPoint = await isAtSnapPoint(
 			browser,
 			config.cards.homepage.cardSelector,
