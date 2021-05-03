@@ -37,14 +37,6 @@ const multicardTest = function() {
 		expect(cardExists).equal(true);
 	});
 
-	it('card 1 should have right content', async function() {
-		const rightContentLoaded = await isCardContentLoaded(browser,
-			config.cards.homepage.cardSelector,
-			config.cards.homepage.content);
-
-		expect(rightContentLoaded).equal(true);
-	});
-
 	it('card 1 should be displayed in viewport at initial snap point', async()=>{
 		await scrollTo(browser, 800);
 
@@ -67,14 +59,6 @@ const multicardTest = function() {
 		const cardExists = await isCardExisting(browser, config.cards.nextArticle.cardSelector);
 
 		expect(cardExists).equal(true);
-	});
-
-	it('card 2 should have right content', async function() {
-		const rightContentLoaded = await isCardContentLoaded(browser,
-			config.cards.nextArticle.cardSelector,
-			config.cards.nextArticle.content);
-
-		expect(rightContentLoaded).equal(true);
 	});
 
 	it('card 2 should be displayed in viewport at initial snap point', async()=>{
