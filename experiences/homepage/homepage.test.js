@@ -52,51 +52,53 @@ const homepageTest = function() {
 	});
 
 	it('scroll bounded', async function() {
+		// Initial 300px scroll to trigger
 		// First 60px transitioner doesn't made the card appear
-		const pixelsWithoutAnimation = 60;
+		const initialBrowserScroll = 300 + 60;
 		const smallScrollPixels = 20;
 		const cardSelector = config.cards.homepage.cardSelector;
 		const scrollBoundedSnapPoints = [];
+		const timeout = 150;
+		let currentSnapPoint;
 
-		await scrollBy(browser, pixelsWithoutAnimation);
-
-		let currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
-
+		await scrollTo(browser, initialBrowserScroll, 5, timeout);
+		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
 		scrollBoundedSnapPoints.push(currentSnapPoint);
 
-		await scrollBy(browser, smallScrollPixels);
-
+		await scrollTo(browser, initialBrowserScroll + smallScrollPixels, 5, timeout);
 		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
-
 		scrollBoundedSnapPoints.push(currentSnapPoint);
 
-		await scrollBy(browser, smallScrollPixels);
-
+		await scrollTo(browser, initialBrowserScroll + (smallScrollPixels * 2), 5, timeout);
 		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
+		scrollBoundedSnapPoints.push(currentSnapPoint);
 
+		await scrollTo(browser, initialBrowserScroll + (smallScrollPixels * 3), 5, timeout);
+		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
 		scrollBoundedSnapPoints.push(currentSnapPoint);
 
 		expect(getTypeOfProgression(scrollBoundedSnapPoints)).equal('arithmetic');
 
 		scrollBoundedSnapPoints.length = 0;
-
-		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
-
 		scrollBoundedSnapPoints.push(currentSnapPoint);
 
-		await scrollBy(browser, -smallScrollPixels);
-
+		await scrollTo(browser, initialBrowserScroll + (smallScrollPixels * 2), 5, timeout);
 		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
-
 		scrollBoundedSnapPoints.push(currentSnapPoint);
 
-		await scrollBy(browser, -smallScrollPixels);
+		await scrollTo(browser, initialBrowserScroll + smallScrollPixels, 5, timeout);
+		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
+		scrollBoundedSnapPoints.push(currentSnapPoint);
+
+		await scrollTo(browser, initialBrowserScroll, 5, timeout);
+		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
+		scrollBoundedSnapPoints.push(currentSnapPoint);
 
 		expect(getTypeOfProgression(scrollBoundedSnapPoints)).equal('arithmetic');
 	});
 
 	it('card should be displayed in viewport at initial snap point', async() => {
-		await scrollTo(browser, 600);
+		await scrollTo(browser, 610, 10);
 
 		const cardExists = await isCardExisting(
 			browser,

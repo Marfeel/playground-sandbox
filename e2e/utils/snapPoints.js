@@ -26,14 +26,12 @@ async function verifyAbsoluteSnapPoint(browser, cardSelector, expectedAbsoluteYp
 	return true;
 }
 
-const verifyPercentageSnapPoint = async(browser, cardSelector, expectedSnapPointPercentage) => {
+const verifyPercentageSnapPoint = async(browser, cardSelector, expectedSnapPointPercentage)=>{
 	const currentPercentage = await browser.executeAsync(async(cardSelectorBrowser, done) => {
-		const currentAbsolutePositionYPosition = await getCurrentVerticalPosition(browser, cardSelector);
-		const percentage = currentAbsolutePositionYPosition/window.innerHeight;
+		const percentage = (document.querySelector(cardSelectorBrowser).getBoundingClientRect().y)/window.innerHeight;
 
 		done(percentage);
 	}, cardSelector);
-
 	const difference = currentPercentage - expectedSnapPointPercentage;
 
 	console.log(`
@@ -77,7 +75,6 @@ const isAtSnapPoint = async(browser, cardSelector, snapPointValue, iterationClos
 };
 
 function getTypeOfProgression(arr) {
-
 	const diff = arr[1] - arr[0];
 	const ratio = arr[1] / arr[0];
 
