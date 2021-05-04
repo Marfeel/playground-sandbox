@@ -8,6 +8,7 @@ const { isCardExisting } = require('../../e2e/utils/card');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./facebook.json');
+const { waitUntil } = require('../../e2e/utils/waitUntil');
 
 
 const facebookTest = function() {
@@ -72,11 +73,21 @@ const facebookTest = function() {
 			config.cards.facebook.cardSelector
 		);
 
-		const firstCard = await browser.$(config.cards.facebook.cardSelector);
+		await waitUntil(browser, async()=>{
+			const firstCard = await browser.$(config.cards.facebook.cardSelector);
 
-		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
+			const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
 
-		expect(firstCardIsInViewport).equal(false);
+			return firstCardIsInViewport;
+		}, false, {
+			interval: 1000,
+			timeoutMsg: 'Card was still in viewport after removing it.'
+		}, async()=>{
+			await removeCard(
+				browser,
+				config.cards.facebook.cardSelector
+			);
+		});
 	});
 
 	it('minimize card dragging it down when status is "initial"', async() => {
