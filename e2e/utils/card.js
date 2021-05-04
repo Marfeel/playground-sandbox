@@ -5,7 +5,7 @@ const isCardExisting = async(browser, cardSelector, iterationFunction) => {
 		const card = await browser.$(cardSelector);
 
 		try {
-			exists = await card.waitForExist({ timeout: 500 });
+			exists = await card.waitForExist({ timeout: 2000 });
 		} catch (e) {
 			if (!!iterationFunction) {
 				await iterationFunction();
@@ -14,8 +14,8 @@ const isCardExisting = async(browser, cardSelector, iterationFunction) => {
 
 		return exists;
 	}, {
-		timeout: 10000,
-		interval: 500,
+		timeout: 30000,
+		interval: 3000,
 		timeoutMsg: 'Card didn\'t exist'
 	});
 
