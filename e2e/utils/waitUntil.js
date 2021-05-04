@@ -6,7 +6,7 @@ const waitUntil = async(browser, evaluate, expected, { timeout=10000, interval=5
 			await onRetry();
 		}
 
-		return result;
+		return result === expected;
 	}, {
 		timeout,
 		interval,

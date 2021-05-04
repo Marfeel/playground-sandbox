@@ -60,5 +60,6 @@ const scrollToElement = async(browser, selector)=>{
 module.exports = {
 	scrollTo,
 	scrollBy,
-	scrollToElement
+	scrollToElement,
+	scrollToAbsolutePosition: scroll
 };
