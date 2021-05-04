@@ -19,7 +19,7 @@ const specs = [
 	// './experiences/branded-content/branded-content-card.test.js'
 	// './experiences/comments/comments.test.js'
 	// './experiences/facebook/facebook.test.js'
-	// './experiences/featured_article/featured_article.test.js'
+	// './experiences/featured_article/featured-article.test.js'
 	// './experiences/homepage/homepage.test.js'
 	// './experiences/multicard/multicard.test.js'
 	// './experiences/push_notifications/push-notifications.test.js'

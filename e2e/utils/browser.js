@@ -1,5 +1,5 @@
 
-const { scrollTo } = require('./scroll');
+const { scrollTo, scrollToAbsolutePosition } = require('./scroll');
 
 const waitUntilBrowserReady = async(browser)=>{
 	await browser.waitUntil(
@@ -38,7 +38,7 @@ const tapBrowser = async(browser)=>{
 const initialUserInteraction = async(browser)=>{
 	tapBrowser(browser);
 
-	await scrollTo(browser, 0, 1000);
+	await scrollToAbsolutePosition(browser, 0);
 
 	await scrollTo(browser, 5, 1);
 
