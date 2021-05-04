@@ -1,8 +1,7 @@
 const { bootstrapExperience } = require('../../e2e/utils/bootstrap');
 const { scrollTo, scrollToElement, scrollBy } = require('../../e2e/utils/scroll');
 const { touchCard } = require('../../e2e/utils/touch');
-const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
-const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
+const { isAtSnapPoint, getCurrentVerticalPosition, getTypeOfProgression } = require('../../e2e/utils/snapPoints');
 const { scrollCard } = require('../../e2e/utils/card-actions/scroll');
 const { minimizeCard } = require('../../e2e/utils/card-actions/minimize');
 const { closeCard } = require('../../e2e/utils/card-actions/close');
@@ -53,51 +52,47 @@ const homepageTest = function() {
 	});
 
 	it('scroll bounded', async function() {
-		//TODO implement utility to get current SnapPoint
-		let currentSnapPoint = 623;
 		// First 60px transitioner doesn't made the card appear
 		const pixelsWithoutAnimation = 60;
 		const smallScrollPixels = 20;
-		// Transform to pixels
-		// TODO to calculate relative factor
-		const scrollBoundFactor = 2.1;
-
-		let isAtInitialSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.homepage.cardSelector,
-			currentSnapPoint
-		);
-
-		expect(isAtInitialSnapPoint).equal(true);
+		const cardSelector = config.cards.homepage.cardSelector;
+		const scrollBoundedSnapPoints = [];
 
 		await scrollBy(browser, pixelsWithoutAnimation);
-		isAtInitialSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.homepage.cardSelector,
-			currentSnapPoint
-		);
 
-		expect(isAtInitialSnapPoint).equal(true);
+		let currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
+
+		scrollBoundedSnapPoints.push(currentSnapPoint);
 
 		await scrollBy(browser, smallScrollPixels);
-		currentSnapPoint -= 20 + scrollBoundFactor;
-		isAtInitialSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.homepage.cardSelector,
-			currentSnapPoint
-		);
 
-		expect(isAtInitialSnapPoint).equal(true);
+		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
 
-		await scrollBy(browser, 20);
-		currentSnapPoint -= 20 + (scrollBoundFactor*2);
-		isAtInitialSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.homepage.cardSelector,
-			currentSnapPoint
-		);
+		scrollBoundedSnapPoints.push(currentSnapPoint);
 
-		expect(isAtInitialSnapPoint).equal(true);
+		await scrollBy(browser, smallScrollPixels);
+
+		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
+
+		scrollBoundedSnapPoints.push(currentSnapPoint);
+
+		expect(getTypeOfProgression(scrollBoundedSnapPoints)).equal('arithmetic');
+
+		scrollBoundedSnapPoints.length = 0;
+
+		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
+
+		scrollBoundedSnapPoints.push(currentSnapPoint);
+
+		await scrollBy(browser, -smallScrollPixels);
+
+		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
+
+		scrollBoundedSnapPoints.push(currentSnapPoint);
+
+		await scrollBy(browser, -smallScrollPixels);
+
+		expect(getTypeOfProgression(scrollBoundedSnapPoints)).equal('arithmetic');
 	});
 
 	it('card should be displayed in viewport at initial snap point', async() => {
