@@ -30,8 +30,8 @@ const scrollTo = async(browser, y, step=50)=>{
 	const scrollArray = range(currentScrollPosition, y, localStep, true)._data;
 
 	await scrollArray.reduce((prev, value)=>{
-		return prev.then(()=>{
-			scroll(browser, value);
+		return prev.then(async()=>{
+			await scroll(browser, value);
 
 			return new Promise(resolve => setTimeout(resolve, 100));
 		});
