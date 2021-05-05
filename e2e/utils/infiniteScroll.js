@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const { scrollTo } = require('./scroll');
+const { scrollTo, scrollToAbsolutePosition } = require('./scroll');
 
 const CARD_POSITIONER_TEST_ID = 'card-positioner';
 
@@ -10,8 +10,8 @@ const triggerInfiniteScroll = async(browser)=>{
 		done(bodyHeight);
 	}, '');
 
-	await scrollTo(browser, height-300, 300);
-	await scrollTo(browser, height, 100);
+	await scrollToAbsolutePosition(browser, height-50);
+	await scrollTo(browser, height, 10);
 };
 
 const getCardPositionerStyles = async(browser, cardSelector)=>{
