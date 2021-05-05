@@ -9,7 +9,7 @@ const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./facebook.json');
 const { waitUntil } = require('../../e2e/utils/waitUntil');
-
+const { getTechnology, isWebVersion } = require('../../e2e/utils/technology');
 
 const facebookTest = function() {
 	let config,
@@ -17,7 +17,7 @@ const facebookTest = function() {
 	const fixtureUrl = getUrlFixture({
 		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
 		requestHostname: 'playground.marfeel.com',
-		technology: 'web',
+		technology: getTechnology(),
 		experienceUrl: '/experiences/facebook/facebook.json'
 	});
 
@@ -40,13 +40,15 @@ const facebookTest = function() {
 	});
 
 	it('card should have right content', async function() {
-		const rightContentLoaded = await isCardContentLoaded(
-			browser,
-			config.cards.facebook.cardSelector,
-			config.cards.facebook.content
-		);
+		if (isWebVersion()) {
+			const rightContentLoaded = await isCardContentLoaded(
+				browser,
+				config.cards.facebook.cardSelector,
+				config.cards.facebook.content
+			);
 
-		expect(rightContentLoaded).equal(true);
+			expect(rightContentLoaded).equal(true);
+		}
 	});
 
 	it('card should be displayed in viewport at active snap point', async() => {
@@ -88,22 +90,6 @@ const facebookTest = function() {
 				config.cards.facebook.cardSelector
 			);
 		});
-	});
-
-	it('minimize card dragging it down when status is "initial"', async() => {
-		if (!config.cards.facebook.features.removable) {
-			// Restore initial status after infinite scroll
-			await scrollBy(browser, -1800);
-			await minimizeCard(browser, config.cards.facebook.cardSelector);
-
-			const isAtMinimizedSnapPoint = await isAtSnapPoint(
-				browser,
-				config.cards.facebook.cardSelector,
-				config.cards.facebook.snapPoints.minimised
-			);
-
-			expect(isAtMinimizedSnapPoint).equal(true);
-		}
 	});
 };
 

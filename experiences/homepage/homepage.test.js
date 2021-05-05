@@ -2,7 +2,7 @@ const { bootstrapExperience } = require('../../e2e/utils/bootstrap');
 const { scrollTo, scrollToElement, scrollBy } = require('../../e2e/utils/scroll');
 const { touchCard } = require('../../e2e/utils/touch');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
-const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
+const { getTechnology, isWebVersion } = require('../../e2e/utils/technology');
 const { scrollCard } = require('../../e2e/utils/card-actions/scroll');
 const { minimizeCard } = require('../../e2e/utils/card-actions/minimize');
 const { closeCard } = require('../../e2e/utils/card-actions/close');
@@ -21,7 +21,7 @@ const homepageTest = function() {
 	const fixtureUrl = getUrlFixture({
 		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
 		requestHostname: 'playground.marfeel.com',
-		technology: 'web',
+		technology: getTechnology(),
 		experienceUrl: '/experiences/homepage/homepage.json'
 	});
 
@@ -71,22 +71,24 @@ const homepageTest = function() {
 	});
 
 	it('card should get promoted at certain element', async() => {
-		await scrollToElement(browser, config.cards.homepage.triggers.myIntersectionTrigger.spec.selector);
+		if (isWebVersion()) {
+			await scrollToElement(browser, config.cards.homepage.triggers.myIntersectionTrigger.spec.selector);
 
-		const cardExists = await isCardExisting(
-			browser,
-			config.cards.homepage.cardSelector
-		);
+			const cardExists = await isCardExisting(
+				browser,
+				config.cards.homepage.cardSelector
+			);
 
-		expect(cardExists).equal(true);
+			expect(cardExists).equal(true);
 
-		const isAtPromotedSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.homepage.cardSelector,
-			config.cards.homepage.snapPoints.promoted
-		);
+			const isAtPromotedSnapPoint = await isAtSnapPoint(
+				browser,
+				config.cards.homepage.cardSelector,
+				config.cards.homepage.snapPoints.promoted
+			);
 
-		expect(isAtPromotedSnapPoint).equal(true);
+			expect(isAtPromotedSnapPoint).equal(true);
+		}
 	});
 
 	it('activate card by click', async() => {
@@ -102,35 +104,41 @@ const homepageTest = function() {
 	});
 
 	it('close card pressing close button', async() => {
-		await scrollCard(browser, config.cards.homepage.cardSelector, 400);
+		if (isWebVersion()) {
+			await scrollCard(browser, config.cards.homepage.cardSelector, 400);
 
-		await closeCard(browser);
+			await closeCard(browser);
 
-		const isAtInitialSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.homepage.cardSelector,
-			config.cards.homepage.snapPoints.initial,
-			async()=>{
-				await closeCard(browser);
-			}
-		);
-
-		expect(isAtInitialSnapPoint).equal(true);
-	});
-
-	it('card attaches to end of page for infinite scroll', async() => {
-		if (config.cards.homepage.features.infiniteScroll) {
-			await triggerInfiniteScroll(browser);
-
-			const isSticky = await isAttachedToEndOfPage(
+			const isAtInitialSnapPoint = await isAtSnapPoint(
 				browser,
 				config.cards.homepage.cardSelector,
-				async() => {
-					await scrollBy(browser, 50);
+				config.cards.homepage.snapPoints.initial,
+				async()=>{
+					await closeCard(browser);
 				}
 			);
 
-			expect(isSticky).equal(true);
+			expect(isAtInitialSnapPoint).equal(true);
+		} else {
+			await touchCard(browser, config.cards.homepage.cardSelector);
+		}
+	});
+
+	it('card attaches to end of page for infinite scroll', async() => {
+		if (isWebVersion()) {
+			if (config.cards.homepage.features.infiniteScroll) {
+				await triggerInfiniteScroll(browser);
+
+				const isSticky = await isAttachedToEndOfPage(
+					browser,
+					config.cards.homepage.cardSelector,
+					async() => {
+						await scrollBy(browser, 50);
+					}
+				);
+
+				expect(isSticky).equal(true);
+			}
 		}
 	});
 

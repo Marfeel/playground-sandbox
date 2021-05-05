@@ -1,11 +1,14 @@
+const { isWebVersion } = require('./technology');
 
 const hasHeroImage = async(browser, cardSelector) => {
-	const heroImagePresent = await browser.executeAsync(async(cardSelectorBrowser, done) => {
-		const heroElement = document.querySelector(cardSelectorBrowser)
-			.parentElement.querySelector('#mrf-hero-element');
+	const heroImageSelector = isWebVersion()
+		? '#mrf-hero-element'
+		: '#mrf-hero-element-image img';
+	const heroImagePresent = await browser.executeAsync(async(heroImageSelectorBrowser, done) => {
+		const heroImageElement = document.querySelector(heroImageSelectorBrowser);
 
-		done(!!heroElement);
-	}, cardSelector);
+		done(!!heroImageElement);
+	}, heroImageSelector);
 
 	return heroImagePresent;
 };

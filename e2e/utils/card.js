@@ -1,8 +1,13 @@
+const { isWebVersion } = require('./technology');
+
 const isCardExisting = async(browser, cardSelector, iterationFunction) => {
 	let exists = false;
 
 	await browser.waitUntil(async()=>{
-		const card = await browser.$(cardSelector);
+
+		const card = isWebVersion() ?
+			await browser.$(cardSelector) :
+			browser.$('#mrf-flowcards-content-wrapper');
 
 		try {
 			exists = await card.waitForExist({ timeout: 2000 });

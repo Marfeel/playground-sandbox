@@ -2,6 +2,7 @@ const { waitUntilBrowserReady, initialUserInteraction } = require('../browser');
 const { waitUntilResourcesLoaded } = require('./resources');
 const { waitUntilPageIsLoaded } = require('./page');
 const { waitUntilExperienceEventsFired } = require('./events');
+const { isWebVersion, isAmpVersion } = require('../technology');
 
 const bootstrapExperience = async(browser, config, fixture) => {
 	await browser.url(
@@ -16,12 +17,16 @@ const bootstrapExperience = async(browser, config, fixture) => {
 
 	await waitUntilResourcesLoaded(browser);
 
-	await waitUntilExperienceEventsFired(browser);
+	if (isWebVersion()) {
+		await waitUntilExperienceEventsFired(browser);
+	}
 
-	const cardSelectors = Object.keys(config.cards).map(id => `#${id}`);
+	const cardSelectors = Object.keys(config.cards).map(id => {
+		return isAmpVersion() ? '#mrf-flowcards-wrapper' : `#${id}`;
+	});
 
 	Object.keys(config.cards).forEach((id)=>{
-		config.cards[id].cardSelector = `#${id}`;
+		config.cards[id].cardSelector = isAmpVersion() ? '#mrf-flowcards-wrapper' : `#${id}`;
 	});
 
 	return cardSelectors;

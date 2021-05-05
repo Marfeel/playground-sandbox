@@ -11,13 +11,13 @@ const capabilities = [
 ];
 
 const specs = [
+	// './experiences/homepage/homepage.test.js'
+	// './experiences/facebook/facebook.test.js'
+	// './experiences/featured_article/featured-article.test.js'
+	// './experiences/multicard/multicard.test.js'
+	// './experiences/paywall/paywall.test.js'
 	// './experiences/branded-content/branded-content-card.test.js'
 	// './experiences/comments/comments.test.js'
-	// './experiences/facebook/facebook.test.js'
-	// './experiences/paywall/paywall.test.js'
-	// './experiences/featured_article/featured-article.test.js'
-	// './experiences/homepage/homepage.test.js'
-	// './experiences/multicard/multicard.test.js'
 	// './experiences/newsletter/newsletter.test.js'
 	// './experiences/podcast/podcast.test.js'
 	// './experiences/push_notifications/push-notifications.test.js'

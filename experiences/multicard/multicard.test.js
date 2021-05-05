@@ -2,12 +2,12 @@ const { bootstrapExperience } = require('../../e2e/utils/bootstrap');
 const { scrollTo } = require('../../e2e/utils/scroll');
 const { touchCard } = require('../../e2e/utils/touch');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
-const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { isCardExisting } = require('../../e2e/utils/card');
 const { removeCard } = require('../../e2e/utils/card-actions/remove');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./multicard.json');
+const { getTechnology } = require('../../e2e/utils/technology');
 
 const multicardTest = function() {
 	let config,
@@ -15,7 +15,7 @@ const multicardTest = function() {
 	const fixtureUrl = getUrlFixture({
 		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
 		requestHostname: 'playground.marfeel.com',
-		technology: 'web',
+		technology: getTechnology(),
 		experienceUrl: '/experiences/multicard/multicard.json'
 	});
 
