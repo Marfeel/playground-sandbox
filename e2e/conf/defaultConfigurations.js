@@ -29,7 +29,7 @@ const baseConfig = {
 	framework: 'mocha',
 	mochaOpts: {
 		ui: 'bdd',
-		timeout: 60000,
+		timeout: 300000,
 		bail: true
 	}
 };

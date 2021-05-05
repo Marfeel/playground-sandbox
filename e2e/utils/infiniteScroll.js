@@ -10,7 +10,8 @@ const triggerInfiniteScroll = async(browser)=>{
 		done(bodyHeight);
 	}, '');
 
-	await scrollTo(browser, height, 300);
+	await scrollTo(browser, height-300, 300);
+	await scrollTo(browser, height, 100);
 };
 
 const getCardPositionerStyles = async(browser, cardSelector)=>{
@@ -49,8 +50,8 @@ const isAttachedToEndOfPage = async(browser, cardSelector, iterationClosure) => 
 
 		return isSticky;
 	}, {
-		timeout: 5000,
-		interval: 500,
+		timeout: 20000,
+		interval: 1000,
 		timeoutMsg: 'Card positioner is not sticky'
 	});
 

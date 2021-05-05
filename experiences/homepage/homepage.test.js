@@ -44,8 +44,7 @@ const homepageTest = function() {
 			browser,
 			config.cards.homepage.cardSelector,
 			async()=>{
-				await scrollTo(browser, 0);
-				await scrollTo(browser, pixels);
+				await scrollBy(browser, 50);
 			}
 		);
 
@@ -110,7 +109,10 @@ const homepageTest = function() {
 		const isAtInitialSnapPoint = await isAtSnapPoint(
 			browser,
 			config.cards.homepage.cardSelector,
-			config.cards.homepage.snapPoints.initial
+			config.cards.homepage.snapPoints.initial,
+			async()=>{
+				await closeCard(browser);
+			}
 		);
 
 		expect(isAtInitialSnapPoint).equal(true);
@@ -141,7 +143,10 @@ const homepageTest = function() {
 			const isAtMinimizedSnapPoint = await isAtSnapPoint(
 				browser,
 				config.cards.homepage.cardSelector,
-				config.cards.homepage.snapPoints.minimised
+				config.cards.homepage.snapPoints.minimised,
+				async() => {
+					await minimizeCard(browser, config.cards.homepage.cardSelector);
+				}
 			);
 
 			expect(isAtMinimizedSnapPoint).equal(true);
