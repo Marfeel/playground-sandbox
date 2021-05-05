@@ -1,4 +1,4 @@
-const { bootstrapExperience } = require('../../e2e/utils/bootstrap');
+const { bootstrapExperience } = require('../../e2e/utils/bootstrap/index');
 const { scrollTo } = require('../../e2e/utils/scroll');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');

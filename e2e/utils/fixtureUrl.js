@@ -1,3 +1,6 @@
+
+const fs = require('fs');
+
 const getUrlFixture = ({
 	siteUrl,
 	requestHostname,
@@ -13,6 +16,12 @@ const getUrlFixture = ({
 
 	if (process.env.E2E_MODE === 'browserstack-local') {
 		url += '&flowcardsHostname=https://bs-local.com';
+
+		if (technology==='amp') {
+			const hash = fs.readFileSync(`${process.env.CSP_HASH}/csp-hash.txt`, 'utf8');
+
+			url += `&cspHash=${hash}`;
+		}
 	}
 
 	// eslint-disable-next-line no-console

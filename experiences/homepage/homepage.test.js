@@ -144,8 +144,10 @@ const homepageTest = function() {
 
 	it('minimize card dragging it down when status is "initial"', async() => {
 		if (!config.cards.homepage.features.removable) {
+			if (isWebVersion()) {
 			// Restore initial status after infinite scroll
-			await scrollBy(browser, -1800);
+				await scrollBy(browser, -1800);
+			}
 			await minimizeCard(browser, config.cards.homepage.cardSelector);
 
 			const isAtMinimizedSnapPoint = await isAtSnapPoint(

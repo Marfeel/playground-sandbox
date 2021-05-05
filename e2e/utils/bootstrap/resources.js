@@ -24,7 +24,7 @@ const relevantResourcesLoaded = async(browser)=>{
 const waitUntilResourcesLoaded = async(browser)=>{
 	await waitUntil(browser,
 		relevantResourcesLoaded.bind(null, browser), true, {
-			timeout: 10000,
+			timeout: 20000,
 			interval: 1000,
 			timeoutMsg: 'Relevant resources didn\'t load in time'
 		}, initialUserInteraction.bind(null, browser));

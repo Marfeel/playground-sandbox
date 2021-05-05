@@ -22,7 +22,10 @@ const experiencePageLoaded = async(browser, fixtureUrl)=>{
 const waitUntilPageIsLoaded = async(browser, fixture)=> {
 	await waitUntil(browser,
 		experiencePageLoaded.bind(null, browser, fixture.url),
-		true, { timeoutMsg: 'Page took to long to load' });
+		true, {
+			timeoutMsg: 'Page took to long to load',
+			interval: 5000,
+			timeout: 30000 });
 
 	await waitUntil(browser, pageTitleMatches.bind(null,
 		browser,
