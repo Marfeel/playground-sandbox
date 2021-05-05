@@ -11,7 +11,7 @@ const capabilities = [
 ];
 
 const specs = [
-	'./experiences/branded-content/branded-content-card.test.js'
+	// './experiences/branded-content/branded-content-card.test.js'
 	// './experiences/comments/comments.test.js'
 	// './experiences/facebook/facebook.test.js'
 	// './experiences/paywall/paywall.test.js'
@@ -24,7 +24,7 @@ const specs = [
 	// './experiences/taboola/taboola.test.js'
 	// './experiences/top_articles/top-articles.test.js'
 	// './e2e/experiences.test.js'
-	// './e2e/relevant-experiences.test.js'
+	'./e2e/relevant-experiences.test.js'
 ];
 
 const config = buildConfiguration(process.env.E2E_MODE, capabilities, specs);

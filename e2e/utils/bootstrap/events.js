@@ -9,7 +9,7 @@ const eventsGotFired = async(browser)=>{
 		done(resources);
 	});
 
-	const eventsFired = events.length>1 && !events.some(resource=>!resource.responseEnd);
+	const eventsFired = events.length > 1 && !events.some(resource=>!resource.responseEnd);
 
 	if (!eventsFired) {
 		events.forEach((resource)=>{
@@ -23,6 +23,7 @@ const eventsGotFired = async(browser)=>{
 const waitUntilExperienceEventsFired = async(browser) => {
 	await waitUntil(browser, eventsGotFired.bind(null, browser), true, {
 		interval: 1000,
+		timeout: 60000,
 		timeoutMsg: 'Experience events didn\'t fire in time'
 	}, initialUserInteraction.bind(null, browser));
 };

@@ -1,5 +1,5 @@
 const { bootstrapExperience } = require('../../e2e/utils/bootstrap');
-const { scrollTo } = require('../../e2e/utils/scroll');
+const { scrollTo, scrollBy } = require('../../e2e/utils/scroll');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { removeCard } = require('../../e2e/utils/card-actions/remove');
@@ -38,8 +38,7 @@ const paywallTest = function() {
 			browser,
 			config.cards.newsletter.cardSelector,
 			async()=>{
-				await scrollTo(browser, 0);
-				await scrollTo(browser, pixels);
+				await scrollBy(browser, 50);
 			}
 		);
 
