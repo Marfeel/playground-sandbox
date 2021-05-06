@@ -10,8 +10,7 @@
 			},
 			"features": {
 				"mode": "contextual",
-				"removable": true,
-				"isDraggable": true
+				"removable": true
 			},
 			"triggers": {
 				"myScrollTrigger": {

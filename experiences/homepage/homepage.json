@@ -13,7 +13,6 @@
 			},
 			"features": {
 				"mode": "modal",
-				"isDraggable": true,
 				"button": {
 					"action": "setSnapPoint:initial"
 				},

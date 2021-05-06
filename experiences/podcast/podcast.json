@@ -9,7 +9,6 @@
         "button": {
           "action": "setSnapPoint:initial"
         },
-        "isDraggable": true,
         "mode": "modal"
       },
       "snapPoints": {

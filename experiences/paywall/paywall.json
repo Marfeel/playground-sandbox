@@ -9,8 +9,7 @@
 				"active": 0.68
 			},
 			"features": {
-				"mode": "modal",
-				"isDraggable": false
+				"mode": "modal"
 			},
 			"triggers": {
 				"myScrollTrigger": {

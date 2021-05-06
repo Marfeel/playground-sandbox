@@ -11,8 +11,7 @@
 				"active": 80
 			},
 			"features": {
-				"mode": "modal",
-				"isDraggable": true
+				"mode": "modal"
 			},
 			"triggers": {
 				"myScrollTrigger": {
@@ -38,7 +37,6 @@
 			},
 			"features": {
 				"mode": "modal",
-				"isDraggable": true,
 				"infiniteScroll": true,
 				"removable": true
 			},
