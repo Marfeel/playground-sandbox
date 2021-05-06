@@ -25,7 +25,14 @@ const waitUntilPageIsLoaded = async(browser, fixture)=> {
 		true, {
 			timeoutMsg: 'Page took to long to load',
 			interval: 5000,
-			timeout: 30000 });
+			timeout: 30000
+		},
+		async()=>{
+			await browser.url(
+				fixture.url
+			);
+		}
+	);
 
 	await waitUntil(browser, pageTitleMatches.bind(null,
 		browser,
