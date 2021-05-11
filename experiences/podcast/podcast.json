@@ -12,10 +12,18 @@
         "mode": "modal"
       },
       "snapPoints": {
-        "active": 80,
-        "initial": 0.73,
-        "minimised": 0.82,
-        "promoted": 176
+        "active": {
+          "interactive": true,
+          "value": 80
+        },
+        "initial": {
+          "interactive": true,
+          "value": 0.73
+        },
+        "minimised": {
+          "interactive": true,
+          "value": 0.82
+        }
       },
       "triggers": {
         "myScrollTrigger": {

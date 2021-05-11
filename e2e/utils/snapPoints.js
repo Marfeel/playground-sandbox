@@ -44,9 +44,10 @@ const verifyPercentageSnapPoint = async(browser, cardSelector, expectedSnapPoint
 };
 
 const isAtSnapPoint = async(browser, cardSelector, snapPointValue, iterationClosure)=>{
+	const value = typeof snapPointValue === 'number' ? snapPointValue : snapPointValue?.value;
 	let verify;
 
-	if (snapPointValue <= 1) {
+	if (value <= 1) {
 		verify = verifyPercentageSnapPoint;
 	} else {
 		verify = verifyAbsoluteSnapPoint;
@@ -55,7 +56,7 @@ const isAtSnapPoint = async(browser, cardSelector, snapPointValue, iterationClos
 	let atSnapPoint = false;
 
 	await browser.waitUntil(async()=>{
-		atSnapPoint = await verify(browser, cardSelector, snapPointValue);
+		atSnapPoint = await verify(browser, cardSelector, value);
 
 		if (!!iterationClosure && !atSnapPoint) {
 			await iterationClosure();
@@ -65,7 +66,7 @@ const isAtSnapPoint = async(browser, cardSelector, snapPointValue, iterationClos
 	}, {
 		timeout: 5000,
 		interval: 500,
-		timeoutMsg: `Card is not at expected snapPoint: ${snapPointValue}`
+		timeoutMsg: `Card is not at expected snapPoint: ${value}`
 	});
 
 	return atSnapPoint;
