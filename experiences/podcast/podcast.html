@@ -110,8 +110,20 @@
 			flex-direction: row;
 		}
 
-		.mrf-icon-play {
+		#mrf-icon-play {
+			display: none;
+		}
+
+		.mrf-icon-play img {
 			margin: 0 30px;
+		}
+
+		#mrf-icon-play:not(:checked) + .mrf-icon-play .mrf-icon-play__pause {
+			display: none;
+		}
+
+		#mrf-icon-play:checked + .mrf-icon-play .mrf-icon-play__play {
+			display: none;
 		}
 
 		.podcast {
@@ -202,11 +214,21 @@
 		<div class="mrf-player__buttons">
 			<span>1x</span>
 			<div class="mrf-player__buttons-play">
-				<img src="https://${CURRENT_HOSTNAME}/assets/experiences/podcast/backward.svg" onClick="alert('Backwards')" />
-				<img class="mrf-icon-play" src="https://${CURRENT_HOSTNAME}/assets/experiences/podcast/play.svg" onClick="alert('Play')" />
-				<img src="https://${CURRENT_HOSTNAME}/assets/experiences/podcast/forward.svg" onClick="alert('Forward')"/>
+				<img src="https://${CURRENT_HOSTNAME}/assets/experiences/podcast/backward.svg" />
+				<input type="checkbox" id="mrf-icon-play" />
+				<label class="mrf-icon-play" for="mrf-icon-play">
+					<img
+						class="mrf-icon-play__play"
+						src="https://${CURRENT_HOSTNAME}/assets/experiences/podcast/play.svg"
+					/>
+					<img
+						class="mrf-icon-play__pause"
+						src="https://${CURRENT_HOSTNAME}/assets/experiences/podcast/pause.svg"
+					/>
+				</label>
+				<img src="https://${CURRENT_HOSTNAME}/assets/experiences/podcast/forward.svg" />
 			</div>
-			<img src="https://${CURRENT_HOSTNAME}/assets/experiences/podcast/share.svg"  onClick="alert('Share')" />
+			<img src="https://${CURRENT_HOSTNAME}/assets/experiences/podcast/share.svg" />
 		</div>
 		<div class="mrf-player__progressBar">
 			<img src="https://${CURRENT_HOSTNAME}/assets/experiences/podcast/bar.svg" style="width:100%" />
