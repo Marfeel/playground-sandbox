@@ -5,13 +5,13 @@ const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { hasHeroImage } = require('../../e2e/utils/heroImage.js');
 const { closeCard } = require('../../e2e/utils/card-actions/close');
-const { minimizeCard } = require('../../e2e/utils/card-actions/minimize');
 const { scrollCard } = require('../../e2e/utils/card-actions/scroll');
 const { triggerInfiniteScroll, isAttachedToEndOfPage } = require('../../e2e/utils/infiniteScroll');
 const { isCardExisting } = require('../../e2e/utils/card');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./featured_article.json');
+const { getTechnology, isWebVersion } = require('../../e2e/utils/technology');
 
 const featuredArticleTest = function() {
 	let config,
@@ -19,7 +19,7 @@ const featuredArticleTest = function() {
 	const fixtureUrl = getUrlFixture({
 		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
 		requestHostname: 'playground.marfeel.com',
-		technology: 'web',
+		technology: getTechnology(),
 		experienceUrl: '/experiences/featured_article/featured_article.json'
 	});
 
@@ -42,11 +42,13 @@ const featuredArticleTest = function() {
 	});
 
 	it('card should have right content', async function() {
-		const rightContentLoaded = await isCardContentLoaded(browser,
-			config.cards.heroImage.cardSelector,
-			config.cards.heroImage.content);
+		if (isWebVersion()) {
+			const rightContentLoaded = await isCardContentLoaded(browser,
+				config.cards.heroImage.cardSelector,
+				config.cards.heroImage.content);
 
-		expect(rightContentLoaded).equal(true);
+			expect(rightContentLoaded).equal(true);
+		}
 	});
 
 	it('card should be displayed in viewport at initial snap point', async()=>{
@@ -82,30 +84,34 @@ const featuredArticleTest = function() {
 	});
 
 	it('close card pressing close button', async()=>{
-		await scrollCard(browser, config.cards.heroImage.cardSelector, 400);
+		if (isWebVersion()) {
+			await scrollCard(browser, config.cards.heroImage.cardSelector, 400);
 
-		await closeCard(browser);
+			await closeCard(browser);
 
-		const isAtInitialSnapPoint = await isAtSnapPoint(browser,
-			config.cards.heroImage.cardSelector,
-			config.cards.heroImage.snapPoints.initial);
+			const isAtInitialSnapPoint = await isAtSnapPoint(browser,
+				config.cards.heroImage.cardSelector,
+				config.cards.heroImage.snapPoints.initial);
 
-		expect(isAtInitialSnapPoint).equal(true);
+			expect(isAtInitialSnapPoint).equal(true);
+		}
 	});
 
 	it('card attaches to end of page for infinite scroll', async()=>{
-		if (config.cards.heroImage.features.infiniteScroll) {
-			await triggerInfiniteScroll(browser);
+		if (isWebVersion()) {
+			if (config.cards.heroImage.features.infiniteScroll) {
+				await triggerInfiniteScroll(browser);
 
-			const isSticky = await isAttachedToEndOfPage(
-				browser,
-				config.cards.heroImage.cardSelector,
-				async() => {
-					await scrollBy(browser, 50);
-				}
-			);
+				const isSticky = await isAttachedToEndOfPage(
+					browser,
+					config.cards.heroImage.cardSelector,
+					async() => {
+						await scrollBy(browser, 50);
+					}
+				);
 
-			expect(isSticky).equal(true);
+				expect(isSticky).equal(true);
+			}
 		}
 	});
 };

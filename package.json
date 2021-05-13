@@ -13,8 +13,11 @@
   },
   "scripts": {
     "test:local": "E2E_MODE=local wdio e2e/conf/local.conf.js",
+    "test:local:amp": "E2E_MODE=local TECHNOLOGY=amp wdio e2e/conf/local.conf.js",
     "test:browserstack": "E2E_MODE=browserstack wdio e2e/conf/browserstack.conf.js",
+    "test:browserstack:amp": "E2E_MODE=browserstack TECHNOLOGY=amp wdio e2e/conf/browserstack.conf.js",
     "test:browserstack-local": "E2E_MODE=browserstack-local wdio e2e/conf/browserstack.conf.js",
+    "test:browserstack-local:amp": "E2E_MODE=browserstack-local TECHNOLOGY=amp CSP_HASH=../flowcards/packages/experience-amp/dist/ wdio e2e/conf/browserstack.conf.js",
     "appium:tab": "ttab -q -G -t 'Appium Server' npm run appium",
     "appium": "appium",
     "lint": "eslint . "

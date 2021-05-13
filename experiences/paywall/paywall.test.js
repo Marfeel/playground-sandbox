@@ -7,7 +7,7 @@ const { isCardExisting } = require('../../e2e/utils/card');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./paywall.json');
-
+const { getTechnology, isWebVersion } = require('../../e2e/utils/technology');
 
 const paywallTest = function() {
 	let config,
@@ -15,7 +15,7 @@ const paywallTest = function() {
 	const fixtureUrl = getUrlFixture({
 		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
 		requestHostname: 'playground.marfeel.com',
-		technology: 'web',
+		technology: getTechnology(),
 		experienceUrl: '/experiences/paywall/paywall.json'
 	});
 
@@ -46,13 +46,15 @@ const paywallTest = function() {
 	});
 
 	it('card should have right content', async function() {
-		const rightContentLoaded = await isCardContentLoaded(
-			browser,
-			config.cards.newsletter.cardSelector,
-			config.cards.newsletter.content
-		);
+		if (isWebVersion()) {
+			const rightContentLoaded = await isCardContentLoaded(
+				browser,
+				config.cards.newsletter.cardSelector,
+				config.cards.newsletter.content
+			);
 
-		expect(rightContentLoaded).equal(true);
+			expect(rightContentLoaded).equal(true);
+		}
 	});
 
 	it('card should be displayed in viewport at active snap point', async() => {
