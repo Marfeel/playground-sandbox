@@ -22,11 +22,11 @@ const bootstrapExperience = async(browser, config, fixture) => {
 	}
 
 	const cardSelectors = Object.keys(config.cards).map(id => {
-		return isAmpVersion() ? '#mrf-flowcards-wrapper' : `#${id}`;
-	});
+		const selector = isAmpVersion() ? '#mrf-flowcards-wrapper' : `#${id}`;
 
-	Object.keys(config.cards).forEach((id)=>{
-		config.cards[id].cardSelector = isAmpVersion() ? '#mrf-flowcards-wrapper' : `#${id}`;
+		config.cards[id].cardSelector = selector;
+
+		return selector;
 	});
 
 	return cardSelectors;

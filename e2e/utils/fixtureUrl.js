@@ -1,6 +1,8 @@
 
 const fs = require('fs');
 
+const { isAmpVersion } = require('./technology');
+
 const getUrlFixture = ({
 	siteUrl,
 	requestHostname,
@@ -17,7 +19,7 @@ const getUrlFixture = ({
 	if (process.env.E2E_MODE === 'browserstack-local') {
 		url += '&flowcardsHostname=https://bs-local.com';
 
-		if (technology==='amp') {
+		if (isAmpVersion) {
 			const hash = fs.readFileSync(`${process.env.CSP_HASH}/csp-hash.txt`, 'utf8');
 
 			url += `&cspHash=${hash}`;
