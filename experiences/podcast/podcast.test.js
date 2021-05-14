@@ -1,6 +1,6 @@
 const { bootstrapExperience } = require('../../e2e/utils/bootstrap');
 const { scrollTo, scrollBy } = require('../../e2e/utils/scroll');
-const { touchCard, touchElementInsideCard } = require('../../e2e/utils/touch');
+const { touchElementInsideCard } = require('../../e2e/utils/touch');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { closeCard } = require('../../e2e/utils/card-actions/close');
@@ -100,7 +100,6 @@ describe('podcast experience', function() {
 
 	it('tap in the content will not activate the card', async() => {
 		if (!config.cards.podcast.features.removable) {
-			// utils method is called touchCard but it touches in whatever element the query selector returns
 			await touchElementInsideCard(browser, config.cards.podcast.cardSelector, '#mrf-icon-play');
 
 			const isStillAtMinimisedSnappoint = await isAtSnapPoint(
