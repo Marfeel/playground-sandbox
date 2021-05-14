@@ -1,6 +1,6 @@
 const { bootstrapExperience } = require('../../e2e/utils/bootstrap');
 const { scrollTo, scrollBy } = require('../../e2e/utils/scroll');
-const { touchCard } = require('../../e2e/utils/touch');
+const { touchCard, touchElementInsideCard } = require('../../e2e/utils/touch');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { closeCard } = require('../../e2e/utils/card-actions/close');
@@ -88,7 +88,10 @@ describe('podcast experience', function() {
 			const isAtMinimizedSnapPoint = await isAtSnapPoint(
 				browser,
 				config.cards.podcast.cardSelector,
-				config.cards.podcast.snapPoints.minimised
+				config.cards.podcast.snapPoints.minimised,
+				async()=>{
+					await minimizeCard(browser, config.cards.podcast.cardSelector);
+				}
 			);
 
 			expect(isAtMinimizedSnapPoint).equal(true);
@@ -98,22 +101,24 @@ describe('podcast experience', function() {
 	it('tap in the content will not activate the card', async() => {
 		if (!config.cards.podcast.features.removable) {
 			// utils method is called touchCard but it touches in whatever element the query selector returns
-			await touchCard(browser, '#mrf-icon-play');
+			await touchElementInsideCard(browser, config.cards.podcast.cardSelector, '#mrf-icon-play');
 
-			const isAtActiveSnapPoint = await isAtSnapPoint(
+			const isStillAtMinimisedSnappoint = await isAtSnapPoint(
 				browser,
 				config.cards.podcast.cardSelector,
-				config.cards.podcast.snapPoints.active
+				config.cards.podcast.snapPoints.minimised
 			);
 
-			expect(isAtActiveSnapPoint).equal(false);
+			expect(isStillAtMinimisedSnappoint).equal(true);
 
-			const isPlayerPaused = await browser.executeAsync(async(_, done) => {
-				const playButton = document.querySelector('#mrf-icon-play');
-				const checked = playButton.getAttribute('checked');
-		
+			const isPlayerPaused = await browser.executeAsync(async(cardSelectorBrowser, done) => {
+				const cardDocument = document
+					.querySelector(`${cardSelectorBrowser} article [data-testid="amp-document-single"]`);
+				const playButton = cardDocument.shadowRoot.querySelector('#mrf-icon-play');
+				const checked = playButton.checked;
+
 				done(checked);
-			}, cardSelector);
+			}, config.cards.podcast.cardSelector);
 
 			expect(isPlayerPaused).equal(true);
 		}
