@@ -4,7 +4,7 @@ const { range } = require('mathjs');
 
 const getTargetPosition = async(browser, cardSelector)=>{
 	const startPosition = await browser.executeAsync(async(cardSelectorBrowser, done) => {
-		const dragHandler = document.querySelector(`${cardSelectorBrowser} [data-testid=cardDragTarget]`);
+		const dragHandler = document.querySelector(`${cardSelectorBrowser}`);
 		const { y } = dragHandler.getBoundingClientRect();
 
 		done(y);
@@ -28,7 +28,7 @@ const executeTouch = async(browser, cardSelector, y, type)=>{
 			});
 		};
 
-		const dragHandler = document.querySelector(`${cardSelectorBrowser} [data-testid=cardDragTarget]`);
+		const dragHandler = document.querySelector(`${cardSelectorBrowser}`);
 		const touchStart = createTouch(dragHandler, yBrowser, 200);
 		const touchStartEvent = new TouchEvent(typeBrowser, { bubbles: true, touches: [touchStart] });
 
@@ -56,7 +56,7 @@ const dragCardTo = async(browser, cardSelector, to)=>{
 
 const dragCardBy = async(browser, cardSelector, dragByY)=>{
 	const currentYPosition = await browser.executeAsync(async(cardSelectorBrowser, done) => {
-		const dragHandler = document.querySelector(`${cardSelectorBrowser} [data-testid=cardDragTarget]`);
+		const dragHandler = document.querySelector(`${cardSelectorBrowser}`);
 		const { y } = dragHandler.getBoundingClientRect();
 
 		done(y);
@@ -101,7 +101,7 @@ const touchCard = async(browser, cardSelector)=>{
 			await touch(el, y + 15);
 		};
 
-		const dragHandler = document.querySelector(`${cardSelectorBrowser} [data-testid=cardDragTarget]`);
+		const dragHandler = document.querySelector(`${cardSelectorBrowser}`);
 
 		await touchCardAt(dragHandler);
 	}, cardSelector);

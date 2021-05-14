@@ -44,7 +44,7 @@ const verifyPercentageSnapPoint = async(browser, cardSelector, expectedSnapPoint
 };
 
 const isAtSnapPoint = async(browser, cardSelector, snapPointValue, iterationClosure)=>{
-	const value = typeof snapPointValue === 'number' ? snapPointValue : snapPointValue?.value;
+	const value = typeof snapPointValue !== 'object' ? snapPointValue : snapPointValue.value;
 	let verify;
 
 	if (value <= 1) {

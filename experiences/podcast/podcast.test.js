@@ -67,18 +67,6 @@ describe('podcast experience', function() {
 		expect(isAtInitialSnapPoint).equal(true);
 	});
 
-	it('activate card by click', async() => {
-		await touchCard(browser, config.cards.podcast.cardSelector);
-
-		const isAtActiveSnapPoint = await isAtSnapPoint(
-			browser,
-			config.cards.podcast.cardSelector,
-			config.cards.podcast.snapPoints.active
-		);
-
-		expect(isAtActiveSnapPoint).equal(true);
-	});
-
 	it('close card pressing close button', async()=>{
 		await scrollCard(browser, config.cards.podcast.cardSelector, 400);
 
@@ -104,6 +92,30 @@ describe('podcast experience', function() {
 			);
 
 			expect(isAtMinimizedSnapPoint).equal(true);
+		}
+	});
+
+	it('tap in the content will not activate the card', async() => {
+		if (!config.cards.podcast.features.removable) {
+			// utils method is called touchCard but it touches in whatever element the query selector returns
+			await touchCard(browser, '#mrf-icon-play');
+
+			const isAtActiveSnapPoint = await isAtSnapPoint(
+				browser,
+				config.cards.podcast.cardSelector,
+				config.cards.podcast.snapPoints.active
+			);
+
+			expect(isAtActiveSnapPoint).equal(false);
+
+			const isPlayerPaused = await browser.executeAsync(async(_, done) => {
+				const playButton = document.querySelector('#mrf-icon-play');
+				const checked = playButton.getAttribute('checked');
+		
+				done(checked);
+			}, cardSelector);
+
+			expect(isPlayerPaused).equal(true);
 		}
 	});
 });
