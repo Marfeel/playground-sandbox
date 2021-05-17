@@ -4,7 +4,7 @@ const { range } = require('mathjs');
 
 const getTargetPosition = async(browser, cardSelector)=>{
 	const startPosition = await browser.executeAsync(async(cardSelectorBrowser, done) => {
-		const dragHandler = document.querySelector(`${cardSelectorBrowser} [data-testid=cardDragTarget]`);
+		const dragHandler = document.querySelector(`${cardSelectorBrowser}`);
 		const { y } = dragHandler.getBoundingClientRect();
 
 		done(y);
@@ -28,7 +28,7 @@ const executeTouch = async(browser, cardSelector, y, type)=>{
 			});
 		};
 
-		const dragHandler = document.querySelector(`${cardSelectorBrowser} [data-testid=cardDragTarget]`);
+		const dragHandler = document.querySelector(`${cardSelectorBrowser}`);
 		const touchStart = createTouch(dragHandler, yBrowser, 200);
 		const touchStartEvent = new TouchEvent(typeBrowser, { bubbles: true, touches: [touchStart] });
 
@@ -56,7 +56,7 @@ const dragCardTo = async(browser, cardSelector, to)=>{
 
 const dragCardBy = async(browser, cardSelector, dragByY)=>{
 	const currentYPosition = await browser.executeAsync(async(cardSelectorBrowser, done) => {
-		const dragHandler = document.querySelector(`${cardSelectorBrowser} [data-testid=cardDragTarget]`);
+		const dragHandler = document.querySelector(`${cardSelectorBrowser}`);
 		const { y } = dragHandler.getBoundingClientRect();
 
 		done(y);
@@ -101,14 +101,24 @@ const touchCard = async(browser, cardSelector)=>{
 			await touch(el, y + 15);
 		};
 
-		const dragHandler = document.querySelector(`${cardSelectorBrowser} [data-testid=cardDragTarget]`);
+		const dragHandler = document.querySelector(`${cardSelectorBrowser}`);
 
 		await touchCardAt(dragHandler);
 	}, cardSelector);
 };
 
+const touchElementInsideCard = async(browser, cardSelector, childElementSelector)=>{
+	await browser.execute(async(cardSelectorBrowser, childElementSelectorBrowser) => {
+		const cardDocument = document
+			.querySelector(`${cardSelectorBrowser} article [data-testid="amp-document-single"]`);
+		const element = cardDocument.shadowRoot.querySelector(childElementSelectorBrowser);
+		element.click();
+	}, cardSelector, childElementSelector);
+};
+
 module.exports = {
 	dragCardTo,
 	dragCardBy,
-	touchCard
+	touchCard,
+	touchElementInsideCard
 };
