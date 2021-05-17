@@ -1,0 +1,133 @@
+<!doctype html>
+<html ⚡ lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<script async src="https://cdn.ampproject.org/v0.js"></script>
+	<title>Homepage</title>
+	<link rel="canonical" href="${canonicalUrl}">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+	<style amp-boilerplate>
+		body {
+			-webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			animation: -amp-start 8s steps(1, end) 0s 1 normal both
+		}
+
+		@-webkit-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-moz-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-ms-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@-o-keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+
+		@keyframes -amp-start {
+			from {
+				visibility: hidden
+			}
+
+			to {
+				visibility: visible
+			}
+		}
+	</style>
+	<noscript>
+		<style amp-boilerplate>
+			body {
+				-webkit-animation: none;
+				-moz-animation: none;
+				-ms-animation: none;
+				animation: none
+			}
+		</style>
+	</noscript>
+	<style amp-custom>
+		body {
+			font-family: -apple-system, system-ui;
+			font-size: 16px;
+			line-height: 1.4;
+			margin: 0;
+			text-align: start;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		.mrf-headerLite__wrapper {
+			background: #282346;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 10px 15px 8px;
+			height: 50px;
+			box-sizing: border-box;
+		}
+
+		.mrf-headerLite__title {
+			color: white;
+			text-align: left;
+			font-weight: 700;
+			font-size: 18px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			flex: 0 70%;
+		}
+		.mrf-videoWrapper {
+			position: relative;
+		}
+		.mrf-video {
+			object-fit: cover;
+			width: 100%;
+			min-height: 210px;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<div class="mrf-headerLite__wrapper">
+			<span class="mrf-headerLite__title">My latest videos</span>
+			<img height="28" width="28" src="https://${CURRENT_HOSTNAME}/assets/experiences/dailynews-icon.png">
+		</div>
+	</header>
+	<div class="mrf-videoWrapper">
+		<!-- <iframe class="mrf-video" src="https://www.youtube-nocookie.com/embed/xcJtL7QggTI" title="YouTube video player" frameborder="0" allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+		<!-- <video class="mrf-video" src="https://youtu.be/xcJtL7QggTI" controls></video> -->
+		<img class="mrf-video" src="https://${CURRENT_HOSTNAME}/assets/experiences/video.png" />
+	</div>
+</body>
+
+</html>

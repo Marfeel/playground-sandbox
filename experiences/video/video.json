@@ -1,0 +1,28 @@
+{
+	"cards": {
+		"video": {
+			"content": {
+				"type": "AMPDocument",
+				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/video/video.html"
+			},
+			"snapPoints": {
+				"active": 0.55
+			},
+			"features": {
+				"mode": "contextual",
+				"removable": true
+			},
+			"triggers": {
+				"myScrollTrigger": {
+					"on": "scroll",
+					"action": "setSnapPoint:active",
+					"spec": {
+						"type": "absolute",
+						"pixel": 300,
+						"percentage": 0.1
+					}
+				}
+			}
+		}
+	}
+}
