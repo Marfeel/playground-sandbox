@@ -20,11 +20,11 @@ const buildConfiguration = (E2E_MODE, capabilities, specs) => {
 	let configuration,
 		completeCapabilities = capabilities;
 
-	if (E2E_MODE==='local') {
+	if (E2E_MODE==='local' || E2E_MODE==='local-server') {
 		configuration = { ...baseConfig, ...localProperties };
 	}
 
-	if (E2E_MODE==='browserstack') {
+	if (E2E_MODE==='browserstack' || E2E_MODE==='browserstack-pr') {
 		configuration = { ...baseConfig, ...bsProperties };
 		completeCapabilities = completeCapabilities.map((capability)=>{
 			return { ...capability, ...bsCapabilitiesProps };

@@ -15,6 +15,14 @@ const getUrlFixture = ({
 		url += '&flowcardsHostname=https://bs-local.com';
 	}
 
+	if (process.env.E2E_MODE === 'browserstack-pr') {
+		url += `&flowcardsHostname=https://flowcards-e2e.mrf.io/${process.env.PR_ID}/`;
+	}
+
+	if (process.env.E2E_MODE === 'local-server') {
+		url += '&flowcardsHostname=https://localhost';
+	}
+
 	// eslint-disable-next-line no-console
 	console.log('FixtureUrl:', url);
 
