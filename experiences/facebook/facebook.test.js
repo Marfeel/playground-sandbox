@@ -3,6 +3,7 @@ const { scrollTo } = require('../../e2e/utils/scroll');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { removeCard } = require('../../e2e/utils/card-actions/remove');
+const { touchCard } = require('../../e2e/utils/touch');
 const { minimizeCard } = require('../../e2e/utils/card-actions/minimize');
 const { isCardExisting } = require('../../e2e/utils/card');
 const { expect } = require('chai');
@@ -67,28 +68,28 @@ const facebookTest = function() {
 		expect(isAtActiveSnapPoint).equal(true);
 	});
 
-	it('remove card, should not be displayed in viewport', async function() {
-		await removeCard(
-			browser,
-			config.cards.facebook.cardSelector
-		);
+	// it('remove card, should not be displayed in viewport', async function() {
+	// 	await removeCard(
+	// 		browser,
+	// 		config.cards.facebook.cardSelector
+	// 	);
 
-		await waitUntil(browser, async()=>{
-			const firstCard = await browser.$(config.cards.facebook.cardSelector);
+	// 	await waitUntil(browser, async()=>{
+	// 		const firstCard = await browser.$(config.cards.facebook.cardSelector);
 
-			const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
+	// 		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
 
-			return firstCardIsInViewport;
-		}, false, {
-			interval: 1000,
-			timeoutMsg: 'Card was still in viewport after removing it.'
-		}, async()=>{
-			await removeCard(
-				browser,
-				config.cards.facebook.cardSelector
-			);
-		});
-	});
+	// 		return firstCardIsInViewport;
+	// 	}, false, {
+	// 		interval: 1000,
+	// 		timeoutMsg: 'Card was still in viewport after removing it.'
+	// 	}, async()=>{
+	// 		await removeCard(
+	// 			browser,
+	// 			config.cards.facebook.cardSelector
+	// 		);
+	// 	});
+	// });
 
 	it('minimize card dragging it down when status is "initial"', async() => {
 		if (!config.cards.facebook.features.removable) {

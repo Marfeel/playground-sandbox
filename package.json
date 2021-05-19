@@ -13,9 +13,10 @@
   },
   "scripts": {
     "test:local": "E2E_MODE=local wdio e2e/conf/local.conf.js",
-    "test:local:server": "E2E_MODE=local-server wdio e2e/conf/local.conf.js",
+    "test:local-server": "E2E_MODE=local-server wdio e2e/conf/local.conf.js",
+    "test:local-pr": "E2E_MODE=local-pr PR_ID=$ghprbPullId wdio e2e/conf/local.conf.js",
     "test:browserstack": "E2E_MODE=browserstack wdio e2e/conf/browserstack.conf.js",
-    "test:browserstack-pr": "E2E_MODE=browserstack-pr PR_ID=352 wdio e2e/conf/browserstack.conf.js",
+    "test:browserstack-pr": "E2E_MODE=browserstack-pr PR_ID=$ghprbPullId wdio e2e/conf/browserstack.conf.js",
     "test:browserstack-local": "E2E_MODE=browserstack-local wdio e2e/conf/browserstack.conf.js",
     "appium:tab": "ttab -q -G -t 'Appium Server' npm run appium",
     "appium": "appium --relaxed-security --allow-insecure=localhost",

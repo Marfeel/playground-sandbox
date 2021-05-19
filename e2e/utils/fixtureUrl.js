@@ -15,8 +15,8 @@ const getUrlFixture = ({
 		url += '&flowcardsHostname=https://bs-local.com';
 	}
 
-	if (process.env.E2E_MODE === 'browserstack-pr') {
-		url += `&flowcardsHostname=https://flowcards-e2e.mrf.io/${process.env.PR_ID}/`;
+	if (process.env.E2E_MODE === 'browserstack-pr' || process.env.E2E_MODE === 'local-pr') {
+		url += `&flowcardsHostname=https://flowcards-e2e.mrf.io/statics/${process.env.PR_ID}`;
 	}
 
 	if (process.env.E2E_MODE === 'local-server') {
