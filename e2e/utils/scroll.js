@@ -19,7 +19,7 @@ const scroll = async(browser, y) => {
 	}, y);
 };
 
-const scrollTo = async(browser, y, step=50)=>{
+const scrollTo = async(browser, y, step=50, timeout=100)=>{
 	let localStep = step;
 	const currentScrollPosition = await getCurrentScrollPosition(browser);
 
@@ -33,7 +33,7 @@ const scrollTo = async(browser, y, step=50)=>{
 		return prev.then(async()=>{
 			await scroll(browser, value);
 
-			return new Promise(resolve => setTimeout(resolve, 100));
+			return new Promise(resolve => setTimeout(resolve, timeout));
 		});
 	}, Promise.resolve());
 };

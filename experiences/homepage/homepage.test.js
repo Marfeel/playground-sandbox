@@ -1,8 +1,7 @@
 const { bootstrapExperience } = require('../../e2e/utils/bootstrap');
 const { scrollTo, scrollToElement, scrollBy } = require('../../e2e/utils/scroll');
 const { touchCard } = require('../../e2e/utils/touch');
-const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
-const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
+const { isAtSnapPoint, getCurrentVerticalPosition, getTypeOfProgression } = require('../../e2e/utils/snapPoints');
 const { scrollCard } = require('../../e2e/utils/card-actions/scroll');
 const { minimizeCard } = require('../../e2e/utils/card-actions/minimize');
 const { closeCard } = require('../../e2e/utils/card-actions/close');
@@ -51,8 +50,54 @@ const homepageTest = function() {
 		expect(cardExists).equal(true);
 	});
 
+	it('scroll bounded', async function() {
+		// Initial 300px scroll to trigger
+		// First 60px transitioner doesn't made the card appear
+		const initialBrowserScroll = 300 + 60;
+		const smallScrollPixels = 20;
+		const cardSelector = config.cards.homepage.cardSelector;
+		const scrollBoundedSnapPoints = [];
+		const timeout = 150;
+		let currentSnapPoint;
+
+		await scrollTo(browser, initialBrowserScroll, 5, timeout);
+		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
+		scrollBoundedSnapPoints.push(currentSnapPoint);
+
+		await scrollTo(browser, initialBrowserScroll + smallScrollPixels, 5, timeout);
+		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
+		scrollBoundedSnapPoints.push(currentSnapPoint);
+
+		await scrollTo(browser, initialBrowserScroll + (smallScrollPixels * 2), 5, timeout);
+		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
+		scrollBoundedSnapPoints.push(currentSnapPoint);
+
+		await scrollTo(browser, initialBrowserScroll + (smallScrollPixels * 3), 5, timeout);
+		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
+		scrollBoundedSnapPoints.push(currentSnapPoint);
+
+		expect(getTypeOfProgression(scrollBoundedSnapPoints)).equal('arithmetic');
+
+		scrollBoundedSnapPoints.length = 0;
+		scrollBoundedSnapPoints.push(currentSnapPoint);
+
+		await scrollTo(browser, initialBrowserScroll + (smallScrollPixels * 2), 5, timeout);
+		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
+		scrollBoundedSnapPoints.push(currentSnapPoint);
+
+		await scrollTo(browser, initialBrowserScroll + smallScrollPixels, 5, timeout);
+		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
+		scrollBoundedSnapPoints.push(currentSnapPoint);
+
+		await scrollTo(browser, initialBrowserScroll, 5, timeout);
+		currentSnapPoint = await getCurrentVerticalPosition(browser, cardSelector);
+		scrollBoundedSnapPoints.push(currentSnapPoint);
+
+		expect(getTypeOfProgression(scrollBoundedSnapPoints)).equal('arithmetic');
+	});
+
 	it('card should be displayed in viewport at initial snap point', async() => {
-		await scrollTo(browser, 600);
+		await scrollTo(browser, 610, 10);
 
 		const cardExists = await isCardExisting(
 			browser,
