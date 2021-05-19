@@ -19,10 +19,6 @@ const getUrlFixture = ({
 		url += `&flowcardsHostname=https://flowcards-e2e.mrf.io/statics/${process.env.PR_ID}`;
 	}
 
-	if (process.env.E2E_MODE === 'local-server') {
-		url += '&flowcardsHostname=https://localhost';
-	}
-
 	// eslint-disable-next-line no-console
 	console.log('FixtureUrl:', url);
 

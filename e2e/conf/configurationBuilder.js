@@ -20,7 +20,7 @@ const buildConfiguration = (E2E_MODE, capabilities, specs) => {
 	let configuration,
 		completeCapabilities = capabilities;
 
-	if (E2E_MODE==='local' || E2E_MODE==='local-server' || E2E_MODE==='local-pr') {
+	if (E2E_MODE==='local' || E2E_MODE==='local-pr') {
 		configuration = { ...baseConfig, ...localProperties };
 	}
 
