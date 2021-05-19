@@ -1,6 +1,6 @@
 * @Marfeel/wow @Marfeel/ux
 
-/experiences/ @Marfeel/dx
-/e2e/ @Marfeel/dx
-/templates/ @Marfeel/dx
-.vscode/settings.json @Marfeel/dx
+/experiences/ @Marfeel/dx @Marfeel/wow @Marfeel/ux
+/e2e/ @Marfeel/dx @Marfeel/wow @Marfeel/ux
+/templates/ @Marfeel/dx @Marfeel/wow @Marfeel/ux
+.vscode/settings.json @Marfeel/dx @Marfeel/wow @Marfeel/ux
