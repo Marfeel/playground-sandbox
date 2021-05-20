@@ -2,6 +2,7 @@
 
 /experiences/**/*.html @Marfeel/dx @Marfeel/wow @Marfeel/ux
 /experiences/**/*.json @Marfeel/dx @Marfeel/wow @Marfeel/ux
+/experiences/**/*.test* @Marfeel/dx @Marfeel/wow
 /e2e/ @Marfeel/dx @Marfeel/wow
 /templates/ @Marfeel/dx @Marfeel/wow @Marfeel/ux
 .vscode/settings.json @Marfeel/dx @Marfeel/wow @Marfeel/ux
