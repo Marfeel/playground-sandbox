@@ -4,7 +4,7 @@ async function getCurrentVerticalPosition(browser, cardSelector) {
 	return await browser.executeAsync(async(cardSelectorBrowser, done) => {
 		const y = document.querySelector(cardSelectorBrowser).getBoundingClientRect().y;
 
-		done({ card, positioner });
+		done(y);
 	}, cardSelector);
 }
 
