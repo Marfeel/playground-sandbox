@@ -17,6 +17,7 @@ const verifySnapPoint = async(browser, cardSelector, value) => {
 	}, cardSelector);
 
 	/**
+	 * ⚠️ WARNING ⚠️ 
 	 * Make sure to keep this compensation matching the one we are doing inside flowcards code:
 	 * https://github.com/Marfeel/flowcards/blob/master/packages/experience-web/src/transitioner/useAbsoluteSnapPoints/useAbsoluteSnapPoints.tsx#L46
 	 */
