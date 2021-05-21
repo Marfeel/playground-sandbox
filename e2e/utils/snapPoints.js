@@ -8,58 +8,46 @@ async function getCurrentVerticalPosition(browser, cardSelector) {
 	}, cardSelector);
 }
 
-async function verifyAbsoluteSnapPoint(browser, cardSelector, expectedAbsoluteYposition) {
-	const currentAbsolutePositionYPosition = await getCurrentVerticalPosition(browser, cardSelector);
+const verifySnapPoint = async(browser, cardSelector, value) => {
+	const { card, positioner } = await browser.executeAsync(async(cardSelector, done) => {
+		const positioner = document.querySelector(cardSelector).closest('[data-testid=card-positioner]').getBoundingClientRect();
+		const card = document.querySelector(`${cardSelector} [data-testid=card]`).getBoundingClientRect();
 
-	const difference = currentAbsolutePositionYPosition - expectedAbsoluteYposition;
-
-	console.log(`
-        Expected Snappoint: ${expectedAbsoluteYposition} 
-        Current Snappoint: ${currentAbsolutePositionYPosition} 
-        Difference: ${difference}
-    `);
-
-	if (difference >= 5 || difference <= -5) {
-		return false;
-	}
-
-	return true;
-}
-
-const verifyPercentageSnapPoint = async(browser, cardSelector, expectedSnapPointPercentage)=>{
-	const currentPercentage = await browser.executeAsync(async(cardSelectorBrowser, done) => {
-		const percentage = (document.querySelector(cardSelectorBrowser).getBoundingClientRect().y)/window.innerHeight;
-
-		done(percentage);
+		done({ card, positioner });
 	}, cardSelector);
-	const difference = currentPercentage - expectedSnapPointPercentage;
+
+	/**
+	 * ⚠️ WARNING ⚠️ 
+	 * Make sure to keep this compensation matching the one we are doing inside flowcards code:
+	 * https://github.com/Marfeel/flowcards/blob/master/packages/experience-web/src/transitioner/useAbsoluteSnapPoints/useAbsoluteSnapPoints.tsx#L46
+	 */
+	const HIGH_SCREEN_THRESHOLD = 0.5;
+	const compensation = (card.y / positioner.height) > HIGH_SCREEN_THRESHOLD ? positioner.y : 0;
+	const current = card.y - compensation;
+	const expected = value > 1 ? value : value * positioner.height;
+
+	const difference = current - expected;
 
 	console.log(`
-        Expected Snappoint: ${expectedSnapPointPercentage} 
-        Current Snappoint: ${currentPercentage} 
+        Expected Snappoint: ${expected} 
+        Current Snappoint: ${current} 
         Difference: ${difference}
     `);
-	if (difference >= 0.08 || difference <= -0.08) {
+
+	if (isNaN(difference) || difference >= 5 || difference <= -5) {
 		return false;
 	}
 
 	return true;
 };
 
-const isAtSnapPoint = async(browser, cardSelector, snapPointValue, iterationClosure)=>{
+const isAtSnapPoint = async(browser, cardSelector, snapPointValue, iterationClosure) => {
 	const value = typeof snapPointValue !== 'object' ? snapPointValue : snapPointValue.value;
-	let verify;
-
-	if (value <= 1) {
-		verify = verifyPercentageSnapPoint;
-	} else {
-		verify = verifyAbsoluteSnapPoint;
-	}
 
 	let atSnapPoint = false;
 
 	await browser.waitUntil(async()=>{
-		atSnapPoint = await verify(browser, cardSelector, value);
+		atSnapPoint = await verifySnapPoint(browser, cardSelector, value);
 
 		if (!!iterationClosure && !atSnapPoint) {
 			await iterationClosure();
@@ -68,8 +56,8 @@ const isAtSnapPoint = async(browser, cardSelector, snapPointValue, iterationClos
 		return atSnapPoint;
 	}, {
 		timeout: 5000,
-		interval: 500,
-		timeoutMsg: `Card is not at expected snapPoint: ${value}`
+		interval: 2500,
+		timeoutMsg: `Card is not at expected position: ${value}`
 	});
 
 	return atSnapPoint;
