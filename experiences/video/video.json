@@ -6,12 +6,24 @@
 				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/video/video.html"
 			},
 			"snapPoints": {
-				"initial": 0.615,
-				"promoted": 176,
-				"active": 80
+				"initial": {
+					"interactive": true,
+					"value": 0.615
+				},
+				"minimised": {
+					"interactive": true,
+					"value": 0.82
+				},
+				"active": {
+					"interactive": true,
+					"value": 80
+				}
 			},
 			"features": {
-				"mode": "contextual",
+				"button": {
+					"action": "setSnapPoint:initial"
+				},
+				"mode": "modal",
 				"removable": true
 			},
 			"triggers": {
