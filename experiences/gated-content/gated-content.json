@@ -24,8 +24,19 @@
 						"pixel": 100,
 						"percentage": 0.025
 					}
+				},
+				"promote": {
+					"on": "scroll",
+					"action": "setSnapPoint:promoted",
+					"spec": {
+						"type": "velocity",
+						"pixel": -800,
+						"duration": 200
+					}
 				}
 			}
 		}
 	}
 }
+
+

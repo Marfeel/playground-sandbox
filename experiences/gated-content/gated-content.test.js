@@ -1,4 +1,4 @@
-const { bootstrapExperience } = require('../../e2e/utils/bootstrap');
+const { bootstprapExperience } = require('../../e2e/utils/bootstrap');
 const { scrollTo, scrollBy } = require('../../e2e/utils/scroll');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
@@ -54,14 +54,43 @@ const gatedContentTest = function() {
 		expect(rightContentLoaded).equal(true);
 	});
 
-	it('card should be displayed in viewport at active snap point', async() => {
-		await scrollTo(browser, 800);
+	it('card should be displayed in viewport at initial snap point', async() => {
+		await scrollTo(browser, 600);
 
 		const firstCard = await browser.$(config.cards.gated.cardSelector);
 
-		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
+		expect(cardExists).equal(true);
 
-		expect(firstCardIsInViewport).equal(true);
+		const isAtInitialSnapPoint = await isAtSnapPoint(
+			browser,
+			config.cards.paywall.cardSelector,
+			config.cards.paywall.snapPoints.initial
+		);
+
+		expect(isAtInitialSnapPoint).equal(true);
+	});
+
+	it('card should get promoted at certain element', async() => {
+		await scrollToElement(browser, config.cards.paywall.triggers.myIntersectionTrigger.spec.selector);
+
+		const cardExists = await isCardExisting(
+			browser,
+			config.cards.paywall.cardSelector
+		);
+
+		expect(cardExists).equal(true);
+
+		const isAtPromotedSnapPoint = await isAtSnapPoint(
+			browser,
+			config.cards.paywall.cardSelector,
+			config.cards.paywall.snapPoints.promoted
+		);
+
+		expect(isAtPromotedSnapPoint).equal(true);
+	});
+
+	it('activate card by click', async() => {
+		await touchCard(browser, config.cards.paywall.cardSelector);
 
 		const isAtActiveSnapPoint = await isAtSnapPoint(
 			browser,
@@ -70,6 +99,58 @@ const gatedContentTest = function() {
 		);
 
 		expect(isAtActiveSnapPoint).equal(true);
+	});
+
+	it('close card pressing close button', async() => {
+		await scrollCard(browser, config.cards.paywall.cardSelector, 400);
+
+		await closeCard(browser);
+
+		const isAtInitialSnapPoint = await isAtSnapPoint(
+			browser,
+			config.cards.paywall.cardSelector,
+			config.cards.paywall.snapPoints.initial,
+			async()=>{
+				await closeCard(browser);
+			}
+		);
+
+		expect(isAtInitialSnapPoint).equal(true);
+	});
+
+	it('card attaches to end of page for infinite scroll', async() => {
+		if (config.cards.paywall.features.infiniteScroll) {
+			await triggerInfiniteScroll(browser);
+
+			const isSticky = await isAttachedToEndOfPage(
+				browser,
+				config.cards.paywall.cardSelector,
+				async() => {
+					await scrollBy(browser, 50);
+				}
+			);
+
+			expect(isSticky).equal(true);
+		}
+	});
+
+	it('minimize card dragging it down when status is "initial"', async() => {
+		if (!config.cards.paywall.features.removable) {
+			// Restore initial status after infinite scroll
+			await scrollBy(browser, -1800);
+			await minimizeCard(browser, config.cards.paywall.cardSelector);
+
+			const isAtMinimizedSnapPoint = await isAtSnapPoint(
+				browser,
+				config.cards.paywall.cardSelector,
+				config.cards.paywall.snapPoints.minimised,
+				async() => {
+					await minimizeCard(browser, config.cards.paywall.cardSelector);
+				}
+			);
+
+			expect(isAtMinimizedSnapPoint).equal(true);
+		}
 	});
 
 	it('remove card, should still be displayed in viewport', async function() {
