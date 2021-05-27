@@ -6,17 +6,17 @@ const { removeCard } = require('../../e2e/utils/card-actions/remove');
 const { isCardExisting } = require('../../e2e/utils/card');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
-const experience = require('./paywall.json');
+const experience = require('./gated-content.json');
 
 
-const paywallTest = function() {
+const gatedContentTest = function() {
 	let config,
 		fixture;
 	const fixtureUrl = getUrlFixture({
 		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
 		requestHostname: 'playground.marfeel.com',
 		technology: 'web',
-		experienceUrl: '/experiences/paywall/paywall.json'
+		experienceUrl: '/experiences/gated-content/gated-content.json'
 	});
 
 	it('setup', async function() {
@@ -30,13 +30,13 @@ const paywallTest = function() {
 	});
 
 	it('card should render on scroll', async function() {
-		const pixels = config.cards.newsletter.triggers.myScrollTrigger.spec.pixel;
+		const pixels = config.cards.gated.triggers.myScrollTrigger.spec.pixel;
 
 		await scrollTo(browser, pixels);
 
 		const cardExists = await isCardExisting(
 			browser,
-			config.cards.newsletter.cardSelector,
+			config.cards.gated.cardSelector,
 			async()=>{
 				await scrollBy(browser, 50);
 			}
@@ -48,8 +48,8 @@ const paywallTest = function() {
 	it('card should have right content', async function() {
 		const rightContentLoaded = await isCardContentLoaded(
 			browser,
-			config.cards.newsletter.cardSelector,
-			config.cards.newsletter.content
+			config.cards.gated.cardSelector,
+			config.cards.gated.content
 		);
 
 		expect(rightContentLoaded).equal(true);
@@ -58,7 +58,7 @@ const paywallTest = function() {
 	it('card should be displayed in viewport at active snap point', async() => {
 		await scrollTo(browser, 800);
 
-		const firstCard = await browser.$(config.cards.newsletter.cardSelector);
+		const firstCard = await browser.$(config.cards.gated.cardSelector);
 
 		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
 
@@ -66,8 +66,8 @@ const paywallTest = function() {
 
 		const isAtActiveSnapPoint = await isAtSnapPoint(
 			browser,
-			config.cards.newsletter.cardSelector,
-			config.cards.newsletter.snapPoints.active
+			config.cards.gated.cardSelector,
+			config.cards.gated.snapPoints.active
 		);
 
 		expect(isAtActiveSnapPoint).equal(true);
@@ -76,10 +76,10 @@ const paywallTest = function() {
 	it('remove card, should still be displayed in viewport', async function() {
 		await removeCard(
 			browser,
-			config.cards.newsletter.cardSelector
+			config.cards.gated.cardSelector
 		);
 
-		const firstCard = await browser.$(config.cards.newsletter.cardSelector);
+		const firstCard = await browser.$(config.cards.gated.cardSelector);
 
 		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
 
@@ -87,14 +87,14 @@ const paywallTest = function() {
 
 		const isAtActiveSnapPoint = await isAtSnapPoint(
 			browser,
-			config.cards.newsletter.cardSelector,
-			config.cards.newsletter.snapPoints.active
+			config.cards.gated.cardSelector,
+			config.cards.gated.snapPoints.active
 		);
 
 		expect(isAtActiveSnapPoint).equal(true);
 	});
 };
 
-describe('paywall experience', paywallTest);
+describe('gated content experience', gatedContentTest);
 
-exports.default = paywallTest;
+exports.default = gatedContentTest;
