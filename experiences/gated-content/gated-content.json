@@ -6,7 +6,7 @@
 				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/gated-content/gated-content.html"
 			},
 			"snapPoints": {
-				"active": 0.59
+				"active": 0.61
 			},
 			"features": {
 				"mode": "contextual",
