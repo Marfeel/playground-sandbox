@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
-	<title>Paywall</title>
+	<title>Gated Content</title>
 	<link rel="canonical" href="${canonicalUrl}">
 	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 	<style amp-boilerplate>
@@ -82,7 +82,6 @@
 			margin: 0;
 			text-align: start;
 			-webkit-font-smoothing: antialiased;
-			background: #223F6D;
 			min-height: 100vh;
 		}
 
@@ -98,17 +97,16 @@
 			padding-top: 15px;
 		}
 
-		.mrf-paywall {
+		.mrf-gated-content {
 			padding: 0 20px 20px;
 			box-sizing: border-box;
 			text-align: center;
-			color: #FFF;
+			color: #333;
 		}
 
-		.mrf-paywall__text {
-			font-size: 1em;
-			font-weight: 300;
-			margin: 0 0 20px;
+		.mrf-gated-content__text {
+			font-size: 20px;
+			margin: 0 0 10px;
 		}
 
 		input {
@@ -120,8 +118,8 @@
 			font-family: -apple-system, system-ui;
 		}
 
-		.mrf-paywall__submit {
-			background: #FFB518;
+		.mrf-gated-content__submit {
+			background: #282346;
 			margin-bottom: 10px;
 			color: #FFF;
 			font-size: 1em;
@@ -130,14 +128,10 @@
 			-webkit-appearance: none;
 		}
 
-		.mrf-paywall span {
-			font-size: .8em;
-		}
-
-		.mrf-paywall__signin {
-			font-weight: 500;
-			text-decoration: underline;
-			color: #fff;
+		.mrf-gated-content__email {
+			border: 1px solid #CBD1D8;
+			margin-bottom: 15px;
+			padding-left: 10px;
 		}
 	</style>
 </head>
@@ -145,13 +139,13 @@
 <body>
 	<header class="mrf-header__wrapper">
 		<div class="mrf-header__main">
-			<img class="mrf-logo" height="40" src="https://${CURRENT_HOSTNAME}/assets/experiences/dailynews.png">
+			<img class="mrf-logo" height="40" src="https://${CURRENT_HOSTNAME}/assets/experiences/dailynews-light.png">
 		</div>
 	</header>
-	<form class="mrf-paywall">
-		<h2 class="mrf-paywall__text">Enjoy unlimited access for less than <b>$1</b> per week.</h2>
-		<input type="submit" class="mrf-paywall__submit" value="Subscribe Now" />
-		<span>Already a subscriber? <a class="mrf-paywall__signin">Sign in</a></span>
+	<form class="mrf-gated-content">
+		<h2 class="mrf-gated-content__text"><b>To keep reading this story, create your free account or log in</b></h2>
+		<input type="email" class="mrf-gated-content__email" placeholder="Email address" />
+		<input type="submit" class="mrf-gated-content__submit" value="Continue" />
 	</form>
 </body>
 

@@ -1,15 +1,15 @@
 {
 	"cards": {
-		"newsletter": {
+		"gated": {
 			"content": {
 				"type": "AMPDocument",
-				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/paywall/paywall.html"
+				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/gated-content/gated-content.html"
 			},
 			"snapPoints": {
-				"active": 0.68
+				"active": 0.75
 			},
 			"features": {
-				"mode": "modal"
+				"mode": "contextual"
 			},
 			"triggers": {
 				"myScrollTrigger": {
