@@ -3,6 +3,7 @@ const { scrollTo } = require('../../e2e/utils/scroll');
 const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
 const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
 const { removeCard } = require('../../e2e/utils/card-actions/remove');
+const { touchCard } = require('../../e2e/utils/touch');
 const { minimizeCard } = require('../../e2e/utils/card-actions/minimize');
 const { isCardExisting } = require('../../e2e/utils/card');
 const { expect } = require('chai');
@@ -67,7 +68,7 @@ const facebookTest = function() {
 		expect(isAtActiveSnapPoint).equal(true);
 	});
 
-	it('remove card, should not be displayed in viewport', async function() {
+	it.skip('remove card, should not be displayed in viewport', async function() {
 		await removeCard(
 			browser,
 			config.cards.facebook.cardSelector

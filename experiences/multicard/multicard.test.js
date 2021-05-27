@@ -87,7 +87,7 @@ const multicardTest = function() {
 		expect(isAtActiveSnapPoint).equal(true);
 	});
 
-	it('remove card, should not be displayed in viewport', async function() {
+	it.skip('remove card, should not be displayed in viewport', async function() {
 		await removeCard(
 			browser,
 			config.cards.nextArticle.cardSelector

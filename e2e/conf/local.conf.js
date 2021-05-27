@@ -16,7 +16,7 @@ const specs = [
 	// './experiences/facebook/facebook.test.js'
 	// './experiences/paywall/paywall.test.js'
 	// './experiences/featured_article/featured-article.test.js'
-	'./experiences/homepage/homepage.test.js'
+	// './experiences/homepage/homepage.test.js'
 	// './experiences/multicard/multicard.test.js'
 	// './experiences/newsletter/newsletter.test.js'
 	// './experiences/podcast/podcast.test.js'
@@ -24,7 +24,7 @@ const specs = [
 	// './experiences/taboola/taboola.test.js'
 	// './experiences/top_articles/top-articles.test.js'
 	// './e2e/experiences.test.js'
-	// './e2e/relevant-experiences.test.js'
+	'./e2e/relevant-experiences.test.js'
 ];
 
 const config = buildConfiguration(process.env.E2E_MODE, capabilities, specs);

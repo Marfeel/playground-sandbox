@@ -112,6 +112,7 @@ const touchElementInsideCard = async(browser, cardSelector, childElementSelector
 		const cardDocument = document
 			.querySelector(`${cardSelectorBrowser} article [data-testid="amp-document-single"]`);
 		const element = cardDocument.shadowRoot.querySelector(childElementSelectorBrowser);
+
 		element.click();
 	}, cardSelector, childElementSelector);
 };
