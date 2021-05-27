@@ -14,7 +14,6 @@ const gatedContentTest = function() {
 		fixture;
 	const fixtureUrl = getUrlFixture({
 		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
-		requestHostname: 'playground.marfeel.com',
 		technology: 'web',
 		experienceUrl: '/experiences/gated-content/gated-content.json'
 	});

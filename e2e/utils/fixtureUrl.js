@@ -1,30 +1,32 @@
 const getUrlFixture = ({
 	siteUrl,
-	requestHostname,
 	technology,
 	experienceUrl
-}, overwriteUrl) => {
-	let url = overwriteUrl;
+}) => {
+	const params = [];
 
-	if (!overwriteUrl) {
-	// eslint-disable-next-line max-len
-		url = `https://playground.mrf.io/simulate?siteUrl=${siteUrl}&requestHostname=${requestHostname}&technology=${technology}&experienceUrl=${experienceUrl}`;
-	}
+	siteUrl && params.push(`siteUrl=${siteUrl}`);
+	technology && params.push(`technology=${technology}`);
+	experienceUrl && params.push(`experienceUrl=${experienceUrl}`);
+
+	const requestHostname = process.env.STATICS_HOSTNAME || 'playground.marfeel.com';
+	params.push(`requestHostname=${requestHostname}`);
 
 	if (process.env.E2E_MODE === 'browserstack-local') {
-		url += '&flowcardsHostname=https://bs-local.com';
+		params.push('flowcardsHostname=https://bs-local.com');
+	} else if (process.env.E2E_MODE === 'browserstack-pr' || process.env.E2E_MODE === 'local-pr') {
+		params.push(`flowcardsHostname=https://flowcards-e2e.mrf.io/statics/${process.env.PR_ID}`);
+	} else if (process.env.STATICS_HOSTNAME) {
+		params.push(`flowcardsHostname=https://${process.env.STATICS_HOSTNAME}`);
 	}
 
-	if (process.env.E2E_MODE === 'browserstack-pr' || process.env.E2E_MODE === 'local-pr') {
-		url += `&flowcardsHostname=https://flowcards-e2e.mrf.io/statics/${process.env.PR_ID}`;
-	}
+	const url = `https://playground.mrf.io/simulate?${params.join('&')}`;
 
 	// eslint-disable-next-line no-console
 	console.log('FixtureUrl:', url);
 
 	return url;
 };
-
 
 module.exports = {
 	getUrlFixture

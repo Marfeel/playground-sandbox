@@ -14,7 +14,6 @@ const multicardTest = function() {
 		fixture;
 	const fixtureUrl = getUrlFixture({
 		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
-		requestHostname: 'playground.marfeel.com',
 		technology: 'web',
 		experienceUrl: '/experiences/multicard/multicard.json'
 	});

@@ -15,7 +15,10 @@ const brandedContentTest = function() {
 	let config,
 		fixture;
 	// eslint-disable-next-line max-len
-	const fixtureUrl = getUrlFixture({}, 'https://playground.mrf.io/simulate?siteUrl=https://playground.marfeel.com/templates/branded-content-article.html&requestHostname=playground.marfeel.com&experienceUrl=croupier');
+	const fixtureUrl = getUrlFixture({
+		siteUrl: 'https://playground.marfeel.com/templates/branded-content-article.html',
+		experienceUrl: 'croupier'
+	});
 
 	it('setup', async function() {
 		// eslint-disable-next-line max-len
