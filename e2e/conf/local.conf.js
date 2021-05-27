@@ -5,7 +5,7 @@ const capabilities = [
 		platformName: 'iOS',
 		automationName: 'XCUITest',
 		deviceName: 'iPhone 8 Plus',
-		platformVersion: '14.4',
+		platformVersion: '14.5',
 		browserName: 'Safari'
 	}
 ];
