@@ -6,18 +6,22 @@
 				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/gated-content/gated-content.html"
 			},
 			"snapPoints": {
-				"active": 0.75
+				"active": 0.59
 			},
 			"features": {
-				"mode": "contextual"
+				"mode": "contextual",
+				"infiniteScroll": true
 			},
 			"triggers": {
 				"myScrollTrigger": {
 					"on": "scroll",
-					"action": "setSnapPoint:active",
+					"actions": [
+						"setSnapPoint:active",
+						"lockContent:.fc-article:0.15"
+					],
 					"spec": {
 						"type": "absolute",
-						"pixel": 300,
+						"pixel": 100,
 						"percentage": 0.1
 					}
 				}
