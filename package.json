@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "description": "Flowcards Experiences",
   "files": [
-    "experiences/**/*.test.js",
-    "experiences/**/*.json",
-    "e2e/**/*"
+    "assets/**/*",
+    "e2e/**/*",
+    "experiences/**/*"
   ],
   "repository": {
     "type": "git",

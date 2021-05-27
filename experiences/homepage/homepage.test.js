@@ -19,7 +19,6 @@ const homepageTest = function() {
 		fixture;
 	const fixtureUrl = getUrlFixture({
 		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
-		requestHostname: 'playground.marfeel.com',
 		technology: 'web',
 		experienceUrl: '/experiences/homepage/homepage.json'
 	});
@@ -50,7 +49,7 @@ const homepageTest = function() {
 		expect(cardExists).equal(true);
 	});
 
-	it('scroll bounded', async function() {
+	it.skip('scroll bounded', async function() {
 		// Initial 300px scroll to trigger
 		// First 60px transitioner doesn't made the card appear
 		const initialBrowserScroll = 300 + 60;
