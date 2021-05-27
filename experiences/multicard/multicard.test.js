@@ -87,18 +87,18 @@ const multicardTest = function() {
 		expect(isAtActiveSnapPoint).equal(true);
 	});
 
-	// it('remove card, should not be displayed in viewport', async function() {
-	// 	await removeCard(
-	// 		browser,
-	// 		config.cards.nextArticle.cardSelector
-	// 	);
+	it.skip('remove card, should not be displayed in viewport', async function() {
+		await removeCard(
+			browser,
+			config.cards.nextArticle.cardSelector
+		);
 
-	// 	const firstCard = await browser.$(config.cards.nextArticle.cardSelector);
+		const firstCard = await browser.$(config.cards.nextArticle.cardSelector);
 
-	// 	const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
+		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
 
-	// 	expect(firstCardIsInViewport).equal(false);
-	// });
+		expect(firstCardIsInViewport).equal(false);
+	});
 };
 
 describe('multicard experience', multicardTest);
