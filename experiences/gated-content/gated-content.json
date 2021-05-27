@@ -17,12 +17,12 @@
 					"on": "scroll",
 					"actions": [
 						"setSnapPoint:active",
-						"lockContent:.fc-article:0.15"
+						"lockContent:.fc-article:0.1"
 					],
 					"spec": {
 						"type": "absolute",
 						"pixel": 100,
-						"percentage": 0.1
+						"percentage": 0.025
 					}
 				}
 			}
