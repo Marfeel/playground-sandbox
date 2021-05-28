@@ -21,8 +21,7 @@
 					],
 					"spec": {
 						"type": "absolute",
-						"pixel": 100,
-						"percentage": 0.025
+						"pixel": 100
 					}
 				}
 			}

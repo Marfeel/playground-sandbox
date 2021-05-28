@@ -6,6 +6,7 @@ const { removeCard } = require('../../e2e/utils/card-actions/remove');
 const { isCardExisting } = require('../../e2e/utils/card');
 const { expect } = require('chai');
 const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
+const { isContentLocker } = require('../../e2e/utils/gatedContent');
 const experience = require('./gated-content.json');
 
 
@@ -72,6 +73,12 @@ const gatedContentTest = function() {
 		expect(isAtActiveSnapPoint).equal(true);
 	});
 
+	it('should have lock content styles', async function() {
+		const isContentLock = isContentLocker(browser, config.cards.gated.cardSelector);
+
+		expect(isContentLock).equal(true);
+	});
+
 	it('remove card, should still be displayed in viewport', async function() {
 		await removeCard(
 			browser,
@@ -92,6 +99,9 @@ const gatedContentTest = function() {
 
 		expect(isAtActiveSnapPoint).equal(true);
 	});
+
+
+	
 };
 
 describe('gated content experience', gatedContentTest);
