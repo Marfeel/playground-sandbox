@@ -22,7 +22,7 @@ const verifySnapPoint = async(browser, cardSelector, value) => {
 	 * https://github.com/Marfeel/flowcards/blob/master/packages/experience-web/src/transitioner/useAbsoluteSnapPoints/useAbsoluteSnapPoints.tsx#L46
 	 */
 	const HIGH_SCREEN_THRESHOLD = 0.5;
-	const compensation = (card.y / positioner.height) > HIGH_SCREEN_THRESHOLD ? positioner.y : 0;
+	const compensation = value > HIGH_SCREEN_THRESHOLD ? positioner.y : 0;
 	const current = card.y - compensation;
 	const expected = value > 1 ? value : value * positioner.height;
 
