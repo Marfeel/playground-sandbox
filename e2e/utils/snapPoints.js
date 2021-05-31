@@ -8,6 +8,10 @@ async function getCurrentVerticalPosition(browser, cardSelector) {
 	}, cardSelector);
 }
 
+const getSnapPointValue = (snapPointValue) => {
+	return typeof snapPointValue !== 'object' ? snapPointValue : snapPointValue.value;
+};
+
 const verifySnapPoint = async(browser, cardSelector, value) => {
 	const { card, positioner } = await browser.executeAsync(async(cardSelector, done) => {
 		const positioner = document.querySelector(cardSelector).closest('[data-testid=card-positioner]').getBoundingClientRect();
@@ -22,7 +26,7 @@ const verifySnapPoint = async(browser, cardSelector, value) => {
 	 * https://github.com/Marfeel/flowcards/blob/master/packages/experience-web/src/transitioner/useAbsoluteSnapPoints/useAbsoluteSnapPoints.tsx#L46
 	 */
 	const HIGH_SCREEN_THRESHOLD = 0.5;
-	const compensation = value > HIGH_SCREEN_THRESHOLD ? positioner.y : 0;
+	const compensation = (value > 1 ? (value / positioner.height) : value) > HIGH_SCREEN_THRESHOLD ? positioner.y : 0;
 	const current = card.y - compensation;
 	const expected = value > 1 ? value : value * positioner.height;
 
@@ -42,7 +46,7 @@ const verifySnapPoint = async(browser, cardSelector, value) => {
 };
 
 const isAtSnapPoint = async(browser, cardSelector, snapPointValue, iterationClosure) => {
-	const value = typeof snapPointValue !== 'object' ? snapPointValue : snapPointValue.value;
+	const value = getSnapPointValue(snapPointValue);
 
 	let atSnapPoint = false;
 
@@ -82,6 +86,7 @@ function getTypeOfProgression(arr) {
 
 module.exports = {
 	getTypeOfProgression,
+	getSnapPointValue,
 	getCurrentVerticalPosition,
 	isAtSnapPoint
 };
