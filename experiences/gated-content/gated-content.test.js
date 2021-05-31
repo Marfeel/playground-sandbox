@@ -74,7 +74,7 @@ const gatedContentTest = function() {
 	});
 
 	it('should have lock content styles', async function() {
-		const isContentLock = isContentLocker(browser, config.cards.gated.cardSelector);
+		const isContentLock = isContentLocker(browser, 'fc-article');
 
 		expect(isContentLock).equal(true);
 	});
