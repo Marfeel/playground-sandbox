@@ -1,105 +1,34 @@
-const { bootstrapExperience } = require('../../e2e/utils/bootstrap');
-const { scrollTo } = require('../../e2e/utils/scroll');
-const { touchCard } = require('../../e2e/utils/touch');
-const { isAtSnapPoint } = require('../../e2e/utils/snapPoints');
-const { isCardContentLoaded } = require('../../e2e/utils/cardContent');
-const { isCardExisting } = require('../../e2e/utils/card');
-const { removeCard } = require('../../e2e/utils/card-actions/remove');
-const { expect } = require('chai');
-const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 const experience = require('./multicard.json');
+const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
 
-const multicardTest = function() {
-	let config,
-		fixture;
-	const fixtureUrl = getUrlFixture({
-		siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
-		technology: 'web',
-		experienceUrl: '/experiences/multicard/multicard.json'
-	});
+const { test, doers, checkers } = require('../../e2e/tests');
 
-	it('setup', async function() {
-		config = experience;
-		fixture = {
-			url: fixtureUrl,
-			articleTitle: 'Article example'
-		};
+const suite = function() {
+	const fixture = {
+		articleTitle: 'Article example',
+		url: getUrlFixture({
+			siteUrl: 'https://playground.marfeel.com/templates/article-example.html',
+			technology: 'web',
+			experienceUrl: '/experiences/multicard/multicard.json'
+		})
+	};
 
-		await bootstrapExperience(browser, config, fixture);
-	});
-
-	it('card 1 should render on scroll', async function() {
-		await scrollTo(browser, 400);
-
-		const cardExists = await isCardExisting(browser, config.cards.homepage.cardSelector);
-
-		expect(cardExists).equal(true);
-	});
-
-	it('card 1 should be displayed in viewport at initial snap point', async()=>{
-		await scrollTo(browser, 800);
-
-		const firstCard = await browser.$(config.cards.homepage.cardSelector);
-
-		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
-
-		expect(firstCardIsInViewport).equal(true);
-
-		const isAtInitialSnapPoint = await isAtSnapPoint(browser,
-			config.cards.homepage.cardSelector,
-			config.cards.homepage.snapPoints.initial);
-
-		expect(isAtInitialSnapPoint).equal(true);
-	});
-
-	it('card 2 should render on scroll', async function() {
-		await scrollTo(browser, 4000);
-
-		const cardExists = await isCardExisting(browser, config.cards.nextArticle.cardSelector);
-
-		expect(cardExists).equal(true);
-	});
-
-	it('card 2 should be displayed in viewport at initial snap point', async()=>{
-		await scrollTo(browser, 4200);
-
-		const firstCard = await browser.$(config.cards.nextArticle.cardSelector);
-
-		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
-
-		expect(firstCardIsInViewport).equal(true);
-
-		const isAtInitialSnapPoint = await isAtSnapPoint(browser,
-			config.cards.nextArticle.cardSelector,
-			config.cards.nextArticle.snapPoints.initial);
-
-		expect(isAtInitialSnapPoint).equal(true);
-	});
-
-	it('activate card 2 by click', async()=>{
-		await touchCard(browser, config.cards.nextArticle.cardSelector);
-
-		const isAtActiveSnapPoint = await isAtSnapPoint(browser,
-			config.cards.nextArticle.cardSelector,
-			config.cards.nextArticle.snapPoints.active);
-
-		expect(isAtActiveSnapPoint).equal(true);
-	});
-
-	it.skip('remove card, should not be displayed in viewport', async function() {
-		await removeCard(
-			browser,
-			config.cards.nextArticle.cardSelector
-		);
-
-		const firstCard = await browser.$(config.cards.nextArticle.cardSelector);
-
-		const firstCardIsInViewport = await firstCard.isDisplayedInViewport();
-
-		expect(firstCardIsInViewport).equal(false);
-	});
+	test.with(experience)
+		.bootstrap(fixture)
+		.for('homepage')
+		.test('card 1 should render on scroll', doers.scrollToTrigger('myScrollTrigger'), checkers.cardExists())
+		.test('card 1 should have right content', checkers.cardHasProperContent())
+		.test('card 1 should be displayed in viewport at initial snap point', doers.scrollViewport(), checkers.cardIsInViewport(), checkers.cardIsAtSnapPoint('initial'))
+		.test('card 1 should activate on tap', doers.touchCard(), checkers.cardIsAtSnapPoint('active'))
+		.test('card 1 should snap to initial position when dragged down', doers.dragToSnapPoint('initial'), checkers.cardIsAtSnapPoint('initial'))
+		.for('nextArticle')
+		.test('card 2 should render on scroll', doers.scrollToTrigger('myScrollTrigger'), checkers.cardExists())
+		.test('card 2 should have right content', checkers.cardHasProperContent())
+		.test('card 2 should be displayed in viewport at initial snap point', doers.scrollViewport(), checkers.cardIsInViewport(), checkers.cardIsAtSnapPoint('initial'))
+		.test('card 2 should activate on tap', doers.touchCard(), checkers.cardIsAtSnapPoint('active'))
+		.test('card 2 should be removed if dragged down outside of viewport', doers.dragToSnapPoint('hidden'), checkers.cardIsAtSnapPoint('hidden'))
 };
 
-describe('multicard experience', multicardTest);
+describe('Multicards experience', suite);
 
-exports.default = multicardTest;
+exports.default = suite;

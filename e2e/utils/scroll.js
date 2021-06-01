@@ -38,6 +38,12 @@ const scrollTo = async(browser, y, step=50, timeout=100)=>{
 	}, Promise.resolve());
 };
 
+const scrollByStep = async(browser, y, step, timeout) => {
+	const currentScrollPosition = await getCurrentScrollPosition(browser);
+
+	await scrollTo(browser, currentScrollPosition + y, step, timeout);
+};
+
 const scrollBy = async(browser, y)=>{
 	return await browser.executeAsync(async(yBrowser, done) => {
 		const html = document.querySelector('html');
@@ -46,6 +52,17 @@ const scrollBy = async(browser, y)=>{
 		html.dispatchEvent(new CustomEvent('scroll', {}));
 		done();
 	}, y);
+};
+
+const scrollToElementStep = async(browser, selector) => {
+	const currentScrollPosition = await getCurrentScrollPosition(browser);
+	const elementPosition = await browser.executeAsync(async(selectorBrowser, done) => {
+		const element = document.querySelector(selectorBrowser).getBoundingClientRect();
+
+		done(element);
+	}, selector);
+
+	await scrollByStep(browser, elementPosition.y - currentScrollPosition + 100);
 };
 
 const scrollToElement = async(browser, selector)=>{
@@ -60,6 +77,8 @@ const scrollToElement = async(browser, selector)=>{
 module.exports = {
 	scrollTo,
 	scrollBy,
+	scrollByStep,
 	scrollToElement,
+	scrollToElementStep,
 	scrollToAbsolutePosition: scroll
 };

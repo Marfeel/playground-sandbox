@@ -1,6 +1,6 @@
 {
 	"cards": {
-		"topArticles": {
+		"comments": {
 			"content": {
 				"type": "AMPDocument",
 				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/comments/comments.html"
