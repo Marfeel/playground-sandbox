@@ -1,4 +1,4 @@
-const { waitUntilBrowserReady, initialUserInteraction } = require('../browser');
+const { browser: { waitUntilBrowserReady, initialUserInteraction } } = require('../../utils');
 const { waitUntilResourcesLoaded } = require('./resources');
 const { waitUntilPageIsLoaded } = require('./page');
 const { waitUntilExperienceEventsFired } = require('./events');

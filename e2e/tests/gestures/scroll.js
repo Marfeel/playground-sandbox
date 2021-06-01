@@ -1,15 +1,15 @@
 /* eslint-disable no-console */
 const { range } = require('mathjs');
 
-const getCurrentScrollPosition = async(browser)=>{
-	return await browser.executeAsync(async(arg, done) => {
+const getCurrentScrollPosition = async() => {
+	return await browser.executeAsync(async(done) => {
 		const htmlEl = document.querySelector('html');
 
 		done(htmlEl.scrollTop);
-	}, '');
+	});
 };
 
-const scroll = async(browser, y) => {
+const scroll = async(_, y) => {
 	return await browser.executeAsync(async(yBrowser, done) => {
 		const html = document.querySelector('html');
 
@@ -54,8 +54,8 @@ const scrollBy = async(browser, y)=>{
 	}, y);
 };
 
-const scrollToElementStep = async(browser, selector) => {
-	const currentScrollPosition = await getCurrentScrollPosition(browser);
+const scrollToElementStep = async(_, selector) => {
+	const currentScrollPosition = await getCurrentScrollPosition();
 	const elementPosition = await browser.executeAsync(async(selectorBrowser, done) => {
 		const element = document.querySelector(selectorBrowser).getBoundingClientRect();
 
@@ -65,7 +65,7 @@ const scrollToElementStep = async(browser, selector) => {
 	await scrollByStep(browser, elementPosition.y - currentScrollPosition + 100);
 };
 
-const scrollToElement = async(browser, selector)=>{
+const scrollToElement = async(_, selector)=>{
 	return await browser.executeAsync(async(selectorBrowser, done) => {
 		const element = document.querySelector(selectorBrowser);
 

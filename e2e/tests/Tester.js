@@ -1,4 +1,4 @@
-const { bootstrapExperience } = require('../utils/bootstrap');
+const { bootstrap } = require('./actions');
 
 class Tester {
     constructor(experience) {
@@ -7,7 +7,7 @@ class Tester {
 
     bootstrap(fixture) {
         it('bootstrap experience', async () => {
-            await bootstrapExperience(browser, this.experience, fixture);
+            await bootstrap.bootstrapExperience(browser, this.experience, fixture);
         });
 
         return this;
@@ -23,7 +23,8 @@ class Tester {
 
     test(name, ...actions) {
         it(name, async () => {
-            console.log(`==== Test: ${name}`)
+            // eslint-disable-next-line no-console
+            console.log(`==== Test: ${name}`);
             for (const action of actions) {
                 await action(this.card);
             }
