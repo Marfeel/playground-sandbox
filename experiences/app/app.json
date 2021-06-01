@@ -1,0 +1,35 @@
+{
+	"cards": {
+		"app": {
+			"content": {
+				"type": "AMPDocument",
+				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/featured_article/featured_article.html"
+			},
+			"snapPoints": {
+				"initial": 0.88,
+				"active": 0.82
+			},
+			"features": {
+				"mode": "contextual",
+				"button": {
+					"action": "setSnapPoint:initial"
+				},
+				"infiniteScroll": true,
+				"heroElement": {
+					"src": "https://playground.marfeel.com/assets/experiences/app/hero.png"
+				}
+			},
+			"triggers": {
+				"myScrollTrigger": {
+					"on": "scroll",
+					"action": "setSnapPoint:initial",
+					"spec": {
+						"type": "absolute",
+						"pixel": 300,
+						"percentage": 0.1
+					}
+				}
+			}
+		}
+	}
+}
