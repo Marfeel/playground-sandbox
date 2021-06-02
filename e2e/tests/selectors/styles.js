@@ -21,6 +21,6 @@ const getElementStyles = async(browser, elementSelector) => {
 };
 
 module.exports = {
-	getCardPositionerStyles,
+    getCardPositionerStyles,
     getElementStyles
 };
