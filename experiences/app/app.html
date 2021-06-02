@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html ⚡ lang="en">
+<!doctype html>
+<html xmlns:th="https://www.thymeleaf.org">
 
 <head>
 	<meta charset="utf-8">
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
-	<title>Gated Content</title>
+	<title>App</title>
+	<!--/*@thymesVar id="canonicalUrl" type="string"*/-->
 	<link rel="canonical" href="${canonicalUrl}">
 	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 	<style amp-boilerplate>
@@ -64,7 +65,8 @@
 				visibility: visible
 			}
 		}
-	</style><noscript>
+	</style>
+	<noscript>
 		<style amp-boilerplate>
 			body {
 				-webkit-animation: none;
@@ -82,71 +84,50 @@
 			margin: 0;
 			text-align: start;
 			-webkit-font-smoothing: antialiased;
-			min-height: 100vh;
 		}
-
-		.mrf-header__wrapper {
+		.mrf-appCard {
+			display: grid;
+			grid-template-columns: 110px 1fr;
+			padding: 25px 20px 20px;
+			grid-gap: 20px;
+			gap: 20px;
+		}
+		.mrf-appCard__content {
 			display: flex;
 			flex-direction: column;
 		}
-
-		.mrf-header__main {
-			display: grid;
-			place-items: center;
-			height: 50px;
-			padding-top: 15px;
-		}
-
-		.mrf-gated-content {
-			padding: 0 20px 20px;
-			box-sizing: border-box;
-			text-align: center;
-			color: #333;
-		}
-
-		.mrf-gated-content__text {
+		.mrf-appCard__title {
+			margin: 0 0 8px;
 			font-size: 20px;
-			margin: 0 0 10px;
 		}
-
-		input {
-			width: 100%;
-			height: 45px;
-			border: 0;
-			border-radius: 3px;
-			box-sizing: border-box;
-			font-family: -apple-system, system-ui;
-		}
-
-		.mrf-gated-content__submit {
-			background: #282346;
-			margin-bottom: 10px;
-			color: #FFF;
-			font-size: 16px;
+		.mrf-appCard__text {
+			font-size: 15px;
+			line-height: 1;
 			font-weight: 500;
-			appearance: none;
-			-webkit-appearance: none;
+			color: #9B9B9B;
 		}
-
-		.mrf-gated-content__email {
-			border: 1px solid #CBD1D8;
-			margin-bottom: 15px;
-			padding-left: 10px;
+		.mrf-appCard__button {
+			background: #3478F5;
+			appearance: none;
+			color: #FFF;
+			border: none;
+			height: 30px;
+			border-radius: 3px;
+			margin: auto 0 5px;
+			font-weight: 700;
 		}
 	</style>
 </head>
-
+<!-- https://${CURRENT_HOSTNAME} -->
 <body>
-	<header class="mrf-header__wrapper">
-		<div class="mrf-header__main">
-			<img class="mrf-logo" height="40" src="https://${CURRENT_HOSTNAME}/assets/experiences/dailynews-light.png">
+	<div class="mrf-appCard">
+		<img height="110" width="110" src="./../../assets/experiences/app/icon.png" />
+		<div class="mrf-appCard__content">
+			<h2 class="mrf-appCard__title">DailyNews App</h2>
+			<span class="mrf-appCard__text">Faster and better experience</span>
+			<button class="mrf-appCard__button">Get it</button>
 		</div>
-	</header>
-	<form class="mrf-gated-content">
-		<h2 class="mrf-gated-content__text"><b>To keep reading this story, create your free account or log in</b></h2>
-		<input type="email" class="mrf-gated-content__email" placeholder="Email address" />
-		<input type="submit" class="mrf-gated-content__submit" value="Continue" />
-	</form>
+	</div>
 </body>
 
 </html>
