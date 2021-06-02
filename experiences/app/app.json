@@ -3,7 +3,7 @@
 		"app": {
 			"content": {
 				"type": "AMPDocument",
-				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/featured_article/featured_article.html"
+				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/app/app.html"
 			},
 			"snapPoints": {
 				"initial": 0.88,
