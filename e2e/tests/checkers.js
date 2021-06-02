@@ -78,11 +78,27 @@ const cardIsInViewport = () => {
   };
 };
 
+const hostIsGated = (trigger) => {
+  return async (card) => {
+    const t = card.triggers[trigger];
+    const a = t.action || t.actions.filter(a => a.startsWith('lockContent:'))[0];
+    const querySelector = a.split(':')[1];
+    const evaluate = async () => {
+      const style = await selectors.styles.getElementStyles(browser, querySelector);
+      return style.includes('overflow: hidden') && style.includes('position: relative');
+    };
+    const result = await chore.waitUntil(browser, evaluate, true, { timeoutMsg: 'Host content is not gated' });
+
+		expect(result).equal(true);
+  };
+};
+
 module.exports = {
   cardExists,
   cardHasHeroImage,
   cardHasProperContent,
   cardIsAttachedToEndOfPage,
   cardIsAtSnapPoint,
-  cardIsInViewport
+  cardIsInViewport,
+  hostIsGated
 };
