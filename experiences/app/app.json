@@ -6,15 +6,11 @@
 				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/app/app.html"
 			},
 			"snapPoints": {
-				"initial": 0.88,
-				"active": 0.82
+				"active": 0.78
 			},
 			"features": {
-				"mode": "contextual",
-				"button": {
-					"action": "setSnapPoint:initial"
-				},
-				"infiniteScroll": true,
+				"mode": "modal",
+				"removable": "true",
 				"heroElement": {
 					"src": "https://playground.marfeel.com/assets/experiences/app/hero.png"
 				}
@@ -22,7 +18,7 @@
 			"triggers": {
 				"myScrollTrigger": {
 					"on": "scroll",
-					"action": "setSnapPoint:initial",
+					"action": "setSnapPoint:active",
 					"spec": {
 						"type": "absolute",
 						"pixel": 300,
