@@ -32,7 +32,7 @@
 		<h1>Show the right message,<span>to the right people,</span><span>at the right time.</span></h1>
 		<form action="https://playground.mrf.io/simulate" method="get" id="form">
 			<div class="form">
-				<input id="siteUrl" name="siteUrl" value="" class="form__input" placeholder="Enter your website URL" />
+				<input id="siteUrl" name="siteUrl" value="" class="form__input" />
 				<input type="hidden" id="requestHostname" name="requestHostname" />
 				<div class="card-type" title="Page technology">
 					<input id="technologyWeb" name="technology" type="radio" class="form__radio" value="web" checked />
@@ -454,28 +454,16 @@
 		const input = document.querySelector(".form__input");
 		const button = document.querySelectorAll(".form__button");
 		const requestHostname = document.getElementById("requestHostname");
+		const defaultSitePath = 'templates/article-skeleton-web.html';
 		requestHostname.value = window.location.hostname;
 
-		const fillInput = () => {
+		const getDefaultSiteUrl = () => {
 			const urlParams = new URLSearchParams(window.location.search);
 			const siteUrlParam = urlParams.get('siteUrl');
-			input.value = siteUrlParam
-				? addProtocol(siteUrlParam)
-				: `${window.location.origin}/templates/article-skeleton-web.html`
-		};
 
-		const stateHandle = (e) => {
-			if (e.target.value.length === 0) {
-				button.forEach((btn) => {
-					btn.disabled = true;
-					btn.style.cursor = "not-allowed";
-				});
-			} else if (e.target.value.length > 0) {
-				button.forEach((btn) => {
-					btn.disabled = false;
-					btn.style.cursor = "pointer";
-				});
-			}
+			return siteUrlParam
+				? addProtocol(siteUrlParam)
+				: `${window.location.origin}/${defaultSitePath}`
 		};
 
 		const addProtocol = (url) => {
@@ -487,8 +475,8 @@
 		}
 
 		const onSubmit = (e) => {
-			const siteUrl = document.querySelector("input[name=siteUrl]").value;
-			document.querySelector("input[name=siteUrl]").value = addProtocol(siteUrl);
+			const siteUrl = input.value || getDefaultSiteUrl();
+			input.value = addProtocol(siteUrl);
 		};
 
 		const toggleFormStatus = (e) => {
@@ -518,9 +506,14 @@
 			card.addEventListener("change", toggleFormStatus);
 		});
 
-		input.addEventListener("input", stateHandle);
+		input.placeholder = getDefaultSiteUrl();
 		myForm.addEventListener("submit", onSubmit);
-		fillInput();
+
+		window.addEventListener('load', () => {
+			if (input?.value.endsWith(defaultSitePath)) {
+				input.value = '';
+			}
+		});
 	</script>
 </body>
 </html>
