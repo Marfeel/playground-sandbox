@@ -1,5 +1,4 @@
-const { waitUntil } = require('../waitUntil');
-const { initialUserInteraction } = require('../browser');
+const { browser: { initialUserInteraction }, chore } = require('../../utils');
 
 const eventsGotFired = async(browser)=>{
 	const events = await browser.executeAsync(async(done) => {
@@ -21,7 +20,7 @@ const eventsGotFired = async(browser)=>{
 };
 
 const waitUntilExperienceEventsFired = async(browser) => {
-	await waitUntil(browser, eventsGotFired.bind(null, browser), true, {
+	await chore.waitUntil(browser, eventsGotFired.bind(null, browser), true, {
 		interval: 1000,
 		timeout: 60000,
 		timeoutMsg: 'Experience events didn\'t fire in time'

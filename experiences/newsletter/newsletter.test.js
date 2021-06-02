@@ -1,5 +1,5 @@
 const experience = require('./newsletter.json');
-const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
+const { fixture: { getUrlFixture } } = require('../../e2e/tests/utils');
 
 const { test, doers, checkers } = require('../../e2e/tests');
 

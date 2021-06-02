@@ -1,7 +1,6 @@
+const { scroll } = require('../gestures');
 
-const { scrollTo, scrollToAbsolutePosition } = require('./scroll');
-
-const waitUntilBrowserReady = async(browser)=>{
+const waitUntilBrowserReady = async(browser) => {
 	await browser.waitUntil(
 		async function() {
 			const state = await browser.execute(function() {
@@ -27,7 +26,7 @@ const getBrowserInnerSizes = async(browser) => {
 };
 
 //user to tap screen to fake user initial interaction
-const tapBrowser = async(browser)=>{
+const tapBrowser = async(browser) => {
 	browser.touchAction({
 		action: 'tap',
 		x: 150,
@@ -35,14 +34,14 @@ const tapBrowser = async(browser)=>{
 	});
 };
 
-const initialUserInteraction = async(browser)=>{
+const initialUserInteraction = async(browser) => {
 	tapBrowser(browser);
 
-	await scrollToAbsolutePosition(browser, 0);
+	await scroll.scrollToAbsolutePosition(browser, 0);
 
-	await scrollTo(browser, 5, 1);
+	await scroll.scrollTo(browser, 5, 1);
 
-	await scrollTo(browser, 0, 1);
+	await scroll.scrollTo(browser, 0, 1);
 };
 
 module.exports = {

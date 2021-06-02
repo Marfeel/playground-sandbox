@@ -1,6 +1,8 @@
 const { expect } = require('chai');
-const { getFlowcardJson } = require('../../e2e/utils/croupier');
-const { getUrlFixture } = require('../../e2e/utils/fixtureUrl');
+const {
+	croupier: { fetchFlowcardsJson }, 
+	fixture: { getUrlFixture }
+} = require('../../e2e/tests/utils');
 
 const experience = require('./branded-content-card.json');
 const { test, doers, checkers } = require('../../e2e/tests');
@@ -15,7 +17,7 @@ const customCheckers = {
 				renderProps: JSON.stringify(experience.cards.BrandedContentFlowcard)
 			});
 
-			const croupier =  await getFlowcardJson({}, `https://flowcards.mrf.io/json/web?site_id=120&client_id=fec803ab-7426-4617-ab35-806db795b85c&canonical_url=https%3A%2F%2Fplayground.mrf.io%2Fsimulate%3FsiteUrl%3Dhttps%253A%252F%252Fplayground.marfeel.com%252Ftemplates%252Fbranded-content-article.html%26requestHostname%3Dplayground.marfeel.com%26experienceUrl%3Dcroupier&referrer=https%3A%2F%2Fplayground.marfeel.com&geo=__INJECT_GEO__&dynamic_flowcards=${encodeURIComponent(dynamic_flowcards)}`);
+			const croupier = await fetchFlowcardsJson({}, `https://flowcards.mrf.io/json/web?site_id=120&client_id=fec803ab-7426-4617-ab35-806db795b85c&canonical_url=https%3A%2F%2Fplayground.mrf.io%2Fsimulate%3FsiteUrl%3Dhttps%253A%252F%252Fplayground.marfeel.com%252Ftemplates%252Fbranded-content-article.html%26requestHostname%3Dplayground.marfeel.com%26experienceUrl%3Dcroupier&referrer=https%3A%2F%2Fplayground.marfeel.com&geo=__INJECT_GEO__&dynamic_flowcards=${encodeURIComponent(dynamic_flowcards)}`);
 
 			expect(croupier.cards.BrandedContentFlowcard.content.url).equal('https://flowcards.mrf.io/transformer/playground.marfeel.com?url=https%3A%2F%2Fplayground.marfeel%2Fexperiences%2Fbranded-content%2Fbranded-content-article.html&vars=currentUrl,https%3A%2F%2Fplayground.mrf.io%2Fsimulate%3FsiteUrl%3Dhttps%253A%252F%252Fplayground.marfeel.com%252Ftemplates%252Fbranded-content-article.html%26requestHostname%3Dplayground.marfeel.com%26experienceUrl%3Dcroupier,technology,0,flowcardId,FC_DC_UNKNOWN');
 		}

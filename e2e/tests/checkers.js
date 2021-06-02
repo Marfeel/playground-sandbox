@@ -1,14 +1,11 @@
 const { expect } = require('chai');
-const { hasHeroImage } = require('../utils/heroImage.js');
-const { isAttachedToEndOfPage } = require('../utils/infiniteScroll');
-const { isAtSnapPoint } = require('../utils/snapPoints');
-const { isCardContentLoaded } = require('../utils/cardContent');
-const { isCardExisting } = require('../utils/card');
+const selectors = require('./selectors');
+const { chore } = require('./utils');
 
 const cardExists = () => {
   return async (card) => {
-    console.log(card)
-    const result = await isCardExisting(browser, card.cardSelector);
+    const evaluate = async () => await selectors.card.exists(browser, card.cardSelector);
+    const result = await chore.waitUntil(browser, evaluate, true, { timeoutMsg: 'Card doesnt exist' });
 
     expect(result).equal(true);
   };
@@ -16,7 +13,7 @@ const cardExists = () => {
 
 const cardHasHeroImage = () => {
   return async (card) => {
-    const result = await hasHeroImage(browser, card.cardSelector);
+    const result = await selectors.card.hasHeroImage(browser, card.cardSelector);
 
 		expect(result).equal(true);
   };
@@ -24,7 +21,12 @@ const cardHasHeroImage = () => {
 
 const cardHasProperContent = () => {
   return async (card) => {
-    const result = await isCardContentLoaded(browser, card.cardSelector, card.content);
+    const expected = card.content.url.replace('${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}', '');
+    const evaluate = async () => {
+      const content = await selectors.card.getShadowRootContent(browser, card.cardSelector);
+      return content.url.includes(expected);
+    };
+    const result = await chore.waitUntil(browser, evaluate, true, { timeoutMsg: 'Card content is not correct' });
 
 		expect(result).equal(true);
   };
@@ -32,15 +34,36 @@ const cardHasProperContent = () => {
 
 const cardIsAttachedToEndOfPage = () => {
   return async (card) => {
-    const result = await isAttachedToEndOfPage(browser, card.cardSelector);
-    
-    expect(result).equal(true);
+    const evaluate = async () => {
+      const style = await selectors.styles.getCardPositionerStyles(browser, card.cardSelector);
+      return style.includes('position: sticky');
+    };
+    const result = await chore.waitUntil(browser, evaluate, true, { timeoutMsg: 'Card positioner is not sticky' });
+
+		expect(result).equal(true);
   };
 };
 
 const cardIsAtSnapPoint = (snapPoint) => {
   return async (card) => {
-    const result = await isAtSnapPoint(browser, card.cardSelector, snapPoint !== 'hidden' ? card.snapPoints[snapPoint] : 1);
+    const value = snapPoint !== 'hidden' ? selectors.snapPoints.parseSnapPointValue(card.snapPoints[snapPoint]) : 1;
+    const evaluate = async () => {
+      const { current, expected } = await selectors.snapPoints.calculateCurrentAndExpectedValues(browser, card.cardSelector, value);
+      const difference = current - expected;
+
+      console.log(`
+            Expected Snappoint: ${expected} 
+            Current Snappoint: ${current} 
+            Difference: ${difference}
+        `);
+    
+      if (isNaN(difference) || difference >= 5 || difference <= -5) {
+        return false;
+      }
+    
+      return true;
+    };
+    const result = await chore.waitUntil(browser, evaluate, true, { timeoutMsg: `Card is not at expected ${snapPoint} position` });
 
 		expect(result).equal(true);
   };

@@ -1,5 +1,4 @@
-const { waitUntil } = require('../waitUntil');
-
+const { chore } = require('../../utils');
 
 const pageTitleMatches = async(browser, expectedTitle)=>{
 	return await browser.getTitle() === expectedTitle;
@@ -20,11 +19,11 @@ const experiencePageLoaded = async(browser, fixtureUrl)=>{
 };
 
 const waitUntilPageIsLoaded = async(browser, fixture)=> {
-	await waitUntil(browser,
+	await chore.waitUntil(browser,
 		experiencePageLoaded.bind(null, browser, fixture.url),
 		true, { timeoutMsg: 'Page took to long to load' });
 
-	await waitUntil(browser, pageTitleMatches.bind(null,
+	await chore.waitUntil(browser, pageTitleMatches.bind(null,
 		browser,
 		fixture.articleTitle),
 	true,
@@ -32,7 +31,7 @@ const waitUntilPageIsLoaded = async(browser, fixture)=> {
 
 	const article = await browser.$('.fc-article');
 
-	await waitUntil(browser, articleElementLoaded.bind(null, browser, article), true, {
+	await chore.waitUntil(browser, articleElementLoaded.bind(null, browser, article), true, {
 		timeoutMsg: 'Article didn\'t load'
 	});
 };

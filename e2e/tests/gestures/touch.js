@@ -107,6 +107,17 @@ const touchCard = async(browser, cardSelector)=>{
 	}, cardSelector);
 };
 
+const touchCloseButton = async(browser) => {
+	const contentInfo = await browser.executeAsync(async(args, done) => {
+		const closeButton = document.querySelector('marfeel-flowcards [data-testid="sticky-close-icon"]');
+
+		closeButton.click();
+		done();
+	}, '');
+
+	return contentInfo;
+};
+
 const touchElementInsideCard = async(browser, cardSelector, childElementSelector)=>{
 	await browser.execute(async(cardSelectorBrowser, childElementSelectorBrowser) => {
 		const cardDocument = document
@@ -121,5 +132,6 @@ module.exports = {
 	dragCardTo,
 	dragCardBy,
 	touchCard,
+	touchCloseButton,
 	touchElementInsideCard
 };

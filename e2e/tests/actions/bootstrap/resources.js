@@ -1,6 +1,4 @@
-
-const { waitUntil } = require('../waitUntil');
-const { initialUserInteraction } = require('../browser');
+const { browser: { initialUserInteraction }, chore } = require('../../utils');
 
 const relevantResourcesLoaded = async(browser)=>{
 	const resources = await browser.executeAsync(async(done) => {
@@ -22,14 +20,13 @@ const relevantResourcesLoaded = async(browser)=>{
 };
 
 const waitUntilResourcesLoaded = async(browser)=>{
-	await waitUntil(browser,
+	await chore.waitUntil(browser,
 		relevantResourcesLoaded.bind(null, browser), true, {
 			timeout: 10000,
 			interval: 1000,
 			timeoutMsg: 'Relevant resources didn\'t load in time'
 		}, initialUserInteraction.bind(null, browser));
 };
-
 
 module.exports = {
 	waitUntilResourcesLoaded
