@@ -433,6 +433,7 @@
 		const input = document.querySelector(".form__input");
 		const button = document.querySelectorAll(".form__button");
 		const requestHostname = document.getElementById("requestHostname");
+		const defaultSitePath = 'templates/article-skeleton-web.html';
 		requestHostname.value = window.location.hostname;
 
 		const getDefaultSiteUrl = () => {
@@ -441,7 +442,7 @@
 
 			return siteUrlParam
 				? addProtocol(siteUrlParam)
-				: `${window.location.origin}/templates/article-skeleton-web.html`
+				: `${window.location.origin}/${defaultSitePath}`
 		};
 
 		const addProtocol = (url) => {
@@ -453,8 +454,8 @@
 		}
 
 		const onSubmit = (e) => {
-			const siteUrl = document.querySelector("input[name=siteUrl]").value || getDefaultSiteUrl();
-			window.location.href = siteUrl;
+			const siteUrl = input.value || getDefaultSiteUrl();
+			input.value = addProtocol(siteUrl);
 		};
 
 		const toggleFormStatus = (e) => {
@@ -486,6 +487,12 @@
 
 		input.placeholder = getDefaultSiteUrl();
 		myForm.addEventListener("submit", onSubmit);
+
+		window.addEventListener('load', () => {
+			if (input?.value.endsWith(defaultSitePath)) {
+				input.value = '';
+			}
+		});
 	</script>
 </body>
 </html>
