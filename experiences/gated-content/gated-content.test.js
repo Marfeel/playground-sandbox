@@ -19,6 +19,7 @@ const suite = function() {
 		.test('card should render on scroll', doers.scrollToTrigger('myScrollTrigger'), checkers.cardExists())
 		.test('card should have right content', checkers.cardHasProperContent())
 		.test('card should be displayed in viewport at active snap point', doers.scrollViewport(), checkers.cardIsInViewport(), checkers.cardIsAtSnapPoint('active'))
+		.test('host should be gated', checkers.hostIsGated('myScrollTrigger'))
 };
 
 describe('Gated content experience', suite);
