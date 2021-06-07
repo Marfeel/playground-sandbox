@@ -9,7 +9,7 @@
 				"active": 0.78
 			},
 			"features": {
-				"mode": "modal",
+				"mode": "contextual",
 				"removable": "true",
 				"heroElement": {
 					"src": "https://playground.marfeel.com/assets/experiences/app/hero.png"
