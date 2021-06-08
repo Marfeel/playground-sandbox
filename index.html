@@ -173,7 +173,7 @@
 					</div>
 				</label>
 				<!-- <label>
-					<input name="experienceUrl" type="radio" value="/experiences/gated-content/gated-content.json" data-siteUrl="https://playground.marfeel.com/templates/article-example.html" />
+					<input name="experienceUrl" type="radio" value="/experiences/gated-content/gated-content.json" data-site-url="https://playground.marfeel.com/templates/article-example.html" />
 					<div class="card">
 						<div class="card__btn-placeholder">
 							<a class="card__btn-sandbox"
@@ -279,7 +279,7 @@
 				</label>
 				<label>
 					<input
-						data-siteUrl="https://playground.marfeel.com/templates/branded-content-article.html"
+						data-site-url="https://playground.marfeel.com/templates/branded-content-article.html"
 						name="experienceUrl"
 						type="radio"
 						value="/experiences/branded-content/branded-content.js"
@@ -304,7 +304,8 @@
 				</label>
 				<label>
 					<input
-						data-siteUrl="https://playground.marfeel.com/templates/article-contextual-link.html"
+						data-fixed-site-url="true"
+						data-site-url="https://playground.marfeel.com/templates/article-contextual-link.html"
 						name="experienceUrl"
 						type="radio"
 						value="/experiences/contextual-links/contextual-links.js"
@@ -371,7 +372,7 @@
 				</label>
 				<label>
 					<input id="experienceUrl" name="experienceUrl" type="radio"
-						value="/experiences/homepage/homepage.json" data-siteUrl="https://playground.marfeel.com/templates/article-skeleton-sticky-fixed.html" />
+						value="/experiences/homepage/homepage.json" data-site-url="https://playground.marfeel.com/templates/article-skeleton-sticky-fixed.html" />
 					<div class="card">
 						<div class="card__btn-placeholder">
 							<a class="card__btn-sandbox"
@@ -392,7 +393,7 @@
 				</label>
 				<label>
 					<input id="experienceUrl" name="experienceUrl" type="radio"
-						value="/experiences/homepage/homepage.json" data-siteUrl="https://playground.marfeel.com/templates/article-skeleton-sticky.html" />
+						value="/experiences/homepage/homepage.json" data-site-url="https://playground.marfeel.com/templates/article-skeleton-sticky.html" />
 					<div class="card">
 						<div class="card__btn-placeholder">
 							<a class="card__btn-sandbox"
@@ -456,23 +457,30 @@
 		</div>
 	</footer>
 	<script>
-		let isLastSiteUrlFixed = false;
-		let customSiteUrl = '';
 		const myForm = document.getElementById("form");
 		const cards = myForm.querySelectorAll("input[name='experienceUrl']");
 		const input = document.querySelector(".form__input");
 		const button = document.querySelectorAll(".form__button");
 		const requestHostname = document.getElementById("requestHostname");
 		const defaultSitePath = 'templates/article-skeleton-web.html';
+
+		let siteUrlForTheSelectedCard;
+		
 		requestHostname.value = window.location.hostname;
 
 		const getDefaultSiteUrl = () => {
 			const urlParams = new URLSearchParams(window.location.search);
 			const siteUrlParam = urlParams.get('siteUrl');
+			
+			if (siteUrlParam) {
+				return addProtocol(siteUrlParam);
+			}
 
-			return siteUrlParam
-				? addProtocol(siteUrlParam)
-				: `${window.location.origin}/${defaultSitePath}`
+			if (siteUrlForTheSelectedCard) {
+				return siteUrlForTheSelectedCard;
+			}
+
+			return `${window.location.origin}/${defaultSitePath}`; 
 		};
 
 		const addProtocol = (url) => {
@@ -494,21 +502,22 @@
 			const webInput = myForm.querySelector('#technologyWeb');
 			const ampInput = myForm.querySelector('#technologyAmp');
 
-			customSiteUrl = isLastSiteUrlFixed ? customSiteUrl : textInput.value
-
-			if (!!e.target.dataset.siteurl) {
-				textInput.value = e.target.dataset.siteurl;
-				cardTypeWrapper.classList.add('read-only');
-				isLastSiteUrlFixed = true;
+			const siteUrl = e.target.dataset.siteUrl;
+			const hasFixedSiteUrl = !!e.target.dataset.fixedSiteUrl && !!siteUrl;
+			
+			if (hasFixedSiteUrl) {
+				textInput.classList.add('read-only');
 			} else {
-				cardTypeWrapper.classList.remove('read-only');
-				textInput.value = customSiteUrl;
-				isLastSiteUrlFixed = false;
+				textInput.classList.remove('read-only');
 			}
 
-			textInput.readOnly = !!e.target.dataset.siteurl;
-			webInput.disabled = !!e.target.dataset.siteurl;
-			ampInput.disabled = !!e.target.dataset.siteurl;
+			siteUrlForTheSelectedCard = siteUrl || undefined;
+
+			textInput.readOnly = hasFixedSiteUrl;
+			webInput.disabled = hasFixedSiteUrl;
+			ampInput.disabled = hasFixedSiteUrl;
+
+			input.placeholder = getDefaultSiteUrl();
 		};
 
 		cards.forEach(card => {
@@ -516,6 +525,7 @@
 		});
 
 		input.placeholder = getDefaultSiteUrl();
+
 		myForm.addEventListener("submit", onSubmit);
 
 		window.addEventListener('load', () => {
