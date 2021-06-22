@@ -1,0 +1,48 @@
+{
+	"cards": {
+		"homepage": {
+			"content": {
+				"type": "AMPDocument",
+				"url": "${PLAYGROUND_PROXY}/${CURRENT_HOSTNAME}/experiences/homepage/homepage.html"
+			},
+			"snapPoints": {
+				"initial": 0.7,
+				"minimised": 0.85,
+				"promoted": 176,
+				"active": 80
+			},
+			"features": {
+				"mode": "modal",
+				"button": {
+					"action": "setSnapPoint:initial"
+				},
+				"infiniteScroll": true
+			},
+			"triggers": {
+				"myIntersectionTrigger": {
+					"on": "intersection",
+					"action": "setSnapPoint:promoted",
+					"spec": {
+						"selector": ".trigger-start"
+					}
+				},
+				"myScrollTrigger": {
+					"on": "scroll",
+					"action": "setSnapPoint:initial",
+					"spec": {
+						"type": "absolute",
+						"pixel": 300,
+						"percentage": 0.1
+					}
+				}
+			}
+		}
+	},
+	"page": {
+		"stickyElementSelector": ".sticky",
+		"sticky": {
+			"elementSelector": ".sticky",
+			"viewabilitySafeguardDelay": 6000
+		}
+	}
+}
